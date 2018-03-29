@@ -1,0 +1,45 @@
+using System.Linq;
+
+namespace CustomLogic.Services.GroupUsersService
+{
+public static class GroupUsersMapper
+{
+
+public static GroupUser MapInsertModelToDbModel(GroupUsersViewModel model, GroupUser newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new GroupUser();
+    }
+
+            newDomainModel.Group_Id = model.Group_Id;
+            newDomainModel.User_Id = model.User_Id;
+    return newDomainModel;
+    }
+
+
+
+public static GroupUsersViewModel MapDbModelToViewModel(GroupUser dbModel)
+{
+var viewModel = new  GroupUsersViewModel();
+
+            viewModel.Group_Id = dbModel.Group_Id;
+            viewModel.User_Id = dbModel.User_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<GroupUsersViewModel> MapDbModelQueryToViewModelQuery(IQueryable<GroupUser> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new GroupUsersViewModel()
+        {
+Group_Id = c.Group_Id,
+User_Id = c.User_Id,
+        });
+        }
+    }
+}
+
+

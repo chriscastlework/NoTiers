@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.TempNotificationFieldsService
+{
+    public class Save : IInsertEvent<TempNotificationFieldsViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(TempNotificationFieldsViewModel model, IUnitOfWork unitOfWork, Response<TempNotificationFieldsViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = TempNotificationFields();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<TempNotificationField>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = TempNotificationFields
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(TempNotificationFieldsViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<TempNotificationField>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<TempNotificationField>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

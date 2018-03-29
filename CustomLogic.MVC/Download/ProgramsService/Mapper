@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ProgramsService
+{
+public static class ProgramsMapper
+{
+
+public static Program MapInsertModelToDbModel(ProgramsViewModel model, Program newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Program();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static ProgramsViewModel MapDbModelToViewModel(Program dbModel)
+{
+var viewModel = new  ProgramsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<ProgramsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Program> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ProgramsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

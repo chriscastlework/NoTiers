@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ClientCorsOriginsService
+{
+    public class QueryLogic : IViewListEvent<ClientCorsOriginsViewModel, ClientCorsOrigin>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<ClientCorsOrigin> repository, NgTable<ClientCorsOriginsViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<ClientCorsOriginsViewModel>();
+
+            var query = ClientCorsOrigins
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

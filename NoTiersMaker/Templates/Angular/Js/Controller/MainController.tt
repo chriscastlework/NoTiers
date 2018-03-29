@@ -1,0 +1,31 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+
+  // Main <#=_model.TT_TableName()#> Controller
+        angular.module('app').controller('mainController', mainController);
+        function mainController(<#=_model.TT_ViewModelName()#>ApiService) {
+            var vm = this;
+
+            <#=_model.TT_ViewModelName()#>ApiService.Get(@Html.Raw(Model.Data.Id)).then(
+                function (data) {
+                    vm.<#=_model.TT_TableName()#> = data;
+                }
+            ).catch(
+             function () { }
+            );
+
+            vm.update = function() {
+                <#=_model.TT_ViewModelName()#>ApiService.Put(@Html.Raw(Model.Data.Id), vm.Account).then(
+                    function(data) {
+                        vm.<#=_model.TT_TableName()#> = data;
+                    }
+                ).catch(
+                    function() {}
+                );
+            };
+        };
+   // Main  <#=_model.TT_TableName()#> Controller End

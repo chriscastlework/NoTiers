@@ -1,0 +1,75 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ApiKeysService
+{
+public static class ApiKeysMapper
+{
+
+public static ApiKey MapInsertModelToDbModel(ApiKeysViewModel model, ApiKey newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ApiKey();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Key = model.Key;
+            newDomainModel.Enabled = model.Enabled;
+            newDomainModel.DateCreated = model.DateCreated;
+            newDomainModel.DateLastModeified = model.DateLastModeified;
+            newDomainModel.CreatedById = model.CreatedById;
+            newDomainModel.LastModifiedById = model.LastModifiedById;
+            newDomainModel.ContactFirst = model.ContactFirst;
+            newDomainModel.ContactLast = model.ContactLast;
+            newDomainModel.ContactEmail = model.ContactEmail;
+            newDomainModel.OrganisationId = model.OrganisationId;
+            newDomainModel.Company = model.Company;
+    return newDomainModel;
+    }
+
+
+
+public static ApiKeysViewModel MapDbModelToViewModel(ApiKey dbModel)
+{
+var viewModel = new  ApiKeysViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Key = dbModel.Key;
+            viewModel.Enabled = dbModel.Enabled;
+            viewModel.DateCreated = dbModel.DateCreated;
+            viewModel.DateLastModeified = dbModel.DateLastModeified;
+            viewModel.CreatedById = dbModel.CreatedById;
+            viewModel.LastModifiedById = dbModel.LastModifiedById;
+            viewModel.ContactFirst = dbModel.ContactFirst;
+            viewModel.ContactLast = dbModel.ContactLast;
+            viewModel.ContactEmail = dbModel.ContactEmail;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+            viewModel.Company = dbModel.Company;
+
+return viewModel;
+}
+
+
+public static IQueryable<ApiKeysViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ApiKey> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ApiKeysViewModel()
+        {
+Id = c.Id,
+Key = c.Key,
+Enabled = c.Enabled,
+DateCreated = c.DateCreated,
+DateLastModeified = c.DateLastModeified,
+CreatedById = c.CreatedById,
+LastModifiedById = c.LastModifiedById,
+ContactFirst = c.ContactFirst,
+ContactLast = c.ContactLast,
+ContactEmail = c.ContactEmail,
+OrganisationId = c.OrganisationId,
+Company = c.Company,
+        });
+        }
+    }
+}
+
+

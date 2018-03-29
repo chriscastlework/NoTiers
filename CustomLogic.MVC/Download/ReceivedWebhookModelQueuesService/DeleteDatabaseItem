@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ReceivedWebhookModelQueuesService
+{
+    public class Delete : IDeleteEvent<ReceivedWebhookModelQueuesViewModel,ReceivedWebhookModelQueue>
+    {
+
+        public bool Run(ReceivedWebhookModelQueues ViewModel model, ref IQueryable<ReceivedWebhookModelQueue>repository, IUnitOfWork unitOfWork, Response<ReceivedWebhookModelQueuesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<ReceivedWebhookModelQueue>().Find(model.Id);unitOfWork.With<ReceivedWebhookModelQueue>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

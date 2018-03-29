@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.ExchangeRateService
+{
+    public class ExchangeRatesViewModel
+    {
+
+        public int Id {get;set;}
+        public DateTime? Date {get;set;}
+        public string CurrencyCode {get;set;}
+        public double RateAgainstEuro {get;set;}
+
+    }
+}

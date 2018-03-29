@@ -1,0 +1,117 @@
+using System.Linq;
+
+namespace CustomLogic.Services.UsersService
+{
+public static class UsersMapper
+{
+
+public static User MapInsertModelToDbModel(UsersViewModel model, User newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new User();
+    }
+
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.Email = model.Email;
+            newDomainModel.EmailConfirmed = model.EmailConfirmed;
+            newDomainModel.PasswordHash = model.PasswordHash;
+            newDomainModel.SecurityStamp = model.SecurityStamp;
+            newDomainModel.PhoneNumber = model.PhoneNumber;
+            newDomainModel.PhoneNumberConfirmed = model.PhoneNumberConfirmed;
+            newDomainModel.TwoFactorEnabled = model.TwoFactorEnabled;
+            newDomainModel.LockoutEndDateUtc = model.LockoutEndDateUtc;
+            newDomainModel.LockoutEnabled = model.LockoutEnabled;
+            newDomainModel.AccessFailedCount = model.AccessFailedCount;
+            newDomainModel.UserName = model.UserName;
+            newDomainModel.FirstName = model.FirstName;
+            newDomainModel.LastName = model.LastName;
+            newDomainModel.OrganisationId = model.OrganisationId;
+            newDomainModel.UserStatus = model.UserStatus;
+            newDomainModel.UserProfileId = model.UserProfileId;
+            newDomainModel.Task_Id = model.Task_Id;
+            newDomainModel.VerificationCode = model.VerificationCode;
+            newDomainModel.Organisation_Id = model.Organisation_Id;
+            newDomainModel.SystemPreferences_Id = model.SystemPreferences_Id;
+            newDomainModel.LogoImage_Id = model.LogoImage_Id;
+            newDomainModel.LoginCount = model.LoginCount;
+            newDomainModel.CreateDateTime = model.CreateDateTime;
+            newDomainModel.ManagerId = model.ManagerId;
+            newDomainModel.ExternalId = model.ExternalId;
+    return newDomainModel;
+    }
+
+
+
+public static UsersViewModel MapDbModelToViewModel(User dbModel)
+{
+var viewModel = new  UsersViewModel();
+
+            viewModel.UserId = dbModel.UserId;
+            viewModel.Email = dbModel.Email;
+            viewModel.EmailConfirmed = dbModel.EmailConfirmed;
+            viewModel.PasswordHash = dbModel.PasswordHash;
+            viewModel.SecurityStamp = dbModel.SecurityStamp;
+            viewModel.PhoneNumber = dbModel.PhoneNumber;
+            viewModel.PhoneNumberConfirmed = dbModel.PhoneNumberConfirmed;
+            viewModel.TwoFactorEnabled = dbModel.TwoFactorEnabled;
+            viewModel.LockoutEndDateUtc = dbModel.LockoutEndDateUtc;
+            viewModel.LockoutEnabled = dbModel.LockoutEnabled;
+            viewModel.AccessFailedCount = dbModel.AccessFailedCount;
+            viewModel.UserName = dbModel.UserName;
+            viewModel.FirstName = dbModel.FirstName;
+            viewModel.LastName = dbModel.LastName;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+            viewModel.UserStatus = dbModel.UserStatus;
+            viewModel.UserProfileId = dbModel.UserProfileId;
+            viewModel.Task_Id = dbModel.Task_Id;
+            viewModel.VerificationCode = dbModel.VerificationCode;
+            viewModel.Organisation_Id = dbModel.Organisation_Id;
+            viewModel.SystemPreferences_Id = dbModel.SystemPreferences_Id;
+            viewModel.LogoImage_Id = dbModel.LogoImage_Id;
+            viewModel.LoginCount = dbModel.LoginCount;
+            viewModel.CreateDateTime = dbModel.CreateDateTime;
+            viewModel.ManagerId = dbModel.ManagerId;
+            viewModel.ExternalId = dbModel.ExternalId;
+
+return viewModel;
+}
+
+
+public static IQueryable<UsersViewModel> MapDbModelQueryToViewModelQuery(IQueryable<User> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new UsersViewModel()
+        {
+UserId = c.UserId,
+Email = c.Email,
+EmailConfirmed = c.EmailConfirmed,
+PasswordHash = c.PasswordHash,
+SecurityStamp = c.SecurityStamp,
+PhoneNumber = c.PhoneNumber,
+PhoneNumberConfirmed = c.PhoneNumberConfirmed,
+TwoFactorEnabled = c.TwoFactorEnabled,
+LockoutEndDateUtc = c.LockoutEndDateUtc,
+LockoutEnabled = c.LockoutEnabled,
+AccessFailedCount = c.AccessFailedCount,
+UserName = c.UserName,
+FirstName = c.FirstName,
+LastName = c.LastName,
+OrganisationId = c.OrganisationId,
+UserStatus = c.UserStatus,
+UserProfileId = c.UserProfileId,
+Task_Id = c.Task_Id,
+VerificationCode = c.VerificationCode,
+Organisation_Id = c.Organisation_Id,
+SystemPreferences_Id = c.SystemPreferences_Id,
+LogoImage_Id = c.LogoImage_Id,
+LoginCount = c.LoginCount,
+CreateDateTime = c.CreateDateTime,
+ManagerId = c.ManagerId,
+ExternalId = c.ExternalId,
+        });
+        }
+    }
+}
+
+

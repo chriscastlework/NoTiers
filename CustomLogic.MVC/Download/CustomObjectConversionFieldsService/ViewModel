@@ -1,0 +1,10 @@
+using System;
+
+namespace CustomLogic.Services.CustomObjectConversionFieldService
+{
+    public class CustomObjectConversionFieldsViewModel
+    {
+
+
+    }
+}

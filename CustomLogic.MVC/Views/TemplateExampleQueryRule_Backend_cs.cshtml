@@ -1,0 +1,26 @@
+﻿using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.BL;
+using CustomLogic.Core.Models;
+using CustomLogic.Database;
+
+namespace CustomLogic.Services.@Html.Raw(Model.TT_ViewModelName())
+    Service
+    {
+    public class Limit@Html.Raw(Model.TT_TableName())
+        s : IViewListRule<@Html.Raw(Model.TT_ViewModelName())
+            ViewModel, @Html.Raw(Model.TT_TableName())
+                >
+                {
+
+                public bool Run(NgTableParams model, ref IQueryable<@Html.Raw(Model.TT_TableName())
+                    > repository, NgTable<@Html.Raw(Model.TT_ViewModelName())
+                        ViewModel> result, ICoreUser user, IUnitOfWork unitOfWork)
+                        {
+                        // unitOfWork = unitOfWork.Where(c => c.OwnerId == null);
+                        // limit by organisation owner etc... business rules
+                        return true;
+                        }
+
+                        }
+                        }

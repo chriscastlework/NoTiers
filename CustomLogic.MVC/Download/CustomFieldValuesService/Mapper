@@ -1,0 +1,48 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CustomFieldValuesService
+{
+public static class CustomFieldValuesMapper
+{
+
+public static CustomFieldValue MapInsertModelToDbModel(CustomFieldValuesViewModel model, CustomFieldValue newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CustomFieldValue();
+    }
+
+            newDomainModel.CustomFieldId = model.CustomFieldId;
+            newDomainModel.EntityId = model.EntityId;
+            newDomainModel.Value = model.Value;
+    return newDomainModel;
+    }
+
+
+
+public static CustomFieldValuesViewModel MapDbModelToViewModel(CustomFieldValue dbModel)
+{
+var viewModel = new  CustomFieldValuesViewModel();
+
+            viewModel.CustomFieldId = dbModel.CustomFieldId;
+            viewModel.EntityId = dbModel.EntityId;
+            viewModel.Value = dbModel.Value;
+
+return viewModel;
+}
+
+
+public static IQueryable<CustomFieldValuesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CustomFieldValue> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CustomFieldValuesViewModel()
+        {
+CustomFieldId = c.CustomFieldId,
+EntityId = c.EntityId,
+Value = c.Value,
+        });
+        }
+    }
+}
+
+

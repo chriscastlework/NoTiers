@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.RoleClaimsService
+{
+    public class Delete : IDeleteEvent<RoleClaimsViewModel,RoleClaim>
+    {
+
+        public bool Run(RoleClaims ViewModel model, ref IQueryable<RoleClaim>repository, IUnitOfWork unitOfWork, Response<RoleClaimsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<RoleClaim>().Find(model.Id);unitOfWork.With<RoleClaim>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

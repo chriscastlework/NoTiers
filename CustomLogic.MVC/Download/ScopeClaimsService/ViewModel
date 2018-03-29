@@ -1,0 +1,10 @@
+using System;
+
+namespace CustomLogic.Services.ScopeClaimService
+{
+    public class ScopeClaimsViewModel
+    {
+
+
+    }
+}

@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.SideNavsService
+{
+public class ReturnResultEvent : IUpdateEvent<SideNavsViewModel, SideNav>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(SideNavsViewModel model, ref IQueryable< SideNav> repository, IUnitOfWork unitOfWork, Response<SideNavsViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<SideNav>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = SideNavs
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

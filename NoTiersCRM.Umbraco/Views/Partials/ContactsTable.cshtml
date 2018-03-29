@@ -1,0 +1,249 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using CustomLogic.Core.Database
+@using CustomLogic.Core.Models
+@using CustomLogic.UmbracoApis
+@using CustomLogic.Services.ContactsService
+
+
+@{
+    var rawData = Json.Encode(new ContactService(new VelocityRocketLegacy()).List(new NgTableParams(), new CoreUser()).Data);
+}
+
+<script>
+    (function () {
+
+        var app = angular.module("app", ["ngTable"]);
+
+        // Contact Service
+        angular.module('app').factory('ContactApiService', ContactApiService);
+        ContactApiService.$inject = ['$http'];
+        function ContactApiService($http) {
+
+            return {
+                Get: get,
+                Post: post,
+                Put: put,
+                Delete: deleteApi
+            };
+
+            function get(id) {
+                return $http.get('/Umbraco/Api/Contacts/Get/' + id)
+                   .then(getContactComplete)
+                   .catch(getContactFail);
+
+                function getContactComplete(response) {
+                    return response.data.Data;
+                }
+
+                function getContactFail(error) {
+                    debugger;
+                }
+            };
+
+            function post(data) {
+                return $http.post('/Umbraco/Api/Contacts/Post/', data)
+                   .then(postContactComplete)
+                   .catch(postContactFail);
+
+                function postContactComplete(response) {
+                    return response.data;
+                }
+
+                function postContactFail(error) {
+                    debugger;
+                }
+            };
+
+            function put(id, data) {
+                return $http.put('/Umbraco/Api/Contacts/Put/' + id, data)
+                   .then(putContactComplete)
+                   .catch(putContactFail);
+
+                function putContactComplete(response) {
+                    return response.data.Data;
+                }
+
+                function putContactFail(error) {
+                    debugger;
+                }
+            };
+
+            function deleteApi(id) {
+                return $http.delete('/Umbraco/Api/Contacts/Delete/' + id)
+                   .then(deleteContactComplete)
+                   .catch(deleteContactFail);
+
+                function deleteContactComplete(response) {
+                    return response.data.Data;
+                }
+
+                function deleteContactFail(error) {
+                    debugger;
+                }
+            };
+        };
+        // Contact Service End
+
+        // Contact Table Controller
+        angular.module('app').controller('ContactController', ContactController);
+        ContactController.$inject = ["NgTableParams", "ContactApiService"];
+        function ContactController(NgTableParams, ContactApiService) {
+            var vm = this;
+            vm.tableParams = new NgTableParams({
+                page: 1,            // show first page
+                count: 10           // count per page
+            }, {
+                getData: function (params) {
+                    var postParams = {};
+                    postParams.page = params.page();
+                    postParams.count = params.count();
+                    postParams.total = params.total();
+                    postParams.filter = params.filter();
+                    postParams.sorting = params.sorting();
+                    postParams.group = params.group();
+                    return ContactApiService.Post(postParams) 
+                        .then(function (response) {
+                            params.total(response.Count);
+                            return response.Data;
+                        });
+                }
+            });
+            debugger;
+            vm.tableParams.data = @Html.Raw(rawData);
+        };
+        // Contact Table Controller End
+    })();
+</script>
+
+<div ng-app="app">
+
+ <div ng-controller="ContactController as Contacts">
+
+        <h2 class="page-header">Contact Table</h2>
+
+        <table ng-table="Contacts.tableParams" class="table table-bordered table-striped table-condensed">
+            <tr ng-repeat="row in $data track by row.Id">
+
+ <td data-title="'Id'" 
+ sortable="'Id'" 
+filter="{Id: 'text'}" >
+{{row.Id}}
+</td>
+ <td data-title="'FirstName'" 
+ sortable="'FirstName'" 
+filter="{FirstName: 'text'}" >
+{{row.FirstName}}
+</td>
+ <td data-title="'LastName'" 
+ sortable="'LastName'" 
+filter="{LastName: 'text'}" >
+{{row.LastName}}
+</td>
+ <td data-title="'Title'" 
+ sortable="'Title'" 
+filter="{Title: 'text'}" >
+{{row.Title}}
+</td>
+ <td data-title="'Location'" 
+ sortable="'Location'" 
+filter="{Location: 'text'}" >
+{{row.Location}}
+</td>
+ <td data-title="'Email'" 
+ sortable="'Email'" 
+filter="{Email: 'text'}" >
+{{row.Email}}
+</td>
+ <td data-title="'Phone'" 
+ sortable="'Phone'" 
+filter="{Phone: 'text'}" >
+{{row.Phone}}
+</td>
+ <td data-title="'Skype'" 
+ sortable="'Skype'" 
+filter="{Skype: 'text'}" >
+{{row.Skype}}
+</td>
+ <td data-title="'OrganisationId'" 
+ sortable="'OrganisationId'" 
+filter="{OrganisationId: 'text'}" >
+{{row.OrganisationId}}
+</td>
+ <td data-title="'JobTitle'" 
+ sortable="'JobTitle'" 
+filter="{JobTitle: 'text'}" >
+{{row.JobTitle}}
+</td>
+ <td data-title="'DateCreated'" 
+ sortable="'DateCreated'" 
+filter="{DateCreated: 'text'}" >
+{{row.DateCreated}}
+</td>
+ <td data-title="'DateLastModeified'" 
+ sortable="'DateLastModeified'" 
+filter="{DateLastModeified: 'text'}" >
+{{row.DateLastModeified}}
+</td>
+ <td data-title="'CreatedById'" 
+ sortable="'CreatedById'" 
+filter="{CreatedById: 'text'}" >
+{{row.CreatedById}}
+</td>
+ <td data-title="'LastModifiedById'" 
+ sortable="'LastModifiedById'" 
+filter="{LastModifiedById: 'text'}" >
+{{row.LastModifiedById}}
+</td>
+ <td data-title="'AccountId'" 
+ sortable="'AccountId'" 
+filter="{AccountId: 'text'}" >
+{{row.AccountId}}
+</td>
+ <td data-title="'LogoImage_Id'" 
+ sortable="'LogoImage_Id'" 
+filter="{LogoImage_Id: 'text'}" >
+{{row.LogoImage_Id}}
+</td>
+ <td data-title="'ExternalId'" 
+ sortable="'ExternalId'" 
+filter="{ExternalId: 'text'}" >
+{{row.ExternalId}}
+</td>
+ <td data-title="'SalesProcessId'" 
+ sortable="'SalesProcessId'" 
+filter="{SalesProcessId: 'text'}" >
+{{row.SalesProcessId}}
+</td>
+ <td data-title="'StageId'" 
+ sortable="'StageId'" 
+filter="{StageId: 'text'}" >
+{{row.StageId}}
+</td>
+ <td data-title="'Notes'" 
+ sortable="'Notes'" 
+filter="{Notes: 'text'}" >
+{{row.Notes}}
+</td>
+ <td data-title="'OfficePhone'" 
+ sortable="'OfficePhone'" 
+filter="{OfficePhone: 'text'}" >
+{{row.OfficePhone}}
+</td>
+ <td data-title="'MobilePhone'" 
+ sortable="'MobilePhone'" 
+filter="{MobilePhone: 'text'}" >
+{{row.MobilePhone}}
+</td>
+ <td data-title="'OtherPhone'" 
+ sortable="'OtherPhone'" 
+filter="{OtherPhone: 'text'}" >
+{{row.OtherPhone}}
+</td>
+            </tr>
+        </table>
+    </div>
+    
+
+</div>
+
+

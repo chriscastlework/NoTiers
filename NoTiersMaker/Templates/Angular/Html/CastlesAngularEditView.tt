@@ -1,0 +1,20 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<div class="form">
+<# 
+if(_model.ColumnInfo!=null)
+foreach(var item in _model.ColumnInfo)
+{
+if(item.IncludeInView)
+{
+#>
+<input type="text" ng-model={{<#=item.ColumnNameInView#>}} />
+<#
+}
+}
+#>
+<div/>

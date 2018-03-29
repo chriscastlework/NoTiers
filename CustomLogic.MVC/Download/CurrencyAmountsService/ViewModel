@@ -1,0 +1,13 @@
+using System;
+
+namespace CustomLogic.Services.CurrencyAmountService
+{
+    public class CurrencyAmountsViewModel
+    {
+
+        public int Id {get;set;}
+        public string CurrencyCode {get;set;}
+        public decimal Amount {get;set;}
+
+    }
+}

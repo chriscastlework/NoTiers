@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.ApiTypeImportQueueItemsService
+{
+    public class Update : IUpdateEvent<ApiTypeImportQueueItemsViewModel,ApiTypeImportQueueItem>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(ApiTypeImportQueueItemsViewModel model, ref IQueryable<ApiTypeImportQueueItem> repository, IUnitOfWork unitOfWork, Response<ApiTypeImportQueueItemsViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = ApiTypeImportQueueItems
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<ApiTypeImportQueueItem>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = ApiTypeImportQueueItemsMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

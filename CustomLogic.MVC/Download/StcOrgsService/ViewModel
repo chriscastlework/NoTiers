@@ -1,0 +1,13 @@
+using System;
+
+namespace CustomLogic.Services.StcOrgService
+{
+    public class StcOrgsViewModel
+    {
+
+        public int SalesTrainingCompanyId {get;set;}
+        public int OrganisationId {get;set;}
+        public int Priority {get;set;}
+
+    }
+}

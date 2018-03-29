@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CustomFieldOptionMappingsService
+{
+    public class Delete : IDeleteEvent<CustomFieldOptionMappingsViewModel,CustomFieldOptionMapping>
+    {
+
+        public bool Run(CustomFieldOptionMappings ViewModel model, ref IQueryable<CustomFieldOptionMapping>repository, IUnitOfWork unitOfWork, Response<CustomFieldOptionMappingsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<CustomFieldOptionMapping>().Find(model.Id);unitOfWork.With<CustomFieldOptionMapping>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

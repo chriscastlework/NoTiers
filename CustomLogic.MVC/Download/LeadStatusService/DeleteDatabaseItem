@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.LeadStatusService
+{
+    public class Delete : IDeleteEvent<LeadStatusViewModel,LeadStatu>
+    {
+
+        public bool Run(LeadStatus ViewModel model, ref IQueryable<LeadStatu>repository, IUnitOfWork unitOfWork, Response<LeadStatusViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<LeadStatu>().Find(model.Id);unitOfWork.With<LeadStatu>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

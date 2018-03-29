@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ApiConnectorsService
+{
+    public class View : IViewEvent<ApiConnectorsViewModel,ApiConnector>
+    {
+        public int CreatedId = 0;
+
+        public Response<ApiConnectorsViewModel> Run(ApiConnectorsViewModel model,ref IQueryable<ApiConnector> repository, IUnitOfWork unitOfWork, Response<ApiConnectorsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = ApiConnectors
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing ApiConnectors");
+            }
+
+            return result;
+        }
+
+    }
+}

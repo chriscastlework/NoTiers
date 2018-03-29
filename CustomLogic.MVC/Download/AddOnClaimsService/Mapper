@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.AddOnClaimsService
+{
+public static class AddOnClaimsMapper
+{
+
+public static AddOnClaim MapInsertModelToDbModel(AddOnClaimsViewModel model, AddOnClaim newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new AddOnClaim();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.AddOnId = model.AddOnId;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Description = model.Description;
+            newDomainModel.ClaimType = model.ClaimType;
+    return newDomainModel;
+    }
+
+
+
+public static AddOnClaimsViewModel MapDbModelToViewModel(AddOnClaim dbModel)
+{
+var viewModel = new  AddOnClaimsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.AddOnId = dbModel.AddOnId;
+            viewModel.Name = dbModel.Name;
+            viewModel.Description = dbModel.Description;
+            viewModel.ClaimType = dbModel.ClaimType;
+
+return viewModel;
+}
+
+
+public static IQueryable<AddOnClaimsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<AddOnClaim> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new AddOnClaimsViewModel()
+        {
+Id = c.Id,
+AddOnId = c.AddOnId,
+Name = c.Name,
+Description = c.Description,
+ClaimType = c.ClaimType,
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.BroadcastersService
+{
+    public class View : IViewEvent<BroadcastersViewModel,Broadcaster>
+    {
+        public int CreatedId = 0;
+
+        public Response<BroadcastersViewModel> Run(BroadcastersViewModel model,ref IQueryable<Broadcaster> repository, IUnitOfWork unitOfWork, Response<BroadcastersViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = Broadcasters
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing Broadcasters");
+            }
+
+            return result;
+        }
+
+    }
+}

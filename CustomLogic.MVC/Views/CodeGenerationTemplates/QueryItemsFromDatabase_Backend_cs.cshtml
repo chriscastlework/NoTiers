@@ -1,0 +1,26 @@
+﻿@model CustomLogic.SchemaBuilder.MicrosoftSQL.SchemaModels.ModelInfo
+
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.@Html.Raw(Model.TT_ViewModelName())Service
+{
+    public class QueryLogic : IViewListEvent<@Html.Raw(Model.TT_ViewModelName())ViewModel, @Html.Raw(Model.TT_TableName())>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<@Html.Raw(Model.TT_TableName())> repository, NgTable<@Html.Raw(Model.TT_ViewModelName())ViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<@Html.Raw(Model.TT_ViewModelName())ViewModel>();
+
+            var query = @Html.Raw(Model.TT_ViewModelName())
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

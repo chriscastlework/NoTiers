@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.TablePreferencesService
+{
+    public class View : IViewEvent<TablePreferencesViewModel,TablePreference>
+    {
+        public int CreatedId = 0;
+
+        public Response<TablePreferencesViewModel> Run(TablePreferencesViewModel model,ref IQueryable<TablePreference> repository, IUnitOfWork unitOfWork, Response<TablePreferencesViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = TablePreferences
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing TablePreferences");
+            }
+
+            return result;
+        }
+
+    }
+}

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ConvertActionsService
+{
+    public class Delete : IDeleteEvent<ConvertActionsViewModel,ConvertAction>
+    {
+
+        public bool Run(ConvertActions ViewModel model, ref IQueryable<ConvertAction>repository, IUnitOfWork unitOfWork, Response<ConvertActionsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<ConvertAction>().Find(model.Id);unitOfWork.With<ConvertAction>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

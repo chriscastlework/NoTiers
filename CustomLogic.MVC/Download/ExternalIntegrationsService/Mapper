@@ -1,0 +1,75 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ExternalIntegrationsService
+{
+public static class ExternalIntegrationsMapper
+{
+
+public static ExternalIntegration MapInsertModelToDbModel(ExternalIntegrationsViewModel model, ExternalIntegration newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ExternalIntegration();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.OrganisationId = model.OrganisationId;
+            newDomainModel.ApiConnectorId = model.ApiConnectorId;
+            newDomainModel.Enabled = model.Enabled;
+            newDomainModel.Username = model.Username;
+            newDomainModel.Password = model.Password;
+            newDomainModel.ExternalOrganisationId = model.ExternalOrganisationId;
+            newDomainModel.CustomScript = model.CustomScript;
+            newDomainModel.CustomUserScript = model.CustomUserScript;
+            newDomainModel.ImportMissingUsers = model.ImportMissingUsers;
+            newDomainModel.DailyBulkUpdateEnabled = model.DailyBulkUpdateEnabled;
+            newDomainModel.BulkUpdateTime = model.BulkUpdateTime;
+    return newDomainModel;
+    }
+
+
+
+public static ExternalIntegrationsViewModel MapDbModelToViewModel(ExternalIntegration dbModel)
+{
+var viewModel = new  ExternalIntegrationsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+            viewModel.ApiConnectorId = dbModel.ApiConnectorId;
+            viewModel.Enabled = dbModel.Enabled;
+            viewModel.Username = dbModel.Username;
+            viewModel.Password = dbModel.Password;
+            viewModel.ExternalOrganisationId = dbModel.ExternalOrganisationId;
+            viewModel.CustomScript = dbModel.CustomScript;
+            viewModel.CustomUserScript = dbModel.CustomUserScript;
+            viewModel.ImportMissingUsers = dbModel.ImportMissingUsers;
+            viewModel.DailyBulkUpdateEnabled = dbModel.DailyBulkUpdateEnabled;
+            viewModel.BulkUpdateTime = dbModel.BulkUpdateTime;
+
+return viewModel;
+}
+
+
+public static IQueryable<ExternalIntegrationsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ExternalIntegration> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ExternalIntegrationsViewModel()
+        {
+Id = c.Id,
+OrganisationId = c.OrganisationId,
+ApiConnectorId = c.ApiConnectorId,
+Enabled = c.Enabled,
+Username = c.Username,
+Password = c.Password,
+ExternalOrganisationId = c.ExternalOrganisationId,
+CustomScript = c.CustomScript,
+CustomUserScript = c.CustomUserScript,
+ImportMissingUsers = c.ImportMissingUsers,
+DailyBulkUpdateEnabled = c.DailyBulkUpdateEnabled,
+BulkUpdateTime = c.BulkUpdateTime,
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.StandardRelationshipsService
+{
+    public class View : IViewEvent<StandardRelationshipsViewModel,StandardRelationship>
+    {
+        public int CreatedId = 0;
+
+        public Response<StandardRelationshipsViewModel> Run(StandardRelationshipsViewModel model,ref IQueryable<StandardRelationship> repository, IUnitOfWork unitOfWork, Response<StandardRelationshipsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = StandardRelationships
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing StandardRelationships");
+            }
+
+            return result;
+        }
+
+    }
+}

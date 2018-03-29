@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.SearchesService
+{
+    public class Update : IUpdateEvent<SearchesViewModel,Search>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(SearchesViewModel model, ref IQueryable<Search> repository, IUnitOfWork unitOfWork, Response<SearchesViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = Searches
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<Search>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = SearchesMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

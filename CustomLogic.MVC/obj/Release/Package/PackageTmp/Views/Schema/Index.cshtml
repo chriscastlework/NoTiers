@@ -1,0 +1,85 @@
+﻿@model CustomLogic.MVC.Models.ServerModel
+  
+@using (Html.BeginForm("DefineApplication", "Schema", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Server Connection Details </h2>
+            </div>
+        </div>
+
+        <hr />
+        
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Database, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Database, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Database, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Server, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Server, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Server, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.RequiredList, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RequiredList, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RequiredList, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @if (Request.IsLocal)
+        {
+            <div class="form-group row">
+                
+                <div class="col-md-10">
+                    <div class="custom-control custom-checkbox">
+                        @Html.EditorFor(model => model.WindowsAuthentication, new {htmlAttributes = new {@class = "custom-control-input"}})
+                        @Html.LabelFor(model => model.WindowsAuthentication, htmlAttributes: new { @class = "custom-control-label" })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.WindowsAuthentication, "", new {@class = "text-danger"})
+                </div>
+            </div>
+        }
+
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

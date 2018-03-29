@@ -1,0 +1,18 @@
+using System;
+
+namespace CustomLogic.Services.DealStepService
+{
+    public class DealStepsViewModel
+    {
+
+        public int DealId {get;set;}
+        public int StepId {get;set;}
+        public string ActionValue {get;set;}
+        public int? ActionIdValue {get;set;}
+        public DateTime? CompletedDateTime {get;set;}
+        public bool Hidden {get;set;}
+        public bool Completed {get;set;}
+        public int? ReminderTaskId {get;set;}
+
+    }
+}

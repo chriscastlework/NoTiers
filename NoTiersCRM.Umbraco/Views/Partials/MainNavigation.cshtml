@@ -1,0 +1,78 @@
+﻿@inherits UmbracoTemplatePage
+@using System.Web.Mvc.Html
+@using ClientDependency.Core.Mvc
+@using Umbraco.Web
+@using Umbraco.Web.Models
+@using Umbraco.Web.Controllers
+
+@{
+
+ var loginStatusModel = Members.GetCurrentLoginStatus();
+
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+    Html.RequiresJs("/umbraco_client/ui/jquery.js");
+    Html.RequiresJs("/umbraco_client/Application/JQuery/jquery.validate.min.js");
+    Html.RequiresJs("/umbraco_client/Application/JQuery/jquery.validate.unobtrusive.min.js");
+
+    var logoutModel = new PostRedirectModel();
+    
+    @*
+        Here you can specify a redirect URL for after logging out, by default umbraco will simply
+        redirect to the current page. Example to redirect to the home page:
+    *@   
+    
+    logoutModel.RedirectUrl = "/"; 
+    
+    // Model.Content is the current page that we're on
+    // AncestorsOrSelf is all of the ancestors this page has in the tree
+    // (1) means: go up to level 1 and stop looking for more ancestors when you get there
+    // First() gets the first ancestor found (the home page, on level 1)
+    var homePage = CurrentPage.AncestorsOrSelf(1).First();
+
+    // The menu items we want are all of the children of the homepage
+    // We also check if "Hide in navigation" is on in the menu, we shouldn't show hidden items
+    var menuItems = homePage.Children.Where("UmbracoNaviHide == false");
+}
+<!-- Nav -->
+<div class="NavContainerPanel">
+    <nav class="navbar navbar-default ng-scope">
+        
+        <a class="navbar-brand" href="/deals/">
+                        <img src="/media/1003/logo-small-rocket-lg.png" id="VelocityRocketPageLogoMP" height="30" class="logo" alt="Velocity Rocket" width="180">
+                        <img src="/media/1001/logo_xs.png" id="VelocityRocketPageLogoSM" alt="Velocity Rocket" class="logo-xs" height="21" width="21">
+                    </a>
+                    
+    <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+
+        @foreach (var item in menuItems)
+        {
+            @* If the Id of the item is the same as the Id of the current page then we want to add the class "current_page_item" *@
+            @* Otherwise, we set the class to null, that way it will not even be added to the <li> element *@
+            <li class="custom-link @(CurrentPage.Id == item.Id ? "open" : null)"><a class="nav-item" href="@item.Url">@item.Name</a></li>
+        }
+    </ul>
+    
+   @if (loginStatusModel.IsLoggedIn)
+{
+    <div class="pull-right">
+    <p>You are currently logged in as @loginStatusModel.Name you are in @Roles.GetRolesForUser().Count() Roles @String.Join(",",Roles.GetRolesForUser())</p>
+
+    @using (Html.BeginUmbracoForm<UmbLoginStatusController>("HandleLogout"))
+    {
+        <button>Logout</button>
+        @Html.HiddenFor(m => logoutModel.RedirectUrl)
+    }
+    </div>
+}
+    
+ 
+                    
+</div>
+</nav>
+
+</div>
+
+
+<!-- /Nav -->

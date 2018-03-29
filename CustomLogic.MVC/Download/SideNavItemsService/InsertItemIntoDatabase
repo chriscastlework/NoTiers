@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.SideNavItemsService
+{
+    public class Save : IInsertEvent<SideNavItemsViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(SideNavItemsViewModel model, IUnitOfWork unitOfWork, Response<SideNavItemsViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = SideNavItems();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<SideNavItem>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = SideNavItems
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(SideNavItemsViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<SideNavItem>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<SideNavItem>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

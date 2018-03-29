@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.DealContactRoleDealContactsService
+{
+    public class Update : IUpdateEvent<DealContactRoleDealContactsViewModel,DealContactRoleDealContact>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(DealContactRoleDealContactsViewModel model, ref IQueryable<DealContactRoleDealContact> repository, IUnitOfWork unitOfWork, Response<DealContactRoleDealContactsViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = DealContactRoleDealContacts
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<DealContactRoleDealContact>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = DealContactRoleDealContactsMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

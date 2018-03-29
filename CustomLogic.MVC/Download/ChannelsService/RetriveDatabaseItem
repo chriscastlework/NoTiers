@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ChannelsService
+{
+    public class View : IViewEvent<ChannelsViewModel,Channel>
+    {
+        public int CreatedId = 0;
+
+        public Response<ChannelsViewModel> Run(ChannelsViewModel model,ref IQueryable<Channel> repository, IUnitOfWork unitOfWork, Response<ChannelsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = Channels
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing Channels");
+            }
+
+            return result;
+        }
+
+    }
+}

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.LogoImagesService
+{
+    public class Delete : IDeleteEvent<LogoImagesViewModel,LogoImage>
+    {
+
+        public bool Run(LogoImages ViewModel model, ref IQueryable<LogoImage>repository, IUnitOfWork unitOfWork, Response<LogoImagesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<LogoImage>().Find(model.Id);unitOfWork.With<LogoImage>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,45 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ReminderTasksService
+{
+public static class ReminderTasksMapper
+{
+
+public static ReminderTask MapInsertModelToDbModel(ReminderTasksViewModel model, ReminderTask newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ReminderTask();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.TaskId = model.TaskId;
+    return newDomainModel;
+    }
+
+
+
+public static ReminderTasksViewModel MapDbModelToViewModel(ReminderTask dbModel)
+{
+var viewModel = new  ReminderTasksViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.TaskId = dbModel.TaskId;
+
+return viewModel;
+}
+
+
+public static IQueryable<ReminderTasksViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ReminderTask> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ReminderTasksViewModel()
+        {
+Id = c.Id,
+TaskId = c.TaskId,
+        });
+        }
+    }
+}
+
+

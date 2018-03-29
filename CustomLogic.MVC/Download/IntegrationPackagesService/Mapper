@@ -1,0 +1,78 @@
+using System.Linq;
+
+namespace CustomLogic.Services.IntegrationPackagesService
+{
+public static class IntegrationPackagesMapper
+{
+
+public static IntegrationPackage MapInsertModelToDbModel(IntegrationPackagesViewModel model, IntegrationPackage newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new IntegrationPackage();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Description = model.Description;
+            newDomainModel.HashedPassword = model.HashedPassword;
+            newDomainModel.PasswordSalt = model.PasswordSalt;
+            newDomainModel.DateCreated = model.DateCreated;
+            newDomainModel.DateLastModified = model.DateLastModified;
+            newDomainModel.CreatedById = model.CreatedById;
+            newDomainModel.LastModifiedById = model.LastModifiedById;
+            newDomainModel.Organisation_Id = model.Organisation_Id;
+            newDomainModel.Active = model.Active;
+            newDomainModel.OriginalPackageId = model.OriginalPackageId;
+            newDomainModel.Installed = model.Installed;
+    return newDomainModel;
+    }
+
+
+
+public static IntegrationPackagesViewModel MapDbModelToViewModel(IntegrationPackage dbModel)
+{
+var viewModel = new  IntegrationPackagesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.Description = dbModel.Description;
+            viewModel.HashedPassword = dbModel.HashedPassword;
+            viewModel.PasswordSalt = dbModel.PasswordSalt;
+            viewModel.DateCreated = dbModel.DateCreated;
+            viewModel.DateLastModified = dbModel.DateLastModified;
+            viewModel.CreatedById = dbModel.CreatedById;
+            viewModel.LastModifiedById = dbModel.LastModifiedById;
+            viewModel.Organisation_Id = dbModel.Organisation_Id;
+            viewModel.Active = dbModel.Active;
+            viewModel.OriginalPackageId = dbModel.OriginalPackageId;
+            viewModel.Installed = dbModel.Installed;
+
+return viewModel;
+}
+
+
+public static IQueryable<IntegrationPackagesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<IntegrationPackage> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new IntegrationPackagesViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+Description = c.Description,
+HashedPassword = c.HashedPassword,
+PasswordSalt = c.PasswordSalt,
+DateCreated = c.DateCreated,
+DateLastModified = c.DateLastModified,
+CreatedById = c.CreatedById,
+LastModifiedById = c.LastModifiedById,
+Organisation_Id = c.Organisation_Id,
+Active = c.Active,
+OriginalPackageId = c.OriginalPackageId,
+Installed = c.Installed,
+        });
+        }
+    }
+}
+
+

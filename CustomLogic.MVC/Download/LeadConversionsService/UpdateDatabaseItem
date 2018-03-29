@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.LeadConversionsService
+{
+    public class Update : IUpdateEvent<LeadConversionsViewModel,LeadConversion>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(LeadConversionsViewModel model, ref IQueryable<LeadConversion> repository, IUnitOfWork unitOfWork, Response<LeadConversionsViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = LeadConversions
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<LeadConversion>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = LeadConversionsMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

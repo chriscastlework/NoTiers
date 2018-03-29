@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CommentsService
+{
+public class ReturnResultEvent : IUpdateEvent<CommentsViewModel, Comment>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(CommentsViewModel model, ref IQueryable< Comment> repository, IUnitOfWork unitOfWork, Response<CommentsViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<Comment>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = Comments
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

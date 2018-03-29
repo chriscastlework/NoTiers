@@ -1,0 +1,60 @@
+using System.Linq;
+
+namespace CustomLogic.Services.RulesService
+{
+public static class RulesMapper
+{
+
+public static Rule MapInsertModelToDbModel(RulesViewModel model, Rule newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Rule();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.DateCreated = model.DateCreated;
+            newDomainModel.DateLastModeified = model.DateLastModeified;
+            newDomainModel.CreatedById = model.CreatedById;
+            newDomainModel.LastModifiedById = model.LastModifiedById;
+            newDomainModel.OrganisationId = model.OrganisationId;
+    return newDomainModel;
+    }
+
+
+
+public static RulesViewModel MapDbModelToViewModel(Rule dbModel)
+{
+var viewModel = new  RulesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.DateCreated = dbModel.DateCreated;
+            viewModel.DateLastModeified = dbModel.DateLastModeified;
+            viewModel.CreatedById = dbModel.CreatedById;
+            viewModel.LastModifiedById = dbModel.LastModifiedById;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+
+return viewModel;
+}
+
+
+public static IQueryable<RulesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Rule> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new RulesViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+DateCreated = c.DateCreated,
+DateLastModeified = c.DateLastModeified,
+CreatedById = c.CreatedById,
+LastModifiedById = c.LastModifiedById,
+OrganisationId = c.OrganisationId,
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.NotificationFieldsService
+{
+    public class Update : IUpdateEvent<NotificationFieldsViewModel,NotificationField>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(NotificationFieldsViewModel model, ref IQueryable<NotificationField> repository, IUnitOfWork unitOfWork, Response<NotificationFieldsViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = NotificationFields
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<NotificationField>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = NotificationFieldsMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,66 @@
+using System.Linq;
+
+namespace CustomLogic.Services.StagesService
+{
+public static class StagesMapper
+{
+
+public static Stage MapInsertModelToDbModel(StagesViewModel model, Stage newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Stage();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.SalesProcessId = model.SalesProcessId;
+            newDomainModel.OrderInProcess = model.OrderInProcess;
+            newDomainModel.StagePercent = model.StagePercent;
+            newDomainModel.Description = model.Description;
+            newDomainModel.ExternalId = model.ExternalId;
+            newDomainModel.Won = model.Won;
+            newDomainModel.Closed = model.Closed;
+    return newDomainModel;
+    }
+
+
+
+public static StagesViewModel MapDbModelToViewModel(Stage dbModel)
+{
+var viewModel = new  StagesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.SalesProcessId = dbModel.SalesProcessId;
+            viewModel.OrderInProcess = dbModel.OrderInProcess;
+            viewModel.StagePercent = dbModel.StagePercent;
+            viewModel.Description = dbModel.Description;
+            viewModel.ExternalId = dbModel.ExternalId;
+            viewModel.Won = dbModel.Won;
+            viewModel.Closed = dbModel.Closed;
+
+return viewModel;
+}
+
+
+public static IQueryable<StagesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Stage> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new StagesViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+SalesProcessId = c.SalesProcessId,
+OrderInProcess = c.OrderInProcess,
+StagePercent = c.StagePercent,
+Description = c.Description,
+ExternalId = c.ExternalId,
+Won = c.Won,
+Closed = c.Closed,
+        });
+        }
+    }
+}
+
+

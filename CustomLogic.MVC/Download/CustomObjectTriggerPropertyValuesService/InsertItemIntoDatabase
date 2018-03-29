@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.CustomObjectTriggerPropertyValuesService
+{
+    public class Save : IInsertEvent<CustomObjectTriggerPropertyValuesViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(CustomObjectTriggerPropertyValuesViewModel model, IUnitOfWork unitOfWork, Response<CustomObjectTriggerPropertyValuesViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = CustomObjectTriggerPropertyValues();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<CustomObjectTriggerPropertyValue>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = CustomObjectTriggerPropertyValues
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(CustomObjectTriggerPropertyValuesViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<CustomObjectTriggerPropertyValue>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<CustomObjectTriggerPropertyValue>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.MeetingVisualiserChartItemsService
+{
+    public class View : IViewEvent<MeetingVisualiserChartItemsViewModel,MeetingVisualiserChartItem>
+    {
+        public int CreatedId = 0;
+
+        public Response<MeetingVisualiserChartItemsViewModel> Run(MeetingVisualiserChartItemsViewModel model,ref IQueryable<MeetingVisualiserChartItem> repository, IUnitOfWork unitOfWork, Response<MeetingVisualiserChartItemsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = MeetingVisualiserChartItems
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing MeetingVisualiserChartItems");
+            }
+
+            return result;
+        }
+
+    }
+}

@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.UserClaimsService
+{
+    public class Update : IUpdateEvent<UserClaimsViewModel,UserClaim>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(UserClaimsViewModel model, ref IQueryable<UserClaim> repository, IUnitOfWork unitOfWork, Response<UserClaimsViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = UserClaims
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<UserClaim>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = UserClaimsMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

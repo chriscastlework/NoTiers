@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ExternalIntegrationsService
+{
+    public class View : IViewEvent<ExternalIntegrationsViewModel,ExternalIntegration>
+    {
+        public int CreatedId = 0;
+
+        public Response<ExternalIntegrationsViewModel> Run(ExternalIntegrationsViewModel model,ref IQueryable<ExternalIntegration> repository, IUnitOfWork unitOfWork, Response<ExternalIntegrationsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = ExternalIntegrations
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing ExternalIntegrations");
+            }
+
+            return result;
+        }
+
+    }
+}

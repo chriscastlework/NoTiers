@@ -1,0 +1,179 @@
+.pb-stage
+{
+    /*background:#FAFAFA;*/
+    padding:0px !important;
+    min-height:500px;
+}
+
+.pb-tools
+{
+    /*background:#EAEAEA*/;
+    min-height:500px;
+}
+
+.pb-navbar
+{
+    margin:10px;
+    dispay:block;
+    overflow:hidden;
+}
+
+.pb-navlink
+{
+    margin-right:5px;
+    float:left;
+    color:#a9a9a9;
+    font-size:1em;
+    cursor: pointer;
+}
+.pb-navlink:hover
+{
+    color:#666666;
+}
+.pb-navlink.selected
+{
+    color:#000000;
+}
+
+.pb-panel
+{
+    margin:10px;
+    /*background:#EAEAEA;*/
+}
+
+.pb-float-right
+{
+    float:right;
+}
+.pb-float-left
+{
+    float:left;
+}
+.pb-float-none
+{
+    float:none;
+}
+.pb-hidden
+{
+    display:none;
+}
+
+.pb-button-bar
+{
+    overflow:hidden;
+}
+.pb-grey
+{
+    background:#d3d3d3;
+}
+
+.pb-icon-button
+{
+    padding:4px;
+    margin:5px;
+    cursor:pointer;
+    float:left;
+    width:30px;
+    height:30px;
+    text-align: center;
+}
+.pb-icon-button.pb-bordered
+{
+    border:1px solid darkgrey;
+}
+
+.pb-no-select
+{
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.pb-select
+{
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -o-user-select: text;
+    user-select: text;
+}
+.pb-warning
+{
+    font-size:0.9em;
+    color: #8f6a6b;
+    margin:4px;
+}
+
+.pb-rounded-corners-5
+{
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius:5px;
+}
+
+.pb-font-white
+{
+    color:white;
+}
+
+.pb-margin-4
+{
+    margin:4px;
+}
+
+.pb-top-margin-4
+{
+    margin-top:4px;
+}
+.pb-margin-bottom-4
+{
+    margin-bottom:4px;
+}
+
+.pb-margin-10
+{
+    margin:10px;
+}
+.pb-top-margin-10
+{
+    margin-top:10px;
+}
+.pb-margin-bottom-10
+{
+    margin-bottom:10px;
+}
+
+.pb-clearfix
+{
+    overflow:hidden;
+}
+
+.pb-navlink .glyphicon
+{
+    font-size:1.2em!important;
+}
+
+.tools-header
+{
+    opacity:0.5;
+    filter: alpha(opacity=50);
+    margin:20px 0px;
+}
+
+.tools-header a
+{
+    cursor:pointer;
+}
+
+a
+{
+    cursor:pointer;
+}
+
+table
+{
+    table-layout: fixed;
+}

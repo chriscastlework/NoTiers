@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.OrganisationAllowedRoleService
+{
+    public class OrganisationAllowedRolesViewModel
+    {
+
+        public int Id {get;set;}
+        public int OrgId {get;set;}
+        public string RoleId {get;set;}
+        public bool NotAllowed {get;set;}
+
+    }
+}

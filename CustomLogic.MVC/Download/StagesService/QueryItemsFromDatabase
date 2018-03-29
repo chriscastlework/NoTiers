@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.StagesService
+{
+    public class QueryLogic : IViewListEvent<StagesViewModel, Stage>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<Stage> repository, NgTable<StagesViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<StagesViewModel>();
+
+            var query = Stages
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

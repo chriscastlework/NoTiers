@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.AssetTagsService
+{
+public static class AssetTagsMapper
+{
+
+public static AssetTag MapInsertModelToDbModel(AssetTagsViewModel model, AssetTag newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new AssetTag();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static AssetTagsViewModel MapDbModelToViewModel(AssetTag dbModel)
+{
+var viewModel = new  AssetTagsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<AssetTagsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<AssetTag> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new AssetTagsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

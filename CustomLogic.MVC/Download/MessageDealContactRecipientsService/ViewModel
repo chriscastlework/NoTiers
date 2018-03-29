@@ -1,0 +1,13 @@
+using System;
+
+namespace CustomLogic.Services.MessageDealContactRecipientService
+{
+    public class MessageDealContactRecipientsViewModel
+    {
+
+        public int ID {get;set;}
+        public int DealContactId {get;set;}
+        public int? Conversation_Id {get;set;}
+
+    }
+}

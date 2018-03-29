@@ -1,0 +1,165 @@
+﻿@model CustomLogic.SchemaBuilder.MicrosoftSQL.SchemaModels.ModelInfo
+
+using System.Diagnostics;
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using CustomLogic.Services.@Html.Raw(Model.TT_ViewModelName())Service;
+using Newtonsoft.Json;
+
+namespace CustomLogic.Tests.IntegrationTests.@Html.Raw(Model.TT_ViewModelName())ServiceTests
+{
+        [TestClass]
+        public class @Html.Raw(Model.TT_ViewModelName())
+        ServiceTests
+        {
+
+
+        public @Html.Raw(Model.TT_ViewModelName())ServiceTests()
+        {
+        // The default mock user
+        mockUser = new CoreUser
+        {
+
+        };
+        }
+
+        public @Html.Raw(Model.TT_ViewModelName())ViewModel MakeDummyRecord()
+        {
+        return new @Html.Raw(Model.TT_ViewModelName())ViewModel() {
+        Name = "Test Name" // how do we know it has a name
+        }
+        }
+
+        private ICoreUser mockUser;
+
+        private readonly IService<@Html.Raw(Model.TT_ViewModelName())ViewModel>
+            @Html.Raw(Model.TT_ViewModelName())Service = new @Html.Raw(Model.TT_ViewModelName())Service(new DbContext());
+
+            public Response<@Html.Raw(Model.TT_ViewModelName())ViewModel> @Html.Raw(Model.TT_ViewModelName()) Response { get; set; }
+
+            [TestMethod]
+            public void Insert()
+            {
+            // Arrange - Create a new account view model
+            var new@Html.Raw(Model.TT_ViewModelName()
+            ViewModel = ;
+
+
+            // Act - send this to the insert method on the account service logic
+            var Response = _@Html.Raw(Model.TT_ViewModelName())Service.Insert(new@Html.Raw(Model.TT_ViewModelName()
+            ViewModel, mockUser);
+
+
+            // Assert
+            Assert.IsTrue(Response.Success);
+
+            }
+
+            [TestMethod]
+            public void View()
+            {
+            // Arrange - insert a deal so that we can pull it out
+            var result1 = _@Html.Raw(Model.TT_ViewModelName())Service.Insert(MakeDummyRecord(), mockUser);
+
+            // Act
+            var result = _@Html.Raw(Model.TT_ViewModelName())
+            Service.View(new @Html.Raw(Model.TT_ViewModelName())
+            ViewModel { Id = result1.Data.Id } , mockUser);
+
+            // Assert
+            Assert.IsTrue(result.Success);
+
+            }
+
+            [TestMethod]
+            public void Update()
+            {
+            // Arrange - insert a deal so that we have something to edit
+            var result2 = _@Html.Raw(Model.TT_ViewModelName())
+            Service.Insert(new @Html.Raw(Model.TT_ViewModelName())
+            ViewModel()
+            {
+            Name = "Test @Html.Raw(Model.TT_ViewModelName())
+            1"
+            }
+            , mockUser);
+
+            // Act
+            result2.Data.Name = "Changed name";
+            var result = _@Html.Raw(Model.TT_ViewModelName())
+            Service.Update(result2.Data, mockUser);
+
+
+            // Assert
+            Assert.IsTrue(result.Success);
+            Assert.IsTrue(result.Data.Name == result2.Data.Name);
+
+            }
+
+            [TestMethod]
+            public void Delete()
+            {
+            // Arrange
+            var result4 = _@Html.Raw(Model.TT_ViewModelName())
+            Service.Insert(new @Html.Raw(Model.TT_ViewModelName())
+            ViewModel()
+            {
+            Name = "Test @Html.Raw(Model.TT_ViewModelName())
+            which i will delete"
+            }
+            , mockUser);
+
+            // Act
+            var result = _@Html.Raw(Model.TT_ViewModelName())
+            Service.Delete(new @Html.Raw(Model.TT_ViewModelName())
+            ViewModel()
+            { Id = result4.Data.Id }
+            , mockUser);
+
+            var result2 = _@Html.Raw(Model.TT_ViewModelName())
+            Service.View(new @Html.Raw(Model.TT_ViewModelName())
+            ViewModel()
+            { Id = result4.Data.Id }
+            , mockUser);
+
+            // Assert
+            Assert.IsTrue(result.Success);
+            Assert.IsTrue(!result2.Success);
+            }
+
+
+            [TestMethod]
+            public void Query()
+            {
+
+            // Arrange - insert a deal so that we have something to edit
+            object filter = new { Id = "1" };
+
+            #if DEBUG
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            #endif
+            // Act
+            var result = _@Html.Raw(Model.TT_ViewModelName())
+            Service.List(new NgTableParams
+            {
+            filter = JsonConvert.SerializeObject(filter)
+            }, mockUser);
+
+            #if DEBUG
+            sw.Stop();
+            var totalTime = sw.Elapsed.Seconds;
+            #endif
+
+            // Assert
+            Assert.IsTrue(result.Success);
+            Assert.IsTrue(result.Data.Any());
+
+            }
+
+            }
+            }
+
+

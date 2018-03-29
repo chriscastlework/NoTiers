@@ -1,0 +1,12 @@
+using System;
+
+namespace CustomLogic.Services.ReminderTaskService
+{
+    public class ReminderTasksViewModel
+    {
+
+        public int Id {get;set;}
+        public int TaskId {get;set;}
+
+    }
+}

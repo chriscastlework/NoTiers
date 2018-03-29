@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.TaskTypesService
+{
+public static class TaskTypesMapper
+{
+
+public static TaskType MapInsertModelToDbModel(TaskTypesViewModel model, TaskType newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new TaskType();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.OrganisationId = model.OrganisationId;
+            newDomainModel.IconName = model.IconName;
+    return newDomainModel;
+    }
+
+
+
+public static TaskTypesViewModel MapDbModelToViewModel(TaskType dbModel)
+{
+var viewModel = new  TaskTypesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+            viewModel.IconName = dbModel.IconName;
+
+return viewModel;
+}
+
+
+public static IQueryable<TaskTypesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<TaskType> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new TaskTypesViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+OrganisationId = c.OrganisationId,
+IconName = c.IconName,
+        });
+        }
+    }
+}
+
+

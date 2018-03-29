@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.BuyingProcessStagesService
+{
+    public class Save : IInsertEvent<BuyingProcessStagesViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(BuyingProcessStagesViewModel model, IUnitOfWork unitOfWork, Response<BuyingProcessStagesViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = BuyingProcessStages();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<BuyingProcessStage>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = BuyingProcessStages
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(BuyingProcessStagesViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<BuyingProcessStage>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<BuyingProcessStage>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

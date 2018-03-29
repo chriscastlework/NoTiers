@@ -1,0 +1,48 @@
+using System.Linq;
+
+namespace CustomLogic.Services.StandardObjectDefinitionsService
+{
+public static class StandardObjectDefinitionsMapper
+{
+
+public static StandardObjectDefinition MapInsertModelToDbModel(StandardObjectDefinitionsViewModel model, StandardObjectDefinition newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new StandardObjectDefinition();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.ClassName = model.ClassName;
+            newDomainModel.QuickAddUrl = model.QuickAddUrl;
+    return newDomainModel;
+    }
+
+
+
+public static StandardObjectDefinitionsViewModel MapDbModelToViewModel(StandardObjectDefinition dbModel)
+{
+var viewModel = new  StandardObjectDefinitionsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.ClassName = dbModel.ClassName;
+            viewModel.QuickAddUrl = dbModel.QuickAddUrl;
+
+return viewModel;
+}
+
+
+public static IQueryable<StandardObjectDefinitionsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<StandardObjectDefinition> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new StandardObjectDefinitionsViewModel()
+        {
+Id = c.Id,
+ClassName = c.ClassName,
+QuickAddUrl = c.QuickAddUrl,
+        });
+        }
+    }
+}
+
+

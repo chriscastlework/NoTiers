@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.SideNavItemsService
+{
+public static class SideNavItemsMapper
+{
+
+public static SideNavItem MapInsertModelToDbModel(SideNavItemsViewModel model, SideNavItem newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new SideNavItem();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Title = model.Title;
+            newDomainModel.Path = model.Path;
+            newDomainModel.Icon = model.Icon;
+            newDomainModel.Template = model.Template;
+    return newDomainModel;
+    }
+
+
+
+public static SideNavItemsViewModel MapDbModelToViewModel(SideNavItem dbModel)
+{
+var viewModel = new  SideNavItemsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Title = dbModel.Title;
+            viewModel.Path = dbModel.Path;
+            viewModel.Icon = dbModel.Icon;
+            viewModel.Template = dbModel.Template;
+
+return viewModel;
+}
+
+
+public static IQueryable<SideNavItemsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<SideNavItem> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new SideNavItemsViewModel()
+        {
+Id = c.Id,
+Title = c.Title,
+Path = c.Path,
+Icon = c.Icon,
+Template = c.Template,
+        });
+        }
+    }
+}
+
+

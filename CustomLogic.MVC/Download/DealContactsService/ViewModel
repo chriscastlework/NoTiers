@@ -1,0 +1,26 @@
+using System;
+
+namespace CustomLogic.Services.DealContactService
+{
+    public class DealContactsViewModel
+    {
+
+        public int Id {get;set;}
+        public int? DealId {get;set;}
+        public int? ContactId {get;set;}
+        public bool? IsBuyingInfluence {get;set;}
+        public bool? IsGoalKeeper {get;set;}
+        public string PictureURL {get;set;}
+        public string LinkedInProfileURL {get;set;}
+        public string Support {get;set;}
+        public string Influence {get;set;}
+        public string Access {get;set;}
+        public string Role {get;set;}
+        public string X {get;set;}
+        public string Y {get;set;}
+        public string Manager {get;set;}
+        public string Influencees {get;set;}
+        public int? DealContactRoleId {get;set;}
+
+    }
+}

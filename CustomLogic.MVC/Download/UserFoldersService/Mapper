@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.UserFoldersService
+{
+public static class UserFoldersMapper
+{
+
+public static UserFolder MapInsertModelToDbModel(UserFoldersViewModel model, UserFolder newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new UserFolder();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static UserFoldersViewModel MapDbModelToViewModel(UserFolder dbModel)
+{
+var viewModel = new  UserFoldersViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<UserFoldersViewModel> MapDbModelQueryToViewModelQuery(IQueryable<UserFolder> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new UserFoldersViewModel()
+        {
+        });
+        }
+    }
+}
+
+

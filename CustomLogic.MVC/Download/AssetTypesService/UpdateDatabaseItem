@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.AssetTypesService
+{
+    public class Update : IUpdateEvent<AssetTypesViewModel,AssetType>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(AssetTypesViewModel model, ref IQueryable<AssetType> repository, IUnitOfWork unitOfWork, Response<AssetTypesViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = AssetTypes
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<AssetType>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = AssetTypesMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.OrganisationsService
+{
+    public class Update : IUpdateEvent<OrganisationsViewModel,Organisation>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(OrganisationsViewModel model, ref IQueryable<Organisation> repository, IUnitOfWork unitOfWork, Response<OrganisationsViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = Organisations
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<Organisation>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = OrganisationsMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ClientPostLogoutRedirectUrisService
+{
+public static class ClientPostLogoutRedirectUrisMapper
+{
+
+public static ClientPostLogoutRedirectUri MapInsertModelToDbModel(ClientPostLogoutRedirectUrisViewModel model, ClientPostLogoutRedirectUri newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ClientPostLogoutRedirectUri();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static ClientPostLogoutRedirectUrisViewModel MapDbModelToViewModel(ClientPostLogoutRedirectUri dbModel)
+{
+var viewModel = new  ClientPostLogoutRedirectUrisViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<ClientPostLogoutRedirectUrisViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ClientPostLogoutRedirectUri> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ClientPostLogoutRedirectUrisViewModel()
+        {
+        });
+        }
+    }
+}
+
+

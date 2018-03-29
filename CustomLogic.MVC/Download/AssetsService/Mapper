@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.AssetsService
+{
+public static class AssetsMapper
+{
+
+public static Asset MapInsertModelToDbModel(AssetsViewModel model, Asset newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Asset();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static AssetsViewModel MapDbModelToViewModel(Asset dbModel)
+{
+var viewModel = new  AssetsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<AssetsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Asset> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new AssetsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

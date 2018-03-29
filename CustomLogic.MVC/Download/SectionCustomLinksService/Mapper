@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.SectionCustomLinksService
+{
+public static class SectionCustomLinksMapper
+{
+
+public static SectionCustomLink MapInsertModelToDbModel(SectionCustomLinksViewModel model, SectionCustomLink newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new SectionCustomLink();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.SectionId = model.SectionId;
+            newDomainModel.CustomLinkId = model.CustomLinkId;
+            newDomainModel.OrderInSection = model.OrderInSection;
+    return newDomainModel;
+    }
+
+
+
+public static SectionCustomLinksViewModel MapDbModelToViewModel(SectionCustomLink dbModel)
+{
+var viewModel = new  SectionCustomLinksViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.SectionId = dbModel.SectionId;
+            viewModel.CustomLinkId = dbModel.CustomLinkId;
+            viewModel.OrderInSection = dbModel.OrderInSection;
+
+return viewModel;
+}
+
+
+public static IQueryable<SectionCustomLinksViewModel> MapDbModelQueryToViewModelQuery(IQueryable<SectionCustomLink> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new SectionCustomLinksViewModel()
+        {
+Id = c.Id,
+SectionId = c.SectionId,
+CustomLinkId = c.CustomLinkId,
+OrderInSection = c.OrderInSection,
+        });
+        }
+    }
+}
+
+

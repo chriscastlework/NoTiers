@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ConvertActionsService
+{
+public class ReturnResultEvent : IUpdateEvent<ConvertActionsViewModel, ConvertAction>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(ConvertActionsViewModel model, ref IQueryable< ConvertAction> repository, IUnitOfWork unitOfWork, Response<ConvertActionsViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<ConvertAction>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = ConvertActions
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

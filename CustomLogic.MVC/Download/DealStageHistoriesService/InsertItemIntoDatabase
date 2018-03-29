@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.DealStageHistoriesService
+{
+    public class Save : IInsertEvent<DealStageHistoriesViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(DealStageHistoriesViewModel model, IUnitOfWork unitOfWork, Response<DealStageHistoriesViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = DealStageHistories();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<DealStageHistory>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = DealStageHistories
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(DealStageHistoriesViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<DealStageHistory>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<DealStageHistory>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

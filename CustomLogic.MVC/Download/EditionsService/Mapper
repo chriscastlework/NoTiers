@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.EditionsService
+{
+public static class EditionsMapper
+{
+
+public static Edition MapInsertModelToDbModel(EditionsViewModel model, Edition newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Edition();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Status = model.Status;
+            newDomainModel.EditionLevel = model.EditionLevel;
+    return newDomainModel;
+    }
+
+
+
+public static EditionsViewModel MapDbModelToViewModel(Edition dbModel)
+{
+var viewModel = new  EditionsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.Status = dbModel.Status;
+            viewModel.EditionLevel = dbModel.EditionLevel;
+
+return viewModel;
+}
+
+
+public static IQueryable<EditionsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Edition> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new EditionsViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+Status = c.Status,
+EditionLevel = c.EditionLevel,
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.DefaultAddOnInEditionsService
+{
+    public class View : IViewEvent<DefaultAddOnInEditionsViewModel,DefaultAddOnInEdition>
+    {
+        public int CreatedId = 0;
+
+        public Response<DefaultAddOnInEditionsViewModel> Run(DefaultAddOnInEditionsViewModel model,ref IQueryable<DefaultAddOnInEdition> repository, IUnitOfWork unitOfWork, Response<DefaultAddOnInEditionsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = DefaultAddOnInEditions
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing DefaultAddOnInEditions");
+            }
+
+            return result;
+        }
+
+    }
+}

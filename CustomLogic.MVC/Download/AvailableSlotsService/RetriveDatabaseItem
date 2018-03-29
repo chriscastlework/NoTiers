@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.AvailableSlotsService
+{
+    public class View : IViewEvent<AvailableSlotsViewModel,AvailableSlot>
+    {
+        public int CreatedId = 0;
+
+        public Response<AvailableSlotsViewModel> Run(AvailableSlotsViewModel model,ref IQueryable<AvailableSlot> repository, IUnitOfWork unitOfWork, Response<AvailableSlotsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = AvailableSlots
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing AvailableSlots");
+            }
+
+            return result;
+        }
+
+    }
+}

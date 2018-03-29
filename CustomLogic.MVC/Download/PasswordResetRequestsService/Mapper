@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.PasswordResetRequestsService
+{
+public static class PasswordResetRequestsMapper
+{
+
+public static PasswordResetRequest MapInsertModelToDbModel(PasswordResetRequestsViewModel model, PasswordResetRequest newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new PasswordResetRequest();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.Used = model.Used;
+            newDomainModel.Expiry = model.Expiry;
+    return newDomainModel;
+    }
+
+
+
+public static PasswordResetRequestsViewModel MapDbModelToViewModel(PasswordResetRequest dbModel)
+{
+var viewModel = new  PasswordResetRequestsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.UserId = dbModel.UserId;
+            viewModel.Used = dbModel.Used;
+            viewModel.Expiry = dbModel.Expiry;
+
+return viewModel;
+}
+
+
+public static IQueryable<PasswordResetRequestsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<PasswordResetRequest> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new PasswordResetRequestsViewModel()
+        {
+Id = c.Id,
+UserId = c.UserId,
+Used = c.Used,
+Expiry = c.Expiry,
+        });
+        }
+    }
+}
+
+

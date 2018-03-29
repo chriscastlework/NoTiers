@@ -1,0 +1,52 @@
+.pb-details
+{
+
+}
+
+.pb-details .pb-label
+{
+    color:#666666;
+}
+
+.pb-details>div
+{
+    clear:both;
+    overflow:auto;
+}
+
+.pb-details>label
+{
+    float:left;
+    display:block;
+    clear:both;
+}
+.pb-details>input[type='radio']
+{
+
+}
+
+.pb-title
+{
+   /*background:lightgrey*/;
+    margin: 4px 0px;
+    font-weight: bold;
+    padding:4px 0px;
+}
+
+.pb-radio-item
+{
+    display: none !important;
+}
+
+.pb-radio-image
+{
+    opacity:0.4;
+}
+.pb-radio-item:checked+label
+{
+    opacity:1;
+}
+
+label {
+    cursor: pointer;
+}

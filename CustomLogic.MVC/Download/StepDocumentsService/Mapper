@@ -1,0 +1,90 @@
+using System.Linq;
+
+namespace CustomLogic.Services.StepDocumentsService
+{
+public static class StepDocumentsMapper
+{
+
+public static StepDocument MapInsertModelToDbModel(StepDocumentsViewModel model, StepDocument newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new StepDocument();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.DealId = model.DealId;
+            newDomainModel.StepId = model.StepId;
+            newDomainModel.OriginalName = model.OriginalName;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Extension = model.Extension;
+            newDomainModel.ContentType = model.ContentType;
+            newDomainModel.Size = model.Size;
+            newDomainModel.Content = model.Content;
+            newDomainModel.Uploaded = model.Uploaded;
+            newDomainModel.CustomTableRowId = model.CustomTableRowId;
+            newDomainModel.LeadId = model.LeadId;
+            newDomainModel.AccountId = model.AccountId;
+            newDomainModel.PartnerId = model.PartnerId;
+            newDomainModel.TaskId = model.TaskId;
+            newDomainModel.CountactId = model.CountactId;
+            newDomainModel.Contact_Id = model.Contact_Id;
+    return newDomainModel;
+    }
+
+
+
+public static StepDocumentsViewModel MapDbModelToViewModel(StepDocument dbModel)
+{
+var viewModel = new  StepDocumentsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.DealId = dbModel.DealId;
+            viewModel.StepId = dbModel.StepId;
+            viewModel.OriginalName = dbModel.OriginalName;
+            viewModel.Name = dbModel.Name;
+            viewModel.Extension = dbModel.Extension;
+            viewModel.ContentType = dbModel.ContentType;
+            viewModel.Size = dbModel.Size;
+            viewModel.Content = dbModel.Content;
+            viewModel.Uploaded = dbModel.Uploaded;
+            viewModel.CustomTableRowId = dbModel.CustomTableRowId;
+            viewModel.LeadId = dbModel.LeadId;
+            viewModel.AccountId = dbModel.AccountId;
+            viewModel.PartnerId = dbModel.PartnerId;
+            viewModel.TaskId = dbModel.TaskId;
+            viewModel.CountactId = dbModel.CountactId;
+            viewModel.Contact_Id = dbModel.Contact_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<StepDocumentsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<StepDocument> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new StepDocumentsViewModel()
+        {
+Id = c.Id,
+DealId = c.DealId,
+StepId = c.StepId,
+OriginalName = c.OriginalName,
+Name = c.Name,
+Extension = c.Extension,
+ContentType = c.ContentType,
+Size = c.Size,
+Content = c.Content,
+Uploaded = c.Uploaded,
+CustomTableRowId = c.CustomTableRowId,
+LeadId = c.LeadId,
+AccountId = c.AccountId,
+PartnerId = c.PartnerId,
+TaskId = c.TaskId,
+CountactId = c.CountactId,
+Contact_Id = c.Contact_Id,
+        });
+        }
+    }
+}
+
+

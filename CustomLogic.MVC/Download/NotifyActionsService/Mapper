@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.NotifyActionsService
+{
+public static class NotifyActionsMapper
+{
+
+public static NotifyAction MapInsertModelToDbModel(NotifyActionsViewModel model, NotifyAction newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new NotifyAction();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static NotifyActionsViewModel MapDbModelToViewModel(NotifyAction dbModel)
+{
+var viewModel = new  NotifyActionsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<NotifyActionsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<NotifyAction> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new NotifyActionsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

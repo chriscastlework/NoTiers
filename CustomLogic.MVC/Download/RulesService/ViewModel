@@ -1,0 +1,17 @@
+using System;
+
+namespace CustomLogic.Services.RuleService
+{
+    public class RulesViewModel
+    {
+
+        public int Id {get;set;}
+        public string Name {get;set;}
+        public DateTime? DateCreated {get;set;}
+        public DateTime? DateLastModeified {get;set;}
+        public string CreatedById {get;set;}
+        public string LastModifiedById {get;set;}
+        public int OrganisationId {get;set;}
+
+    }
+}

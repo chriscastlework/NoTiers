@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.LocalizationsService
+{
+    public class Delete : IDeleteEvent<LocalizationsViewModel,Localization>
+    {
+
+        public bool Run(Localizations ViewModel model, ref IQueryable<Localization>repository, IUnitOfWork unitOfWork, Response<LocalizationsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<Localization>().Find(model.Id);unitOfWork.With<Localization>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

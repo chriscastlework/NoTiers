@@ -1,0 +1,92 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.SimplePage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = null;
+	if(Roles.IsUserInRole("Seller"))
+	{
+	Response.Redirect("/deals/");
+	}
+}
+
+
+<link rel="stylesheet" href="/css/VelocityRocket.css" />
+
+<body id="body" class="contrast-red login contrast-background">
+    
+ @Html.Partial("Log In Status")
+
+   
+        <div class="middle-container">
+            <div class="middle-row">
+                <div class="middle-wrapper">
+                    <div class="login-container-header">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="text-center">
+                                        <img src="/media/1003/logo-small-rocket-lg.png" id="logoNormal" class="logo" alt="Velocity Rocket">
+                                        <img src="/media/1001/logo_xs.png" id="logoXs" class="logo-xs" alt="Velocity Rocket">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+    <div class="login-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-4">
+                    <h1 class="text-center title">
+                           Sign In
+                     
+                    </h1>
+                    
+                    @Html.Partial("LogIn")
+                    
+                    <br>
+                        
+                    <div class="text-center">
+                        <hr class="hr-normal">
+                        <a href="ForgotPassword">
+                                <i class="icon-lock"></i>
+                             Forgot your password?     
+                            </a>
+                    </div>
+                    
+                    @Umbraco.Field("cookiePolicyText", casing: RenderFieldCaseType.Upper)
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="login-container-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="text-center" style="color: #FFF;">
+                        <div id="pnlExternalReference">
+	
+                        <a href="/register-mamber" id="SignUpLink">
+                            <i class="icon-user"></i>
+                             New to Velocity Rocket? 
+                            <strong>Sign Up</strong>
+                        </a>| 
+                            <a href="http://www.velocityrocket.com" target="_blank">
+                                <i class="icon-laptop"></i> Find out more
+                            </a>
+                        
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+</body>

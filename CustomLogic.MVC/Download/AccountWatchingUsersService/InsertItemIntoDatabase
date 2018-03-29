@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.AccountWatchingUsersService
+{
+    public class Save : IInsertEvent<AccountWatchingUsersViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(AccountWatchingUsersViewModel model, IUnitOfWork unitOfWork, Response<AccountWatchingUsersViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = AccountWatchingUsers();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<AccountWatchingUser>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = AccountWatchingUsers
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(AccountWatchingUsersViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<AccountWatchingUser>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<AccountWatchingUser>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

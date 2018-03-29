@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.ThemesService
+{
+    public class Update : IUpdateEvent<ThemesViewModel,Theme>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(ThemesViewModel model, ref IQueryable<Theme> repository, IUnitOfWork unitOfWork, Response<ThemesViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = Themes
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<Theme>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = ThemesMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

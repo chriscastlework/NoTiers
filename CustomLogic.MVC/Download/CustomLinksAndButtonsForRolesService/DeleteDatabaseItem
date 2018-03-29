@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CustomLinksAndButtonsForRolesService
+{
+    public class Delete : IDeleteEvent<CustomLinksAndButtonsForRolesViewModel,CustomLinksAndButtonsForRole>
+    {
+
+        public bool Run(CustomLinksAndButtonsForRoles ViewModel model, ref IQueryable<CustomLinksAndButtonsForRole>repository, IUnitOfWork unitOfWork, Response<CustomLinksAndButtonsForRolesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<CustomLinksAndButtonsForRole>().Find(model.Id);unitOfWork.With<CustomLinksAndButtonsForRole>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,25 @@
+using System;
+
+namespace CustomLogic.Services.CustomLinksAndButtonService
+{
+    public class CustomLinksAndButtonsViewModel
+    {
+
+        public int Id {get;set;}
+        public string Name {get;set;}
+        public string Label {get;set;}
+        public string Url {get;set;}
+        public int IconType {get;set;}
+        public string IconClass {get;set;}
+        public byte[]? IconImage {get;set;}
+        public bool IsActive {get;set;}
+        public int? CustomLinksButtonPlacement_Id {get;set;}
+        public int? CustomLinksUrl_Id {get;set;}
+        public int OrganisationId {get;set;}
+        public int Action {get;set;}
+        public int ButtonType {get;set;}
+        public int EntityType {get;set;}
+        public string PlacementCustomObjectKey {get;set;}
+
+    }
+}

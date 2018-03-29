@@ -1,0 +1,23 @@
+using System;
+
+namespace CustomLogic.Services.EmailTemplateService
+{
+    public class EmailTemplatesViewModel
+    {
+
+        public int Id {get;set;}
+        public string Subject {get;set;}
+        public string DocumentFieldCountentHtml {get;set;}
+        public string DocumentFieldCountentPlain {get;set;}
+        public string LanguageCode {get;set;}
+        public int? OrganisationId {get;set;}
+        public bool Active {get;set;}
+        public string EmailTemplateConfiguration_TemplateID {get;set;}
+        public string EmailTemplateConfigurationId {get;set;}
+        public int EmailType {get;set;}
+        public DateTime? CreatedDate {get;set;}
+        public DateTime? LastModified {get;set;}
+        public DateTime? DeletedDate {get;set;}
+
+    }
+}

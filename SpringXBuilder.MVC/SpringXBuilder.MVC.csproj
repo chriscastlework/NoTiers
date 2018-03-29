@@ -1,0 +1,1283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C1892E09-B01B-48E8-A20A-6BF6BACBEBCB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SpringXBuilder.MVC</RootNamespace>
+    <AssemblyName>SpringXBuilder.MVC</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="businesslogic, Version=1.0.6331.7969, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.0\lib\net45\businesslogic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ClientDependency.Core, Version=1.9.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClientDependency.1.9.2\lib\net45\ClientDependency.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ClientDependency.Core.Mvc, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClientDependency-Mvc5.1.8.0.0\lib\net45\ClientDependency.Core.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="cms, Version=1.0.6331.7970, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.0\lib\net45\cms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="controls, Version=1.0.6331.7972, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.0\lib\net45\controls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
+      <HintPath>..\packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Examine, Version=0.1.82.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Examine.0.1.82\lib\net45\Examine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ImageProcessor, Version=2.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageProcessor.2.5.3\lib\net45\ImageProcessor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ImageProcessor.Web, Version=4.8.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageProcessor.Web.4.8.3\lib\net45\ImageProcessor.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="interfaces, Version=1.0.6331.7963, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.0\lib\net45\interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="KellermanSoftware.Compare-NET-Objects">
+      <HintPath>..\packages\CompareNETObjects.3.06.0.0\lib\net452\KellermanSoftware.Compare-NET-Objects.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.0\lib\net45\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Log4Net.Async, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Log4Net.Async.2.0.4\lib\net40\Log4Net.Async.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Lucene.Net, Version=2.9.4.1, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lucene.Net.2.9.4.1\lib\net40\Lucene.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MarkdownSharp, Version=1.14.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Markdown.1.14.7\lib\net45\MarkdownSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=1.0.1559.20655, Culture=neutral">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.0\lib\net45\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.2.1\lib\net45\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MiniProfiler, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OptDev.Razor4T4, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OptDev.Razor4T4.1.0.1\lib\net461\OptDev.Razor4T4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Semver, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\semver.1.1.2\lib\net451\Semver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SQLCE4Umbraco, Version=1.0.6331.7971, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.0\lib\net45\SQLCE4Umbraco.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.0\lib\net45\System.Data.SqlServerCe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe.Entity, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.0\lib\net45\System.Data.SqlServerCe.Entity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.6.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Dataflow.4.7.0\lib\portable-net45+win8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="TidyNet, Version=1.0.0.0, Culture=neutral">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.0\lib\net45\TidyNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="umbraco, Version=1.0.6331.7975, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.0\lib\net45\umbraco.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Umbraco.Core, Version=1.0.6331.7966, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.0\lib\net45\Umbraco.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="umbraco.DataLayer, Version=1.0.6331.7969, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.0\lib\net45\umbraco.DataLayer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="umbraco.editorControls, Version=1.0.6331.7978, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.0\lib\net45\umbraco.editorControls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="umbraco.MacroEngines, Version=1.0.6331.7979, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.0\lib\net45\umbraco.MacroEngines.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="umbraco.providers, Version=1.0.6331.7973, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.0\lib\net45\umbraco.providers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Umbraco.Web.UI, Version=1.0.6331.7980, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.0\lib\net45\Umbraco.Web.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="UmbracoExamine, Version=0.7.0.7971, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.0\lib\net45\UmbracoExamine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="UrlRewritingNet.UrlRewriter, Version=2.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UrlRewritingNet.2.0.7\lib\UrlRewritingNet.UrlRewriter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Apis\AccountController.cs" />
+    <Compile Include="Apis\CustomObjectRowFieldController.cs" />
+    <Compile Include="Apis\ContactController.cs" />
+    <Compile Include="Apis\CustomFieldController.cs" />
+    <Compile Include="Apis\CustomFieldValueController.cs" />
+    <Compile Include="Apis\DealController.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AppletController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\CustomFieldValuesController.cs" />
+    <Compile Include="Controllers\SalesforceAdminController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="PageModels\PageBuilderAppsIndex.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Applets\PageBuilder\index.html" />
+    <Content Include="Applets\PageBuilder\libraries\angular-animate.js" />
+    <Content Include="Applets\PageBuilder\libraries\angular-touch.js" />
+    <Content Include="Applets\PageBuilder\libraries\angular.js" />
+    <Content Include="Applets\PageBuilder\libraries\angular_treeview\angular.treeview.js" />
+    <Content Include="Applets\PageBuilder\libraries\angular_treeview\angular.treeview.min.js" />
+    <Content Include="Applets\PageBuilder\libraries\angular_treeview\css\angular.treeview.css" />
+    <Content Include="Applets\PageBuilder\libraries\angular_treeview\img\file.png" />
+    <Content Include="Applets\PageBuilder\libraries\angular_treeview\img\folder-closed.png" />
+    <Content Include="Applets\PageBuilder\libraries\angular_treeview\img\folder.png" />
+    <Content Include="Applets\PageBuilder\libraries\angular_treeview\img\jsfiddle01.png" />
+    <Content Include="Applets\PageBuilder\libraries\angular_treeview\img\jsfiddle02.png" />
+    <Content Include="Applets\PageBuilder\libraries\angular_treeview\img\preview.png" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\css\bootstrap-theme.css" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\css\bootstrap-theme.min.css" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\css\bootstrap.css" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\css\bootstrap.min.css" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\css\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\js\bootstrap.js" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\js\bootstrap.min.js" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\js\npm.js" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\js\ui-bootstrap-custom-tpls-1.3.2.min.js" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap.js" />
+    <Content Include="Applets\PageBuilder\libraries\di4js.js" />
+    <Content Include="Applets\PageBuilder\libraries\di4js.min.js" />
+    <Content Include="Applets\PageBuilder\libraries\drag.js" />
+    <Content Include="Applets\PageBuilder\libraries\drag.min.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\css\font-awesome.min.css" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\css\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\css\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\css\jquery-ui.min.css" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\css\ref.css" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\css\source-sans-pro.css" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\highcharts.html" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\images\apple-touch-icon-114x114.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\images\apple-touch-icon-120x120.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\images\apple-touch-icon-144x144.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\images\apple-touch-icon-152x152.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\images\apple-touch-icon-180x180.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\images\apple-touch-icon-57x57.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\images\apple-touch-icon-60x60.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\images\apple-touch-icon-72x72.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\images\apple-touch-icon-76x76.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\images\favicon-160x160.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\images\favicon-16x16.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\images\favicon-192x192.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\images\favicon-32x32.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\images\favicon-96x96.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\images\Highcharts.svg" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\images\splash.svg" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\images\sprite.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\js\jquery-1.11.3.min.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\js\jquery-ui.min.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\js\ref.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\gfx\vml-radial-gradient.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\graphics\highslide\close.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\graphics\highslide\closeX.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\graphics\highslide\outlines\rounded-white.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\graphics\highslide\resize.gif" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\graphics\highslide\zoomout.cur" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\graphics\meteogram-symbols-30px.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\graphics\search.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\graphics\skies.jpg" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\graphics\snow.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\graphics\sun.png" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\index.htm" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\adapters\standalone-framework.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\adapters\standalone-framework.src.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\highcharts-3d.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\highcharts-3d.src.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\highcharts-more.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\highcharts-more.src.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\highcharts.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\highcharts.src.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\boost.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\boost.src.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\broken-axis.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\broken-axis.src.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\canvas-tools.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\canvas-tools.src.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\data.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\data.src.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\drilldown.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\drilldown.src.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\exporting.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\exporting.src.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\funnel.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\funnel.src.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\heatmap.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\heatmap.src.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\no-data-to-display.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\no-data-to-display.src.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\offline-exporting.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\offline-exporting.src.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\solid-gauge.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\solid-gauge.src.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\treemap.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\modules\treemap.src.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\themes\dark-blue.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\themes\dark-green.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\themes\dark-unica.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\themes\gray.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\themes\grid-light.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\themes\grid.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\themes\sand-signika.js" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\js\themes\skies.js" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\external\jquery\jquery.js" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\images\ui-icons_222222_256x240.png" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\index.html" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\jquery-ui.css" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\jquery-ui.js" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\jquery-ui.min.css" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\jquery-ui.min.js" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\jquery-ui.structure.css" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\jquery-ui.structure.min.css" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\jquery-ui.theme.css" />
+    <Content Include="Applets\PageBuilder\libraries\jquery-ui-1.11.4\jquery-ui-1.11.4\jquery-ui.theme.min.css" />
+    <Content Include="Applets\PageBuilder\libraries\jquery.js" />
+    <Content Include="Applets\PageBuilder\libraries\lodash.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\core\comms.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\core\data.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\core\date.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\core\error.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\core\events.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\core\geom.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\core\graphics.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\core\locale.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\core\log.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\core\number.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\core\validation.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\core\xml.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\lang\en.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\springs.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\accordion.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\buttonbar.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\charts\charts.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\charts\radarchart.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\charts\sunchart.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\collapsiblePanel.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\dialogs.css" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\drag.css" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\dragselect.css" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\graphics.css" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\images\ui-icons_222222_256x240.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\images\ui-icons_454545_256x240.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\images\ui-icons_888888_256x240.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\jquery.css" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\layout.css" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\navigation.css" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\preloader.css" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\relationalchart.css" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\select-or-add-item-box.css" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\sortable.css" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\sp-select-or-add-item-box-spinner.gif" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\sp-select-or-add-item-box.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\sp-select-or-add-item-box2x2.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\springs.css" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\sunchart.css" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\table.css" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\textcounter.css" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\css\validation.css" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\dialogs.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\drag.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\dragselect.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\fileUpload.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\inputs.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\key.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\layout.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\list.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\menu.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\navigation.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\organisationchart.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\pagination.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\preloader.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\progressIndicator.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\radiogroup.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\relationalchart.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\arrow.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\arrow_big.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\icon_sunchart_hide_active.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\icon_sunchart_hide_inactive.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\navigation_arrow_down.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\navigation_arrow_right.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\add_button_down.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\add_button_downOLD.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\add_button_up.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\add_button_upOLD.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\add_up.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\arrow_down.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\arrow_downOLD.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\arrow_up.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\arrow_upOLD.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\exclamation.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\headerRowBg.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\info.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\listitem.jpg" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\navigation_arrow_down.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\navigation_arrow_right.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\preloader.gif" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\remove_button_down.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\remove_button_downOLD.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\remove_button_up.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\remove_button_upOLD.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\res\springs\tableHeaderRowBg.png" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\select-or-add-item-box.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\selection.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\sidebar.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\sortable.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\table.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\tabset.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\textcounter.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\tooltips.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\ui\videoplayer.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\utils\array.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\utils\graphics.js" />
+    <Content Include="Applets\PageBuilder\libraries\springs\utils\xml.js" />
+    <Content Include="Applets\PageBuilder\libraries\ui-bootstrap-1.3.2.min.js" />
+    <Content Include="Applets\PageBuilder\res\css\bootstrap.css" />
+    <Content Include="Applets\PageBuilder\res\css\bootstrap.min.css" />
+    <Content Include="Applets\PageBuilder\res\css\details.css" />
+    <Content Include="Applets\PageBuilder\res\css\general.css" />
+    <Content Include="Applets\PageBuilder\res\css\main.css" />
+    <Content Include="Applets\PageBuilder\res\css\page.css" />
+    <Content Include="Applets\PageBuilder\res\css\tools-panel.css" />
+    <Content Include="Applets\PageBuilder\res\css\userfields.css" />
+    <Content Include="Applets\PageBuilder\res\icons-charts\icon_area.png" />
+    <Content Include="Applets\PageBuilder\res\icons-charts\icon_bar.png" />
+    <Content Include="Applets\PageBuilder\res\icons-charts\icon_line.png" />
+    <Content Include="Applets\PageBuilder\res\icons-charts\icon_pie.png" />
+    <Content Include="Applets\PageBuilder\res\icons-tools\icon_charts.png" />
+    <Content Include="Applets\PageBuilder\res\icons-tools\icon_checkbox.png" />
+    <Content Include="Applets\PageBuilder\res\icons-tools\icon_datepicker.png" />
+    <Content Include="Applets\PageBuilder\res\icons-tools\icon_grid.png" />
+    <Content Include="Applets\PageBuilder\res\icons-tools\icon_image.png" />
+    <Content Include="Applets\PageBuilder\res\icons-tools\icon_list.png" />
+    <Content Include="Applets\PageBuilder\res\icons-tools\icon_lookup.png" />
+    <Content Include="Applets\PageBuilder\res\icons-tools\icon_map.png" />
+    <Content Include="Applets\PageBuilder\res\icons-tools\icon_numeric.png" />
+    <Content Include="Applets\PageBuilder\res\icons-tools\icon_picklist.png" />
+    <Content Include="Applets\PageBuilder\res\icons-tools\icon_radio.png" />
+    <Content Include="Applets\PageBuilder\res\icons-tools\icon_section.png" />
+    <Content Include="Applets\PageBuilder\res\icons-tools\icon_slider.png" />
+    <Content Include="Applets\PageBuilder\res\icons-tools\icon_textarea.png" />
+    <Content Include="Applets\PageBuilder\res\icons-tools\icon_textinput.png" />
+    <Content Include="Applets\PageBuilder\res\icons-tools\icon_textlabel.png" />
+    <Content Include="Applets\PageBuilder\src\angular\controllers.js" />
+    <Content Include="Applets\PageBuilder\src\angular\directives\common.js" />
+    <Content Include="Applets\PageBuilder\src\angular\directives\page.js" />
+    <Content Include="Applets\PageBuilder\src\angular\directives\userfields.js" />
+    <Content Include="Applets\PageBuilder\src\angular\directives\valueinputs.js" />
+    <Content Include="Applets\PageBuilder\src\angular\services.js" />
+    <Content Include="Applets\PageBuilder\src\controller.js" />
+    <Content Include="Applets\PageBuilder\src\controller\controller-details-elements-chart.js" />
+    <Content Include="Applets\PageBuilder\src\controller\controller-details-elements-maps.js" />
+    <Content Include="Applets\PageBuilder\src\controller\controller-details-elements.js" />
+    <Content Include="Applets\PageBuilder\src\controller\controller-page-elements.js" />
+    <Content Include="Applets\PageBuilder\src\main.js" />
+    <Content Include="Applets\PageBuilder\src\model\model-events.js" />
+    <Content Include="Applets\PageBuilder\src\model\model-fields-conditionals.js" />
+    <Content Include="Applets\PageBuilder\src\model\model-fields.js" />
+    <Content Include="Applets\PageBuilder\src\model\model-page-elements-grid.js" />
+    <Content Include="Applets\PageBuilder\src\model\model-page-elements.js" />
+    <Content Include="Applets\PageBuilder\src\model\model-page-loader.js" />
+    <Content Include="Applets\PageBuilder\src\model\model.js" />
+    <Content Include="Applets\PageBuilder\src\view\graphics.js" />
+    <Content Include="Applets\PageBuilder\src\view\view-page-elements-grid.js" />
+    <Content Include="Applets\PageBuilder\src\view\view-page-elements.js" />
+    <Content Include="Applets\PageBuilder\templates\angular\common\collapsible.html" />
+    <Content Include="Applets\PageBuilder\templates\angular\pageEditor.html" />
+    <Content Include="Applets\PageBuilder\templates\angular\pageElement.html" />
+    <Content Include="Applets\PageBuilder\templates\angular\toolicon.html" />
+    <Content Include="Applets\PageBuilder\templates\angular\toolitem.html" />
+    <Content Include="Applets\PageBuilder\templates\angular\user-fields\user-field-condition.html" />
+    <Content Include="Applets\PageBuilder\templates\angular\user-fields\user-field-conditional-expression.html" />
+    <Content Include="Applets\PageBuilder\templates\angular\user-fields\user-field-conditional.html" />
+    <Content Include="Applets\PageBuilder\templates\angular\user-fields\user-field-derived-operation.html" />
+    <Content Include="Applets\PageBuilder\templates\angular\user-fields\user-field-derived.html" />
+    <Content Include="Applets\PageBuilder\templates\angular\user-fields\user-field-value.html" />
+    <Content Include="Applets\PageBuilder\templates\angular\valueinputs\datepicker.html" />
+    <Content Include="Applets\PageBuilder\templates\details\details.html" />
+    <Content Include="Applets\PageBuilder\templates\details\element.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\align.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\chart-range-item.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\chart-yaxis.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\chart\chart-axis-options-date.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\chart\chart-axis-options-number.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\chart\chart-axis-options.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\chart\chart-axis.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\chart\chart-details.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\chart\chart-grouping.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\checkbox-default.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\collection-options.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\color.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\date-selector.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\default.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\delete.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\details-view.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\formatting.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\generic-numeric-input.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\grid-column-item.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\grid-column-sum-options.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\grid-options.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\grid.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\grid\grid-dialog.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\hyperlink.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\image-selector.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\image-size.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\label-position.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\label.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\layout-direction.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\leftright.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\lookup_options.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\lookup_searchoptions.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\mapdatamapping.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\mapping.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\mapping_withoptions.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\map\map-card.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\map\map-connection-item.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\map\map-dialog.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\map\map-options.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\multiline.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\number-format.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\option-list-item.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\option-list.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\remove.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\size-height.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\size-width.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\slider-settings.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\text-input.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\titled_controller.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\truefalse.html" />
+    <Content Include="Applets\PageBuilder\templates\details\elements\visibility.html" />
+    <Content Include="Applets\PageBuilder\templates\details\image.html" />
+    <Content Include="Applets\PageBuilder\templates\details\page.html" />
+    <Content Include="Applets\PageBuilder\templates\details\picklist.html" />
+    <Content Include="Applets\PageBuilder\templates\details\picklistoption.html" />
+    <Content Include="Applets\PageBuilder\templates\details\radiobuttons.html" />
+    <Content Include="Applets\PageBuilder\templates\details\section.html" />
+    <Content Include="Applets\PageBuilder\templates\details\slider.html" />
+    <Content Include="Applets\PageBuilder\templates\details\slideroption.html" />
+    <Content Include="Applets\PageBuilder\templates\details\textinput.html" />
+    <Content Include="Applets\PageBuilder\templates\details\textlabel.html" />
+    <Content Include="Applets\PageBuilder\templates\elements\page.html" />
+    <Content Include="Applets\PageBuilder\templates\elements\section.html" />
+    <Content Include="Applets\PageViewer\index.html" />
+    <Content Include="Content\libraries\bootstrap-3.3.6-dist\css\bootstrap-theme.css" />
+    <Content Include="Content\libraries\bootstrap-3.3.6-dist\css\bootstrap-theme.min.css" />
+    <Content Include="Content\libraries\bootstrap-3.3.6-dist\css\bootstrap.css" />
+    <Content Include="Content\libraries\bootstrap-3.3.6-dist\css\bootstrap.min.css" />
+    <Content Include="Content\libraries\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\libraries\bootstrap-3.3.6-dist\js\bootstrap.js" />
+    <Content Include="Content\libraries\bootstrap-3.3.6-dist\js\bootstrap.min.js" />
+    <Content Include="Content\libraries\bootstrap-3.3.6-dist\js\npm.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\css\font-awesome.min.css" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\css\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\css\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\css\jquery-ui.min.css" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\css\ref.css" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\css\source-sans-pro.css" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\highcharts.html" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\images\apple-touch-icon-114x114.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\images\apple-touch-icon-120x120.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\images\apple-touch-icon-144x144.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\images\apple-touch-icon-152x152.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\images\apple-touch-icon-180x180.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\images\apple-touch-icon-57x57.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\images\apple-touch-icon-60x60.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\images\apple-touch-icon-72x72.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\images\apple-touch-icon-76x76.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\images\favicon-160x160.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\images\favicon-16x16.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\images\favicon-192x192.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\images\favicon-32x32.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\images\favicon-96x96.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\images\Highcharts.svg" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\images\splash.svg" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\images\sprite.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\js\jquery-1.11.3.min.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\js\jquery-ui.min.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\js\ref.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\gfx\vml-radial-gradient.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\graphics\highslide\close.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\graphics\highslide\closeX.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\graphics\highslide\outlines\rounded-white.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\graphics\highslide\resize.gif" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\graphics\highslide\zoomout.cur" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\graphics\meteogram-symbols-30px.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\graphics\search.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\graphics\skies.jpg" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\graphics\snow.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\graphics\sun.png" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\index.htm" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\adapters\standalone-framework.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\adapters\standalone-framework.src.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\highcharts-3d.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\highcharts-3d.src.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\highcharts-more.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\highcharts-more.src.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\highcharts.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\highcharts.src.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\boost.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\boost.src.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\broken-axis.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\broken-axis.src.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\canvas-tools.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\canvas-tools.src.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\data.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\data.src.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\drilldown.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\drilldown.src.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\exporting.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\exporting.src.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\funnel.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\funnel.src.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\heatmap.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\heatmap.src.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\no-data-to-display.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\no-data-to-display.src.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\offline-exporting.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\offline-exporting.src.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\solid-gauge.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\solid-gauge.src.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\treemap.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\modules\treemap.src.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\themes\dark-blue.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\themes\dark-green.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\themes\dark-unica.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\themes\gray.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\themes\grid-light.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\themes\grid.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\themes\sand-signika.js" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\js\themes\skies.js" />
+    <Content Include="Content\libraries\lodash.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jMenu.jquery.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\excanvas.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\excanvas.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\jquery.jqplot.css" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\jquery.jqplot.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\jquery.jqplot.min.css" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\jquery.jqplot.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.barRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.barRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.BezierCurveRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.BezierCurveRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.blockRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.blockRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.bubbleRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.bubbleRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.canvasAxisLabelRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.canvasAxisLabelRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.canvasAxisTickRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.canvasAxisTickRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.canvasOverlay.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.canvasOverlay.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.canvasTextRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.canvasTextRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.categoryAxisRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.categoryAxisRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.ciParser.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.ciParser.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.cursor.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.cursor.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.dateAxisRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.dateAxisRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.donutRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.donutRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.dragable.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.dragable.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.enhancedLegendRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.enhancedLegendRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.funnelRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.funnelRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.highlighter.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.highlighter.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.json2.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.json2.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.logAxisRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.logAxisRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.mekkoAxisRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.mekkoAxisRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.mekkoRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.mekkoRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.meterGaugeRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.meterGaugeRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.ohlcRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.ohlcRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.pieRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.pieRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.pointLabels.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.pointLabels.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.pyramidAxisRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.pyramidAxisRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.pyramidGridRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.pyramidGridRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.pyramidRenderer.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.pyramidRenderer.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.trendline.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jqplot\plugins\jqplot.trendline.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jquery-1.7.1.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jquery-1.7.1.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jquery-ui-1.8.14.custom.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jquery.cookie.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jquery.ui.touch-punch.min.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\!style.css" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\jquery.hotkeys.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\jquery.jstree.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\syntax\!script.js" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\syntax\!style.css" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\syntax\clipboard.swf" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\syntax\help.png" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\syntax\magnifier.png" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\syntax\page_white_code.png" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\syntax\page_white_copy.png" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\syntax\printer.png" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\syntax\wrapping.png" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\apple\bg.jpg" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\apple\d.png" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\apple\dot_for_ie.gif" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\apple\style.css" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\apple\throbber.gif" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\classic\d.gif" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\classic\d.png" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\classic\dot_for_ie.gif" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\classic\style.css" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\classic\throbber.gif" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\default-rtl\d.gif" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\default-rtl\d.png" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\default-rtl\dots.gif" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\default-rtl\style.css" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\default-rtl\throbber.gif" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\default\d.gif" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\default\d.png" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\default\style.css" />
+    <Content Include="Content\libraries\SpringsFramework\libraries\jstree\themes\default\throbber.gif" />
+    <Content Include="Content\libraries\SpringsFramework\plugins\application.js" />
+    <Content Include="Content\libraries\SpringsFramework\plugins\contacts.js" />
+    <Content Include="Content\libraries\SpringsFramework\plugins\contactsx.js" />
+    <Content Include="Content\libraries\SpringsFramework\plugins\dialog.js" />
+    <Content Include="Content\libraries\SpringsFramework\plugins\linkedin.js" />
+    <Content Include="Content\libraries\SpringsFramework\plugins\locale.js" />
+    <Content Include="Content\libraries\SpringsFramework\plugins\user.js" />
+    <Content Include="Content\libraries\SpringsFramework\res\flash\player.swf" />
+    <Content Include="Content\libraries\SpringsFramework\res\flash\skins\mySkin.swf" />
+    <Content Include="Content\libraries\SpringsFramework\res\images\common\exclamation.png" />
+    <Content Include="Content\libraries\SpringsFramework\res\images\main\preloader.gif" />
+    <Content Include="Content\libraries\SpringsFramework\springs\core\comms.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\core\data.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\core\date.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\core\error.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\core\events.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\core\geom.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\core\graphics.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\core\locale.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\core\log.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\core\number.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\core\validation.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\core\xml.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\lang\en.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\springs.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\accordion.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\buttonbar.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\charts\charts.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\charts\radarchart.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\charts\sunchart.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\collapsiblePanel.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\dialogs.css" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\drag.css" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\dragselect.css" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\graphics.css" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\jquery.css" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\layout.css" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\navigation.css" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\preloader.css" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\relationalchart.css" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\select-or-add-item-box.css" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\sortable.css" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\sp-select-or-add-item-box-spinner.gif" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\sp-select-or-add-item-box.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\sp-select-or-add-item-box2x2.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\springs.css" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\sunchart.css" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\table.css" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\textcounter.css" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\css\validation.css" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\dialogs.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\drag.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\dragselect.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\fileUpload.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\inputs.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\key.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\layout.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\list.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\menu.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\navigation.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\organisationchart.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\pagination.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\preloader.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\progressIndicator.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\radiogroup.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\relationalchart.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\arrow.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\arrow_big.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\icon_sunchart_hide_active.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\icon_sunchart_hide_inactive.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\navigation_arrow_down.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\navigation_arrow_right.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\add_button_down.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\add_button_downOLD.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\add_button_up.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\add_button_upOLD.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\add_up.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\arrow_down.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\arrow_downOLD.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\arrow_up.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\arrow_upOLD.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\exclamation.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\headerRowBg.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\info.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\listitem.jpg" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\navigation_arrow_down.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\navigation_arrow_right.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\preloader.gif" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\remove_button_down.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\remove_button_downOLD.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\remove_button_up.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\remove_button_upOLD.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\res\springs\tableHeaderRowBg.png" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\select-or-add-item-box.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\selection.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\sidebar.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\sortable.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\table.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\tabset.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\textcounter.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\tooltips.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\ui\videoplayer.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\utils\array.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\utils\graphics.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\utils\math.js" />
+    <Content Include="Content\libraries\SpringsFramework\springs\utils\xml.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\controller\controller.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\core\date.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\events\events.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\model\datalayers.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\model\datastructure.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\model\filedata.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\model\format.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\model\layout.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\model\model.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\model\resources.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\model\strings.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\orgchart\controller_orgchart.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\orgchart\model_orgchart.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\orgchart\view_orgchart.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\orgchart\view_orgchart_21.12.16.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\orgchart\view_orgchart_NOW.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\springx.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\utils\utils.js" />
+    <Content Include="Content\libraries\SpringsFramework\springx\view\view.js" />
+    <Content Include="Content\libraries\SpringsFramework\test\css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\libraries\SpringsFramework\test\css\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\libraries\SpringsFramework\test\css\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\libraries\SpringsFramework\test\css\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\libraries\SpringsFramework\test\css\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\libraries\SpringsFramework\test\css\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\libraries\SpringsFramework\test\css\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\libraries\SpringsFramework\test\css\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\libraries\SpringsFramework\test\css\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\libraries\SpringsFramework\test\css\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\libraries\SpringsFramework\test\css\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\libraries\SpringsFramework\test\css\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\libraries\SpringsFramework\test\css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\libraries\SpringsFramework\test\css\smoothness.css" />
+    <Content Include="Content\libraries\SpringsFramework\test\locale-test.js" />
+    <Content Include="Content\libraries\SpringsFramework\test\radarchart-test.js" />
+    <Content Include="Content\libraries\SpringsFramework\test\sample.mp4" />
+    <Content Include="Content\libraries\SpringsFramework\test\sunchart-test.js" />
+    <Content Include="Content\libraries\SpringsFramework\test\test-locale.html" />
+    <Content Include="Content\libraries\SpringsFramework\test\test-radarchart.html" />
+    <Content Include="Content\libraries\SpringsFramework\test\test-select-or-add-item-box.html" />
+    <Content Include="Content\libraries\SpringsFramework\test\test-sunchart.html" />
+    <Content Include="Content\libraries\SpringsFramework\test\test-validation.html" />
+    <Content Include="Content\libraries\SpringsFramework\test\test-video.html" />
+    <Content Include="Content\libraries\SpringsFramework\test\thumbnail.jpg" />
+    <Content Include="Content\libraries\SpringsFramework\test\validation-test.js" />
+    <Content Include="Content\libraries\SpringsFramework\test\video-test.js" />
+    <Content Include="Content\libraries\SpringsFramework\ws\applet\applet.js" />
+    <Content Include="Content\libraries\SpringsFramework\ws\applet\contacts.js" />
+    <Content Include="Applets\PageViewer\Load.aspx" />
+    <Content Include="Content\res\css\orgchart.css" />
+    <Content Include="Content\res\css\pagebuilder\general.css" />
+    <Content Include="Content\res\css\pagebuilder\page.css" />
+    <Content Include="Content\res\css\pagebuilder\userfields.css" />
+    <Content Include="Content\res\css\pageviewer.css" />
+    <Content Include="Content\res\css\spiStyles.css" />
+    <Content Include="Content\res\css\styles.css" />
+    <Content Include="Content\res\images\main\preloader.gif" />
+    <Content Include="Content\res\images\orgchart\add.png" />
+    <Content Include="Content\res\images\orgchart\arrow.png" />
+    <Content Include="Content\res\images\orgchart\grid.png" />
+    <Content Include="Content\res\images\orgchart\hand.png" />
+    <Content Include="Content\res\images\orgchart\link.png" />
+    <Content Include="Content\res\images\orgchart\remove.png" />
+    <Content Include="Content\res\images\orgchart\zoom_in.png" />
+    <Content Include="Content\res\images\orgchart\zoom_out.png" />
+    <Content Include="Content\res\images\unsupported.png" />
+    <Content Include="Content\src\controller\controller.js" />
+    <Content Include="Content\src\model\model.js" />
+    <Content Include="Content\src\ui\ui.js" />
+    <Content Include="Content\src\view\view.js" />
+    <Content Include="PageModels\README.txt" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\ngTables.js" />
+    <Content Include="TestXML\Test.xml" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Applets\PageBuilder\libraries\angular_treeview\LICENSE" />
+    <Content Include="Applets\PageBuilder\libraries\angular_treeview\README.md" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\css\bootstrap-theme.css.map" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\css\bootstrap.css.map" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\css\bootstrap.min.css.map" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\css\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\css\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\css\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\css\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Applets\PageBuilder\libraries\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\fonts\fontawesome-webfont.woff" />
+    <Content Include="Applets\PageBuilder\libraries\Highcharts-4.2.4\api\js\highcharts.json" />
+    <Content Include="Applets\PageBuilder\mockdata\crmdata.json" />
+    <Content Include="Content\libraries\bootstrap-3.3.6-dist\css\bootstrap-theme.css.map" />
+    <Content Include="Content\libraries\bootstrap-3.3.6-dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="Content\libraries\bootstrap-3.3.6-dist\css\bootstrap.css.map" />
+    <Content Include="Content\libraries\bootstrap-3.3.6-dist\css\bootstrap.min.css.map" />
+    <Content Include="Content\libraries\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\libraries\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\libraries\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\libraries\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\libraries\Highcharts-4.2.4\api\js\highcharts.json" />
+    <Content Include="Content\libraries\SpringsFramework\res\flash\LICENCE" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Applet\Index.cshtml" />
+    <Content Include="Views\CustomFieldValues\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ListCustomObjectRowFieldsViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\NgTableCustomObjectRowFieldsViewModel.cshtml" />
+    <Content Include="Views\Applet\LoadAngularDeal.cshtml" />
+    <Content Include="TestJSON\json.json" />
+    <Content Include="Views\Home\Deals.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Applet\LoadAngularAccount.cshtml" />
+    <Content Include="Views\Applet\LoadAngularCustomObject.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\libraries\SpringsFramework\libraries\jqplot\docs\files\images\" />
+    <Folder Include="Content\libraries\SpringsFramework\libraries\jqplot\docs\files\plugins\" />
+    <Folder Include="Content\libraries\SpringsFramework\libraries\jqplot\docs\index\" />
+    <Folder Include="Content\libraries\SpringsFramework\libraries\jqplot\docs\javascript\" />
+    <Folder Include="Content\libraries\SpringsFramework\libraries\jqplot\docs\search\" />
+    <Folder Include="Content\libraries\SpringsFramework\libraries\jqplot\docs\styles\" />
+    <Folder Include="Content\libraries\SpringsFramework\libraries\jqplot\examples\images\" />
+    <Folder Include="Content\libraries\SpringsFramework\libraries\jqplot\examples\jquery-ui\css\ui-lightness\images\" />
+    <Folder Include="Content\libraries\SpringsFramework\libraries\jqplot\examples\jquery-ui\js\" />
+    <Folder Include="Content\libraries\SpringsFramework\libraries\jqplot\examples\syntaxhighlighter\scripts\" />
+    <Folder Include="Content\libraries\SpringsFramework\libraries\jqplot\examples\syntaxhighlighter\styles\" />
+    <Folder Include="Views\SalesforceAdmin\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NoTiersMaker\CustomLogic.csproj">
+      <Project>{74efc513-34bb-4eb1-a68b-ad254f2a28d4}</Project>
+      <Name>CustomLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>22343</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:22343/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

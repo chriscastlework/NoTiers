@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.FeaturesService
+{
+public static class FeaturesMapper
+{
+
+public static Feature MapInsertModelToDbModel(FeaturesViewModel model, Feature newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Feature();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Description = model.Description;
+            newDomainModel.ClientFacing = model.ClientFacing;
+    return newDomainModel;
+    }
+
+
+
+public static FeaturesViewModel MapDbModelToViewModel(Feature dbModel)
+{
+var viewModel = new  FeaturesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.Description = dbModel.Description;
+            viewModel.ClientFacing = dbModel.ClientFacing;
+
+return viewModel;
+}
+
+
+public static IQueryable<FeaturesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Feature> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new FeaturesViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+Description = c.Description,
+ClientFacing = c.ClientFacing,
+        });
+        }
+    }
+}
+
+

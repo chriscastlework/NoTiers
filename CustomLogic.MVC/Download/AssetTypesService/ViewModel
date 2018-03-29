@@ -1,0 +1,10 @@
+using System;
+
+namespace CustomLogic.Services.AssetTypeService
+{
+    public class AssetTypesViewModel
+    {
+
+
+    }
+}

@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.StatementsService
+{
+public static class StatementsMapper
+{
+
+public static Statement MapInsertModelToDbModel(StatementsViewModel model, Statement newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Statement();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.ClassName = model.ClassName;
+            newDomainModel.Amount = model.Amount;
+            newDomainModel.Rule_Id = model.Rule_Id;
+    return newDomainModel;
+    }
+
+
+
+public static StatementsViewModel MapDbModelToViewModel(Statement dbModel)
+{
+var viewModel = new  StatementsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.ClassName = dbModel.ClassName;
+            viewModel.Amount = dbModel.Amount;
+            viewModel.Rule_Id = dbModel.Rule_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<StatementsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Statement> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new StatementsViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+ClassName = c.ClassName,
+Amount = c.Amount,
+Rule_Id = c.Rule_Id,
+        });
+        }
+    }
+}
+
+

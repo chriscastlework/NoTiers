@@ -1,0 +1,162 @@
+﻿@using CustomLogic.Templates.Angular
+@model CustomLogic.SchemaBuilder.MicrosoftSQL.SchemaModels.ModelInfo
+
+
+<script>
+    (function () {
+
+        var app = angular.module("app", ["ngTable"]);
+
+        // @Html.Raw(Model.TT_ViewModelName()) Service
+        angular.module('app').factory('@Html.Raw(Model.TT_ViewModelName())ApiService', @Html.Raw(Model.TT_ViewModelName())ApiService);
+        @Html.Raw(Model.TT_ViewModelName())ApiService.$inject = ['$http'];
+        function @Html.Raw(Model.TT_ViewModelName())ApiService($http) {
+
+            return {
+                Get: get,
+                Post: post,
+                Put: put,
+                Delete: deleteApi
+            };
+
+            function get(id) {
+                return $http.get('/api/@Html.Raw(Model.TT_ViewModelName())/' + id)
+                    .then(get:@Html.Raw(Model.TT_ViewModelName())Complete)
+                   .catch(get:@Html.Raw(Model.TT_ViewModelName())Fail);
+
+                function get:@Html.Raw(Model.TT_ViewModelName())Complete(response) {
+                    return response.data.Data;
+                }
+
+                function get:@Html.Raw(Model.TT_ViewModelName())Fail(error) {
+                    debugger;
+                }
+            };
+
+            function post(data) {
+                return $http.post('/api/@Html.Raw(Model.TT_ViewModelName())/', data)
+                   .then(post:@Html.Raw(Model.TT_ViewModelName())Complete)
+                   .catch(post:@Html.Raw(Model.TT_ViewModelName())Fail);
+
+                function post:@Html.Raw(Model.TT_ViewModelName())Complete(response) {
+                    return response.data;
+                }
+
+                function post:@Html.Raw(Model.TT_ViewModelName())Fail(error) {
+                    debugger;
+                }
+            };
+
+            function put(id, data) {
+                return $http.put('/api/@Html.Raw(Model.TT_ViewModelName())/' + id, data)
+                   .then(put:@Html.Raw(Model.TT_ViewModelName())Complete)
+                   .catch(put:@Html.Raw(Model.TT_ViewModelName())Fail);
+
+                function put:@Html.Raw(Model.TT_ViewModelName())Complete(response) {
+                    return response.data.Data;
+                }
+
+                function put:@Html.Raw(Model.TT_ViewModelName())Fail(error) {
+                    debugger;
+                }
+            };
+
+            function deleteApi(id) {
+                return $http.delete('/api/@Html.Raw(Model.TT_ViewModelName())/' + id)
+                   .then(delete:@Html.Raw(Model.TT_ViewModelName())Complete)
+                   .catch(delete:@Html.Raw(Model.TT_ViewModelName())Fail);
+
+                function delete:@Html.Raw(Model.TT_ViewModelName())Complete(response) {
+                    return response.data.Data;
+                }
+
+                function delete:@Html.Raw(Model.TT_ViewModelName())Fail(error) {
+                    debugger;
+                }
+            };
+        };
+        // @Html.Raw(Model.TT_ViewModelName()) Service End
+
+        // @Html.Raw(Model.TT_ViewModelName()) Table Controller
+        angular.module('app').controller('@Html.Raw(Model.TT_ViewModelName())Controller', @Html.Raw(Model.TT_ViewModelName())Controller);
+        @Html.Raw(Model.TT_ViewModelName())Controller.$inject = ["NgTableParams", "@Html.Raw(Model.TT_ViewModelName())ApiService"];
+        function @Html.Raw(Model.TT_ViewModelName())Controller(NgTableParams, @Html.Raw(Model.TT_ViewModelName())ApiService) {
+            var vm = this;
+            vm.tableParams = new NgTableParams({
+                page: 1,            // show first page
+                count: 10           // count per page
+            }, {
+                getData: function (params) {
+                    var postParams = {};
+                    postParams.page = params.page();
+                    postParams.count = params.count();
+                    postParams.total = params.total();
+                    postParams.filter = params.filter();
+                    postParams.sorting = params.sorting();
+                    postParams.group = params.group();
+                    return @Html.Raw(Model.TT_ViewModelName())ApiService.Post(postParams)
+                        .then(function (response) {
+                            params.total(response.Count);
+                            return response.Data;
+                        });
+                }
+            });
+        };
+        // @Html.Raw(Model.TT_ViewModelName()) Table Controller End
+    })();
+                        </script>
+
+
+                        <div ng-app="app">
+
+                            <div ng-controller="@Html.Raw(Model.TT_ViewModelName())Controller as @Html.Raw(Model.TT_ViewModelName())">
+
+                                <h2 class="page-header"> =_model.TT_TableName() Table</h2>
+
+                                <table ng-table="@Html.Raw(Model.TT_ViewModelName()+".tableParams")" class="table table-bordered table-striped table-condensed">
+                                    <tr ng-repeat="row in $data track by row.Id">
+
+                                        @if (Model.ColumnInfo != null)
+                                        {
+                                            foreach (var item in Model.ColumnInfo)
+                                            {
+                                                if (item.IncludeInView)
+                                                {
+                                                    @: <td data-title="'=item.ColumnNameInView'" @Html.Raw(NgHelp.GetTableSort(item)) @Html.Raw(NgHelp.GetTableFilter(item))>
+                                                    @:{{row.@item.ColumnNameInView}}
+                                                    @: </td>
+
+                                                }
+                                            }
+                                        }
+                                      </tr>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Trigger the modal with a button -->
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+                        <!-- Modal -->
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Modal Header</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Some text in the modal.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+

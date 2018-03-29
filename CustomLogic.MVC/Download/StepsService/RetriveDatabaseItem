@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.StepsService
+{
+    public class View : IViewEvent<StepsViewModel,Step>
+    {
+        public int CreatedId = 0;
+
+        public Response<StepsViewModel> Run(StepsViewModel model,ref IQueryable<Step> repository, IUnitOfWork unitOfWork, Response<StepsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = Steps
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing Steps");
+            }
+
+            return result;
+        }
+
+    }
+}

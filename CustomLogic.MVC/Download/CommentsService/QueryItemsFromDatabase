@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CommentsService
+{
+    public class QueryLogic : IViewListEvent<CommentsViewModel, Comment>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<Comment> repository, NgTable<CommentsViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<CommentsViewModel>();
+
+            var query = Comments
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

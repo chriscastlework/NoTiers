@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.StaThemesService
+{
+    public class Delete : IDeleteEvent<StaThemesViewModel,StaTheme>
+    {
+
+        public bool Run(StaThemes ViewModel model, ref IQueryable<StaTheme>repository, IUnitOfWork unitOfWork, Response<StaThemesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<StaTheme>().Find(model.Id);unitOfWork.With<StaTheme>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

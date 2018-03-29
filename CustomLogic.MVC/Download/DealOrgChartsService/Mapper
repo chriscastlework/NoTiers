@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.DealOrgChartsService
+{
+public static class DealOrgChartsMapper
+{
+
+public static DealOrgChart MapInsertModelToDbModel(DealOrgChartsViewModel model, DealOrgChart newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new DealOrgChart();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.DealId = model.DealId;
+            newDomainModel.ChartZoom = model.ChartZoom;
+            newDomainModel.X = model.X;
+            newDomainModel.Y = model.Y;
+    return newDomainModel;
+    }
+
+
+
+public static DealOrgChartsViewModel MapDbModelToViewModel(DealOrgChart dbModel)
+{
+var viewModel = new  DealOrgChartsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.DealId = dbModel.DealId;
+            viewModel.ChartZoom = dbModel.ChartZoom;
+            viewModel.X = dbModel.X;
+            viewModel.Y = dbModel.Y;
+
+return viewModel;
+}
+
+
+public static IQueryable<DealOrgChartsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<DealOrgChart> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new DealOrgChartsViewModel()
+        {
+Id = c.Id,
+DealId = c.DealId,
+ChartZoom = c.ChartZoom,
+X = c.X,
+Y = c.Y,
+        });
+        }
+    }
+}
+
+

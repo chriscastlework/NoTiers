@@ -1,0 +1,69 @@
+using System.Linq;
+
+namespace CustomLogic.Services.TaskContactsService
+{
+public static class TaskContactsMapper
+{
+
+public static TaskContact MapInsertModelToDbModel(TaskContactsViewModel model, TaskContact newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new TaskContact();
+    }
+
+            newDomainModel.TaskId = model.TaskId;
+            newDomainModel.ContactId = model.ContactId;
+            newDomainModel.PictureURL = model.PictureURL;
+            newDomainModel.Participation = model.Participation;
+            newDomainModel.Support = model.Support;
+            newDomainModel.X = model.X;
+            newDomainModel.Y = model.Y;
+            newDomainModel.Width = model.Width;
+            newDomainModel.Height = model.Height;
+            newDomainModel.Id = model.Id;
+    return newDomainModel;
+    }
+
+
+
+public static TaskContactsViewModel MapDbModelToViewModel(TaskContact dbModel)
+{
+var viewModel = new  TaskContactsViewModel();
+
+            viewModel.TaskId = dbModel.TaskId;
+            viewModel.ContactId = dbModel.ContactId;
+            viewModel.PictureURL = dbModel.PictureURL;
+            viewModel.Participation = dbModel.Participation;
+            viewModel.Support = dbModel.Support;
+            viewModel.X = dbModel.X;
+            viewModel.Y = dbModel.Y;
+            viewModel.Width = dbModel.Width;
+            viewModel.Height = dbModel.Height;
+            viewModel.Id = dbModel.Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<TaskContactsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<TaskContact> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new TaskContactsViewModel()
+        {
+TaskId = c.TaskId,
+ContactId = c.ContactId,
+PictureURL = c.PictureURL,
+Participation = c.Participation,
+Support = c.Support,
+X = c.X,
+Y = c.Y,
+Width = c.Width,
+Height = c.Height,
+Id = c.Id,
+        });
+        }
+    }
+}
+
+

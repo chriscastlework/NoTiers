@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.NotificationFieldsService
+{
+public class ReturnResultEvent : IUpdateEvent<NotificationFieldsViewModel, NotificationField>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(NotificationFieldsViewModel model, ref IQueryable< NotificationField> repository, IUnitOfWork unitOfWork, Response<NotificationFieldsViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<NotificationField>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = NotificationFields
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

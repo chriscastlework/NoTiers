@@ -1,0 +1,13 @@
+using System;
+
+namespace CustomLogic.Services.AddOnClaimValueService
+{
+    public class AddOnClaimValuesViewModel
+    {
+
+        public int SubscriptionAddOnId {get;set;}
+        public int AddOnClaimId {get;set;}
+        public string Value {get;set;}
+
+    }
+}

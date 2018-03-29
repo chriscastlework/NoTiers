@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.DealContactRoleService
+{
+    public class DealContactRolesViewModel
+    {
+
+        public int Id {get;set;}
+        public string Name {get;set;}
+        public int? OrganisationId {get;set;}
+        public string Accessor {get;set;}
+
+    }
+}

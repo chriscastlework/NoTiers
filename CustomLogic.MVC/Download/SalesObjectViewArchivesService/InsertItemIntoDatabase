@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.SalesObjectViewArchivesService
+{
+    public class Save : IInsertEvent<SalesObjectViewArchivesViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(SalesObjectViewArchivesViewModel model, IUnitOfWork unitOfWork, Response<SalesObjectViewArchivesViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = SalesObjectViewArchives();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<SalesObjectViewArchive>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = SalesObjectViewArchives
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(SalesObjectViewArchivesViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<SalesObjectViewArchive>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<SalesObjectViewArchive>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

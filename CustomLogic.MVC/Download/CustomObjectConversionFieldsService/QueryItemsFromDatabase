@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CustomObjectConversionFieldsService
+{
+    public class QueryLogic : IViewListEvent<CustomObjectConversionFieldsViewModel, CustomObjectConversionField>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<CustomObjectConversionField> repository, NgTable<CustomObjectConversionFieldsViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<CustomObjectConversionFieldsViewModel>();
+
+            var query = CustomObjectConversionFields
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

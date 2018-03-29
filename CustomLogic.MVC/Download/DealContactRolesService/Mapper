@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.DealContactRolesService
+{
+public static class DealContactRolesMapper
+{
+
+public static DealContactRole MapInsertModelToDbModel(DealContactRolesViewModel model, DealContactRole newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new DealContactRole();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.OrganisationId = model.OrganisationId;
+            newDomainModel.Accessor = model.Accessor;
+    return newDomainModel;
+    }
+
+
+
+public static DealContactRolesViewModel MapDbModelToViewModel(DealContactRole dbModel)
+{
+var viewModel = new  DealContactRolesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+            viewModel.Accessor = dbModel.Accessor;
+
+return viewModel;
+}
+
+
+public static IQueryable<DealContactRolesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<DealContactRole> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new DealContactRolesViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+OrganisationId = c.OrganisationId,
+Accessor = c.Accessor,
+        });
+        }
+    }
+}
+
+

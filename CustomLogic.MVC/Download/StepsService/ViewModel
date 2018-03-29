@@ -1,0 +1,23 @@
+using System;
+
+namespace CustomLogic.Services.StepService
+{
+    public class StepsViewModel
+    {
+
+        public int Id {get;set;}
+        public string Name {get;set;}
+        public int StageId {get;set;}
+        public string Description {get;set;}
+        public int? StepAction {get;set;}
+        public int? YellowFlagDays {get;set;}
+        public int? YellowFlagStart {get;set;}
+        public int? RedFlagDays {get;set;}
+        public int? RedFlagStart {get;set;}
+        public int StepPercent {get;set;}
+        public int? AssetId {get;set;}
+        public int OrderInStage {get;set;}
+        public bool Mandatory {get;set;}
+
+    }
+}

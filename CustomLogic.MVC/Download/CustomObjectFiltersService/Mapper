@@ -1,0 +1,60 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CustomObjectFiltersService
+{
+public static class CustomObjectFiltersMapper
+{
+
+public static CustomObjectFilter MapInsertModelToDbModel(CustomObjectFiltersViewModel model, CustomObjectFilter newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CustomObjectFilter();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.CustomObjectId = model.CustomObjectId;
+            newDomainModel.CreatedById = model.CreatedById;
+            newDomainModel.LastModifiedById = model.LastModifiedById;
+            newDomainModel.Created = model.Created;
+            newDomainModel.LastModified = model.LastModified;
+    return newDomainModel;
+    }
+
+
+
+public static CustomObjectFiltersViewModel MapDbModelToViewModel(CustomObjectFilter dbModel)
+{
+var viewModel = new  CustomObjectFiltersViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.CustomObjectId = dbModel.CustomObjectId;
+            viewModel.CreatedById = dbModel.CreatedById;
+            viewModel.LastModifiedById = dbModel.LastModifiedById;
+            viewModel.Created = dbModel.Created;
+            viewModel.LastModified = dbModel.LastModified;
+
+return viewModel;
+}
+
+
+public static IQueryable<CustomObjectFiltersViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CustomObjectFilter> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CustomObjectFiltersViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+CustomObjectId = c.CustomObjectId,
+CreatedById = c.CreatedById,
+LastModifiedById = c.LastModifiedById,
+Created = c.Created,
+LastModified = c.LastModified,
+        });
+        }
+    }
+}
+
+

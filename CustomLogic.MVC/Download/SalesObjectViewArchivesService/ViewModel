@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.SalesObjectViewArchiveService
+{
+    public class SalesObjectViewArchivesViewModel
+    {
+
+        public int Id {get;set;}
+        public int OrganisationId {get;set;}
+        public string Name {get;set;}
+        public DateTime Created {get;set;}
+
+    }
+}

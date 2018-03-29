@@ -1,0 +1,48 @@
+using System.Linq;
+
+namespace CustomLogic.Services.MessageDealContactRecipientsService
+{
+public static class MessageDealContactRecipientsMapper
+{
+
+public static MessageDealContactRecipient MapInsertModelToDbModel(MessageDealContactRecipientsViewModel model, MessageDealContactRecipient newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new MessageDealContactRecipient();
+    }
+
+            newDomainModel.Id = model.ID;
+            newDomainModel.DealContactId = model.DealContactId;
+            newDomainModel.Conversation_Id = model.Conversation_Id;
+    return newDomainModel;
+    }
+
+
+
+public static MessageDealContactRecipientsViewModel MapDbModelToViewModel(MessageDealContactRecipient dbModel)
+{
+var viewModel = new  MessageDealContactRecipientsViewModel();
+
+            viewModel.ID = dbModel.Id;
+            viewModel.DealContactId = dbModel.DealContactId;
+            viewModel.Conversation_Id = dbModel.Conversation_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<MessageDealContactRecipientsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<MessageDealContactRecipient> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new MessageDealContactRecipientsViewModel()
+        {
+ID = c.Id,
+DealContactId = c.DealContactId,
+Conversation_Id = c.Conversation_Id,
+        });
+        }
+    }
+}
+
+

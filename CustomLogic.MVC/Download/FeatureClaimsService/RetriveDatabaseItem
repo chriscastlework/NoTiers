@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.FeatureClaimsService
+{
+    public class View : IViewEvent<FeatureClaimsViewModel,FeatureClaim>
+    {
+        public int CreatedId = 0;
+
+        public Response<FeatureClaimsViewModel> Run(FeatureClaimsViewModel model,ref IQueryable<FeatureClaim> repository, IUnitOfWork unitOfWork, Response<FeatureClaimsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = FeatureClaims
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing FeatureClaims");
+            }
+
+            return result;
+        }
+
+    }
+}

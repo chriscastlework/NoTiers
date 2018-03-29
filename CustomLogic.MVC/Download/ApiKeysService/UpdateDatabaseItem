@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.ApiKeysService
+{
+    public class Update : IUpdateEvent<ApiKeysViewModel,ApiKey>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(ApiKeysViewModel model, ref IQueryable<ApiKey> repository, IUnitOfWork unitOfWork, Response<ApiKeysViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = ApiKeys
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<ApiKey>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = ApiKeysMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

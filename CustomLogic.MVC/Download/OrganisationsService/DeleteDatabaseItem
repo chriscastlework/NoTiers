@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.OrganisationsService
+{
+    public class Delete : IDeleteEvent<OrganisationsViewModel,Organisation>
+    {
+
+        public bool Run(Organisations ViewModel model, ref IQueryable<Organisation>repository, IUnitOfWork unitOfWork, Response<OrganisationsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<Organisation>().Find(model.Id);unitOfWork.With<Organisation>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

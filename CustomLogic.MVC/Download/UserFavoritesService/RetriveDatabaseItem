@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.UserFavoritesService
+{
+    public class View : IViewEvent<UserFavoritesViewModel,UserFavorite>
+    {
+        public int CreatedId = 0;
+
+        public Response<UserFavoritesViewModel> Run(UserFavoritesViewModel model,ref IQueryable<UserFavorite> repository, IUnitOfWork unitOfWork, Response<UserFavoritesViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = UserFavorites
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing UserFavorites");
+            }
+
+            return result;
+        }
+
+    }
+}

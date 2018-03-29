@@ -1,0 +1,216 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using CustomLogic.Core.Database
+@using CustomLogic.Core.Models
+@using CustomLogic.UmbracoApis
+@using CustomLogic.Services.AccountsService
+
+
+@{
+    var rawData = Json.Encode(new AccountService(new VelocityRocketLegacy()).List(new NgTableParams(), new CoreUser()).Data);
+}
+
+<script>
+    (function () {
+
+        var app = angular.module("app", ["ngTable"]);
+
+        // Account Service
+        angular.module('app').factory('AccountApiService', AccountApiService);
+        AccountApiService.$inject = ['$http'];
+        function AccountApiService($http) {
+
+            return {
+                Get: get,
+                Post: post,
+                Put: put,
+                Delete: deleteApi
+            };
+
+            function get(id) {
+                return $http.get('/Umbraco/Api/Accounts/Get/' + id)
+                   .then(getAccountComplete)
+                   .catch(getAccountFail);
+
+                function getAccountComplete(response) {
+                    return response.data.Data;
+                }
+
+                function getAccountFail(error) {
+                    debugger;
+                }
+            };
+
+            function post(data) {
+                return $http.post('/Umbraco/Api/Accounts/Post/', data)
+                   .then(postAccountComplete)
+                   .catch(postAccountFail);
+
+                function postAccountComplete(response) {
+                    return response.data;
+                }
+
+                function postAccountFail(error) {
+                    debugger;
+                }
+            };
+
+            function put(id, data) {
+                return $http.put('/Umbraco/Api/Accounts/Put/' + id, data)
+                   .then(putAccountComplete)
+                   .catch(putAccountFail);
+
+                function putAccountComplete(response) {
+                    return response.data.Data;
+                }
+
+                function putAccountFail(error) {
+                    debugger;
+                }
+            };
+
+            function deleteApi(id) {
+                return $http.delete('/Umbraco/Api/Accounts/Delete/' + id)
+                   .then(deleteAccountComplete)
+                   .catch(deleteAccountFail);
+
+                function deleteAccountComplete(response) {
+                    return response.data.Data;
+                }
+
+                function deleteAccountFail(error) {
+                    debugger;
+                }
+            };
+        };
+        // Account Service End
+
+        // Account Table Controller
+        angular.module('app').controller('AccountController', AccountController);
+        AccountController.$inject = ["NgTableParams", "AccountApiService"];
+        function AccountController(NgTableParams, AccountApiService) {
+            var vm = this;
+            vm.tableParams = new NgTableParams({
+                page: 1,            // show first page
+                count: 10           // count per page
+            }, {
+                getData: function (params) {
+                    var postParams = {};
+                    postParams.page = params.page();
+                    postParams.count = params.count();
+                    postParams.total = params.total();
+                    postParams.filter = params.filter();
+                    postParams.sorting = params.sorting();
+                    postParams.group = params.group();
+                    return AccountApiService.Post(postParams) 
+                        .then(function (response) {
+                            params.total(response.Count);
+                            return response.Data;
+                        });
+                }
+            });
+            debugger;
+            vm.tableParams.data = @Html.Raw(rawData);
+        };
+        // Account Table Controller End
+    })();
+</script>
+
+
+<div ng-app="app">
+
+ <div ng-controller="AccountController as Accounts">
+
+        <h2 class="page-header">Account Table</h2>
+
+        <table ng-table="Accounts.tableParams" class="table table-bordered table-striped table-condensed">
+            <tr ng-repeat="row in $data track by row.Id">
+
+ <td data-title="'Id'" 
+ sortable="'Id'" 
+filter="{Id: 'text'}" >
+{{row.Id}}
+</td>
+ <td data-title="'Name'" 
+ sortable="'Name'" 
+filter="{Name: 'text'}" >
+{{row.Name}}
+</td>
+ <td data-title="'RevenueCurrency'" 
+ sortable="'RevenueCurrency'" 
+filter="{RevenueCurrency: 'text'}" >
+{{row.RevenueCurrency}}
+</td>
+ <td data-title="'RevenueAmount'" 
+ sortable="'RevenueAmount'" 
+filter="{RevenueAmount: 'text'}" >
+{{row.RevenueAmount}}
+</td>
+ <td data-title="'AddressLine1'" 
+ sortable="'AddressLine1'" 
+filter="{AddressLine1: 'text'}" >
+{{row.AddressLine1}}
+</td>
+ <td data-title="'AddressLine2'" 
+ sortable="'AddressLine2'" 
+filter="{AddressLine2: 'text'}" >
+{{row.AddressLine2}}
+</td>
+ <td data-title="'County'" 
+ sortable="'County'" 
+filter="{County: 'text'}" >
+{{row.County}}
+</td>
+ <td data-title="'PostCode'" 
+ sortable="'PostCode'" 
+filter="{PostCode: 'text'}" >
+{{row.PostCode}}
+</td>
+ <td data-title="'PhoneNumber'" 
+ sortable="'PhoneNumber'" 
+filter="{PhoneNumber: 'text'}" >
+{{row.PhoneNumber}}
+</td>
+
+ <td data-title="'DateCreated'" 
+ sortable="'DateCreated'" 
+filter="{DateCreated: 'text'}" >
+{{row.DateCreated}}
+</td>
+ <td data-title="'DateLastModeified'" 
+ sortable="'DateLastModeified'" 
+filter="{DateLastModeified: 'text'}" >
+{{row.DateLastModeified}}
+</td>
+ <td data-title="'CreatedById'" 
+ sortable="'CreatedById'" 
+filter="{CreatedById: 'text'}" >
+{{row.CreatedById}}
+</td>
+ <td data-title="'LastModifiedById'" 
+ sortable="'LastModifiedById'" 
+filter="{LastModifiedById: 'text'}" >
+{{row.LastModifiedById}}
+</td>
+
+ <td data-title="'City'" 
+ sortable="'City'" 
+filter="{City: 'text'}" >
+{{row.City}}
+</td>
+ <td data-title="'Country'" 
+ sortable="'Country'" 
+filter="{Country: 'text'}" >
+{{row.Country}}
+</td>
+
+
+
+
+
+            </tr>
+        </table>
+    </div>
+ </div>
+
+
+

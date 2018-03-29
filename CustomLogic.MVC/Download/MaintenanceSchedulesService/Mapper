@@ -1,0 +1,60 @@
+using System.Linq;
+
+namespace CustomLogic.Services.MaintenanceSchedulesService
+{
+public static class MaintenanceSchedulesMapper
+{
+
+public static MaintenanceSchedule MapInsertModelToDbModel(MaintenanceSchedulesViewModel model, MaintenanceSchedule newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new MaintenanceSchedule();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Reason = model.Reason;
+            newDomainModel.Start = model.Start;
+            newDomainModel.ExpectedFinish = model.ExpectedFinish;
+            newDomainModel.ActualFinish = model.ActualFinish;
+            newDomainModel.Status = model.Status;
+            newDomainModel.NotifyFrom = model.NotifyFrom;
+    return newDomainModel;
+    }
+
+
+
+public static MaintenanceSchedulesViewModel MapDbModelToViewModel(MaintenanceSchedule dbModel)
+{
+var viewModel = new  MaintenanceSchedulesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Reason = dbModel.Reason;
+            viewModel.Start = dbModel.Start;
+            viewModel.ExpectedFinish = dbModel.ExpectedFinish;
+            viewModel.ActualFinish = dbModel.ActualFinish;
+            viewModel.Status = dbModel.Status;
+            viewModel.NotifyFrom = dbModel.NotifyFrom;
+
+return viewModel;
+}
+
+
+public static IQueryable<MaintenanceSchedulesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<MaintenanceSchedule> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new MaintenanceSchedulesViewModel()
+        {
+Id = c.Id,
+Reason = c.Reason,
+Start = c.Start,
+ExpectedFinish = c.ExpectedFinish,
+ActualFinish = c.ActualFinish,
+Status = c.Status,
+NotifyFrom = c.NotifyFrom,
+        });
+        }
+    }
+}
+
+

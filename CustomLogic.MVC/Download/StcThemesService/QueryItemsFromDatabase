@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.StcThemesService
+{
+    public class QueryLogic : IViewListEvent<StcThemesViewModel, StcTheme>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<StcTheme> repository, NgTable<StcThemesViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<StcThemesViewModel>();
+
+            var query = StcThemes
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

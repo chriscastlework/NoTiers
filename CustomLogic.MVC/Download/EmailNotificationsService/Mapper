@@ -1,0 +1,48 @@
+using System.Linq;
+
+namespace CustomLogic.Services.EmailNotificationsService
+{
+public static class EmailNotificationsMapper
+{
+
+public static EmailNotification MapInsertModelToDbModel(EmailNotificationsViewModel model, EmailNotification newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new EmailNotification();
+    }
+
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.EmailType = model.EmailType;
+            newDomainModel.SentEmailDateTime = model.SentEmailDateTime;
+    return newDomainModel;
+    }
+
+
+
+public static EmailNotificationsViewModel MapDbModelToViewModel(EmailNotification dbModel)
+{
+var viewModel = new  EmailNotificationsViewModel();
+
+            viewModel.UserId = dbModel.UserId;
+            viewModel.EmailType = dbModel.EmailType;
+            viewModel.SentEmailDateTime = dbModel.SentEmailDateTime;
+
+return viewModel;
+}
+
+
+public static IQueryable<EmailNotificationsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<EmailNotification> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new EmailNotificationsViewModel()
+        {
+UserId = c.UserId,
+EmailType = c.EmailType,
+SentEmailDateTime = c.SentEmailDateTime,
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,20 @@
+﻿@using CustomLogic.MVC.Models
+
+@{
+    var alerts = TempData.ContainsKey(Alert.TempDataKey)
+        ? (List<Alert>) TempData[Alert.TempDataKey]
+        : new List<Alert>();
+}
+
+@if (alerts.Any())
+{
+    foreach (var alert in alerts)
+    {
+        <div class="alert alert-@alert.AlertStyle alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            @Html.Raw(alert.Message)
+        </div>
+    }
+}

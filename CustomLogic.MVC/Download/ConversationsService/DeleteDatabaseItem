@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ConversationsService
+{
+    public class Delete : IDeleteEvent<ConversationsViewModel,Conversation>
+    {
+
+        public bool Run(Conversations ViewModel model, ref IQueryable<Conversation>repository, IUnitOfWork unitOfWork, Response<ConversationsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<Conversation>().Find(model.Id);unitOfWork.With<Conversation>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

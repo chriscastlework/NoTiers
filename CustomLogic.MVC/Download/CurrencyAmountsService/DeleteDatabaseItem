@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CurrencyAmountsService
+{
+    public class Delete : IDeleteEvent<CurrencyAmountsViewModel,CurrencyAmount>
+    {
+
+        public bool Run(CurrencyAmounts ViewModel model, ref IQueryable<CurrencyAmount>repository, IUnitOfWork unitOfWork, Response<CurrencyAmountsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<CurrencyAmount>().Find(model.Id);unitOfWork.With<CurrencyAmount>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

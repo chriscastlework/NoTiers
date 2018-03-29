@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ApiConnectorsService
+{
+    public class Delete : IDeleteEvent<ApiConnectorsViewModel,ApiConnector>
+    {
+
+        public bool Run(ApiConnectors ViewModel model, ref IQueryable<ApiConnector>repository, IUnitOfWork unitOfWork, Response<ApiConnectorsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<ApiConnector>().Find(model.Id);unitOfWork.With<ApiConnector>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

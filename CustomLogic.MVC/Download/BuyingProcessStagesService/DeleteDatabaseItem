@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.BuyingProcessStagesService
+{
+    public class Delete : IDeleteEvent<BuyingProcessStagesViewModel,BuyingProcessStage>
+    {
+
+        public bool Run(BuyingProcessStages ViewModel model, ref IQueryable<BuyingProcessStage>repository, IUnitOfWork unitOfWork, Response<BuyingProcessStagesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<BuyingProcessStage>().Find(model.Id);unitOfWork.With<BuyingProcessStage>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

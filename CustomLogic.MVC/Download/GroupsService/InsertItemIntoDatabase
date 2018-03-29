@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.GroupsService
+{
+    public class Save : IInsertEvent<GroupsViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(GroupsViewModel model, IUnitOfWork unitOfWork, Response<GroupsViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = Groups();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<Group>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = Groups
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(GroupsViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<Group>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<Group>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

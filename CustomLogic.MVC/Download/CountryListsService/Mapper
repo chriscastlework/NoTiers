@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CountryListsService
+{
+public static class CountryListsMapper
+{
+
+public static CountryList MapInsertModelToDbModel(CountryListsViewModel model, CountryList newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CountryList();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.IsoCode = model.IsoCode;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Aliases = model.Aliases;
+    return newDomainModel;
+    }
+
+
+
+public static CountryListsViewModel MapDbModelToViewModel(CountryList dbModel)
+{
+var viewModel = new  CountryListsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.IsoCode = dbModel.IsoCode;
+            viewModel.Name = dbModel.Name;
+            viewModel.Aliases = dbModel.Aliases;
+
+return viewModel;
+}
+
+
+public static IQueryable<CountryListsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CountryList> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CountryListsViewModel()
+        {
+Id = c.Id,
+IsoCode = c.IsoCode,
+Name = c.Name,
+Aliases = c.Aliases,
+        });
+        }
+    }
+}
+
+

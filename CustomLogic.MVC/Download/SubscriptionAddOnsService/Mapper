@@ -1,0 +1,66 @@
+using System.Linq;
+
+namespace CustomLogic.Services.SubscriptionAddOnsService
+{
+public static class SubscriptionAddOnsMapper
+{
+
+public static SubscriptionAddOn MapInsertModelToDbModel(SubscriptionAddOnsViewModel model, SubscriptionAddOn newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new SubscriptionAddOn();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.SubscriptionId = model.SubscriptionId;
+            newDomainModel.AddOnId = model.AddOnId;
+            newDomainModel.AddOnCostId = model.AddOnCostId;
+            newDomainModel.GracePeriodDays = model.GracePeriodDays;
+            newDomainModel.TrialExpires = model.TrialExpires;
+            newDomainModel.IsDefaultAddOn = model.IsDefaultAddOn;
+            newDomainModel.BillDayOfMonth = model.BillDayOfMonth;
+            newDomainModel.BraintreeSubscriptionId = model.BraintreeSubscriptionId;
+    return newDomainModel;
+    }
+
+
+
+public static SubscriptionAddOnsViewModel MapDbModelToViewModel(SubscriptionAddOn dbModel)
+{
+var viewModel = new  SubscriptionAddOnsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.SubscriptionId = dbModel.SubscriptionId;
+            viewModel.AddOnId = dbModel.AddOnId;
+            viewModel.AddOnCostId = dbModel.AddOnCostId;
+            viewModel.GracePeriodDays = dbModel.GracePeriodDays;
+            viewModel.TrialExpires = dbModel.TrialExpires;
+            viewModel.IsDefaultAddOn = dbModel.IsDefaultAddOn;
+            viewModel.BillDayOfMonth = dbModel.BillDayOfMonth;
+            viewModel.BraintreeSubscriptionId = dbModel.BraintreeSubscriptionId;
+
+return viewModel;
+}
+
+
+public static IQueryable<SubscriptionAddOnsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<SubscriptionAddOn> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new SubscriptionAddOnsViewModel()
+        {
+Id = c.Id,
+SubscriptionId = c.SubscriptionId,
+AddOnId = c.AddOnId,
+AddOnCostId = c.AddOnCostId,
+GracePeriodDays = c.GracePeriodDays,
+TrialExpires = c.TrialExpires,
+IsDefaultAddOn = c.IsDefaultAddOn,
+BillDayOfMonth = c.BillDayOfMonth,
+BraintreeSubscriptionId = c.BraintreeSubscriptionId,
+        });
+        }
+    }
+}
+
+

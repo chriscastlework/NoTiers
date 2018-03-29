@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ImportedDatasService
+{
+    public class Delete : IDeleteEvent<ImportedDatasViewModel,ImportedData>
+    {
+
+        public bool Run(ImportedDatas ViewModel model, ref IQueryable<ImportedData>repository, IUnitOfWork unitOfWork, Response<ImportedDatasViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<ImportedData>().Find(model.Id);unitOfWork.With<ImportedData>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

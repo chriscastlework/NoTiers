@@ -1,0 +1,13 @@
+using System;
+
+namespace CustomLogic.Services.CustomFieldValueService
+{
+    public class CustomFieldValuesViewModel
+    {
+
+        public int CustomFieldId {get;set;}
+        public int EntityId {get;set;}
+        public string Value {get;set;}
+
+    }
+}

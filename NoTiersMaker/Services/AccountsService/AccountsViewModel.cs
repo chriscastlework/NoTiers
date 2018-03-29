@@ -1,0 +1,33 @@
+using System;
+
+namespace CustomLogic.Services.AccountsService
+{
+    public class AccountsViewModel
+    {
+
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string RevenueCurrency { get; set; }
+        public decimal RevenueAmount { get; set; }
+        public string AddressLine1 { get; set; }
+        public string AddressLine2 { get; set; }
+        public string County { get; set; }
+        public string PostCode { get; set; }
+        public string PhoneNumber { get; set; }
+        public string MainContactIndex { get; set; }
+        public string OwnerId { get; set; }
+        public DateTime? DateCreated { get; set; }
+        public DateTime? DateLastModeified { get; set; }
+        public string CreatedById { get; set; }
+        public string LastModifiedById { get; set; }
+        public int? LogoImage_Id { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
+        public int AccountType { get; set; }
+        public string ExternalId { get; set; }
+        public int? SalesProcessId { get; set; }
+        public int? StageId { get; set; }
+        public string Notes { get; set; }
+
+    }
+}

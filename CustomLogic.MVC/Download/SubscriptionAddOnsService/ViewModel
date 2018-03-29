@@ -1,0 +1,19 @@
+using System;
+
+namespace CustomLogic.Services.SubscriptionAddOnService
+{
+    public class SubscriptionAddOnsViewModel
+    {
+
+        public int Id {get;set;}
+        public int SubscriptionId {get;set;}
+        public int AddOnId {get;set;}
+        public int? AddOnCostId {get;set;}
+        public int GracePeriodDays {get;set;}
+        public DateTime? TrialExpires {get;set;}
+        public bool IsDefaultAddOn {get;set;}
+        public int BillDayOfMonth {get;set;}
+        public string BraintreeSubscriptionId {get;set;}
+
+    }
+}

@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.CustomLinksAndButtonsForRoleService
+{
+    public class CustomLinksAndButtonsForRolesViewModel
+    {
+
+        public int Id {get;set;}
+        public int OrgId {get;set;}
+        public string RoleId {get;set;}
+        public int CustomLinksAndButtonsId {get;set;}
+
+    }
+}

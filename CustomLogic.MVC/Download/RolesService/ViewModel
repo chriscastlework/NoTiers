@@ -1,0 +1,13 @@
+using System;
+
+namespace CustomLogic.Services.RoleService
+{
+    public class RolesViewModel
+    {
+
+        public string Id {get;set;}
+        public string Name {get;set;}
+        public bool EnabledForAllOrgs {get;set;}
+
+    }
+}

@@ -1,0 +1,143 @@
+using System;
+using System.Linq;
+using System.Net;
+using System.Web.Mvc;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Models;
+using CustomLogic.Services.CustomObjectFilterFieldsService;
+
+
+public class CustomObjectFilterFieldsController : Controller
+{
+    //private AomDbContext db = new AomDbContext();
+    private readonly IService<CustomObjectFilterFieldsViewModel>_CustomObjectFilterFieldsService = new CustomObjectFilterFieldsService(new DbContext());
+
+
+        // GET: CustomObjectFilterFields
+        public ActionResult Index()
+        {
+        return View(_CustomObjectFilterFields
+        Service.List(new NgTableParams() {page = 1, count = 1000}, null).Data.ToList());
+        }
+
+        // GET: CustomObjectFilterFields/Details/5
+        public ActionResult Details(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        return View(_CustomObjectFilterFields
+        Service.View(new CustomObjectFilterFields
+        ViewModel() { ID = id.Value}, null));
+        }
+
+        // GET: CustomObjectFilterFields/Create
+        public ActionResult Create()
+        {
+        return View();
+        }
+
+        // POST: CustomObjectFilterFields/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Name")] CustomObjectFilterFields
+        ViewModel aomMeta)
+        {
+        if (ModelState.IsValid)
+        {
+        var result =_CustomObjectFilterFields
+        Service.Insert(aomMeta, null);
+        if(result.Success)
+        return RedirectToAction("Index");
+
+        // what if it went wrong?
+        }
+
+        return View(aomMeta);
+        }
+
+        // GET: CustomObjectFilterFields
+        s/Edit/5
+        public ActionResult Edit(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var result = _CustomObjectFilterFields
+        Service.View(new CustomObjectFilterFields
+        ViewModel {ID = id.Value}, null);
+        if (!result.Success)
+        {
+        return HttpNotFound();
+        }
+        return View(result.Data);
+        }
+
+        // POST: CustomObjectFilterFields
+        s/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Name")] CustomObjectFilterFields
+        ViewModel aomMeta)
+        {
+        if (ModelState.IsValid)
+        {
+        var result = _CustomObjectFilterFields
+        Service.Update(aomMeta, null);
+        if(result.Success)
+        return RedirectToAction("Index");
+
+        // what if it goes wrong?
+        }
+        return View(aomMeta);
+        }
+
+        // GET: CustomObjectFilterFields
+        s/Delete/5
+        public ActionResult Delete(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var result = _CustomObjectFilterFields
+        Service.View(new CustomObjectFilterFields
+        ViewModel {ID = id.Value}, null);
+        if (!result.Success)
+        {
+        return HttpNotFound();
+        }
+        return View(result.Data);
+        }
+
+        // POST: CustomObjectFilterFields
+        s/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(Guid id)
+        {
+        var result = _CustomObjectFilterFields
+        Service.Delete(new CustomObjectFilterFields
+        ViewModel {ID = id}, null);
+        return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+        if (disposing)
+        {
+        // _CustomObjectFilterFields
+        Service = null; // make services disposeable?
+        }
+        base.Dispose(disposing);
+        }
+        }
+
+

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CustomObjectFilterFieldsService
+{
+    public class Delete : IDeleteEvent<CustomObjectFilterFieldsViewModel,CustomObjectFilterField>
+    {
+
+        public bool Run(CustomObjectFilterFields ViewModel model, ref IQueryable<CustomObjectFilterField>repository, IUnitOfWork unitOfWork, Response<CustomObjectFilterFieldsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<CustomObjectFilterField>().Find(model.Id);unitOfWork.With<CustomObjectFilterField>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.OAuth2TokenService
+{
+public static class OAuth2TokenMapper
+{
+
+public static OAuth2Token MapInsertModelToDbModel(OAuth2TokenViewModel model, OAuth2Token newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new OAuth2Token();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.OAuth2TokenType = model.OAuth2TokenType;
+            newDomainModel.CreatedDateTime = model.CreatedDateTime;
+            newDomainModel.User_Id = model.User_Id;
+            newDomainModel.AccessToken = model.AccessToken;
+    return newDomainModel;
+    }
+
+
+
+public static OAuth2TokenViewModel MapDbModelToViewModel(OAuth2Token dbModel)
+{
+var viewModel = new  OAuth2TokenViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.OAuth2TokenType = dbModel.OAuth2TokenType;
+            viewModel.CreatedDateTime = dbModel.CreatedDateTime;
+            viewModel.User_Id = dbModel.User_Id;
+            viewModel.AccessToken = dbModel.AccessToken;
+
+return viewModel;
+}
+
+
+public static IQueryable<OAuth2TokenViewModel> MapDbModelQueryToViewModelQuery(IQueryable<OAuth2Token> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new OAuth2TokenViewModel()
+        {
+Id = c.Id,
+OAuth2TokenType = c.OAuth2TokenType,
+CreatedDateTime = c.CreatedDateTime,
+User_Id = c.User_Id,
+AccessToken = c.AccessToken,
+        });
+        }
+    }
+}
+
+

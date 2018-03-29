@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.AdminEventLogService
+{
+public static class AdminEventLogMapper
+{
+
+public static AdminEventLog MapInsertModelToDbModel(AdminEventLogViewModel model, AdminEventLog newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new AdminEventLog();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static AdminEventLogViewModel MapDbModelToViewModel(AdminEventLog dbModel)
+{
+var viewModel = new  AdminEventLogViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<AdminEventLogViewModel> MapDbModelQueryToViewModelQuery(IQueryable<AdminEventLog> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new AdminEventLogViewModel()
+        {
+        });
+        }
+    }
+}
+
+

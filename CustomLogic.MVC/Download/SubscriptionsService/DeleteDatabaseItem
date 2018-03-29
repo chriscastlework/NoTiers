@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.SubscriptionsService
+{
+    public class Delete : IDeleteEvent<SubscriptionsViewModel,Subscription>
+    {
+
+        public bool Run(Subscriptions ViewModel model, ref IQueryable<Subscription>repository, IUnitOfWork unitOfWork, Response<SubscriptionsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<Subscription>().Find(model.Id);unitOfWork.With<Subscription>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

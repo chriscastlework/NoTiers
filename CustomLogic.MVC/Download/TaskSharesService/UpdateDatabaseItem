@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.TaskSharesService
+{
+    public class Update : IUpdateEvent<TaskSharesViewModel,TaskShare>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(TaskSharesViewModel model, ref IQueryable<TaskShare> repository, IUnitOfWork unitOfWork, Response<TaskSharesViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = TaskShares
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<TaskShare>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = TaskSharesMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

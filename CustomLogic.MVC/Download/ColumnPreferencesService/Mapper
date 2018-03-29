@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ColumnPreferencesService
+{
+public static class ColumnPreferencesMapper
+{
+
+public static ColumnPreference MapInsertModelToDbModel(ColumnPreferencesViewModel model, ColumnPreference newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ColumnPreference();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Visible = model.Visible;
+            newDomainModel.TablePreference_Id = model.TablePreference_Id;
+    return newDomainModel;
+    }
+
+
+
+public static ColumnPreferencesViewModel MapDbModelToViewModel(ColumnPreference dbModel)
+{
+var viewModel = new  ColumnPreferencesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.Visible = dbModel.Visible;
+            viewModel.TablePreference_Id = dbModel.TablePreference_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<ColumnPreferencesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ColumnPreference> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ColumnPreferencesViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+Visible = c.Visible,
+TablePreference_Id = c.TablePreference_Id,
+        });
+        }
+    }
+}
+
+

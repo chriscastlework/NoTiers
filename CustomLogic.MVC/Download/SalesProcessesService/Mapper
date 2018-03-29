@@ -1,0 +1,75 @@
+using System.Linq;
+
+namespace CustomLogic.Services.SalesProcessesService
+{
+public static class SalesProcessesMapper
+{
+
+public static SalesProcess MapInsertModelToDbModel(SalesProcessesViewModel model, SalesProcess newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new SalesProcess();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Description = model.Description;
+            newDomainModel.OrganisationId = model.OrganisationId;
+            newDomainModel.SalesProcessStatus = model.SalesProcessStatus;
+            newDomainModel.StepLevelProbability = model.StepLevelProbability;
+            newDomainModel.CustomTableId = model.CustomTableId;
+            newDomainModel.EntityType = model.EntityType;
+            newDomainModel.RecordTypeId = model.RecordTypeId;
+            newDomainModel.AutomaticMandatoryStepProgression = model.AutomaticMandatoryStepProgression;
+            newDomainModel.HideProbability = model.HideProbability;
+            newDomainModel.HideVerifiableOutcomes = model.HideVerifiableOutcomes;
+    return newDomainModel;
+    }
+
+
+
+public static SalesProcessesViewModel MapDbModelToViewModel(SalesProcess dbModel)
+{
+var viewModel = new  SalesProcessesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.Description = dbModel.Description;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+            viewModel.SalesProcessStatus = dbModel.SalesProcessStatus;
+            viewModel.StepLevelProbability = dbModel.StepLevelProbability;
+            viewModel.CustomTableId = dbModel.CustomTableId;
+            viewModel.EntityType = dbModel.EntityType;
+            viewModel.RecordTypeId = dbModel.RecordTypeId;
+            viewModel.AutomaticMandatoryStepProgression = dbModel.AutomaticMandatoryStepProgression;
+            viewModel.HideProbability = dbModel.HideProbability;
+            viewModel.HideVerifiableOutcomes = dbModel.HideVerifiableOutcomes;
+
+return viewModel;
+}
+
+
+public static IQueryable<SalesProcessesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<SalesProcess> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new SalesProcessesViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+Description = c.Description,
+OrganisationId = c.OrganisationId,
+SalesProcessStatus = c.SalesProcessStatus,
+StepLevelProbability = c.StepLevelProbability,
+CustomTableId = c.CustomTableId,
+EntityType = c.EntityType,
+RecordTypeId = c.RecordTypeId,
+AutomaticMandatoryStepProgression = c.AutomaticMandatoryStepProgression,
+HideProbability = c.HideProbability,
+HideVerifiableOutcomes = c.HideVerifiableOutcomes,
+        });
+        }
+    }
+}
+
+

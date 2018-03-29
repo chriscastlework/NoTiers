@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ProgramsService
+{
+    public class View : IViewEvent<ProgramsViewModel,Program>
+    {
+        public int CreatedId = 0;
+
+        public Response<ProgramsViewModel> Run(ProgramsViewModel model,ref IQueryable<Program> repository, IUnitOfWork unitOfWork, Response<ProgramsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = Programs
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing Programs");
+            }
+
+            return result;
+        }
+
+    }
+}

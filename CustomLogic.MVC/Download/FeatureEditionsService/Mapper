@@ -1,0 +1,45 @@
+using System.Linq;
+
+namespace CustomLogic.Services.FeatureEditionsService
+{
+public static class FeatureEditionsMapper
+{
+
+public static FeatureEdition MapInsertModelToDbModel(FeatureEditionsViewModel model, FeatureEdition newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new FeatureEdition();
+    }
+
+            newDomainModel.Feature_Id = model.Feature_Id;
+            newDomainModel.Edition_Id = model.Edition_Id;
+    return newDomainModel;
+    }
+
+
+
+public static FeatureEditionsViewModel MapDbModelToViewModel(FeatureEdition dbModel)
+{
+var viewModel = new  FeatureEditionsViewModel();
+
+            viewModel.Feature_Id = dbModel.Feature_Id;
+            viewModel.Edition_Id = dbModel.Edition_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<FeatureEditionsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<FeatureEdition> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new FeatureEditionsViewModel()
+        {
+Feature_Id = c.Feature_Id,
+Edition_Id = c.Edition_Id,
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.TagsService
+{
+    public class Save : IInsertEvent<TagsViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(TagsViewModel model, IUnitOfWork unitOfWork, Response<TagsViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = Tags();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<Tag>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = Tags
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(TagsViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<Tag>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<Tag>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

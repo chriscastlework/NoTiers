@@ -1,0 +1,26 @@
+﻿@model CustomLogic.SchemaBuilder.MicrosoftSQL.SchemaModels.ModelInfo
+
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.@Html.Raw(Model.TT_ViewModelName())Service
+{
+public class ReturnResultEvent : IUpdateEvent<@Html.Raw(Model.TT_ViewModelName())ViewModel, @Html.Raw(Model.TT_TableName())>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(@Html.Raw(Model.TT_ViewModelName())ViewModel model, ref IQueryable< @Html.Raw(Model.TT_TableName())> repository, IUnitOfWork unitOfWork, Response<@Html.Raw(Model.TT_ViewModelName())ViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<@Html.Raw(Model.TT_TableName())>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = @Html.Raw(Model.TT_ViewModelName())
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

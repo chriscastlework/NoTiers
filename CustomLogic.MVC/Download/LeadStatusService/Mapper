@@ -1,0 +1,48 @@
+using System.Linq;
+
+namespace CustomLogic.Services.LeadStatusService
+{
+public static class LeadStatusMapper
+{
+
+public static LeadStatu MapInsertModelToDbModel(LeadStatusViewModel model, LeadStatu newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new LeadStatu();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Label = model.Label;
+            newDomainModel.Key = model.Key;
+    return newDomainModel;
+    }
+
+
+
+public static LeadStatusViewModel MapDbModelToViewModel(LeadStatu dbModel)
+{
+var viewModel = new  LeadStatusViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Label = dbModel.Label;
+            viewModel.Key = dbModel.Key;
+
+return viewModel;
+}
+
+
+public static IQueryable<LeadStatusViewModel> MapDbModelQueryToViewModelQuery(IQueryable<LeadStatu> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new LeadStatusViewModel()
+        {
+Id = c.Id,
+Label = c.Label,
+Key = c.Key,
+        });
+        }
+    }
+}
+
+

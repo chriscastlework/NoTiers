@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.TaskSharesService
+{
+public static class TaskSharesMapper
+{
+
+public static TaskShare MapInsertModelToDbModel(TaskSharesViewModel model, TaskShare newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new TaskShare();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.DateShared = model.DateShared;
+            newDomainModel.Task_Id = model.Task_Id;
+            newDomainModel.Writable = model.Writable;
+    return newDomainModel;
+    }
+
+
+
+public static TaskSharesViewModel MapDbModelToViewModel(TaskShare dbModel)
+{
+var viewModel = new  TaskSharesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.UserId = dbModel.UserId;
+            viewModel.DateShared = dbModel.DateShared;
+            viewModel.Task_Id = dbModel.Task_Id;
+            viewModel.Writable = dbModel.Writable;
+
+return viewModel;
+}
+
+
+public static IQueryable<TaskSharesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<TaskShare> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new TaskSharesViewModel()
+        {
+Id = c.Id,
+UserId = c.UserId,
+DateShared = c.DateShared,
+Task_Id = c.Task_Id,
+Writable = c.Writable,
+        });
+        }
+    }
+}
+
+

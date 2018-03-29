@@ -1,0 +1,143 @@
+using System;
+using System.Linq;
+using System.Net;
+using System.Web.Mvc;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Models;
+using CustomLogic.Services.AssetTypesService;
+
+
+public class AssetTypesController : Controller
+{
+    //private AomDbContext db = new AomDbContext();
+    private readonly IService<AssetTypesViewModel>_AssetTypesService = new AssetTypesService(new DbContext());
+
+
+        // GET: AssetTypes
+        public ActionResult Index()
+        {
+        return View(_AssetTypes
+        Service.List(new NgTableParams() {page = 1, count = 1000}, null).Data.ToList());
+        }
+
+        // GET: AssetTypes/Details/5
+        public ActionResult Details(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        return View(_AssetTypes
+        Service.View(new AssetTypes
+        ViewModel() { ID = id.Value}, null));
+        }
+
+        // GET: AssetTypes/Create
+        public ActionResult Create()
+        {
+        return View();
+        }
+
+        // POST: AssetTypes/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Name")] AssetTypes
+        ViewModel aomMeta)
+        {
+        if (ModelState.IsValid)
+        {
+        var result =_AssetTypes
+        Service.Insert(aomMeta, null);
+        if(result.Success)
+        return RedirectToAction("Index");
+
+        // what if it went wrong?
+        }
+
+        return View(aomMeta);
+        }
+
+        // GET: AssetTypes
+        s/Edit/5
+        public ActionResult Edit(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var result = _AssetTypes
+        Service.View(new AssetTypes
+        ViewModel {ID = id.Value}, null);
+        if (!result.Success)
+        {
+        return HttpNotFound();
+        }
+        return View(result.Data);
+        }
+
+        // POST: AssetTypes
+        s/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Name")] AssetTypes
+        ViewModel aomMeta)
+        {
+        if (ModelState.IsValid)
+        {
+        var result = _AssetTypes
+        Service.Update(aomMeta, null);
+        if(result.Success)
+        return RedirectToAction("Index");
+
+        // what if it goes wrong?
+        }
+        return View(aomMeta);
+        }
+
+        // GET: AssetTypes
+        s/Delete/5
+        public ActionResult Delete(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var result = _AssetTypes
+        Service.View(new AssetTypes
+        ViewModel {ID = id.Value}, null);
+        if (!result.Success)
+        {
+        return HttpNotFound();
+        }
+        return View(result.Data);
+        }
+
+        // POST: AssetTypes
+        s/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(Guid id)
+        {
+        var result = _AssetTypes
+        Service.Delete(new AssetTypes
+        ViewModel {ID = id}, null);
+        return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+        if (disposing)
+        {
+        // _AssetTypes
+        Service = null; // make services disposeable?
+        }
+        base.Dispose(disposing);
+        }
+        }
+
+

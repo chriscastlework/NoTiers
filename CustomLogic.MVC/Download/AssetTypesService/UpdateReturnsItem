@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.AssetTypesService
+{
+public class ReturnResultEvent : IUpdateEvent<AssetTypesViewModel, AssetType>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(AssetTypesViewModel model, ref IQueryable< AssetType> repository, IUnitOfWork unitOfWork, Response<AssetTypesViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<AssetType>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = AssetTypes
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

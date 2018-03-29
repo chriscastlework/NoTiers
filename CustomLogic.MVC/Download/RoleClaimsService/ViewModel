@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.RoleClaimService
+{
+    public class RoleClaimsViewModel
+    {
+
+        public int Id {get;set;}
+        public string ClaimType {get;set;}
+        public string ClaimValue {get;set;}
+        public string ApplicationRoleId {get;set;}
+
+    }
+}

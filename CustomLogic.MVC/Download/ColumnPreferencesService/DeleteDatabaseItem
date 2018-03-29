@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ColumnPreferencesService
+{
+    public class Delete : IDeleteEvent<ColumnPreferencesViewModel,ColumnPreference>
+    {
+
+        public bool Run(ColumnPreferences ViewModel model, ref IQueryable<ColumnPreference>repository, IUnitOfWork unitOfWork, Response<ColumnPreferencesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<ColumnPreference>().Find(model.Id);unitOfWork.With<ColumnPreference>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

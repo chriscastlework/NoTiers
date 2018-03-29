@@ -1,0 +1,17 @@
+using System;
+
+namespace CustomLogic.Services.ApiAuthenticationService
+{
+    public class ApiAuthenticationsViewModel
+    {
+
+        public int Id {get;set;}
+        public string ApiAuthenticationToken {get;set;}
+        public DateTime? Expiry {get;set;}
+        public DateTime? DateCreated {get;set;}
+        public DateTime? DateLastModeified {get;set;}
+        public string CreatedById {get;set;}
+        public string LastModifiedById {get;set;}
+
+    }
+}

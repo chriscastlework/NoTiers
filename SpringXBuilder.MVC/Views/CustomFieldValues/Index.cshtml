@@ -1,0 +1,151 @@
+﻿<script>
+    (function () {
+
+        var app = angular.module("app", ["ngTable"]);
+
+        // CustomObjectRowField Service
+        angular.module('app').factory('CustomObjectRowFieldApiService', CustomObjectRowFieldApiService);
+        CustomObjectRowFieldApiService.$inject = ['$http'];
+        function CustomObjectRowFieldApiService($http) {
+
+            return {
+                Get: get,
+                Post: post,
+                Put: put,
+                Delete: deleteApi
+            };
+
+            function get(id) {
+                return $http.get('/api/CustomObjectRowField/' + id)
+                   .then(getCustomObjectRowFieldComplete)
+                   .catch(getCustomObjectRowFieldFail);
+
+                function getCustomObjectRowFieldComplete(response) {
+                    return response.data.Data;
+                }
+
+                function getCustomObjectRowFieldsFail(error) {
+                    debugger;
+                }
+            };
+
+            function post(data) {
+                return $http.post('/api/CustomObjectRowField/', data)
+                   .then(postCustomObjectRowFieldComplete)
+                   .catch(postCustomObjectRowFieldFail);
+
+                function postCustomObjectRowFieldComplete(response) {
+                    return response.data;
+                }
+
+                function postCustomObjectRowFieldFail(error) {
+                    debugger;
+                }
+            };
+
+            function put(id, data) {
+                return $http.put('/api/CustomObjectRowField/' + id, data)
+                   .then(putCustomObjectRowFieldComplete)
+                   .catch(putCustomObjectRowFieldFail);
+
+                function putCustomObjectRowFieldComplete(response) {
+                    return response.data.Data;
+                }
+
+                function putCustomObjectRowFieldFail(error) {
+                    debugger;
+                }
+            };
+
+            function deleteApi(id) {
+                return $http.delete('/api/CustomObjectRowField/' + id)
+                   .then(deleteCustomObjectRowFieldComplete)
+                   .catch(deleteCustomObjectRowFieldFail);
+
+                function deleteCustomObjectRowFieldComplete(response) {
+                    return response.data.Data;
+                }
+
+                function deleteCustomObjectRowFieldFail(error) {
+                    debugger;
+                }
+            };
+        };
+        // CustomObjectRowField Service End
+
+        // CustomObjectRowField Table Controller
+        angular.module('app').controller('CustomObjectRowFieldController', CustomObjectRowFieldController);
+        CustomObjectRowFieldController.$inject = ["NgTableParams", "CustomObjectRowFieldApiService"];
+        function CustomObjectRowFieldController(NgTableParams, CustomObjectRowFieldApiService) {
+            var vm = this;
+            vm.tableParams = new NgTableParams({
+                page: 1,            // show first page
+                count: 10           // count per page
+            }, {
+                getData: function (params) {
+                    var postParams = {};
+                    postParams.page = params.page();
+                    postParams.count = params.count();
+                    postParams.total = params.total();
+                    postParams.filter = params.filter();
+                    postParams.sorting = params.sorting();
+                    postParams.group = params.group();
+                    return CustomObjectRowFieldApiService.Post(postParams)
+                        .then(function (response) {
+                            params.total(response.Count);
+                            return response.Data;
+                        });
+                }
+            });
+        };
+        // CustomObjectRowField Table Controller End
+    })();
+</script>
+
+
+<div ng-app="app">
+
+    <div ng-controller="CustomObjectRowFieldController as CustomObjectRowFields">
+
+        <h2 class="page-header">CustomObjectRowField Table</h2>
+
+        <table ng-table="CustomObjectRowFields.tableParams" class="table table-bordered table-striped table-condensed">
+            <tr ng-repeat="row in $data track by row.Id">
+
+                <td data-title="'Id'"
+                    sortable="'Id'"
+                    filter="{Id: 'text'}">
+                    {{row.Id}}
+                </td>
+                <td data-title="'Value'"
+                    sortable="'Value'"
+                    filter="{Value: 'text'}">
+                    {{row.Value| limitTo : 100}}
+                </td>
+                <td data-title="'Field_Id'"
+                    sortable="'Field_Id'"
+                    filter="{Field_Id: 'text'}">
+                    {{row.Field_Id}}
+                </td>
+                <td data-title="'CustomObjectRow_Id'"
+                    sortable="'CustomObjectRow_Id'"
+                    filter="{CustomObjectRow_Id: 'text'}">
+                    {{row.CustomObjectRow_Id}}
+                </td>
+                <td data-title="'CustomObjectType'"
+                    sortable="'CustomObjectType'"
+                    filter="{CustomObjectType: 'text'}">
+                    {{row.CustomObjectType}}
+                </td>
+                <td data-title="'CustomRowName'"
+                    sortable="'CustomRowName'"
+                    filter="{CustomRowName: 'text'}">
+                    {{row.CustomRowName}}
+                </td>
+                <td data-title="'Links'">
+                    <a href="/Applet/LoadAngular/{{row.Id}}">Load App</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

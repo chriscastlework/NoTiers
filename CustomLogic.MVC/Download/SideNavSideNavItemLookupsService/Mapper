@@ -1,0 +1,48 @@
+using System.Linq;
+
+namespace CustomLogic.Services.SideNavSideNavItemLookupsService
+{
+public static class SideNavSideNavItemLookupsMapper
+{
+
+public static SideNavSideNavItemLookup MapInsertModelToDbModel(SideNavSideNavItemLookupsViewModel model, SideNavSideNavItemLookup newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new SideNavSideNavItemLookup();
+    }
+
+            newDomainModel.SideNavId = model.SideNavId;
+            newDomainModel.SideNavItemId = model.SideNavItemId;
+            newDomainModel.Order = model.Order;
+    return newDomainModel;
+    }
+
+
+
+public static SideNavSideNavItemLookupsViewModel MapDbModelToViewModel(SideNavSideNavItemLookup dbModel)
+{
+var viewModel = new  SideNavSideNavItemLookupsViewModel();
+
+            viewModel.SideNavId = dbModel.SideNavId;
+            viewModel.SideNavItemId = dbModel.SideNavItemId;
+            viewModel.Order = dbModel.Order;
+
+return viewModel;
+}
+
+
+public static IQueryable<SideNavSideNavItemLookupsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<SideNavSideNavItemLookup> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new SideNavSideNavItemLookupsViewModel()
+        {
+SideNavId = c.SideNavId,
+SideNavItemId = c.SideNavItemId,
+Order = c.Order,
+        });
+        }
+    }
+}
+
+

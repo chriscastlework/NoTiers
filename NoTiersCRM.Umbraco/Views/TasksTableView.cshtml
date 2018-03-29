@@ -1,0 +1,18 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = "MainSection.cshtml";
+}
+
+
+@* the fun starts here *@
+
+
+  <div class="col-md-1">
+        @Html.Partial("BottomNavigation")
+    </div>
+    
+    
+      <div class="col-md-11">
+@Html.Partial("TasksTable")
+    </div>
+    

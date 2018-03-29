@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CustomFieldTypeGroupService
+{
+    public class Delete : IDeleteEvent<CustomFieldTypeGroupViewModel,CustomFieldTypeGroup>
+    {
+
+        public bool Run(CustomFieldTypeGroup ViewModel model, ref IQueryable<CustomFieldTypeGroup>repository, IUnitOfWork unitOfWork, Response<CustomFieldTypeGroupViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<CustomFieldTypeGroup>().Find(model.Id);unitOfWork.With<CustomFieldTypeGroup>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

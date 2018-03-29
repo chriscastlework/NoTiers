@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.PickListOptionsService
+{
+public static class PickListOptionsMapper
+{
+
+public static PickListOption MapInsertModelToDbModel(PickListOptionsViewModel model, PickListOption newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new PickListOption();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.PickListId = model.PickListId;
+            newDomainModel.OptionName = model.OptionName;
+            newDomainModel.OptionValue = model.OptionValue;
+    return newDomainModel;
+    }
+
+
+
+public static PickListOptionsViewModel MapDbModelToViewModel(PickListOption dbModel)
+{
+var viewModel = new  PickListOptionsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.PickListId = dbModel.PickListId;
+            viewModel.OptionName = dbModel.OptionName;
+            viewModel.OptionValue = dbModel.OptionValue;
+
+return viewModel;
+}
+
+
+public static IQueryable<PickListOptionsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<PickListOption> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new PickListOptionsViewModel()
+        {
+Id = c.Id,
+PickListId = c.PickListId,
+OptionName = c.OptionName,
+OptionValue = c.OptionValue,
+        });
+        }
+    }
+}
+
+

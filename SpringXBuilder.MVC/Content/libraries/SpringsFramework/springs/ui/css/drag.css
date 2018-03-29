@@ -1,0 +1,25 @@
+.sp_draggable_dragging>*
+{
+    opacity: 0.5;
+    filter:alpha(opacity=50);
+}
+
+.sp_draggable_over
+{
+    border-color:blue;
+    border-width: 4px;
+}
+
+.sp_draggable_placeholder
+{
+    width:10px;
+    height:10px;
+    visibility: hidden;
+}
+
+.sp_draggable_preview
+{
+    visibility:visible;
+    opacity: 0.1;
+    filter:alpha(opacity=10);
+}

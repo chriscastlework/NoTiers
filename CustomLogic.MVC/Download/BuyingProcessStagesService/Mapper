@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.BuyingProcessStagesService
+{
+public static class BuyingProcessStagesMapper
+{
+
+public static BuyingProcessStage MapInsertModelToDbModel(BuyingProcessStagesViewModel model, BuyingProcessStage newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new BuyingProcessStage();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.SalesStagesCount = model.SalesStagesCount;
+            newDomainModel.Order = model.Order;
+            newDomainModel.BuyingProcess_Id = model.BuyingProcess_Id;
+    return newDomainModel;
+    }
+
+
+
+public static BuyingProcessStagesViewModel MapDbModelToViewModel(BuyingProcessStage dbModel)
+{
+var viewModel = new  BuyingProcessStagesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.SalesStagesCount = dbModel.SalesStagesCount;
+            viewModel.Order = dbModel.Order;
+            viewModel.BuyingProcess_Id = dbModel.BuyingProcess_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<BuyingProcessStagesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<BuyingProcessStage> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new BuyingProcessStagesViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+SalesStagesCount = c.SalesStagesCount,
+Order = c.Order,
+BuyingProcess_Id = c.BuyingProcess_Id,
+        });
+        }
+    }
+}
+
+

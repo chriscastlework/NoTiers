@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ClientCorsOriginsService
+{
+    public class Delete : IDeleteEvent<ClientCorsOriginsViewModel,ClientCorsOrigin>
+    {
+
+        public bool Run(ClientCorsOrigins ViewModel model, ref IQueryable<ClientCorsOrigin>repository, IUnitOfWork unitOfWork, Response<ClientCorsOriginsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<ClientCorsOrigin>().Find(model.Id);unitOfWork.With<ClientCorsOrigin>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

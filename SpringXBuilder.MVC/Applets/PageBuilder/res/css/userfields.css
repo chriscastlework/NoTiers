@@ -1,0 +1,30 @@
+.pb-user-field
+{
+    border:1px solid lightgrey;
+    background:white;
+    min-height:50px;
+    padding:5px;
+    margin-bottom:0px !important;
+}
+.pb-user-field:not(:first-child)
+{
+    margin-top:5px !important;
+}
+
+.pb-expression
+{
+    /*background: #ececec;*/
+    background: #FCFCFC;
+}
+
+.pb-condition
+{
+    background: #EFEFEF;
+}
+
+.pb-operation
+{
+    background: #ececec;
+    margin-top:10px;
+    padding:10px;
+}

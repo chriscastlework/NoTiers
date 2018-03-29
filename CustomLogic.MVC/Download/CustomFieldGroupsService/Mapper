@@ -1,0 +1,57 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CustomFieldGroupsService
+{
+public static class CustomFieldGroupsMapper
+{
+
+public static CustomFieldGroup MapInsertModelToDbModel(CustomFieldGroupsViewModel model, CustomFieldGroup newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CustomFieldGroup();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.OrganisationId = model.OrganisationId;
+            newDomainModel.Name = model.Name;
+            newDomainModel.GroupType = model.GroupType;
+            newDomainModel.IsEnabled = model.IsEnabled;
+            newDomainModel.DisplayOrder = model.DisplayOrder;
+    return newDomainModel;
+    }
+
+
+
+public static CustomFieldGroupsViewModel MapDbModelToViewModel(CustomFieldGroup dbModel)
+{
+var viewModel = new  CustomFieldGroupsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+            viewModel.Name = dbModel.Name;
+            viewModel.GroupType = dbModel.GroupType;
+            viewModel.IsEnabled = dbModel.IsEnabled;
+            viewModel.DisplayOrder = dbModel.DisplayOrder;
+
+return viewModel;
+}
+
+
+public static IQueryable<CustomFieldGroupsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CustomFieldGroup> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CustomFieldGroupsViewModel()
+        {
+Id = c.Id,
+OrganisationId = c.OrganisationId,
+Name = c.Name,
+GroupType = c.GroupType,
+IsEnabled = c.IsEnabled,
+DisplayOrder = c.DisplayOrder,
+        });
+        }
+    }
+}
+
+

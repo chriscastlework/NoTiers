@@ -1,0 +1,17 @@
+using System;
+
+namespace CustomLogic.Services.CustomObjectFilterService
+{
+    public class CustomObjectFiltersViewModel
+    {
+
+        public int Id {get;set;}
+        public string Name {get;set;}
+        public int CustomObjectId {get;set;}
+        public string CreatedById {get;set;}
+        public string LastModifiedById {get;set;}
+        public DateTime Created {get;set;}
+        public DateTime LastModified {get;set;}
+
+    }
+}

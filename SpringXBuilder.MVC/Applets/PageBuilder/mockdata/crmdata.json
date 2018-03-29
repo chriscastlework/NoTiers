@@ -1,0 +1,194 @@
+{
+    "page": {
+        "type": 18,
+        "id": "IMBizAiKP2OX",
+        "mappedEntityId": "Org.Account",
+        "mappingContextId": "Org",
+        "name": "My Page",
+        "visibility": {
+            "type": "",
+            "id": "GSeSfy8rDmcV",
+            "mappedEntityId": 1,
+            "mappingContextId": null
+        },
+        "elements": [
+            {
+                "type": 2,
+                "id": "Me4Y9DOn5LXO",
+                "index": 0,
+                "mappedEntityId": null,
+                "mappingContextId": "Org.Account",
+                "name": "Label_WTW6",
+                "visibility": {
+                    "type": "",
+                    "id": "czlReEofzuwC",
+                    "mappedEntityId": 1,
+                    "mappingContextId": null
+                },
+                "align": {
+                    "type": "",
+                    "id": "cewuILweN0iB",
+                    "align": "left"
+                },
+                "width": {
+                    "type": "",
+                    "id": "eMi38hVIBnjk",
+                    "width": 0,
+                    "size": "full"
+                },
+                "textSize": {
+                    "multiline": false,
+                    "rows": 1
+                },
+                "textColor": {
+                    "type": "",
+                    "id": "8ftCkzHYS6MY",
+                    "mappedEntityId": null,
+                    "mappingContextId": null
+                },
+                "backgroundColor": {
+                    "type": "",
+                    "id": "HlMzgw0Wp9mC",
+                    "mappedEntityId": null,
+                    "mappingContextId": null
+                },
+                "displayValue": {
+                    "type": "",
+                    "id": "YExzJ7NGW5ji",
+                    "mappedEntityId": "6aV8",
+                    "mappingContextId": "Org.Account"
+                },
+                "hyperlink": {
+                    "type": "1",
+                    "id": "cHII4SkiYljn",
+                    "mappedEntityId": null,
+                    "mappingContextId": "Org.Account",
+                    "url": ""
+                }
+            }
+        ]
+    },
+    "userFields": {
+        "values": [
+            {
+                "id": "6aV8",
+                "name": "MyNewValue",
+                "fieldType": 1,
+                "objectType": 2,
+                "removeable": true,
+                "valueType": 2,
+                "value": "My New Value"
+            },
+            {
+                "id": "7IYD",
+                "name": "Hello world",
+                "fieldType": 1,
+                "objectType": 2,
+                "removeable": true,
+                "valueType": 2,
+                "value": "Hello world"
+            },
+            {
+                "id": 1,
+                "name": "YES",
+                "fieldType": 1,
+                "objectType": 4,
+                "removeable": false,
+                "valueType": 256,
+                "value": "true"
+            },
+            {
+                "id": 2,
+                "name": "NO",
+                "fieldType": 1,
+                "objectType": 4,
+                "removeable": false,
+                "valueType": 256,
+                "value": "false"
+            },
+            {
+                "id": 3,
+                "name": "TODAY",
+                "fieldType": 1,
+                "objectType": 16,
+                "removeable": false,
+                "valueType": 8,
+                "value": "2016-09-06T16:11:55.736Z"
+            },
+            {
+                "id": 10,
+                "name": "YEAR START",
+                "fieldType": 1,
+                "objectType": 2,
+                "removeable": false,
+                "valueType": 2048,
+                "value": 2048
+            },
+            {
+                "id": 11,
+                "name": "YEAR END",
+                "fieldType": 1,
+                "objectType": 2,
+                "removeable": false,
+                "valueType": 4096,
+                "value": 4096
+            },
+            {
+                "id": 4,
+                "name": "SPACE_SYMBOL",
+                "fieldType": 1,
+                "objectType": 2,
+                "removeable": false,
+                "valueType": 2,
+                "value": " "
+            },
+            {
+                "id": 5,
+                "name": "COMMA",
+                "fieldType": 1,
+                "objectType": 2,
+                "removeable": false,
+                "valueType": 2,
+                "value": ","
+            },
+            {
+                "id": 6,
+                "name": "PI",
+                "fieldType": 1,
+                "objectType": 8,
+                "removeable": false,
+                "valueType": 1,
+                "value": 3.141592653589793
+            },
+            {
+                "id": 7,
+                "name": "RED",
+                "fieldType": 1,
+                "objectType": 8,
+                "removeable": false,
+                "valueType": 512,
+                "value": "#FF0000"
+            },
+            {
+                "id": 8,
+                "name": "AMBER",
+                "fieldType": 1,
+                "objectType": 8,
+                "removeable": false,
+                "valueType": 512,
+                "value": "#FF7f00"
+            },
+            {
+                "id": 9,
+                "name": "GREEN",
+                "fieldType": 1,
+                "objectType": 8,
+                "removeable": false,
+                "valueType": 512,
+                "value": "#00FF00"
+            }
+        ],
+        "derived": [],
+        "conditional": []
+    }
+}

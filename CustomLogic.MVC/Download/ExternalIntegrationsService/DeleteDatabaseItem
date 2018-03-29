@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ExternalIntegrationsService
+{
+    public class Delete : IDeleteEvent<ExternalIntegrationsViewModel,ExternalIntegration>
+    {
+
+        public bool Run(ExternalIntegrations ViewModel model, ref IQueryable<ExternalIntegration>repository, IUnitOfWork unitOfWork, Response<ExternalIntegrationsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<ExternalIntegration>().Find(model.Id);unitOfWork.With<ExternalIntegration>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

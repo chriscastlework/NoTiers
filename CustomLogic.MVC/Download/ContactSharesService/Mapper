@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ContactSharesService
+{
+public static class ContactSharesMapper
+{
+
+public static ContactShare MapInsertModelToDbModel(ContactSharesViewModel model, ContactShare newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ContactShare();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.DateShared = model.DateShared;
+            newDomainModel.Contact_Id = model.Contact_Id;
+    return newDomainModel;
+    }
+
+
+
+public static ContactSharesViewModel MapDbModelToViewModel(ContactShare dbModel)
+{
+var viewModel = new  ContactSharesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.UserId = dbModel.UserId;
+            viewModel.DateShared = dbModel.DateShared;
+            viewModel.Contact_Id = dbModel.Contact_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<ContactSharesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ContactShare> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ContactSharesViewModel()
+        {
+Id = c.Id,
+UserId = c.UserId,
+DateShared = c.DateShared,
+Contact_Id = c.Contact_Id,
+        });
+        }
+    }
+}
+
+

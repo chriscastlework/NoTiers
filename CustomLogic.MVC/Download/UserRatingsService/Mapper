@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.UserRatingsService
+{
+public static class UserRatingsMapper
+{
+
+public static UserRating MapInsertModelToDbModel(UserRatingsViewModel model, UserRating newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new UserRating();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static UserRatingsViewModel MapDbModelToViewModel(UserRating dbModel)
+{
+var viewModel = new  UserRatingsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<UserRatingsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<UserRating> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new UserRatingsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

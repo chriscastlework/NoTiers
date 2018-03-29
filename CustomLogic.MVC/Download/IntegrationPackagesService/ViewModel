@@ -1,0 +1,23 @@
+using System;
+
+namespace CustomLogic.Services.IntegrationPackageService
+{
+    public class IntegrationPackagesViewModel
+    {
+
+        public Guid Id {get;set;}
+        public string Name {get;set;}
+        public string Description {get;set;}
+        public string HashedPassword {get;set;}
+        public string PasswordSalt {get;set;}
+        public DateTime? DateCreated {get;set;}
+        public DateTime? DateLastModified {get;set;}
+        public string CreatedById {get;set;}
+        public string LastModifiedById {get;set;}
+        public int? Organisation_Id {get;set;}
+        public bool Active {get;set;}
+        public Guid OriginalPackageId {get;set;}
+        public bool Installed {get;set;}
+
+    }
+}

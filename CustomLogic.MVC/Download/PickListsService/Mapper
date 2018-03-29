@@ -1,0 +1,57 @@
+using System.Linq;
+
+namespace CustomLogic.Services.PickListsService
+{
+public static class PickListsMapper
+{
+
+public static PickList MapInsertModelToDbModel(PickListsViewModel model, PickList newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new PickList();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Accessor = model.Accessor;
+            newDomainModel.Name = model.Name;
+            newDomainModel.MultipleSelections = model.MultipleSelections;
+            newDomainModel.MultipleSelectionsAllowed = model.MultipleSelectionsAllowed;
+            newDomainModel.OrganisationId = model.OrganisationId;
+    return newDomainModel;
+    }
+
+
+
+public static PickListsViewModel MapDbModelToViewModel(PickList dbModel)
+{
+var viewModel = new  PickListsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Accessor = dbModel.Accessor;
+            viewModel.Name = dbModel.Name;
+            viewModel.MultipleSelections = dbModel.MultipleSelections;
+            viewModel.MultipleSelectionsAllowed = dbModel.MultipleSelectionsAllowed;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+
+return viewModel;
+}
+
+
+public static IQueryable<PickListsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<PickList> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new PickListsViewModel()
+        {
+Id = c.Id,
+Accessor = c.Accessor,
+Name = c.Name,
+MultipleSelections = c.MultipleSelections,
+MultipleSelectionsAllowed = c.MultipleSelectionsAllowed,
+OrganisationId = c.OrganisationId,
+        });
+        }
+    }
+}
+
+

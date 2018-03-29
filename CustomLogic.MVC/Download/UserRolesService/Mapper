@@ -1,0 +1,48 @@
+using System.Linq;
+
+namespace CustomLogic.Services.UserRolesService
+{
+public static class UserRolesMapper
+{
+
+public static UserRole MapInsertModelToDbModel(UserRolesViewModel model, UserRole newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new UserRole();
+    }
+
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.RoleId = model.RoleId;
+            newDomainModel.IdentityUser_Id = model.IdentityUser_Id;
+    return newDomainModel;
+    }
+
+
+
+public static UserRolesViewModel MapDbModelToViewModel(UserRole dbModel)
+{
+var viewModel = new  UserRolesViewModel();
+
+            viewModel.UserId = dbModel.UserId;
+            viewModel.RoleId = dbModel.RoleId;
+            viewModel.IdentityUser_Id = dbModel.IdentityUser_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<UserRolesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<UserRole> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new UserRolesViewModel()
+        {
+UserId = c.UserId,
+RoleId = c.RoleId,
+IdentityUser_Id = c.IdentityUser_Id,
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.AccountSharesService
+{
+public static class AccountSharesMapper
+{
+
+public static AccountShare MapInsertModelToDbModel(AccountSharesViewModel model, AccountShare newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new AccountShare();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.DateShared = model.DateShared;
+            newDomainModel.Account_Id = model.Account_Id;
+            newDomainModel.Writable = model.Writable;
+    return newDomainModel;
+    }
+
+
+
+public static AccountSharesViewModel MapDbModelToViewModel(AccountShare dbModel)
+{
+var viewModel = new  AccountSharesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.UserId = dbModel.UserId;
+            viewModel.DateShared = dbModel.DateShared;
+            viewModel.Account_Id = dbModel.Account_Id;
+            viewModel.Writable = dbModel.Writable;
+
+return viewModel;
+}
+
+
+public static IQueryable<AccountSharesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<AccountShare> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new AccountSharesViewModel()
+        {
+Id = c.Id,
+UserId = c.UserId,
+DateShared = c.DateShared,
+Account_Id = c.Account_Id,
+Writable = c.Writable,
+        });
+        }
+    }
+}
+
+

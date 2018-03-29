@@ -1,0 +1,19 @@
+using System;
+
+namespace CustomLogic.Services.ExternalIntegrationTypeMappingService
+{
+    public class ExternalIntegrationTypeMappingsViewModel
+    {
+
+        public int Id {get;set;}
+        public string EntityType {get;set;}
+        public int ExternalIntegrationId {get;set;}
+        public string CustomObjectKey {get;set;}
+        public string AssociatedType {get;set;}
+        public bool DirectionalSyncEnabled {get;set;}
+        public bool DirectionalSyncUpEnabled {get;set;}
+        public bool DirectionalSyncDownEnabled {get;set;}
+        public bool? DailyBulkSyncEnabled {get;set;}
+
+    }
+}

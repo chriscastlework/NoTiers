@@ -1,0 +1,143 @@
+using System;
+using System.Linq;
+using System.Net;
+using System.Web.Mvc;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Models;
+using CustomLogic.Services.FeatureEditionsService;
+
+
+public class FeatureEditionsController : Controller
+{
+    //private AomDbContext db = new AomDbContext();
+    private readonly IService<FeatureEditionsViewModel>_FeatureEditionsService = new FeatureEditionsService(new DbContext());
+
+
+        // GET: FeatureEditions
+        public ActionResult Index()
+        {
+        return View(_FeatureEditions
+        Service.List(new NgTableParams() {page = 1, count = 1000}, null).Data.ToList());
+        }
+
+        // GET: FeatureEditions/Details/5
+        public ActionResult Details(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        return View(_FeatureEditions
+        Service.View(new FeatureEditions
+        ViewModel() { ID = id.Value}, null));
+        }
+
+        // GET: FeatureEditions/Create
+        public ActionResult Create()
+        {
+        return View();
+        }
+
+        // POST: FeatureEditions/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Name")] FeatureEditions
+        ViewModel aomMeta)
+        {
+        if (ModelState.IsValid)
+        {
+        var result =_FeatureEditions
+        Service.Insert(aomMeta, null);
+        if(result.Success)
+        return RedirectToAction("Index");
+
+        // what if it went wrong?
+        }
+
+        return View(aomMeta);
+        }
+
+        // GET: FeatureEditions
+        s/Edit/5
+        public ActionResult Edit(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var result = _FeatureEditions
+        Service.View(new FeatureEditions
+        ViewModel {ID = id.Value}, null);
+        if (!result.Success)
+        {
+        return HttpNotFound();
+        }
+        return View(result.Data);
+        }
+
+        // POST: FeatureEditions
+        s/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Name")] FeatureEditions
+        ViewModel aomMeta)
+        {
+        if (ModelState.IsValid)
+        {
+        var result = _FeatureEditions
+        Service.Update(aomMeta, null);
+        if(result.Success)
+        return RedirectToAction("Index");
+
+        // what if it goes wrong?
+        }
+        return View(aomMeta);
+        }
+
+        // GET: FeatureEditions
+        s/Delete/5
+        public ActionResult Delete(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var result = _FeatureEditions
+        Service.View(new FeatureEditions
+        ViewModel {ID = id.Value}, null);
+        if (!result.Success)
+        {
+        return HttpNotFound();
+        }
+        return View(result.Data);
+        }
+
+        // POST: FeatureEditions
+        s/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(Guid id)
+        {
+        var result = _FeatureEditions
+        Service.Delete(new FeatureEditions
+        ViewModel {ID = id}, null);
+        return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+        if (disposing)
+        {
+        // _FeatureEditions
+        Service = null; // make services disposeable?
+        }
+        base.Dispose(disposing);
+        }
+        }
+
+

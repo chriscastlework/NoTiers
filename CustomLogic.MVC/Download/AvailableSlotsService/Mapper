@@ -1,0 +1,57 @@
+using System.Linq;
+
+namespace CustomLogic.Services.AvailableSlotsService
+{
+public static class AvailableSlotsMapper
+{
+
+public static AvailableSlot MapInsertModelToDbModel(AvailableSlotsViewModel model, AvailableSlot newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new AvailableSlot();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.OrganisationId = model.OrganisationId;
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.Title = model.Title;
+            newDomainModel.StartDate = model.StartDate;
+            newDomainModel.EndDate = model.EndDate;
+    return newDomainModel;
+    }
+
+
+
+public static AvailableSlotsViewModel MapDbModelToViewModel(AvailableSlot dbModel)
+{
+var viewModel = new  AvailableSlotsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+            viewModel.UserId = dbModel.UserId;
+            viewModel.Title = dbModel.Title;
+            viewModel.StartDate = dbModel.StartDate;
+            viewModel.EndDate = dbModel.EndDate;
+
+return viewModel;
+}
+
+
+public static IQueryable<AvailableSlotsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<AvailableSlot> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new AvailableSlotsViewModel()
+        {
+Id = c.Id,
+OrganisationId = c.OrganisationId,
+UserId = c.UserId,
+Title = c.Title,
+StartDate = c.StartDate,
+EndDate = c.EndDate,
+        });
+        }
+    }
+}
+
+

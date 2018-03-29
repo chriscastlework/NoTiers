@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ConsentsService
+{
+    public class View : IViewEvent<ConsentsViewModel,Consent>
+    {
+        public int CreatedId = 0;
+
+        public Response<ConsentsViewModel> Run(ConsentsViewModel model,ref IQueryable<Consent> repository, IUnitOfWork unitOfWork, Response<ConsentsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = Consents
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing Consents");
+            }
+
+            return result;
+        }
+
+    }
+}

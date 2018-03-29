@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.CustomObjectFiltersService
+{
+    public class Update : IUpdateEvent<CustomObjectFiltersViewModel,CustomObjectFilter>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(CustomObjectFiltersViewModel model, ref IQueryable<CustomObjectFilter> repository, IUnitOfWork unitOfWork, Response<CustomObjectFiltersViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = CustomObjectFilters
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<CustomObjectFilter>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = CustomObjectFiltersMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

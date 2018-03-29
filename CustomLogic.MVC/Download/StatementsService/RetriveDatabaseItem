@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.StatementsService
+{
+    public class View : IViewEvent<StatementsViewModel,Statement>
+    {
+        public int CreatedId = 0;
+
+        public Response<StatementsViewModel> Run(StatementsViewModel model,ref IQueryable<Statement> repository, IUnitOfWork unitOfWork, Response<StatementsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = Statements
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing Statements");
+            }
+
+            return result;
+        }
+
+    }
+}

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.StepActionFilesService
+{
+    public class Delete : IDeleteEvent<StepActionFilesViewModel,StepActionFile>
+    {
+
+        public bool Run(StepActionFiles ViewModel model, ref IQueryable<StepActionFile>repository, IUnitOfWork unitOfWork, Response<StepActionFilesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<StepActionFile>().Find(model.Id);unitOfWork.With<StepActionFile>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

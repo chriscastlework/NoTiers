@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CustomFieldOptionMappingsService
+{
+public static class CustomFieldOptionMappingsMapper
+{
+
+public static CustomFieldOptionMapping MapInsertModelToDbModel(CustomFieldOptionMappingsViewModel model, CustomFieldOptionMapping newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CustomFieldOptionMapping();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static CustomFieldOptionMappingsViewModel MapDbModelToViewModel(CustomFieldOptionMapping dbModel)
+{
+var viewModel = new  CustomFieldOptionMappingsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<CustomFieldOptionMappingsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CustomFieldOptionMapping> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CustomFieldOptionMappingsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

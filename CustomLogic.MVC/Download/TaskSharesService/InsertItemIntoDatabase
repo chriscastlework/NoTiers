@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.TaskSharesService
+{
+    public class Save : IInsertEvent<TaskSharesViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(TaskSharesViewModel model, IUnitOfWork unitOfWork, Response<TaskSharesViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = TaskShares();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<TaskShare>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = TaskShares
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(TaskSharesViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<TaskShare>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<TaskShare>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

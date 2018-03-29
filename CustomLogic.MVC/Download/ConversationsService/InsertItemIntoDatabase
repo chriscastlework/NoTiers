@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.ConversationsService
+{
+    public class Save : IInsertEvent<ConversationsViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(ConversationsViewModel model, IUnitOfWork unitOfWork, Response<ConversationsViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = Conversations();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<Conversation>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = Conversations
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(ConversationsViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<Conversation>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<Conversation>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

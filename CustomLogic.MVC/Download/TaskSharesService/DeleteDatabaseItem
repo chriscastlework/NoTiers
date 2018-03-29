@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.TaskSharesService
+{
+    public class Delete : IDeleteEvent<TaskSharesViewModel,TaskShare>
+    {
+
+        public bool Run(TaskShares ViewModel model, ref IQueryable<TaskShare>repository, IUnitOfWork unitOfWork, Response<TaskSharesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<TaskShare>().Find(model.Id);unitOfWork.With<TaskShare>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

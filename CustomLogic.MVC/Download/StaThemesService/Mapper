@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.StaThemesService
+{
+public static class StaThemesMapper
+{
+
+public static StaTheme MapInsertModelToDbModel(StaThemesViewModel model, StaTheme newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new StaTheme();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static StaThemesViewModel MapDbModelToViewModel(StaTheme dbModel)
+{
+var viewModel = new  StaThemesViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<StaThemesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<StaTheme> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new StaThemesViewModel()
+        {
+        });
+        }
+    }
+}
+
+

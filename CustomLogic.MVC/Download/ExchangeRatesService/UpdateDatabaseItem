@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.ExchangeRatesService
+{
+    public class Update : IUpdateEvent<ExchangeRatesViewModel,ExchangeRate>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(ExchangeRatesViewModel model, ref IQueryable<ExchangeRate> repository, IUnitOfWork unitOfWork, Response<ExchangeRatesViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = ExchangeRates
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<ExchangeRate>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = ExchangeRatesMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

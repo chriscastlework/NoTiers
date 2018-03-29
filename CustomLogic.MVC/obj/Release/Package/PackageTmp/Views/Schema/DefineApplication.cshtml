@@ -1,0 +1,571 @@
+﻿@using System.Web.Script.Serialization
+@model CSharpeToolSet.Models.AppInfo
+
+@{
+    ViewBag.Title = "NT: Template Creator";
+    var data = new JavaScriptSerializer().Serialize(Model);
+}
+
+<script>
+
+    (function () {
+        var app = angular.module('app', []);
+
+        angular.module('app').controller('schemaInfoController', schemaInfoController);
+        
+
+        app.filter('split', function() {
+            // Create the return function and set the required parameter as well as an optional paramater
+            return function(input, splitChar, splitIndex) {
+                // do some bounds checking here to ensure it has that index
+                return input.split(splitChar)[splitIndex];
+            }
+        });
+
+
+
+        function schemaInfoController(createFileService) {
+
+            var vm = this;
+
+            vm.PageData = @Html.Raw(data);
+            vm.CreatedFile = "";
+            vm.CreateFiles = createFile;
+            vm.CreateCore = createCore;
+            vm.Clear = clear;
+
+            function clear() {
+                vm.CreatedFile = "";
+            };
+
+            function loading() {
+                document.getElementById('waiting-overlay').style.display='block';
+            };
+
+            function loaded() {
+                document.getElementById('waiting-overlay').style.display='none';
+            };
+
+            function createCore() {
+                loading();
+                return createFileService.GenerateCore(vm.PageData)
+                    .then(
+                        function(data) {
+                            vm.CreatedFile = data;
+                        }
+                    ).catch(
+                        function() {}
+                    ).finally(function() {
+                        loaded();
+                    });
+            }
+
+            function createFile(templateName) {
+                loading();
+                return createFileService.GenerateFiles(templateName, vm.PageData)
+                    .then(
+                        function(data) {
+                            vm.CreatedFile = data;
+                        }
+                    ).catch(
+                        function() {}
+                    ).finally(function() {
+                        loaded();
+                    });
+            }
+
+           
+
+        };
+
+        angular.module('app').factory('createFileService', createFileService);
+
+        createFileService.$inject = ['$http'];
+
+        function createFileService($http) {
+
+            return {
+                GenerateFiles: generateFiles,
+                GenerateCore : generateCore
+            };
+
+            function generateFiles(templateName, data) {
+                return $http.post('/CodeGenerationTemplates/RenderTemplates/'+templateName, data, {responseType:'arraybuffer'})
+                    .then(generateAllServicesComplete)
+                    .catch(generateAllServicesFailed);
+
+                function generateAllServicesComplete(response) {
+                    debugger;
+                    var a = document.createElement('a');
+                    var blob = new Blob([response.data], {'type':"application/octet-stream"});
+                    a.href = URL.createObjectURL(blob);
+                    a.download = "CoreLogic.zip";
+                    a.click();
+                }
+
+                function generateAllServicesFailed(error) {
+                }
+            }
+
+            function generateCore(data) {
+                return $http.post('/api/CreateCore', data, {responseType:'arraybuffer'})
+                    .then(generateAllFilesFrontendComplete)
+                    .catch(generateAllFilesFrontendFailed);
+
+                function generateAllFilesFrontendComplete(response) {
+                    var a = document.createElement('a');
+                    var blob = new Blob([response.data], {'type':"application/octet-stream"});
+                    a.href = URL.createObjectURL(blob);
+                    a.download = "Core.zip";
+                    a.click();
+                }
+
+                function generateAllFilesFrontendFailed(error) {
+                    // logger.error('XHR Failed for getAvengers.' + error.data);
+                }
+            }
+
+           
+        }
+
+    })();;
+
+   
+
+    $( document ).ready(function() {
+        $('#myTabs a').click(function(e) {
+            e.preventDefault();
+            $(this).tab('show');
+            $('#myTabs a:first').tab('show'); // Select first tab
+            $('.collapse').collapse();
+           
+        });
+
+    });
+
+
+
+</script>
+
+
+
+
+<div class="row">
+    
+    <div class="page-header">
+        <h2>Template Creator</h2>    
+    </div>
+    
+    <p class="lead">Download files created from your database information</p>
+</div>
+
+<div class="row">
+    <h4>Download Links</h4>
+</div>
+
+
+<div data-ng-app="app">
+
+    
+
+
+
+<div ng-controller="schemaInfoController as vm" ng-cloak>
+
+<div class="row">
+    <div class="col-lg-12">
+        <button class="btn btn-success" ng-click="vm.CreateCore('core')">Core Framework</button>
+
+        <button class="btn btn-success" ng-click="vm.CreateFiles('backend')">Backend</button>
+
+        <button class="btn btn-success" ng-click="vm.CreateFiles('test')">Tests</button>
+
+        <button class="btn btn-success" ng-click="vm.CreateFiles('presentation')">Presentation</button>
+    </div>
+</div>
+
+<div class="row">
+    <h4>Table information</h4>
+</div>
+
+<div class="row">
+    <div class="col-md-12" ng-show="vm.CreatedFile">
+        <div class="btn btn-warning" ng-click="vm.Clear()">Clear</div>
+        <PRE>
+                <code>
+                  {{vm.CreatedFile}} 
+                </code>
+                </PRE>
+        <div class="btn btn-warning" ng-click="vm.Clear()">Clear</div>
+    </div>
+</div>
+
+<div class="row">
+
+<div class="row">
+
+<div class="col-md-12">
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" ng-repeat="ModelInfo in vm.PageData.TableInfomation">
+
+        <a ng-href="#{{ModelInfo.TableName}}" aria-controls="{{ModelInfo.TableName}}" role="tab" data-toggle="tab"><button class="btn btn-primary">{{ModelInfo.TableName}}</button></a>
+
+    </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+
+<div role="tabpanel" class="tab-pane" ng-repeat="ModelInfo in vm.PageData.TableInfomation" id="{{ModelInfo.TableName}}">
+
+<div class="jumbotron">
+<h3>{{ModelInfo.TableName}} Database Model Information</h3>
+
+<div class="row caption">
+
+    <div class="col-md-2">
+        <div class="btn btn-warning" ng-click="vm.Clear()" ng-show="vm.CreatedFile">Clear</div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div ng-repeat="template in vm.PageData.Templates" class="col-md-12">
+        <div class="btn btn-info" ng-click="vm.CreateFile(template.ClassId,ModelInfo)">{{template.ClassName}}</div>
+        <label> Use Template? </label>
+        <input type="checkbox" name="name" ng-model="template.UseTemplate"/>
+    </div>
+</div>
+
+<div class="panel-group" id="accordion{{ModelInfo.TableName}}" role="tablist" aria-multiselectable="true">
+
+<!-- Model Info -->
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="{{ModelInfo.TableName}}headingOne">
+        <h4 class="panel-title">
+
+            <a data-toggle="collapse" data-parent="#accordion{{ModelInfo.TableName}}" ng-href="#{{ModelInfo.TableName}}collapseOne" aria-expanded="true" aria-controls="{{ModelInfo.TableName}}collapseOne">
+                <button type="button" class="btn btn-primary">Database Table Information</button>
+            </a>
+        </h4>
+    </div>
+    <div id="{{ModelInfo.TableName}}collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="{{ModelInfo.TableName}}headingOne">
+        <div class="panel-body">
+            <div ng-repeat="tableInfo in ModelInfo.TableInfo">
+                <div>
+                    Name : {{tableInfo.Name}}
+                </div>
+                <div>
+                    Owner : {{tableInfo.Owner}}
+                </div>
+                <div>
+                    Type : {{tableInfo.Type}}
+                </div>
+                <div>
+                    Created Date Time : {{tableInfo.Created_datetime}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Column Info -->
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="{{ModelInfo.TableName}}headingTwo">
+        <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion{{ModelInfo.TableName}}" ng-href="#{{ModelInfo.TableName}}collapseTwo" aria-expanded="false" aria-controls="{{ModelInfo.TableName}}collapseTwo">
+
+                <button type="button" class="btn btn-primary">Column Information</button>
+            </a>
+        </h4>
+    </div>
+    <div id="{{ModelInfo.TableName}}collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ModelInfo.TableName}}headingTwo">
+        <div class="panel-body">
+
+            <table class="table table-responsive ">
+                <tr class="table-dark">
+                    <th>
+                        Name in view model
+                    </th>
+                    <th>
+                        Viewable
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Type
+                    </th>
+                    <th>
+                        Computed
+                    </th>
+                    <th>
+                        Length
+                    </th>
+                    <th>
+                        Prec
+                    </th>
+                    <th>
+                        Scale
+                    </th>
+                    <th>
+                        Nullable
+                    </th>
+                    <th>
+                        Trim
+                    </th>
+                    <th>
+                        Fixed Len
+                    </th>
+                    <th>
+                        Collation
+                    </th>
+                </tr>
+                <tr ng-repeat="columnInfo in ModelInfo.ColumnInfo">
+                    <td>
+                        <input type="text" ng-model="columnInfo.ColumnNameInView" class="form-control"/>
+                    </td>
+                    <td>
+                        <input type="checkbox" ng-model="columnInfo.IncludeInView" class="form-control"/>
+                    </td>
+                    <td>
+                        {{columnInfo.Column_name}}
+                    </td>
+                    <td>
+                        {{columnInfo.Type}}
+                    </td>
+                    <td>
+                        {{columnInfo.Computed}}
+                    </td>
+                    <td>
+                        {{columnInfo.Lengtd}}
+                    </td>
+                    <td>
+                        {{columnInfo.Prec}}
+                    </td>
+                    <td>
+                        {{columnInfo.Scale}}
+                    </td>
+                    <td>
+                        {{columnInfo.Nullable}}
+                    </td>
+                    <td>
+                        {{columnInfo.TrimTriallingBlanks}}
+                    </td>
+                    <td>
+                        {{columnInfo.FixedLenNullInSource}}
+                    </td>
+                    <td>
+                        {{columnInfo.Collation}}
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<!-- Index Info -->
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="{{ModelInfo.TableName}}headingSix">
+        <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion{{ModelInfo.TableName}}" ng-href="#{{ModelInfo.TableName}}collapseSix" aria-expanded="false" aria-controls="{{ModelInfo.TableName}}collapseThree">
+                <button type="button" class="btn btn-primary">
+                    Index Information
+                </button>
+            </a>
+        </h4>
+    </div>
+    <div id="{{ModelInfo.TableName}}collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ModelInfo.TableName}}headingSix">
+        <div class="panel-body">
+
+
+            <table class="table table-responsive ">
+                <tr class="table-dark">
+                    <th>
+                        index name
+                    </th>
+                    <th>
+                        index description
+                    </th>
+                    <th>
+                        index keys
+                    </th>
+                </tr>
+                <tr ng-repeat="indexInfo in ModelInfo.IndexInfo">
+                    <td>
+                        {{indexInfo.index_name}}
+                    </td>
+                    <td>
+                        {{indexInfo.index_description}}
+                    </td>
+                    <td>
+                        {{indexInfo.index_keys}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Constraint Info -->
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="{{ModelInfo.TableName}}headingSeven">
+        <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion{{ModelInfo.TableName}}" ng-href="#{{ModelInfo.TableName}}collapseSeven" aria-expanded="false" aria-controls="{{ModelInfo.TableName}}collapseThree">
+                <button type="button" class="btn btn-primary">
+                    Constraint Information
+                </button>
+            </a>
+        </h4>
+    </div>
+    <div id="{{ModelInfo.TableName}}collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ModelInfo.TableName}}headingSeven">
+        <div class="panel-body">
+            <table class="table table-responsive ">
+                <tr class="table-dark">
+                    <th>Constraint type</th>
+                    <th>Constraint name</th>
+                    <th>Delete action</th>
+                    <th>Update action</th>
+                    <th>Status enabled</th>
+                    <th>Status for replication</th>
+                    <th>Constraint keys</th>
+                </tr>
+                <tr ng-repeat="constraintInfo in ModelInfo.ConstraintInfo">
+                    <td>
+                        {{constraintInfo.constraint_type}}
+                    </td>
+                    <td>{{constraintInfo.constraint_name}}</td>
+                    <td>{{constraintInfo.delete_action}}</td>
+                    <td>{{constraintInfo.update_action}}</td>
+                    <td>{{constraintInfo.status_enabled}}</td>
+                    <td>{{constraintInfo.status_for_replication}}</td>
+                    <td>{{constraintInfo.constdaint_keys}}</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<!-- TableFk Info -->
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="{{ModelInfo.TableName}}headingEight">
+        <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion{{ModelInfo.TableName}}" ng-href="#{{ModelInfo.TableName}}collapseEight" aria-expanded="false" aria-controls="{{ModelInfo.TableName}}collapseThree">
+                <button type="button" class="btn btn-primary">
+                    Foreign Key Information
+                </button>
+            </a>
+        </h4>
+    </div>
+    <div id="{{ModelInfo.TableName}}collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ModelInfo.TableName}}headingEight">
+        <div class="panel-body">
+
+            <table class="table table-responsive">
+                <tr class="table-warning">
+                    <th>
+                        Table Name
+                    </th>
+                    <th>
+                        Key Name
+                    </th>
+                </tr>
+                <tr ng-repeat="tableFkInfo in ModelInfo.TableFkInfo" class="table-dark">
+                    <td>
+                        {{tableFkInfo.TableIsReferencedByForeignKey | split:':':0 }}
+                    </td>
+                    <td>
+                        {{tableFkInfo.TableIsReferencedByForeignKey | split:':':1 }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+@*<!-- Identity Info -->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="{{ModelInfo.TableName}}headingThree">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion{{ModelInfo.TableName}}" href="#{{ModelInfo.TableName}}collapseThree" aria-expanded="false" aria-controls="{{ModelInfo.TableName}}collapseThree">
+                                                    <button type="button" class="btn btn-primary">
+                                                        Identity Information
+                                                    </button>
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="{{ModelInfo.TableName}}collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ModelInfo.TableName}}headingThree">
+                                            <div class="panel-body">
+                                                <div ng-repeat="identityInfo in ModelInfo.IdentityInfo">
+                                                    {{identityInfo}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- RowGuid Info -->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="{{ModelInfo.TableName}}headingFour">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion{{ModelInfo.TableName}}" ng-href="#{{ModelInfo.TableName}}collapseFour" aria-expanded="false" aria-controls="{{ModelInfo.TableName}}collapseThree">
+                                                    <button type="button" class="btn btn-primary">
+                                                        Row Guid Information
+                                                    </button>
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="{{ModelInfo.TableName}}collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ModelInfo.TableName}}headingFour">
+                                            <div class="panel-body">
+                                                <div ng-repeat="rowGuidInfo in ModelInfo.RowGuidInfo">
+                                                    {{rowGuidInfo}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Data Info -->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="{{ModelInfo.TableName}}headingFive">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion{{ModelInfo.TableName}}" ng-href="#{{ModelInfo.TableName}}collapseFive" aria-expanded="false" aria-controls="{{ModelInfo.TableName}}collapseThree">
+                                                    <button type="button" class="btn btn-primary">
+                                                        Data Information
+                                                    </button>
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="{{ModelInfo.TableName}}collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ModelInfo.TableName}}headingFive">
+                                            <div class="panel-body">
+                                                <div ng-repeat="dataInfo in ModelInfo.DataInfo">
+                                                    {{dataInfo}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>*@
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

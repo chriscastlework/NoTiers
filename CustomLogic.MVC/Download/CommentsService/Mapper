@@ -1,0 +1,63 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CommentsService
+{
+public static class CommentsMapper
+{
+
+public static Comment MapInsertModelToDbModel(CommentsViewModel model, Comment newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Comment();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.DealId = model.DealId;
+            newDomainModel.Content = model.Content;
+            newDomainModel.DateCreated = model.DateCreated;
+            newDomainModel.DateLastModeified = model.DateLastModeified;
+            newDomainModel.CreatedById = model.CreatedById;
+            newDomainModel.LastModifiedById = model.LastModifiedById;
+            newDomainModel.AccountId = model.AccountId;
+    return newDomainModel;
+    }
+
+
+
+public static CommentsViewModel MapDbModelToViewModel(Comment dbModel)
+{
+var viewModel = new  CommentsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.DealId = dbModel.DealId;
+            viewModel.Content = dbModel.Content;
+            viewModel.DateCreated = dbModel.DateCreated;
+            viewModel.DateLastModeified = dbModel.DateLastModeified;
+            viewModel.CreatedById = dbModel.CreatedById;
+            viewModel.LastModifiedById = dbModel.LastModifiedById;
+            viewModel.AccountId = dbModel.AccountId;
+
+return viewModel;
+}
+
+
+public static IQueryable<CommentsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Comment> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CommentsViewModel()
+        {
+Id = c.Id,
+DealId = c.DealId,
+Content = c.Content,
+DateCreated = c.DateCreated,
+DateLastModeified = c.DateLastModeified,
+CreatedById = c.CreatedById,
+LastModifiedById = c.LastModifiedById,
+AccountId = c.AccountId,
+        });
+        }
+    }
+}
+
+

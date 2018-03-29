@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.NotificationFieldsService
+{
+    public class Delete : IDeleteEvent<NotificationFieldsViewModel,NotificationField>
+    {
+
+        public bool Run(NotificationFields ViewModel model, ref IQueryable<NotificationField>repository, IUnitOfWork unitOfWork, Response<NotificationFieldsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<NotificationField>().Find(model.Id);unitOfWork.With<NotificationField>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

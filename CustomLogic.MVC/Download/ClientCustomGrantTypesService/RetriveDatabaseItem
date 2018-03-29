@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ClientCustomGrantTypesService
+{
+    public class View : IViewEvent<ClientCustomGrantTypesViewModel,ClientCustomGrantType>
+    {
+        public int CreatedId = 0;
+
+        public Response<ClientCustomGrantTypesViewModel> Run(ClientCustomGrantTypesViewModel model,ref IQueryable<ClientCustomGrantType> repository, IUnitOfWork unitOfWork, Response<ClientCustomGrantTypesViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = ClientCustomGrantTypes
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing ClientCustomGrantTypes");
+            }
+
+            return result;
+        }
+
+    }
+}

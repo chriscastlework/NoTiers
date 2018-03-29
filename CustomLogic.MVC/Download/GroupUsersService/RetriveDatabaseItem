@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.GroupUsersService
+{
+    public class View : IViewEvent<GroupUsersViewModel,GroupUser>
+    {
+        public int CreatedId = 0;
+
+        public Response<GroupUsersViewModel> Run(GroupUsersViewModel model,ref IQueryable<GroupUser> repository, IUnitOfWork unitOfWork, Response<GroupUsersViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = GroupUsers
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing GroupUsers");
+            }
+
+            return result;
+        }
+
+    }
+}

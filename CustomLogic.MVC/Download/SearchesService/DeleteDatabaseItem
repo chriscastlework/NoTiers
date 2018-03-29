@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.SearchesService
+{
+    public class Delete : IDeleteEvent<SearchesViewModel,Search>
+    {
+
+        public bool Run(Searches ViewModel model, ref IQueryable<Search>repository, IUnitOfWork unitOfWork, Response<SearchesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<Search>().Find(model.Id);unitOfWork.With<Search>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

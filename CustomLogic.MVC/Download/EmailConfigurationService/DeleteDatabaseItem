@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.EmailConfigurationService
+{
+    public class Delete : IDeleteEvent<EmailConfigurationViewModel,EmailConfiguration>
+    {
+
+        public bool Run(EmailConfiguration ViewModel model, ref IQueryable<EmailConfiguration>repository, IUnitOfWork unitOfWork, Response<EmailConfigurationViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<EmailConfiguration>().Find(model.Id);unitOfWork.With<EmailConfiguration>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

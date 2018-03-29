@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CustomObjectTriggerActionsService
+{
+public static class CustomObjectTriggerActionsMapper
+{
+
+public static CustomObjectTriggerAction MapInsertModelToDbModel(CustomObjectTriggerActionsViewModel model, CustomObjectTriggerAction newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CustomObjectTriggerAction();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static CustomObjectTriggerActionsViewModel MapDbModelToViewModel(CustomObjectTriggerAction dbModel)
+{
+var viewModel = new  CustomObjectTriggerActionsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<CustomObjectTriggerActionsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CustomObjectTriggerAction> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CustomObjectTriggerActionsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

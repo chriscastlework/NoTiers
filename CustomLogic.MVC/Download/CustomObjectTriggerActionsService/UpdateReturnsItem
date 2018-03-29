@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CustomObjectTriggerActionsService
+{
+public class ReturnResultEvent : IUpdateEvent<CustomObjectTriggerActionsViewModel, CustomObjectTriggerAction>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(CustomObjectTriggerActionsViewModel model, ref IQueryable< CustomObjectTriggerAction> repository, IUnitOfWork unitOfWork, Response<CustomObjectTriggerActionsViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<CustomObjectTriggerAction>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = CustomObjectTriggerActions
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

@@ -1,0 +1,189 @@
+﻿
+<script>
+    (function () {
+
+        var app = angular.module("app", ["ngTable"]);
+
+        // Contact Service
+        angular.module('app').factory('ContactApiService', ContactApiService);
+        ContactApiService.$inject = ['$http'];
+        function ContactApiService($http) {
+
+            return {
+                Get: get,
+                Post: post,
+                Put: put,
+                Delete: deleteApi
+            };
+
+            function get(id) {
+                return $http.get('/api/Contact/' + id)
+                   .then(getContactComplete)
+                   .catch(getContactFail);
+
+                function getContactComplete(response) {
+                    return response.data.Data;
+                }
+
+                function getContactsFail(error) {
+                    debugger;
+                }
+            };
+
+            function post(data) {
+                return $http.post('/api/Contact/', data)
+                   .then(postContactComplete)
+                   .catch(postContactFail);
+
+                function postContactComplete(response) {
+                    return response.data;
+                }
+
+                function postContactFail(error) {
+                    debugger;
+                }
+            };
+
+            function put(id, data) {
+                return $http.put('/api/Contact/' + id, data)
+                   .then(putContactComplete)
+                   .catch(putContactFail);
+
+                function putContactComplete(response) {
+                    return response.data.Data;
+                }
+
+                function putContactFail(error) {
+                    debugger;
+                }
+            };
+
+            function deleteApi(id) {
+                return $http.delete('/api/Contact/' + id)
+                   .then(deleteContactComplete)
+                   .catch(deleteContactFail);
+
+                function deleteContactComplete(response) {
+                    return response.data.Data;
+                }
+
+                function deleteContactFail(error) {
+                    debugger;
+                }
+            };
+        };
+        // Contact Service End
+
+        // Contact Table Controller
+        angular.module('app').controller('ContactController', ContactController);
+        ContactController.$inject = ["NgTableParams", "ContactApiService"];
+        function ContactController(NgTableParams, ContactApiService) {
+            var vm = this;
+            vm.tableParams = new NgTableParams({
+                page: 1,            // show first page
+                count: 10           // count per page
+            }, {
+                getData: function (params) {
+                    var postParams = {};
+                    postParams.page = params.page();
+                    postParams.count = params.count();
+                    postParams.total = params.total();
+                    postParams.filter = params.filter();
+                    postParams.sorting = params.sorting();
+                    postParams.group = params.group();
+                    return ContactApiService.Post(postParams)
+                        .then(function (response) {
+                            params.total(response.Count);
+                            return response.Data;
+                        });
+                }
+            });
+        };
+        // Contact Table Controller End
+    })();
+</script>
+
+
+<div ng-app="app">
+
+    <div ng-controller="ContactController as Contacts">
+
+        <h2 class="page-header">Contact Table</h2>
+
+        <table ng-table="Contacts.tableParams" class="table table-bordered table-striped table-condensed">
+            <tr ng-repeat="row in $data track by row.Id">
+
+                <td data-title="'Id'">
+                    {{row.Id}}
+                </td>
+                <td data-title="'FirstName'">
+                    {{row.FirstName}}
+                </td>
+                <td data-title="'LastName'">
+                    {{row.LastName}}
+                </td>
+                <td data-title="'Title'">
+                    {{row.Title}}
+                </td>
+                <td data-title="'Location'">
+                    {{row.Location}}
+                </td>
+                <td data-title="'Email'">
+                    {{row.Email}}
+                </td>
+                <td data-title="'Phone'">
+                    {{row.Phone}}
+                </td>
+                <td data-title="'Skype'">
+                    {{row.Skype}}
+                </td>
+                <td data-title="'OrganisationId'">
+                    {{row.OrganisationId}}
+                </td>
+                <td data-title="'JobTitle'">
+                    {{row.JobTitle}}
+                </td>
+                <td data-title="'DateCreated'">
+                    {{row.DateCreated}}
+                </td>
+                <td data-title="'DateLastModeified'">
+                    {{row.DateLastModeified}}
+                </td>
+                <td data-title="'CreatedById'">
+                    {{row.CreatedById}}
+                </td>
+                <td data-title="'LastModifiedById'">
+                    {{row.LastModifiedById}}
+                </td>
+                <td data-title="'AccountId'">
+                    {{row.AccountId}}
+                </td>
+                <td data-title="'LogoImage_Id'">
+                    {{row.LogoImage_Id}}
+                </td>
+                <td data-title="'ExternalId'">
+                    {{row.ExternalId}}
+                </td>
+                <td data-title="'SalesProcessId'">
+                    {{row.SalesProcessId}}
+                </td>
+                <td data-title="'StageId'">
+                    {{row.StageId}}
+                </td>
+                <td data-title="'Notes'">
+                    {{row.Notes}}
+                </td>
+                <td data-title="'OfficePhone'">
+                    {{row.OfficePhone}}
+                </td>
+                <td data-title="'MobilePhone'">
+                    {{row.MobilePhone}}
+                </td>
+                <td data-title="'OtherPhone'">
+                    {{row.OtherPhone}}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+

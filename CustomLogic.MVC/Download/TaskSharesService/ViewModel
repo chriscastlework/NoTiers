@@ -1,0 +1,15 @@
+using System;
+
+namespace CustomLogic.Services.TaskShareService
+{
+    public class TaskSharesViewModel
+    {
+
+        public int Id {get;set;}
+        public string UserId {get;set;}
+        public DateTime? DateShared {get;set;}
+        public int? Task_Id {get;set;}
+        public bool Writable {get;set;}
+
+    }
+}

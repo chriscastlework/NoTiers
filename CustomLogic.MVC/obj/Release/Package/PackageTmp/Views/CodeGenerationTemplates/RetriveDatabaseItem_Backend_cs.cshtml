@@ -1,0 +1,35 @@
+﻿@model CustomLogic.SchemaBuilder.MicrosoftSQL.SchemaModels.ModelInfo
+
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.@Html.Raw(Model.TT_ViewModelName())Service
+{
+    public class View : IViewEvent<@Html.Raw(Model.TT_ViewModelName())ViewModel,@Html.Raw(Model.TT_TableName())>
+    {
+        public int CreatedId = 0;
+
+        public Response<@Html.Raw(Model.TT_ViewModelName())ViewModel> Run(@Html.Raw(Model.TT_ViewModelName())ViewModel model,ref IQueryable<@Html.Raw(Model.TT_TableName())> repository, IUnitOfWork unitOfWork, Response<@Html.Raw(Model.TT_ViewModelName())ViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = @Html.Raw(Model.TT_ViewModelName())
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing @Html.Raw(Model.TT_ViewModelName())");
+            }
+
+            return result;
+        }
+
+    }
+}

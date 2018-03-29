@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ProgramAssetsService
+{
+public static class ProgramAssetsMapper
+{
+
+public static ProgramAsset MapInsertModelToDbModel(ProgramAssetsViewModel model, ProgramAsset newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ProgramAsset();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static ProgramAssetsViewModel MapDbModelToViewModel(ProgramAsset dbModel)
+{
+var viewModel = new  ProgramAssetsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<ProgramAssetsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ProgramAsset> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ProgramAssetsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

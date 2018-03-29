@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.ContactSharesService
+{
+    public class Update : IUpdateEvent<ContactSharesViewModel,ContactShare>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(ContactSharesViewModel model, ref IQueryable<ContactShare> repository, IUnitOfWork unitOfWork, Response<ContactSharesViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = ContactShares
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<ContactShare>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = ContactSharesMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

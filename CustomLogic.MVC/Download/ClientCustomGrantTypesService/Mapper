@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ClientCustomGrantTypesService
+{
+public static class ClientCustomGrantTypesMapper
+{
+
+public static ClientCustomGrantType MapInsertModelToDbModel(ClientCustomGrantTypesViewModel model, ClientCustomGrantType newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ClientCustomGrantType();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static ClientCustomGrantTypesViewModel MapDbModelToViewModel(ClientCustomGrantType dbModel)
+{
+var viewModel = new  ClientCustomGrantTypesViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<ClientCustomGrantTypesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ClientCustomGrantType> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ClientCustomGrantTypesViewModel()
+        {
+        });
+        }
+    }
+}
+
+

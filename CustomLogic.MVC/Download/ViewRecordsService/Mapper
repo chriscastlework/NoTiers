@@ -1,0 +1,63 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ViewRecordsService
+{
+public static class ViewRecordsMapper
+{
+
+public static ViewRecord MapInsertModelToDbModel(ViewRecordsViewModel model, ViewRecord newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ViewRecord();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.DateViewed = model.DateViewed;
+            newDomainModel.AccountId = model.AccountId;
+            newDomainModel.ContactId = model.ContactId;
+            newDomainModel.DealId = model.DealId;
+            newDomainModel.TaskId = model.TaskId;
+            newDomainModel.Discriminator = model.Discriminator;
+            newDomainModel.UserId = model.UserId;
+    return newDomainModel;
+    }
+
+
+
+public static ViewRecordsViewModel MapDbModelToViewModel(ViewRecord dbModel)
+{
+var viewModel = new  ViewRecordsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.DateViewed = dbModel.DateViewed;
+            viewModel.AccountId = dbModel.AccountId;
+            viewModel.ContactId = dbModel.ContactId;
+            viewModel.DealId = dbModel.DealId;
+            viewModel.TaskId = dbModel.TaskId;
+            viewModel.Discriminator = dbModel.Discriminator;
+            viewModel.UserId = dbModel.UserId;
+
+return viewModel;
+}
+
+
+public static IQueryable<ViewRecordsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ViewRecord> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ViewRecordsViewModel()
+        {
+Id = c.Id,
+DateViewed = c.DateViewed,
+AccountId = c.AccountId,
+ContactId = c.ContactId,
+DealId = c.DealId,
+TaskId = c.TaskId,
+Discriminator = c.Discriminator,
+UserId = c.UserId,
+        });
+        }
+    }
+}
+
+

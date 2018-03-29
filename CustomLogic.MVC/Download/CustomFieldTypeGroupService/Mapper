@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CustomFieldTypeGroupService
+{
+public static class CustomFieldTypeGroupMapper
+{
+
+public static CustomFieldTypeGroup MapInsertModelToDbModel(CustomFieldTypeGroupViewModel model, CustomFieldTypeGroup newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CustomFieldTypeGroup();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.OrganisationId = model.OrganisationId;
+            newDomainModel.FieldType = model.FieldType;
+            newDomainModel.IsEnabled = model.IsEnabled;
+            newDomainModel.DisplayOrder = model.DisplayOrder;
+    return newDomainModel;
+    }
+
+
+
+public static CustomFieldTypeGroupViewModel MapDbModelToViewModel(CustomFieldTypeGroup dbModel)
+{
+var viewModel = new  CustomFieldTypeGroupViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+            viewModel.FieldType = dbModel.FieldType;
+            viewModel.IsEnabled = dbModel.IsEnabled;
+            viewModel.DisplayOrder = dbModel.DisplayOrder;
+
+return viewModel;
+}
+
+
+public static IQueryable<CustomFieldTypeGroupViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CustomFieldTypeGroup> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CustomFieldTypeGroupViewModel()
+        {
+Id = c.Id,
+OrganisationId = c.OrganisationId,
+FieldType = c.FieldType,
+IsEnabled = c.IsEnabled,
+DisplayOrder = c.DisplayOrder,
+        });
+        }
+    }
+}
+
+

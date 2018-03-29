@@ -1,0 +1,18 @@
+using System;
+
+namespace CustomLogic.Services.SalesObjectViewService
+{
+    public class SalesObjectViewsViewModel
+    {
+
+        public int Id {get;set;}
+        public string SalesObject {get;set;}
+        public string ViewType {get;set;}
+        public int? SideNavItemId {get;set;}
+        public bool IsDefault {get;set;}
+        public int? OrgId {get;set;}
+        public int? StcId {get;set;}
+        public bool? OnByDefault {get;set;}
+
+    }
+}

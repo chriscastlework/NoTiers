@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ClientScopesService
+{
+    public class View : IViewEvent<ClientScopesViewModel,ClientScope>
+    {
+        public int CreatedId = 0;
+
+        public Response<ClientScopesViewModel> Run(ClientScopesViewModel model,ref IQueryable<ClientScope> repository, IUnitOfWork unitOfWork, Response<ClientScopesViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = ClientScopes
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing ClientScopes");
+            }
+
+            return result;
+        }
+
+    }
+}

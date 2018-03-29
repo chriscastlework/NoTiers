@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.NotifyActionsService
+{
+    public class View : IViewEvent<NotifyActionsViewModel,NotifyAction>
+    {
+        public int CreatedId = 0;
+
+        public Response<NotifyActionsViewModel> Run(NotifyActionsViewModel model,ref IQueryable<NotifyAction> repository, IUnitOfWork unitOfWork, Response<NotifyActionsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = NotifyActions
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing NotifyActions");
+            }
+
+            return result;
+        }
+
+    }
+}

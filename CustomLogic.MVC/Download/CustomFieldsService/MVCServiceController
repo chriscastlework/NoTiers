@@ -1,0 +1,143 @@
+using System;
+using System.Linq;
+using System.Net;
+using System.Web.Mvc;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Models;
+using CustomLogic.Services.CustomFieldsService;
+
+
+public class CustomFieldsController : Controller
+{
+    //private AomDbContext db = new AomDbContext();
+    private readonly IService<CustomFieldsViewModel>_CustomFieldsService = new CustomFieldsService(new DbContext());
+
+
+        // GET: CustomFields
+        public ActionResult Index()
+        {
+        return View(_CustomFields
+        Service.List(new NgTableParams() {page = 1, count = 1000}, null).Data.ToList());
+        }
+
+        // GET: CustomFields/Details/5
+        public ActionResult Details(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        return View(_CustomFields
+        Service.View(new CustomFields
+        ViewModel() { ID = id.Value}, null));
+        }
+
+        // GET: CustomFields/Create
+        public ActionResult Create()
+        {
+        return View();
+        }
+
+        // POST: CustomFields/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Name")] CustomFields
+        ViewModel aomMeta)
+        {
+        if (ModelState.IsValid)
+        {
+        var result =_CustomFields
+        Service.Insert(aomMeta, null);
+        if(result.Success)
+        return RedirectToAction("Index");
+
+        // what if it went wrong?
+        }
+
+        return View(aomMeta);
+        }
+
+        // GET: CustomFields
+        s/Edit/5
+        public ActionResult Edit(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var result = _CustomFields
+        Service.View(new CustomFields
+        ViewModel {ID = id.Value}, null);
+        if (!result.Success)
+        {
+        return HttpNotFound();
+        }
+        return View(result.Data);
+        }
+
+        // POST: CustomFields
+        s/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Name")] CustomFields
+        ViewModel aomMeta)
+        {
+        if (ModelState.IsValid)
+        {
+        var result = _CustomFields
+        Service.Update(aomMeta, null);
+        if(result.Success)
+        return RedirectToAction("Index");
+
+        // what if it goes wrong?
+        }
+        return View(aomMeta);
+        }
+
+        // GET: CustomFields
+        s/Delete/5
+        public ActionResult Delete(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var result = _CustomFields
+        Service.View(new CustomFields
+        ViewModel {ID = id.Value}, null);
+        if (!result.Success)
+        {
+        return HttpNotFound();
+        }
+        return View(result.Data);
+        }
+
+        // POST: CustomFields
+        s/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(Guid id)
+        {
+        var result = _CustomFields
+        Service.Delete(new CustomFields
+        ViewModel {ID = id}, null);
+        return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+        if (disposing)
+        {
+        // _CustomFields
+        Service = null; // make services disposeable?
+        }
+        base.Dispose(disposing);
+        }
+        }
+
+

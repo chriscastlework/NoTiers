@@ -1,0 +1,9 @@
+<div class="pb-collapsible">
+    <div class="pb-collapsible-button-bar">
+        <span ng-click="toggle()">{{label}}</span>
+    </div>
+    <div class="pb-collapsible-content" ng-show="open">
+        <ng-transclude ></ng-transclude>
+    </div>
+
+</div>

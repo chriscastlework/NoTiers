@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ChannelsService
+{
+public static class ChannelsMapper
+{
+
+public static Channel MapInsertModelToDbModel(ChannelsViewModel model, Channel newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Channel();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static ChannelsViewModel MapDbModelToViewModel(Channel dbModel)
+{
+var viewModel = new  ChannelsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<ChannelsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Channel> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ChannelsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

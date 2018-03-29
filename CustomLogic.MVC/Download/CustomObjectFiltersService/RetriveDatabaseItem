@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CustomObjectFiltersService
+{
+    public class View : IViewEvent<CustomObjectFiltersViewModel,CustomObjectFilter>
+    {
+        public int CreatedId = 0;
+
+        public Response<CustomObjectFiltersViewModel> Run(CustomObjectFiltersViewModel model,ref IQueryable<CustomObjectFilter> repository, IUnitOfWork unitOfWork, Response<CustomObjectFiltersViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = CustomObjectFilters
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing CustomObjectFilters");
+            }
+
+            return result;
+        }
+
+    }
+}

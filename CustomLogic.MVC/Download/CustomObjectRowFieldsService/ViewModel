@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.CustomObjectRowFieldService
+{
+    public class CustomObjectRowFieldsViewModel
+    {
+
+        public int Id {get;set;}
+        public string Value {get;set;}
+        public int? Field_Id {get;set;}
+        public int? CustomObjectRow_Id {get;set;}
+
+    }
+}

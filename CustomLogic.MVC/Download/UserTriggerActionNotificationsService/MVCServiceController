@@ -1,0 +1,143 @@
+using System;
+using System.Linq;
+using System.Net;
+using System.Web.Mvc;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Models;
+using CustomLogic.Services.UserTriggerActionNotificationsService;
+
+
+public class UserTriggerActionNotificationsController : Controller
+{
+    //private AomDbContext db = new AomDbContext();
+    private readonly IService<UserTriggerActionNotificationsViewModel>_UserTriggerActionNotificationsService = new UserTriggerActionNotificationsService(new DbContext());
+
+
+        // GET: UserTriggerActionNotifications
+        public ActionResult Index()
+        {
+        return View(_UserTriggerActionNotifications
+        Service.List(new NgTableParams() {page = 1, count = 1000}, null).Data.ToList());
+        }
+
+        // GET: UserTriggerActionNotifications/Details/5
+        public ActionResult Details(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        return View(_UserTriggerActionNotifications
+        Service.View(new UserTriggerActionNotifications
+        ViewModel() { ID = id.Value}, null));
+        }
+
+        // GET: UserTriggerActionNotifications/Create
+        public ActionResult Create()
+        {
+        return View();
+        }
+
+        // POST: UserTriggerActionNotifications/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Name")] UserTriggerActionNotifications
+        ViewModel aomMeta)
+        {
+        if (ModelState.IsValid)
+        {
+        var result =_UserTriggerActionNotifications
+        Service.Insert(aomMeta, null);
+        if(result.Success)
+        return RedirectToAction("Index");
+
+        // what if it went wrong?
+        }
+
+        return View(aomMeta);
+        }
+
+        // GET: UserTriggerActionNotifications
+        s/Edit/5
+        public ActionResult Edit(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var result = _UserTriggerActionNotifications
+        Service.View(new UserTriggerActionNotifications
+        ViewModel {ID = id.Value}, null);
+        if (!result.Success)
+        {
+        return HttpNotFound();
+        }
+        return View(result.Data);
+        }
+
+        // POST: UserTriggerActionNotifications
+        s/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Name")] UserTriggerActionNotifications
+        ViewModel aomMeta)
+        {
+        if (ModelState.IsValid)
+        {
+        var result = _UserTriggerActionNotifications
+        Service.Update(aomMeta, null);
+        if(result.Success)
+        return RedirectToAction("Index");
+
+        // what if it goes wrong?
+        }
+        return View(aomMeta);
+        }
+
+        // GET: UserTriggerActionNotifications
+        s/Delete/5
+        public ActionResult Delete(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var result = _UserTriggerActionNotifications
+        Service.View(new UserTriggerActionNotifications
+        ViewModel {ID = id.Value}, null);
+        if (!result.Success)
+        {
+        return HttpNotFound();
+        }
+        return View(result.Data);
+        }
+
+        // POST: UserTriggerActionNotifications
+        s/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(Guid id)
+        {
+        var result = _UserTriggerActionNotifications
+        Service.Delete(new UserTriggerActionNotifications
+        ViewModel {ID = id}, null);
+        return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+        if (disposing)
+        {
+        // _UserTriggerActionNotifications
+        Service = null; // make services disposeable?
+        }
+        base.Dispose(disposing);
+        }
+        }
+
+

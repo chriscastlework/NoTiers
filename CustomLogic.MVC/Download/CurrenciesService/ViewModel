@@ -1,0 +1,12 @@
+using System;
+
+namespace CustomLogic.Services.CurrencyService
+{
+    public class CurrenciesViewModel
+    {
+
+        public string Id {get;set;}
+        public string CurrencySymbol {get;set;}
+
+    }
+}

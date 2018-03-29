@@ -1,0 +1,22 @@
+﻿@model CustomLogic.SchemaBuilder.MicrosoftSQL.SchemaModels.ModelInfo
+using System;
+
+namespace CustomLogic.Services.@Model.TT_TableName()Service
+{
+    public class @Model.TT_ViewModelName()ViewModel
+    {
+
+    @if (Model.ColumnInfo != null)
+    {
+        foreach (var item in Model.ColumnInfo)
+        {
+            if (item.IncludeInView)
+            {
+
+        @:public @item.GetCsType() @item.ColumnNameInView {get;set;}
+            }
+        }
+    }
+
+    }
+}

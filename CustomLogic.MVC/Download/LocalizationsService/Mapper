@@ -1,0 +1,75 @@
+using System.Linq;
+
+namespace CustomLogic.Services.LocalizationsService
+{
+public static class LocalizationsMapper
+{
+
+public static Localization MapInsertModelToDbModel(LocalizationsViewModel model, Localization newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Localization();
+    }
+
+            newDomainModel.Pk = model.pk;
+            newDomainModel.ResourceId = model.ResourceId;
+            newDomainModel.Value = model.Value;
+            newDomainModel.LocaleId = model.LocaleId;
+            newDomainModel.ResourceSet = model.ResourceSet;
+            newDomainModel.Type = model.Type;
+            newDomainModel.BinFile = model.BinFile;
+            newDomainModel.TextFile = model.TextFile;
+            newDomainModel.Filename = model.Filename;
+            newDomainModel.Comment = model.Comment;
+            newDomainModel.ValueType = model.ValueType;
+            newDomainModel.Updated = model.Updated;
+    return newDomainModel;
+    }
+
+
+
+public static LocalizationsViewModel MapDbModelToViewModel(Localization dbModel)
+{
+var viewModel = new  LocalizationsViewModel();
+
+            viewModel.pk = dbModel.Pk;
+            viewModel.ResourceId = dbModel.ResourceId;
+            viewModel.Value = dbModel.Value;
+            viewModel.LocaleId = dbModel.LocaleId;
+            viewModel.ResourceSet = dbModel.ResourceSet;
+            viewModel.Type = dbModel.Type;
+            viewModel.BinFile = dbModel.BinFile;
+            viewModel.TextFile = dbModel.TextFile;
+            viewModel.Filename = dbModel.Filename;
+            viewModel.Comment = dbModel.Comment;
+            viewModel.ValueType = dbModel.ValueType;
+            viewModel.Updated = dbModel.Updated;
+
+return viewModel;
+}
+
+
+public static IQueryable<LocalizationsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Localization> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new LocalizationsViewModel()
+        {
+pk = c.Pk,
+ResourceId = c.ResourceId,
+Value = c.Value,
+LocaleId = c.LocaleId,
+ResourceSet = c.ResourceSet,
+Type = c.Type,
+BinFile = c.BinFile,
+TextFile = c.TextFile,
+Filename = c.Filename,
+Comment = c.Comment,
+ValueType = c.ValueType,
+Updated = c.Updated,
+        });
+        }
+    }
+}
+
+

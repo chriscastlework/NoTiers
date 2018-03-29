@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.TaskSharesService
+{
+    public class View : IViewEvent<TaskSharesViewModel,TaskShare>
+    {
+        public int CreatedId = 0;
+
+        public Response<TaskSharesViewModel> Run(TaskSharesViewModel model,ref IQueryable<TaskShare> repository, IUnitOfWork unitOfWork, Response<TaskSharesViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = TaskShares
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing TaskShares");
+            }
+
+            return result;
+        }
+
+    }
+}

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.StandardObjectRelationshipDefintionsService
+{
+    public class Delete : IDeleteEvent<StandardObjectRelationshipDefintionsViewModel,StandardObjectRelationshipDefintion>
+    {
+
+        public bool Run(StandardObjectRelationshipDefintions ViewModel model, ref IQueryable<StandardObjectRelationshipDefintion>repository, IUnitOfWork unitOfWork, Response<StandardObjectRelationshipDefintionsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<StandardObjectRelationshipDefintion>().Find(model.Id);unitOfWork.With<StandardObjectRelationshipDefintion>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

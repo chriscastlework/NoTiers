@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.ApiAuthenticationsService
+{
+    public class Update : IUpdateEvent<ApiAuthenticationsViewModel,ApiAuthentication>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(ApiAuthenticationsViewModel model, ref IQueryable<ApiAuthentication> repository, IUnitOfWork unitOfWork, Response<ApiAuthenticationsViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = ApiAuthentications
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<ApiAuthentication>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = ApiAuthenticationsMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

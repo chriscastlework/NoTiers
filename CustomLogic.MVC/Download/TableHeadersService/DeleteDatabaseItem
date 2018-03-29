@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.TableHeadersService
+{
+    public class Delete : IDeleteEvent<TableHeadersViewModel,TableHeader>
+    {
+
+        public bool Run(TableHeaders ViewModel model, ref IQueryable<TableHeader>repository, IUnitOfWork unitOfWork, Response<TableHeadersViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<TableHeader>().Find(model.Id);unitOfWork.With<TableHeader>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,48 @@
+using System.Linq;
+
+namespace CustomLogic.Services.RolesService
+{
+public static class RolesMapper
+{
+
+public static Role MapInsertModelToDbModel(RolesViewModel model, Role newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Role();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.EnabledForAllOrgs = model.EnabledForAllOrgs;
+    return newDomainModel;
+    }
+
+
+
+public static RolesViewModel MapDbModelToViewModel(Role dbModel)
+{
+var viewModel = new  RolesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.EnabledForAllOrgs = dbModel.EnabledForAllOrgs;
+
+return viewModel;
+}
+
+
+public static IQueryable<RolesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Role> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new RolesViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+EnabledForAllOrgs = c.EnabledForAllOrgs,
+        });
+        }
+    }
+}
+
+

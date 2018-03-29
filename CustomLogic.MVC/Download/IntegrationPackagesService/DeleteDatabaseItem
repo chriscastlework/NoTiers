@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.IntegrationPackagesService
+{
+    public class Delete : IDeleteEvent<IntegrationPackagesViewModel,IntegrationPackage>
+    {
+
+        public bool Run(IntegrationPackages ViewModel model, ref IQueryable<IntegrationPackage>repository, IUnitOfWork unitOfWork, Response<IntegrationPackagesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<IntegrationPackage>().Find(model.Id);unitOfWork.With<IntegrationPackage>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

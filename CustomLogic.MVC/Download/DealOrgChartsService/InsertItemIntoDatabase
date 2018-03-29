@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.DealOrgChartsService
+{
+    public class Save : IInsertEvent<DealOrgChartsViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(DealOrgChartsViewModel model, IUnitOfWork unitOfWork, Response<DealOrgChartsViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = DealOrgCharts();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<DealOrgChart>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = DealOrgCharts
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(DealOrgChartsViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<DealOrgChart>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<DealOrgChart>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

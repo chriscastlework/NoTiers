@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.UserRolesService
+{
+    public class Delete : IDeleteEvent<UserRolesViewModel,UserRole>
+    {
+
+        public bool Run(UserRoles ViewModel model, ref IQueryable<UserRole>repository, IUnitOfWork unitOfWork, Response<UserRolesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<UserRole>().Find(model.Id);unitOfWork.With<UserRole>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

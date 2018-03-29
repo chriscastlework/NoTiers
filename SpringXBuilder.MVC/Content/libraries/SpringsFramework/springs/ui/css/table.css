@@ -1,0 +1,95 @@
+table.standard
+{
+    background-color:#ffffff;
+    border:1px solid #c3c3c3;
+    border-collapse:collapse;
+}
+
+table.standard th
+{
+    background:#CCCCCC url('../res/springs/headerRowBg.png') top repeat-x;
+    border:1px solid #c3c3c3;
+    padding:3px;
+    vertical-align:top;
+}
+
+table.standard td
+{
+    border:1px solid #c3c3c3;
+    padding:3px;
+    vertical-align:top;
+}
+.table
+{
+    /*font-size:11px;*/
+}
+.table_header
+{
+    width:100%;
+    background:#CCCCCC url('../res/springs/headerRowBg.png') top repeat-x;
+    font-family:sans-serif;
+    /*font-size:11px;*/
+    padding:0px;
+    cursor:hand;
+    cursor:pointer;
+    margin: 0px;
+}
+
+.table_header .table_header_inner_container
+{
+    /*min-height: 12px;*/
+}
+
+.table_header .ascending .table_header_inner_container
+{
+    background:url('../res/springs/arrow_up.png') no-repeat right;
+}
+
+.table_header .descending .table_header_inner_container
+{
+    background:url('../res/springs/arrow_down.png') no-repeat right;
+}
+
+.table_header_cell
+{
+    background:#CCCCCC url('../res/springs/headerRowBg.png') top repeat-x;
+    border:1px solid;
+    border-color: #FFFFFF #999999 #999999 #FFFFFF;
+    margin:0px;
+    padding:3px;
+    cursor:hand;
+    cursor:pointer;
+    font-weight: bold;
+    overflow:hidden;
+    clip:auto;
+    border-collapse: separate;
+}
+
+.table_row
+{
+    width:100%;
+    background-color:#FFFFFF;
+    padding:0px;
+    margin: 0px;
+    cursor:hand;
+    cursor:pointer;
+
+    height:30px;
+}
+
+.table_row_cell
+{
+    border:1px #CCCCCC solid;
+    margin:0px;
+    padding:3px;
+    cursor:hand;
+    cursor:pointer;
+    /*font-size: 11px;*/
+    overflow:hidden;
+    clip:auto;
+}
+
+.table_row_selected
+{
+    background:#EAEAEA url('../res/springs/headerRowBg.png') top repeat-x;
+}

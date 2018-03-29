@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.FeaturesService
+{
+    public class Update : IUpdateEvent<FeaturesViewModel,Feature>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(FeaturesViewModel model, ref IQueryable<Feature> repository, IUnitOfWork unitOfWork, Response<FeaturesViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = Features
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<Feature>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = FeaturesMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ClientCorsOriginsService
+{
+public static class ClientCorsOriginsMapper
+{
+
+public static ClientCorsOrigin MapInsertModelToDbModel(ClientCorsOriginsViewModel model, ClientCorsOrigin newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ClientCorsOrigin();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static ClientCorsOriginsViewModel MapDbModelToViewModel(ClientCorsOrigin dbModel)
+{
+var viewModel = new  ClientCorsOriginsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<ClientCorsOriginsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ClientCorsOrigin> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ClientCorsOriginsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

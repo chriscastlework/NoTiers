@@ -1,0 +1,63 @@
+using System.Linq;
+
+namespace CustomLogic.Services.SalesObjectViewsService
+{
+public static class SalesObjectViewsMapper
+{
+
+public static SalesObjectView MapInsertModelToDbModel(SalesObjectViewsViewModel model, SalesObjectView newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new SalesObjectView();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.SalesObject = model.SalesObject;
+            newDomainModel.ViewType = model.ViewType;
+            newDomainModel.SideNavItemId = model.SideNavItemId;
+            newDomainModel.IsDefault = model.IsDefault;
+            newDomainModel.OrgId = model.OrgId;
+            newDomainModel.StcId = model.StcId;
+            newDomainModel.OnByDefault = model.OnByDefault;
+    return newDomainModel;
+    }
+
+
+
+public static SalesObjectViewsViewModel MapDbModelToViewModel(SalesObjectView dbModel)
+{
+var viewModel = new  SalesObjectViewsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.SalesObject = dbModel.SalesObject;
+            viewModel.ViewType = dbModel.ViewType;
+            viewModel.SideNavItemId = dbModel.SideNavItemId;
+            viewModel.IsDefault = dbModel.IsDefault;
+            viewModel.OrgId = dbModel.OrgId;
+            viewModel.StcId = dbModel.StcId;
+            viewModel.OnByDefault = dbModel.OnByDefault;
+
+return viewModel;
+}
+
+
+public static IQueryable<SalesObjectViewsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<SalesObjectView> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new SalesObjectViewsViewModel()
+        {
+Id = c.Id,
+SalesObject = c.SalesObject,
+ViewType = c.ViewType,
+SideNavItemId = c.SideNavItemId,
+IsDefault = c.IsDefault,
+OrgId = c.OrgId,
+StcId = c.StcId,
+OnByDefault = c.OnByDefault,
+        });
+        }
+    }
+}
+
+

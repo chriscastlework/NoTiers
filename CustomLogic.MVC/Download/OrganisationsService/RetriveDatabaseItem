@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.OrganisationsService
+{
+    public class View : IViewEvent<OrganisationsViewModel,Organisation>
+    {
+        public int CreatedId = 0;
+
+        public Response<OrganisationsViewModel> Run(OrganisationsViewModel model,ref IQueryable<Organisation> repository, IUnitOfWork unitOfWork, Response<OrganisationsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = Organisations
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing Organisations");
+            }
+
+            return result;
+        }
+
+    }
+}

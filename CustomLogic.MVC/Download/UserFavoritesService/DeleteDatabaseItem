@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.UserFavoritesService
+{
+    public class Delete : IDeleteEvent<UserFavoritesViewModel,UserFavorite>
+    {
+
+        public bool Run(UserFavorites ViewModel model, ref IQueryable<UserFavorite>repository, IUnitOfWork unitOfWork, Response<UserFavoritesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<UserFavorite>().Find(model.Id);unitOfWork.With<UserFavorite>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

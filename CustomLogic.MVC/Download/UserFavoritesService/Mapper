@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.UserFavoritesService
+{
+public static class UserFavoritesMapper
+{
+
+public static UserFavorite MapInsertModelToDbModel(UserFavoritesViewModel model, UserFavorite newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new UserFavorite();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static UserFavoritesViewModel MapDbModelToViewModel(UserFavorite dbModel)
+{
+var viewModel = new  UserFavoritesViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<UserFavoritesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<UserFavorite> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new UserFavoritesViewModel()
+        {
+        });
+        }
+    }
+}
+
+

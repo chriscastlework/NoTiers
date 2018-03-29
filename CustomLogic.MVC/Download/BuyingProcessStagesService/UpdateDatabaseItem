@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.BuyingProcessStagesService
+{
+    public class Update : IUpdateEvent<BuyingProcessStagesViewModel,BuyingProcessStage>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(BuyingProcessStagesViewModel model, ref IQueryable<BuyingProcessStage> repository, IUnitOfWork unitOfWork, Response<BuyingProcessStagesViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = BuyingProcessStages
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<BuyingProcessStage>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = BuyingProcessStagesMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

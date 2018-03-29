@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CustomFieldValidationsService
+{
+public static class CustomFieldValidationsMapper
+{
+
+public static CustomFieldValidation MapInsertModelToDbModel(CustomFieldValidationsViewModel model, CustomFieldValidation newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CustomFieldValidation();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Regex = model.Regex;
+            newDomainModel.FieldType = model.FieldType;
+            newDomainModel.ErrorMessage = model.ErrorMessage;
+    return newDomainModel;
+    }
+
+
+
+public static CustomFieldValidationsViewModel MapDbModelToViewModel(CustomFieldValidation dbModel)
+{
+var viewModel = new  CustomFieldValidationsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.Regex = dbModel.Regex;
+            viewModel.FieldType = dbModel.FieldType;
+            viewModel.ErrorMessage = dbModel.ErrorMessage;
+
+return viewModel;
+}
+
+
+public static IQueryable<CustomFieldValidationsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CustomFieldValidation> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CustomFieldValidationsViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+Regex = c.Regex,
+FieldType = c.FieldType,
+ErrorMessage = c.ErrorMessage,
+        });
+        }
+    }
+}
+
+

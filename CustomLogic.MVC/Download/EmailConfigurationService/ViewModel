@@ -1,0 +1,16 @@
+using System;
+
+namespace CustomLogic.Services.EmailConfigurationService
+{
+    public class EmailConfigurationViewModel
+    {
+
+        public int ID {get;set;}
+        public string Description {get;set;}
+        public string ApiUserName {get;set;}
+        public string APIPassword {get;set;}
+        public string DomainAddressID {get;set;}
+        public string EmailConnectorURL {get;set;}
+
+    }
+}

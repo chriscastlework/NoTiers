@@ -1,0 +1,590 @@
+﻿<xml>
+  <application>
+    <resources>
+      <resource id="example-dialog">
+        <plugins.dialog.Dialog
+            extend_with="dialog.ExampleDialogExtension" >
+          <content>
+            <label class="field-label left">Industry type</label>
+            <field class="field" id="example_dialog_combo" type="combo" dataProvider="industry_types" />
+          </content>
+        </plugins.dialog.Dialog>
+      </resource>
+
+
+      <resource id="locale_strings">
+        <plugins.locale.Locale>
+          <string id="SAVING">Saving...</string>
+          <string id="LOAD_ERROR">There was a problem loading your opportunity data. Please close this dialog to retry. If this problem persists, please ensure your internet connection is running, and your CRM session is still valid.</string>
+          <string id="SAVE_ERROR">There was a problem saving your opportunity data.</string>
+          <string id="SAVE_ERROR_DEFAULT_REASON"> Please ensure your internet connection is running, and your CRM session is still valid.</string>
+          <string id="PROMPT_SAVE">Are you sure you want to exit without saving your changes?</string>
+          <string id="DIALOG_OK">Ok</string>
+          <string id="DIALOG_CANCEL">Cancel</string>
+          <string id="DIALOG_CLOSE">Close</string>
+          <string id="MESSAGE_DIALOG_WARNING">Warning</string>
+          <string id="MESSAGE_DIALOG_ALERT">Alert!</string>
+          <string id="CONFIRM_DIALOG_YES">Yes</string>
+          <string id="CONFIRM_DIALOG_NO">No</string>
+          <string id="MESSAGE_DIALOG_ERROR">Error!</string>
+          <string id="BROWSER_REFRESHING_CRM">This%20browser%20does%20not%20support%20refreshing%20of%20the%20CRM.%20Any%20changes%20made%20in%20the%20Applet%20will%20not%20be%20displayed%20until%20you%20press%20'Command%20R'</string>
+          <string id="LOSS_OF_DATA">Clicking%20OK%20could%20result%20in%20lost%20data.%20%5CnEnsure%20you%20have%20saved%20any%20changes%20before%20exiting.</string>
+        </plugins.locale.Locale>
+      </resource>
+      <resource id="user_date">
+        <format type="date">
+          <value id="format">dd/mm/yy</value>
+        </format>
+      </resource>
+      <resource id="general_date">
+        <format type="date">
+          <value id="format">dd/mm/yy</value>
+        </format>
+      </resource>
+      <resource id="applicationoptions">
+        <plugins.options.ApplicationOptions>
+          <version>Page Viewer User Build 0.0.1</version>
+          <mode>full</mode>
+          <splashmessage>Applet locked</splashmessage>
+          <autosave>0</autosave>
+        </plugins.options.ApplicationOptions>
+      </resource>
+      <resource id="usersettings">
+        <plugins.user.UserSettings>
+          <username>SSA Admin</username>
+          <userid>47de1cf2-ea0d-4f78-bd91-b167a21ba50e</userid>
+          <defaultdateformat>user_date</defaultdateformat>
+          <licenses>
+            <license id="pv">full</license>
+          </licenses>
+          <language>EN</language>
+        </plugins.user.UserSettings>
+      </resource>
+      <resource id="enabled">
+      </resource>
+      <resource id="xNpe">Account%20Custom%20Checkbox</resource>
+      <resource id="XHNa">Account%20Owner</resource>
+      <resource id="tWpR">Custom%20Objects%20Organisation%20Card</resource>
+      <resource id="VphS">Account%20Tasks</resource>
+      <resource id="85Lm">Account%20Deals</resource>
+      <resource id="yqdF">Account%20Contacts</resource>
+      <resource id="da5Y">Account%20Custom%20Datetime</resource>
+      <resource id="qmRu">Account%20Custom%20Picklist</resource>
+      <resource id="2jHV">Account%20Custom%20Integer</resource>
+      <resource id="dlKX">Account%20Text%20Field</resource>
+      <resource id="zvDf">Account%20Name</resource>
+      <resource id="cbt8">https%3A%2F%2Fuat%2Dvr%2Dapp%2Dpb%2Eazurewebsites%2Enet%2F%23%2FTable%2FPage%5FBuilder%5FApplet%2F338</resource>
+      <resource id="1">true</resource>
+      <resource id="2">false</resource>
+      <resource id="3">1024</resource>
+      <resource id="10">2048</resource>
+      <resource id="11">4096</resource>
+      <resource id="4">%20</resource>
+      <resource id="5">%2C</resource>
+      <resource id="6">3%2E14159265358979</resource>
+      <resource id="7">%23FF0000</resource>
+      <resource id="8">%23FF7f00</resource>
+      <resource id="9">%2300FF00</resource>
+      <resource id="108a97f4">
+        <selection>
+          <value id=""></value>
+          <value id="CustomField1567">Option%201</value>
+          <value id="CustomField1568">Option%202</value>
+          <value id="CustomField1569">Option%203</value>
+        </selection>
+      </resource>
+      <resource id="CustomField1567">Option%201</resource>
+      <resource id="CustomField1568">Option%202</resource>
+      <resource id="CustomField1569">Option%203</resource>
+      <resource id="73dc4be1">
+        <selection></selection>
+      </resource>
+      <resource id="8eee5be6">
+        <selection>
+          <value id=""></value>
+          <value id="CustomField1385">None</value>
+          <value id="CustomField1386">Low</value>
+          <value id="CustomField1387">Medium</value>
+          <value id="CustomField1388">High</value>
+          <value id="CustomField1389">Unsure</value>
+          <value id="CustomField1390">Adversary</value>
+        </selection>
+      </resource>
+      <resource id="CustomField1385">None</resource>
+      <resource id="CustomField1386">Low</resource>
+      <resource id="CustomField1387">Medium</resource>
+      <resource id="CustomField1388">High</resource>
+      <resource id="CustomField1389">Unsure</resource>
+      <resource id="CustomField1390">Adversary</resource>
+      <resource id="51f586cc">
+        <selection></selection>
+      </resource>
+      <resource id="1c506349">
+        <selection>
+          <value id=""></value>
+          <value id="CustomField1540">Option%201</value>
+          <value id="CustomField1541">Option%202</value>
+          <value id="CustomField1542">Option%203%20</value>
+          <value id="CustomField1543">Option%204%20</value>
+        </selection>
+      </resource>
+      <resource id="CustomField1540">Option%201</resource>
+      <resource id="CustomField1541">Option%202</resource>
+      <resource id="CustomField1542">Option%203%20</resource>
+      <resource id="CustomField1543">Option%204%20</resource>
+      <resource id="39d60ea9">
+        <selection>
+          <value id=""></value>
+          <value id="CustomField1537">option%201</value>
+          <value id="CustomField1538">option%202</value>
+          <value id="CustomField1539">option%203</value>
+        </selection>
+      </resource>
+      <resource id="CustomField1537">option%201</resource>
+      <resource id="CustomField1538">option%202</resource>
+      <resource id="CustomField1539">option%203</resource>
+    </resources>
+    <ui>
+      <container  class="pb-stage" controller="pv.controller.MainController" visible="false" binding="Account" id="Applet">
+        <container id="page_editor" class="pb-page-container">
+          <container class="pb-page-element pb-container pb-page">
+            
+            
+            <label  style="text-align:left; " class="pb-width-full pb-page-element pb-single-row pb-label" default="{cbt8}" decimalPlaces="" symbol="" symbolPosition="after" id="2485a497">{cbt8}</label>
+            <container  class="pb-width-full pb-page-element pb-container pb-section"  id="1a755334">
+              <label  style="text-align:left; " class="pb-width-small pb-page-element pb-single-row pb-label" default="{zvDf}" decimalPlaces="" symbol="" symbolPosition="after" id="95c5d400">{zvDf}</label>
+              <field  style="text-align:left; " class="pb-width-small pb-page-element" type="text" binding="Name" id="540cfa4e"></field>
+            </container>
+            <container  class="pb-width-full pb-page-element pb-container pb-section"  id="18648ddf">
+              <label  style="text-align:left; " class="pb-width-small pb-page-element pb-single-row pb-label" default="{dlKX}" decimalPlaces="" symbol="" symbolPosition="after" id="8e9e61de">{dlKX}</label>
+              <field  style="text-align:left; " class="pb-width-small pb-page-element" type="text" binding="CustomField2919" id="418174f1"></field>
+            </container>
+            <container  class="pb-width-full pb-page-element pb-container pb-section"  id="d9e0f587">
+              <label  style="text-align:left; " class="pb-width-small pb-page-element pb-single-row pb-label" default="{2jHV}" decimalPlaces="" symbol="" symbolPosition="after" id="a6fbdb96">{2jHV}</label>
+              <field  class="pb-width-small pb-page-element pb-single-row" type="numeric" format="{default_number_format_id}" decimalPlaces="0" symbol="" symbolPosition="after" binding="CustomField2920" id="0628e6b4"></field>
+            </container>
+            <container  class="pb-width-full pb-page-element pb-container pb-section"  id="5eedb40d">
+              <label  style="text-align:left; " class="pb-width-small pb-page-element pb-single-row pb-label" default="{qmRu}" decimalPlaces="" symbol="" symbolPosition="after" id="60f0b5e1">{qmRu}</label>
+              <field  class="pb-width-small pb-page-element pb-single-row" type="combo" dataProvider="108a97f4" binding="CustomField2923" id="108a97f4"></field>
+            </container>
+            <container  class="pb-width-full pb-page-element pb-container pb-section"  id="5ab6ccd7">
+              <label  style="text-align:left; " class="pb-width-small pb-page-element pb-single-row pb-label" default="{da5Y}" decimalPlaces="" symbol="" symbolPosition="after" id="2acaf9ed">{da5Y}</label>
+              <field  class="pb-page-element pb-single-row" type="date" format="{default_date_format_id}" binding="CustomField2922" id="982540cd"></field>
+            </container>
+            <container  class="pb-width-full pb-page-element pb-container pb-section"  id="83a747c2">
+              <label  style="text-align:left; " class="pb-width-small pb-page-element pb-single-row pb-label" default="{XHNa}" decimalPlaces="" symbol="" symbolPosition="after" id="8a97a08e">{XHNa}</label>
+              <lookup  class="pb-width-small pb-page-element" dialogFields="Id;Email;FirstName;LastName" dialogFieldLabels="Id;Email;FirstName;LastName" lookupPath="/Users/" associatedFieldId="Org.Account.Owner" relatedField="Owner" displayField="FirstName" binding="OwnerId" foreignKey="OwnerId" id="87ff7cb9"></lookup>
+            </container>
+            <container  class="pb-width-full pb-page-element pb-container pb-section"  id="fe5ee0fa">
+              <label  style="text-align:left; " class="pb-width-small pb-page-element pb-single-row pb-label" default="{xNpe}" decimalPlaces="" symbol="" symbolPosition="after" id="26db7842">{xNpe}</label>
+              <field  class="pb-page-element pb-single-row" type="checkbox" binding="CustomField2924" id="915211f2"></field>
+            </container>
+            <label  style="text-align:left; " class="pb-width-full pb-page-element pb-single-row pb-label" default="{tWpR}" decimalPlaces="" symbol="" symbolPosition="after" id="fd7bb2fd">{tWpR}</label>
+            <container class="table_container pb-page-element pb-width-full" style="">
+              <container class="button_container">
+                <button class="button" id="add_23e7b71a" > Add</button>
+                <button class="button" id="remove_23e7b71a"> Remove</button>
+                <button class="button" controller="pv.controller.CastlesTest" action="{eample.dialog}"> Create New</button>
+              </container>
+              <table class="pb-height-medium pb-page-element pb-grid" add_button="add_23e7b71a" remove_button="remove_23e7b71a" showSummary="false" create="Organizational_Structure__Cards" add="Organizational_Structure__Cards" binding="Organizational_Structure" id="23e7b71a">
+                <tablecolumn  class="column" summary="sum" title="Organisation Card Name" id="084ff920">
+                  <field  style="text-align:left; " class="pb-width-small pb-page-element" type="text" id="d890beb7"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Organisation Card Id" id="63121924">
+                  <field  class="pb-width-small pb-page-element pb-single-row" type="numeric" format="{default_number_format_id}" decimalPlaces="0" symbol="" symbolPosition="after" id="0c2fa489"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Organisation Card Type" id="13918ed1">
+                  <field  class="pb-width-small pb-page-element pb-single-row" type="combo" dataProvider="73dc4be1" id="73dc4be1"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Created ? Should this be here?" id="f2da1eb1">
+                  <field  class="pb-page-element pb-single-row" type="date" format="{default_date_format_id}" id="add5da36"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Custom Checkbox" id="66a35bf6">
+                  <field  class="pb-page-element pb-single-row" type="checkbox" id="a1b1aff9"></field>
+                </tablecolumn>
+                <lookup  class="pb-page-element" dialogFields="Id;Name" dialogFieldLabels="Id;Name" lookupPath="/CustomObject/Organizational_Structure__Cards?Name=" associatedFieldId="Org.Account." relatedField="" displayField="Name" binding="Organizational_Structure" foreignKey="Organizational_Structure" id="lookup"></lookup>
+              </table>
+            </container>
+            <label  style="text-align:left; " class="pb-width-full pb-page-element pb-single-row pb-label" default="{yqdF}" decimalPlaces="" symbol="" symbolPosition="after" id="b43a3655">{yqdF}</label>
+            <container class="table_container pb-page-element pb-width-full" style="">
+              <container class="button_container">
+                <button class="button" id="add_02ae6f91" > Add</button>
+                <button class="button" id="remove_02ae6f91" > Remove</button>
+              </container>
+              <table  class="pb-height-small pb-page-element pb-grid" add_button="add_02ae6f91" remove_button="remove_02ae6f91" showSummary="false" create="Contact" add="Contact" binding="Contacts" id="02ae6f91">
+                <tablecolumn  class="column" summary="sum" title="Conatct FirstName" id="6c152fe6">
+                  <field  style="text-align:left; " class="pb-width-small pb-page-element" type="text" binding="FirstName" id="379aa89d"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Custom Decimal" id="edb33249">
+                  <field  class="pb-width-small pb-page-element pb-single-row" type="numeric" format="{default_number_format_id}" decimalPlaces="2" symbol="" symbolPosition="after" binding="CustomField2825" id="9fd00d62"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Level of support" id="1cc30d7e">
+                  <field  class="pb-width-small pb-page-element pb-single-row" type="combo" dataProvider="8eee5be6" binding="CustomField2762" id="8eee5be6"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Custom DateTime" id="39dab9b2">
+                  <field  class="pb-page-element pb-single-row" type="date" format="{default_date_format_id}" binding="CustomField2826" id="63bba0da"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Custom Checkbox" id="730ef057">
+                  <field  class="pb-page-element pb-single-row" type="checkbox" binding="CustomField2827" id="5cd69ed2"></field>
+                </tablecolumn>
+                <lookup  class="pb-page-element" dialogFields="Id;FirstName;LastName" dialogFieldLabels="Id;FirstName;LastName" lookupPath="/Contacts/" associatedFieldId="Org.Account." relatedField="" displayField="FirstName" binding="Contacts" foreignKey="Contacts" id="lookup"></lookup>
+              </table>
+            </container>
+            <label  style="text-align:left; " class="pb-width-full pb-page-element pb-single-row pb-label" default="{85Lm}" decimalPlaces="" symbol="" symbolPosition="after" id="19b03231">{85Lm}</label>
+            <container class="table_container pb-page-element pb-width-full" style="">
+              <container class="button_container">
+                <button class="button" id="add_b9ddd012" > Add</button>
+                <button class="button" id="remove_b9ddd012" > Remove</button>
+              </container>
+              <table  class="pb-height-small pb-page-element pb-grid" add_button="add_b9ddd012" remove_button="remove_b9ddd012" showSummary="false" create="Deal" add="Deal" binding="Deals" id="b9ddd012">
+                <tablecolumn  class="column" summary="sum" title="Deal Name" id="450d41f7">
+                  <field  style="text-align:left; " class="pb-width-small pb-page-element" type="text" binding="Name" id="57f3f682"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Revenue Amount" id="c65845d5">
+                  <field  class="pb-width-small pb-page-element pb-single-row" type="numeric" format="{default_number_format_id}" decimalPlaces="0" symbol="" symbolPosition="after" binding="RevenueAmount" id="9c08b3b5"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Close Status" id="3020a18a">
+                  <field  class="pb-width-small pb-page-element pb-single-row" type="combo" dataProvider="51f586cc" binding="CloseStatus" id="51f586cc"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Expected Close Date" id="6f038b3e">
+                  <field  class="pb-page-element pb-single-row" type="date" format="{default_date_format_id}" binding="ExpectedCloseDate" id="8b5af903"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Custom Text" id="5c778bc2">
+                  <field  style="text-align:left; " class="pb-width-small pb-page-element" type="text" binding="CustomField2841" id="c06b505b"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Custom Decimal" id="3f8e77c6">
+                  <field  class="pb-width-small pb-page-element pb-single-row" type="numeric" format="{default_number_format_id}" decimalPlaces="2" symbol="" symbolPosition="after" binding="CustomField2843" id="1e297b9a"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Custom Picklist" id="6b3cda96">
+                  <field  class="pb-width-small pb-page-element pb-single-row" type="combo" dataProvider="1c506349" binding="CustomField2845" id="1c506349"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Custom DateTime" id="4a329eae">
+                  <field  class="pb-page-element pb-single-row" type="date" format="{default_date_format_id}" binding="CustomField2844" id="c04aa4d2"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Deal Owner" id="7acf05dc">
+                  <lookup  class="pb-width-small pb-page-element" dialogFields="Id;Email;FirstName;LastName" dialogFieldLabels="Id;Email;FirstName;LastName" lookupPath="/Users/" associatedFieldId="Org.Account.Deals.Owner" relatedField="Owner" displayField="FirstName" binding="OwnerId" foreignKey="OwnerId" id="5bd3d1b6"></lookup>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Custom Checkbox" id="72c51ce8">
+                  <field  class="pb-page-element pb-single-row" type="checkbox" binding="CustomField2846" id="eea99078"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" id="e22e7fc0">
+                  <container  class="pb-width-full pb-page-element pb-container pb-section" binding="SalesProcess" id="b55d0b96">
+                    <field  style="text-align:left; " class="pb-width-small pb-page-element" type="text" binding="Name" id="d6676d0a"></field>
+                  </container>
+                </tablecolumn>
+                <lookup  class="pb-page-element" dialogFields="Id;Name" dialogFieldLabels="Id;Name" lookupPath="/Deals/" associatedFieldId="Org.Account." relatedField="" displayField="Name" binding="Deals" foreignKey="Deals" id="lookup"></lookup>
+              </table>
+            </container>
+            <label  style="text-align:left; " class="pb-width-full pb-page-element pb-single-row pb-label" default="{VphS}" decimalPlaces="" symbol="" symbolPosition="after" id="56f8ecee">{VphS}</label>
+            <container class="table_container pb-page-element pb-width-full" style="">
+              <container class="button_container">
+                <button class="button" id="add_4ad9ca64" > Add</button>
+                <button class="button" id="remove_4ad9ca64" > Remove</button>
+              </container>
+              <table  class="pb-height-medium pb-page-element pb-grid" add_button="add_4ad9ca64" remove_button="remove_4ad9ca64" showSummary="false" create="Task" add="Task" binding="Tasks" id="4ad9ca64">
+                <tablecolumn  class="column" summary="sum" title="Task Name" id="7353a813">
+                  <field  style="text-align:left; " class="pb-width-small pb-page-element" type="text" binding="Name" id="ef0f014b"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Custom Deciaml (1 of 3?)" id="9a331590">
+                  <field  class="pb-width-small pb-page-element pb-single-row" type="numeric" format="{default_number_format_id}" decimalPlaces="2" symbol="" symbolPosition="after" binding="CustomField2834" id="a9412fba"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Custom Picklist" id="3ed7d21f">
+                  <field  class="pb-width-small pb-page-element pb-single-row" type="combo" dataProvider="39d60ea9" binding="CustomField2838" id="39d60ea9"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Task Due Date" id="17acece7">
+                  <field  class="pb-page-element pb-single-row" type="date" format="{default_date_format_id}" binding="DueDate" id="a1169f43"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Task Custom Date" id="a120f38c">
+                  <field  class="pb-page-element pb-single-row" type="date" format="{default_date_format_id}" binding="CustomField2831" id="497db934"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="UserId (Owner)" id="b80e7444">
+                  <lookup  class="pb-width-small pb-page-element" dialogFields="Email;FirstName;LastName" dialogFieldLabels="Email;FirstName;LastName" lookupPath="/Users/" associatedFieldId="Org.Account.Tasks.User" relatedField="User" displayField="FirstName" binding="UserId" foreignKey="UserId" id="c37898e8"></lookup>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Type" id="3d821f67">
+                  <lookup  class="pb-width-small pb-page-element" dialogFields="Id;Name" dialogFieldLabels="Id;Name" lookupPath="/TaskType/" associatedFieldId="Org.Account.Tasks.TaskType" relatedField="TaskType" displayField="Name" binding="TaskTypeId" foreignKey="TaskTypeId" id="5ade19de"></lookup>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="IsDone" id="a45420aa">
+                  <field  class="pb-page-element pb-single-row" type="checkbox" binding="IsDone" id="5b18ecc9"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="IsImportant" id="6486af54">
+                  <field  class="pb-page-element pb-single-row" type="checkbox" binding="IsImportant" id="d7286fd5"></field>
+                </tablecolumn>
+                <tablecolumn  class="column" summary="sum" title="Custom Checkbox" id="707e628d">
+                  <field  class="pb-page-element pb-single-row" type="checkbox" binding="CustomField2837" id="eb449f88"></field>
+                </tablecolumn>
+                <lookup  class="pb-page-element" dialogFields="Id;Name;TaskTypeId" dialogFieldLabels="Id;Name;Task Type" lookupPath="/Tasks/" associatedFieldId="Org.Account." relatedField="" displayField="Name" binding="Tasks" foreignKey="Tasks" id="lookup"></lookup>
+              </table>
+            </container>
+            <orgchart  class="pb-width-full pb-height-medium pb-page-element" binding="Tasks" id="37117861">
+              <orgchartbox  class="" xProp="parent.CustomField2833.getId().X" yProp="parent.CustomField2833.getId().Y" managerFieldName="parent.CustomField2833.getId().Manager" influenceesFieldName="parent.CustomField2833.getId().Influencees" id="328bdf6c">
+                <container  class="pb-width-full pb-page-element pb-container pb-section"  id="7f4172c8">
+                  <field  style="text-align:left; " class="pb-width-full pb-page-element" type="text" binding="Name" id="7d1e121e"></field>
+                </container>
+                <container  class="pb-width-full pb-page-element pb-container pb-section"  id="2f032c67">
+                  <lookup  class="pb-width-full pb-page-element" dialogFields="Id;Name" dialogFieldLabels="Id;Name" lookupPath="/TaskType/" associatedFieldId="Org.Account.Tasks.TaskType" relatedField="TaskType" displayField="Name" binding="TaskTypeId" foreignKey="TaskTypeId" id="72887ac7"></lookup>
+                </container>
+                <container  class="pb-width-full pb-page-element pb-container pb-section"  id="70323504">
+                  <field  class="pb-page-element pb-single-row" type="date" format="{default_date_format_id}" binding="DueDate" id="0cd15407"></field>
+                  <container  class="pb-width-full pb-page-element pb-container pb-section"  id="15a80f3d">
+                    <field  class="pb-page-element pb-single-row" type="checkbox" binding="IsImportant" id="9c5f4f86"></field>
+                  </container>
+                  <container  class="pb-width-full pb-page-element pb-container pb-section"  id="48bf3ef6">
+                    <field  class="pb-page-element pb-single-row" type="checkbox" binding="IsDone" id="426106f8"></field>
+                  </container>
+                </container>
+              </orgchartbox>
+              <orgchartdialog  class="" visible="false" id="26ed2f51"></orgchartdialog>
+              <lookup  class="pb-page-element" dialogFields="" dialogFieldLabels="" lookupPath="/Tasks/" associatedFieldId="Org.Account." relatedField="" displayField="FirstName" binding="Tasks" foreignKey="Tasks" id="lookup"></lookup>
+            </orgchart>
+          </container>
+        </container>
+      </container>
+    </ui>
+    <data id="main">
+      <record id="Account" >
+        <field id="CrmID"/>
+        <field id="RelationshipId"/>
+        <field id="Name"  />
+        <field id="CustomField2919"  />
+        <field id="CustomField2920"  />
+        <field id="CustomField2923"  />
+        <field id="CustomField2922" type="date" />
+        <field id="OwnerId"  />
+        <field id="Owner"  />
+        <field id="CustomField2924" type="boolean" />
+        <field id="CustomField2833"  />
+        <record id="Account" >
+          <field id="CrmID"/>
+          <field id="RelationshipId"/>
+        </record>
+        <record id="Deals" >
+          <field id="CrmID"/>
+          <field id="RelationshipId"/>
+          <field id="Name"  />
+          <field id="RevenueAmount"  />
+          <field id="CloseStatus"  />
+          <field id="ExpectedCloseDate" type="date" />
+          <field id="CustomField2841"  />
+          <field id="CustomField2843"  />
+          <field id="CustomField2845"  />
+          <field id="CustomField2844" type="date" />
+          <field id="OwnerId"  />
+          <field id="Owner"  />
+          <field id="CustomField2846" type="boolean" />
+          <field id="SalesProcessId"  />
+          <field id="Deals" linkData="%7B%22ApiPath%22%3A%22%2FAccountDeals%2F%22%2C%22AddMethod%22%3A%22POST%22%2C%22DeleteMethod%22%3A%22DELETE%22%2C%22UseMethod%22%3A%22%22%2C%22Relationship%22%3A%7B%22StandardObjectType%22%3A%22%22%2C%22ParentId%22%3A%220%22%2C%22ChildId%22%3A%220%22%7D%7D" />
+          <record id="SalesProcess" >
+            <field id="CrmID"/>
+            <field id="RelationshipId"/>
+            <field id="Name"  />
+          </record>
+        </record>
+        <record id="Tasks" >
+          <field id="CrmID"/>
+          <field id="RelationshipId"/>
+          <field id="Name"  />
+          <field id="CustomField2834"  />
+          <field id="CustomField2838"  />
+          <field id="DueDate" type="date" />
+          <field id="CustomField2831" type="date" />
+          <field id="UserId"  />
+          <field id="User"  />
+          <field id="TaskTypeId"  />
+          <field id="TaskType"  />
+          <field id="IsDone" type="boolean" />
+          <field id="IsImportant" type="boolean" />
+          <field id="CustomField2837" type="boolean" />
+          <field id="Tasks" linkData="%7B%22ApiPath%22%3A%22%2FAccountTasks%2F%22%2C%22AddMethod%22%3A%22POST%22%2C%22DeleteMethod%22%3A%22DELETE%22%2C%22UseMethod%22%3A%22%22%2C%22Relationship%22%3A%7B%22StandardObjectType%22%3A%22%22%2C%22ParentId%22%3A%220%22%2C%22ChildId%22%3A%220%22%7D%7D" />
+        </record>
+        <recordset id="Organizational_Structure" linkData="%7B%22ApiPath%22%3A%22%2FCustomObjectRelationship%2F%22%2C%22AddMethod%22%3A%22POST%22%2C%22DeleteMethod%22%3A%22DELETE%22%2C%22UseMethod%22%3A%22%22%2C%22Relationship%22%3A%7B%22StandardObjectType%22%3A%22Account%22%2C%22ParentId%22%3A%220%22%2C%22ChildId%22%3A%220%22%7D%7D">
+          <record>
+            <field id="CrmID"/>
+            <field id="RelationshipId"/>
+            <field id="Organizational%5FStructure" linkData="%7B%22ApiPath%22%3A%22%2FCustomObjectRelationship%2F%22%2C%22AddMethod%22%3A%22POST%22%2C%22DeleteMethod%22%3A%22DELETE%22%2C%22UseMethod%22%3A%22%22%2C%22Relationship%22%3A%7B%22StandardObjectType%22%3A%22Account%22%2C%22ParentId%22%3A%220%22%2C%22ChildId%22%3A%220%22%7D%7D" />
+          </record>
+        </recordset>
+        <recordset id="Contacts" linkData="%7B%22ApiPath%22%3A%22%2FAccountContacts%2F%22%2C%22AddMethod%22%3A%22POST%22%2C%22DeleteMethod%22%3A%22DELETE%22%2C%22UseMethod%22%3A%22%22%2C%22Relationship%22%3A%7B%22StandardObjectType%22%3A%22%22%2C%22ParentId%22%3A%220%22%2C%22ChildId%22%3A%220%22%7D%7D">
+          <record>
+            <field id="CrmID"/>
+            <field id="RelationshipId"/>
+            <field id="FirstName"  />
+            <field id="CustomField2825"  />
+            <field id="CustomField2762"  />
+            <field id="CustomField2826" type="date" />
+            <field id="CustomField2827" type="boolean" />
+            <field id="Contacts" linkData="%7B%22ApiPath%22%3A%22%2FAccountContacts%2F%22%2C%22AddMethod%22%3A%22POST%22%2C%22DeleteMethod%22%3A%22DELETE%22%2C%22UseMethod%22%3A%22%22%2C%22Relationship%22%3A%7B%22StandardObjectType%22%3A%22%22%2C%22ParentId%22%3A%220%22%2C%22ChildId%22%3A%220%22%7D%7D" />
+          </record>
+        </recordset>
+        <recordset id="Deals" linkData="%7B%22ApiPath%22%3A%22%2FAccountDeals%2F%22%2C%22AddMethod%22%3A%22POST%22%2C%22DeleteMethod%22%3A%22DELETE%22%2C%22UseMethod%22%3A%22%22%2C%22Relationship%22%3A%7B%22StandardObjectType%22%3A%22%22%2C%22ParentId%22%3A%220%22%2C%22ChildId%22%3A%220%22%7D%7D">
+          <record>
+            <field id="CrmID"/>
+            <field id="RelationshipId"/>
+            <field id="Name"  />
+            <field id="RevenueAmount"  />
+            <field id="CloseStatus"  />
+            <field id="ExpectedCloseDate" type="date" />
+            <field id="CustomField2841"  />
+            <field id="CustomField2843"  />
+            <field id="CustomField2845"  />
+            <field id="CustomField2844" type="date" />
+            <field id="OwnerId"  />
+            <field id="Owner"  />
+            <field id="CustomField2846" type="boolean" />
+            <field id="SalesProcessId"  />
+            <field id="Deals" linkData="%7B%22ApiPath%22%3A%22%2FAccountDeals%2F%22%2C%22AddMethod%22%3A%22POST%22%2C%22DeleteMethod%22%3A%22DELETE%22%2C%22UseMethod%22%3A%22%22%2C%22Relationship%22%3A%7B%22StandardObjectType%22%3A%22%22%2C%22ParentId%22%3A%220%22%2C%22ChildId%22%3A%220%22%7D%7D" />
+            <record id="SalesProcess" >
+              <field id="CrmID"/>
+              <field id="RelationshipId"/>
+              <field id="Name"  />
+            </record>
+          </record>
+        </recordset>
+        <recordset id="Tasks" linkData="%7B%22ApiPath%22%3A%22%2FAccountTasks%2F%22%2C%22AddMethod%22%3A%22POST%22%2C%22DeleteMethod%22%3A%22DELETE%22%2C%22UseMethod%22%3A%22%22%2C%22Relationship%22%3A%7B%22StandardObjectType%22%3A%22%22%2C%22ParentId%22%3A%220%22%2C%22ChildId%22%3A%220%22%7D%7D">
+          <record>
+            <field id="CrmID"/>
+            <field id="RelationshipId"/>
+            <field id="Name"  />
+            <field id="CustomField2834"  />
+            <field id="CustomField2838"  />
+            <field id="DueDate" type="date" />
+            <field id="CustomField2831" type="date" />
+            <field id="UserId"  />
+            <field id="User"  />
+            <field id="TaskTypeId"  />
+            <field id="TaskType"  />
+            <field id="IsDone" type="boolean" />
+            <field id="IsImportant" type="boolean" />
+            <field id="CustomField2837" type="boolean" />
+            <field id="Tasks" linkData="%7B%22ApiPath%22%3A%22%2FAccountTasks%2F%22%2C%22AddMethod%22%3A%22POST%22%2C%22DeleteMethod%22%3A%22DELETE%22%2C%22UseMethod%22%3A%22%22%2C%22Relationship%22%3A%7B%22StandardObjectType%22%3A%22%22%2C%22ParentId%22%3A%220%22%2C%22ChildId%22%3A%220%22%7D%7D" />
+          </record>
+        </recordset>
+      </record>
+    </data>
+  </application>
+  <record id="main">
+    <record id="Account">
+      <field id="CrmID">30010</field>
+      <field id="Name">Castles%20Account%20Test%20%2D%20Round%206</field>
+      <field id="OwnerId">47de1cf2%2Dea0d%2D4f78%2Dbd91%2Db167a21ba50e</field>
+      <field id="CustomField2833">%5B%7B%22CrmId%22%3A%2221426%22%2C%22X%22%3A536%2C%22Y%22%3A108%7D%2C%7B%22CrmId%22%3A%2221008%22%2C%22X%22%3A1429%2E0001220703125%2C%22Y%22%3A113%2E00006103515625%7D%5D</field>
+      <field id="CustomField2919">Round%206</field>
+      <field id="CustomField2920">6</field>
+      <field id="CustomField2922">2017%2E9%2E22</field>
+      <field id="CustomField2923">CustomField1568</field>
+      <field id="CustomField2924">false</field>
+      <record id="Owner" recordsetType="UserViewModel">
+        <field id="CrmID">47de1cf2%2Dea0d%2D4f78%2Dbd91%2Db167a21ba50e</field>
+        <field id="Email">ssa%2Dvr%2Dapp%40yopmail%2Ecom</field>
+        <field id="FirstName">SSA</field>
+        <field id="LastName">Admin</field>
+        <field id="CreateDateTime">15%2F06%2F2016%2010%3A51%3A30</field>
+        <field id="UserStatus">Active</field>
+        <field id="PhoneNumber"></field>
+      </record>
+      <recordset id="Organizational_Structure" recordsetType="1">
+        <record id="341">
+          <field id="CrmID">341</field>
+          <field id="RelationshipId">444</field>
+          <field id="Name">Castles%20Account%20Org%20Card%20One%20%2D%20Round%206</field>
+          <field id="CustomField2909">CustomField1564</field>
+          <field id="CustomField2910">Somethig%20here</field>
+          <field id="CustomField2911"></field>
+          <field id="CustomField2958">True</field>
+        </record>
+      </recordset>
+      <recordset id="Contacts" recordsetType="2">
+        <record id="48799" recordsetType="Contact">
+          <field id="CustomField2825">55</field>
+          <field id="CustomField2826">2017%2E2%2E26</field>
+          <field id="CustomField2827">False</field>
+          <field id="CrmID">48799</field>
+          <field id="FirstName">Jane%2DRound6</field>
+        </record>
+        <record id="66203" recordsetType="Contact">
+          <field id="CustomField2762">CustomField1390</field>
+          <field id="CustomField2825">66%2E66</field>
+          <field id="CustomField2826">2017%2E9%2E22</field>
+          <field id="CustomField2827">false</field>
+          <field id="CrmID">66203</field>
+          <field id="FirstName">Bobby%2DRound%206</field>
+        </record>
+      </recordset>
+      <recordset id="Deals" recordsetType="1">
+        <record id="129097" recordsetType="Deal">
+          <field id="CustomField2845">CustomField1541</field>
+          <field id="CrmID">129097</field>
+          <field id="Name">Castles%20Mega%20Mega%20Deal</field>
+          <field id="RevenueAmount">5555%2E00</field>
+          <field id="CloseStatus">Open</field>
+          <field id="ExpectedCloseDate">2017%2E9%2E5</field>
+          <field id="OwnerId">47de1cf2%2Dea0d%2D4f78%2Dbd91%2Db167a21ba50e</field>
+          <record id="Owner" recordsetType="UserViewModel">
+            <field id="CrmID">47de1cf2%2Dea0d%2D4f78%2Dbd91%2Db167a21ba50e</field>
+            <field id="Email">ssa%2Dvr%2Dapp%40yopmail%2Ecom</field>
+            <field id="FirstName">SSA</field>
+            <field id="LastName">Admin</field>
+            <field id="CreateDateTime">15%2F06%2F2016%2010%3A51%3A30</field>
+            <field id="UserStatus">Active</field>
+            <field id="PhoneNumber"></field>
+          </record>
+        </record>
+      </recordset>
+      <recordset id="Tasks" recordsetType="2">
+        <record id="21008" recordsetType="Task">
+          <field id="CustomField2831">1900%2E2%2E26</field>
+          <field id="CustomField2834">66%2E66</field>
+          <field id="CustomField2837">True</field>
+          <field id="CustomField2838">CustomField1537</field>
+          <field id="CrmID">21008</field>
+          <field id="Name">Task%20for%20Round%206%20%2D%20Edited%20in%20map</field>
+          <field id="DueDate">2017%2E9%2E26</field>
+          <field id="UserId">47de1cf2%2Dea0d%2D4f78%2Dbd91%2Db167a21ba50e</field>
+          <field id="TaskTypeId">1912</field>
+          <field id="IsDone">True</field>
+          <field id="IsImportant">False</field>
+          <record id="User" recordsetType="UserViewModel">
+            <field id="CrmID">47de1cf2%2Dea0d%2D4f78%2Dbd91%2Db167a21ba50e</field>
+            <field id="Email">ssa%2Dvr%2Dapp%40yopmail%2Ecom</field>
+            <field id="FirstName">SSA</field>
+            <field id="LastName">Admin</field>
+            <field id="CreateDateTime">15%2F06%2F2016%2010%3A51%3A30</field>
+            <field id="UserStatus">Active</field>
+            <field id="PhoneNumber"></field>
+          </record>
+          <record id="TaskType" recordsetType="TaskTypeModel">
+            <field id="CrmID">1912</field>
+            <field id="Name">Drinks</field>
+            <field id="IconName">glass</field>
+          </record>
+        </record>
+        <record id="21426" recordsetType="Task">
+          <field id="CustomField2831">2016%2E12%2E25</field>
+          <field id="CustomField2834">77%2E77</field>
+          <field id="CustomField2837">False</field>
+          <field id="CustomField2838">CustomField1539</field>
+          <field id="CrmID">21426</field>
+          <field id="Name">Castles%20Account%20Task%20Round%207</field>
+          <field id="DueDate">2017%2E12%2E25</field>
+          <field id="UserId">47de1cf2%2Dea0d%2D4f78%2Dbd91%2Db167a21ba50e</field>
+          <field id="TaskTypeId">1910</field>
+          <field id="IsDone">True</field>
+          <field id="IsImportant">False</field>
+          <record id="User" recordsetType="UserViewModel">
+            <field id="CrmID">47de1cf2%2Dea0d%2D4f78%2Dbd91%2Db167a21ba50e</field>
+            <field id="Email">ssa%2Dvr%2Dapp%40yopmail%2Ecom</field>
+            <field id="FirstName">SSA</field>
+            <field id="LastName">Admin</field>
+            <field id="CreateDateTime">15%2F06%2F2016%2010%3A51%3A30</field>
+            <field id="UserStatus">Active</field>
+            <field id="PhoneNumber"></field>
+          </record>
+          <record id="TaskType" recordsetType="TaskTypeModel">
+            <field id="CrmID">1910</field>
+            <field id="Name">Meeting</field>
+            <field id="IconName">group</field>
+          </record>
+        </record>
+      </recordset>
+    </record>
+  </record>
+</xml>

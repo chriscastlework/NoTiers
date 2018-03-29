@@ -1,0 +1,16 @@
+using System;
+
+namespace CustomLogic.Services.AddOnCostService
+{
+    public class AddOnCostsViewModel
+    {
+
+        public int Id {get;set;}
+        public int AddOnId {get;set;}
+        public DateTime? LastUpdated {get;set;}
+        public string Currency {get;set;}
+        public decimal Cost {get;set;}
+        public string BraintreePlanId {get;set;}
+
+    }
+}

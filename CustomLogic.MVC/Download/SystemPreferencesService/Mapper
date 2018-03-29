@@ -1,0 +1,42 @@
+using System.Linq;
+
+namespace CustomLogic.Services.SystemPreferencesService
+{
+public static class SystemPreferencesMapper
+{
+
+public static SystemPreference MapInsertModelToDbModel(SystemPreferencesViewModel model, SystemPreference newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new SystemPreference();
+    }
+
+            newDomainModel.Id = model.Id;
+    return newDomainModel;
+    }
+
+
+
+public static SystemPreferencesViewModel MapDbModelToViewModel(SystemPreference dbModel)
+{
+var viewModel = new  SystemPreferencesViewModel();
+
+            viewModel.Id = dbModel.Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<SystemPreferencesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<SystemPreference> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new SystemPreferencesViewModel()
+        {
+Id = c.Id,
+        });
+        }
+    }
+}
+
+

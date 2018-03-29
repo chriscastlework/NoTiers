@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ViewRecordsService
+{
+public class ReturnResultEvent : IUpdateEvent<ViewRecordsViewModel, ViewRecord>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(ViewRecordsViewModel model, ref IQueryable< ViewRecord> repository, IUnitOfWork unitOfWork, Response<ViewRecordsViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<ViewRecord>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = ViewRecords
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

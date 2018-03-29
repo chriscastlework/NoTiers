@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.ProgramAssetsService
+{
+    public class Save : IInsertEvent<ProgramAssetsViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(ProgramAssetsViewModel model, IUnitOfWork unitOfWork, Response<ProgramAssetsViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = ProgramAssets();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<ProgramAsset>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = ProgramAssets
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(ProgramAssetsViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<ProgramAsset>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<ProgramAsset>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

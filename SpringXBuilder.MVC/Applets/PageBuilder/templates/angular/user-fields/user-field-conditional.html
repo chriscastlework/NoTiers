@@ -1,0 +1,48 @@
+<div class="form-group pb-user-field pb-rounded-corners-5 col-sm-12">
+
+   <!-- {{item.name()}} {{item.id()}}
+ValueType:{{item.valueTypeString()}}  ObjectType:{{item.objectTypeString()}}
+    Constraint:{{item.getConstraint().toString()}}-->
+    <!-- BUTTONS -->
+    <div>
+        <!-- TRASH -->
+        <div class="col-sm-6 no-padding">
+            <div ng-if="editMode" ng-of="editMode" class="pb-icon-button" ng-click="delete()">
+                <span ng-click="delete" class="glyphicon glyphicon-trash"></span>
+            </div>
+        </div>
+        <!-- EDIT BUTTON -->
+        <div class="col-sm-6 no-padding">
+            <a ng-click="toggle()"
+               class="pb-button pb-float-right">
+                <span ng-if="editMode">Show less..</span>
+                <span ng-if="!editMode">Show more..</span>
+            </a>
+        </div>
+    </div>
+    <!-- WARNING -->
+    <div class="col-sm-12" ng-show="!item.isValid()">
+        <span class="pb-warning">This field is not valid and will not be listed in mappable options. Please ensure all fields are set.</span>
+    </div>
+    <!-- NAME -->
+    <div class="col-sm-12 no-padding">
+       <span class="col-sm-2">Name</span>
+       <span class="col-sm-10">
+            <input class="form-control"
+                   ng-model="item.name"
+                   ng-model-options="{getterSetter:true}"/>
+       </span>
+    </div>
+    <!-- MAIN CONTENT -->
+    <div id="content"
+         ng-show="editMode">
+        <div>
+            <user-field-conditional-expression ng-repeat="expression in item.expressions()" item="expression"></user-field-conditional-expression>
+        </div>
+        <div class="col-sm-12 pb-button-bar">
+            <a ng-click="item.addExpression()">Add An Expression</a>
+        </div>
+    </div>
+
+
+</div>

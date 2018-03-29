@@ -1,0 +1,29 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var home = CurrentPage.Parent;
+}
+
+@if (home.Children.Where("Visible").Any())
+{
+    @childPages(home.Children)
+}
+
+@helper childPages(dynamic pages)
+{
+if (pages.Any())
+{
+        <nav id="main-nav">
+            <div class="nav nav-stacked">
+
+                <ul class="">
+                    @foreach (var page in pages.Where("Visible"))
+                    {
+                        <li>
+                            <a href="@page.Url">@page.Name</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </nav>
+}
+}

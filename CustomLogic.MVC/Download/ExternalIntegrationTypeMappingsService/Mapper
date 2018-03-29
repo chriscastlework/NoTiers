@@ -1,0 +1,66 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ExternalIntegrationTypeMappingsService
+{
+public static class ExternalIntegrationTypeMappingsMapper
+{
+
+public static ExternalIntegrationTypeMapping MapInsertModelToDbModel(ExternalIntegrationTypeMappingsViewModel model, ExternalIntegrationTypeMapping newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ExternalIntegrationTypeMapping();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.EntityType = model.EntityType;
+            newDomainModel.ExternalIntegrationId = model.ExternalIntegrationId;
+            newDomainModel.CustomObjectKey = model.CustomObjectKey;
+            newDomainModel.AssociatedType = model.AssociatedType;
+            newDomainModel.DirectionalSyncEnabled = model.DirectionalSyncEnabled;
+            newDomainModel.DirectionalSyncUpEnabled = model.DirectionalSyncUpEnabled;
+            newDomainModel.DirectionalSyncDownEnabled = model.DirectionalSyncDownEnabled;
+            newDomainModel.DailyBulkSyncEnabled = model.DailyBulkSyncEnabled;
+    return newDomainModel;
+    }
+
+
+
+public static ExternalIntegrationTypeMappingsViewModel MapDbModelToViewModel(ExternalIntegrationTypeMapping dbModel)
+{
+var viewModel = new  ExternalIntegrationTypeMappingsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.EntityType = dbModel.EntityType;
+            viewModel.ExternalIntegrationId = dbModel.ExternalIntegrationId;
+            viewModel.CustomObjectKey = dbModel.CustomObjectKey;
+            viewModel.AssociatedType = dbModel.AssociatedType;
+            viewModel.DirectionalSyncEnabled = dbModel.DirectionalSyncEnabled;
+            viewModel.DirectionalSyncUpEnabled = dbModel.DirectionalSyncUpEnabled;
+            viewModel.DirectionalSyncDownEnabled = dbModel.DirectionalSyncDownEnabled;
+            viewModel.DailyBulkSyncEnabled = dbModel.DailyBulkSyncEnabled;
+
+return viewModel;
+}
+
+
+public static IQueryable<ExternalIntegrationTypeMappingsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ExternalIntegrationTypeMapping> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ExternalIntegrationTypeMappingsViewModel()
+        {
+Id = c.Id,
+EntityType = c.EntityType,
+ExternalIntegrationId = c.ExternalIntegrationId,
+CustomObjectKey = c.CustomObjectKey,
+AssociatedType = c.AssociatedType,
+DirectionalSyncEnabled = c.DirectionalSyncEnabled,
+DirectionalSyncUpEnabled = c.DirectionalSyncUpEnabled,
+DirectionalSyncDownEnabled = c.DirectionalSyncDownEnabled,
+DailyBulkSyncEnabled = c.DailyBulkSyncEnabled,
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.TokensService
+{
+    public class Delete : IDeleteEvent<TokensViewModel,Token>
+    {
+
+        public bool Run(Tokens ViewModel model, ref IQueryable<Token>repository, IUnitOfWork unitOfWork, Response<TokensViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<Token>().Find(model.Id);unitOfWork.With<Token>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

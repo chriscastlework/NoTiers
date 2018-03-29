@@ -1,0 +1,10 @@
+using System;
+
+namespace CustomLogic.Services.ProgramService
+{
+    public class ProgramsViewModel
+    {
+
+
+    }
+}

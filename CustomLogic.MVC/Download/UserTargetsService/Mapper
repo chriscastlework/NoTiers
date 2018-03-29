@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.UserTargetsService
+{
+public static class UserTargetsMapper
+{
+
+public static UserTarget MapInsertModelToDbModel(UserTargetsViewModel model, UserTarget newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new UserTarget();
+    }
+
+            newDomainModel.UserTargetId = model.UserTargetId;
+            newDomainModel.TargetAmount = model.TargetAmount;
+            newDomainModel.StartDate = model.StartDate;
+            newDomainModel.EndDate = model.EndDate;
+            newDomainModel.User_Id = model.User_Id;
+    return newDomainModel;
+    }
+
+
+
+public static UserTargetsViewModel MapDbModelToViewModel(UserTarget dbModel)
+{
+var viewModel = new  UserTargetsViewModel();
+
+            viewModel.UserTargetId = dbModel.UserTargetId;
+            viewModel.TargetAmount = dbModel.TargetAmount;
+            viewModel.StartDate = dbModel.StartDate;
+            viewModel.EndDate = dbModel.EndDate;
+            viewModel.User_Id = dbModel.User_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<UserTargetsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<UserTarget> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new UserTargetsViewModel()
+        {
+UserTargetId = c.UserTargetId,
+TargetAmount = c.TargetAmount,
+StartDate = c.StartDate,
+EndDate = c.EndDate,
+User_Id = c.User_Id,
+        });
+        }
+    }
+}
+
+

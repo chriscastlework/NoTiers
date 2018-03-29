@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.SideNavItemsService
+{
+    public class View : IViewEvent<SideNavItemsViewModel,SideNavItem>
+    {
+        public int CreatedId = 0;
+
+        public Response<SideNavItemsViewModel> Run(SideNavItemsViewModel model,ref IQueryable<SideNavItem> repository, IUnitOfWork unitOfWork, Response<SideNavItemsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = SideNavItems
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing SideNavItems");
+            }
+
+            return result;
+        }
+
+    }
+}

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.UserFoldersService
+{
+    public class Delete : IDeleteEvent<UserFoldersViewModel,UserFolder>
+    {
+
+        public bool Run(UserFolders ViewModel model, ref IQueryable<UserFolder>repository, IUnitOfWork unitOfWork, Response<UserFoldersViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<UserFolder>().Find(model.Id);unitOfWork.With<UserFolder>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

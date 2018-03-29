@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.RoleClaimsService
+{
+    public class Update : IUpdateEvent<RoleClaimsViewModel,RoleClaim>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(RoleClaimsViewModel model, ref IQueryable<RoleClaim> repository, IUnitOfWork unitOfWork, Response<RoleClaimsViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = RoleClaims
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<RoleClaim>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = RoleClaimsMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

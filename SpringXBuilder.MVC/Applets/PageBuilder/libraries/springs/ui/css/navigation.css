@@ -1,0 +1,78 @@
+.sp_ui_navigation_menu
+{
+    background:#322f32;
+}
+
+.sp_ui_navigation_menu .top_menu
+{
+    display:table;
+    margin:0;
+    padding:0
+}
+
+
+/*  First level  */
+.sp_ui_navigation_menu .top_menu li
+{
+    display:table-cell;
+    background-color:#322f32;
+    margin:0;
+}
+
+.sp_ui_navigation_menu .top_menu li a
+{
+    padding:10px;
+    display:block;
+    background-color: transparent;
+    color:#fff;
+    cursor:pointer;
+}
+
+
+/*  Second Level  */
+.sp_ui_navigation_menu .top_menu li ul
+{
+    display:none;
+    position:absolute;
+    padding:0;
+    margin:0
+}
+
+.sp_ui_navigation_menu .top_menu li ul li
+{
+    background-color:#322f32;
+    display:block;
+    border-bottom:1px solid #484548;
+    padding:0
+}
+
+.sp_ui_navigation_menu .top_menu li ul li.arrow
+{
+    background:#322f32 url('../res/springs/navigation_arrow_down.png') no-repeat center center;
+    height:6px;
+    padding:0;
+    border-bottom:none;
+    padding-bottom:10px
+}
+
+.sp_ui_navigation_menu .top_menu li ul li a
+{
+    text-transform:none;
+    padding:7px;
+    display:block;
+    border-top:1px solid transparent;
+    border-bottom:1px solid transparent;
+}
+
+.sp_ui_navigation_menu .top_menu li ul li a.isParent
+{
+    background:#3A3A3A url('../res/springs/navigation_arrow_right.png') no-repeat right center;
+}
+
+.sp_ui_navigation_menu .top_menu li ul li a:hover
+{
+    background-color:#514c52;
+    border-top:1px solid #322f32;
+    border-bottom:1px solid #322f32;
+}
+

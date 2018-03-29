@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.EmailNotificationsService
+{
+    public class Save : IInsertEvent<EmailNotificationsViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(EmailNotificationsViewModel model, IUnitOfWork unitOfWork, Response<EmailNotificationsViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = EmailNotifications();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<EmailNotification>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = EmailNotifications
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(EmailNotificationsViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<EmailNotification>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<EmailNotification>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

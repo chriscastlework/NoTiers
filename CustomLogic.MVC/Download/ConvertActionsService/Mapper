@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ConvertActionsService
+{
+public static class ConvertActionsMapper
+{
+
+public static ConvertAction MapInsertModelToDbModel(ConvertActionsViewModel model, ConvertAction newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ConvertAction();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static ConvertActionsViewModel MapDbModelToViewModel(ConvertAction dbModel)
+{
+var viewModel = new  ConvertActionsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<ConvertActionsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ConvertAction> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ConvertActionsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

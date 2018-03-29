@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.SystemPreferencesService
+{
+public class ReturnResultEvent : IUpdateEvent<SystemPreferencesViewModel, SystemPreference>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(SystemPreferencesViewModel model, ref IQueryable< SystemPreference> repository, IUnitOfWork unitOfWork, Response<SystemPreferencesViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<SystemPreference>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = SystemPreferences
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

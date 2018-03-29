@@ -1,0 +1,23 @@
+using System;
+
+namespace CustomLogic.Services.ItemStepService
+{
+    public class ItemStepsViewModel
+    {
+
+        public int Id {get;set;}
+        public string ActionValue {get;set;}
+        public int? ActionIdValue {get;set;}
+        public bool Completed {get;set;}
+        public DateTime? CompletedDateTime {get;set;}
+        public bool Hidden {get;set;}
+        public int? StepId {get;set;}
+        public int? ReminderTaskId {get;set;}
+        public int? CustomObjectRowId {get;set;}
+        public int? TaskId {get;set;}
+        public int? ContactId {get;set;}
+        public int? AccountId {get;set;}
+        public string Discriminator {get;set;}
+
+    }
+}

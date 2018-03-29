@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ClientScopesService
+{
+public static class ClientScopesMapper
+{
+
+public static ClientScope MapInsertModelToDbModel(ClientScopesViewModel model, ClientScope newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ClientScope();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static ClientScopesViewModel MapDbModelToViewModel(ClientScope dbModel)
+{
+var viewModel = new  ClientScopesViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<ClientScopesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ClientScope> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ClientScopesViewModel()
+        {
+        });
+        }
+    }
+}
+
+

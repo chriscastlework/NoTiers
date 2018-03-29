@@ -1,0 +1,23 @@
+using System;
+
+namespace CustomLogic.Services.SubscriptionService
+{
+    public class SubscriptionsViewModel
+    {
+
+        public int Id {get;set;}
+        public int EditionId {get;set;}
+        public int GracePeriodDays {get;set;}
+        public string BillingCurrency {get;set;}
+        public decimal BasePrice {get;set;}
+        public decimal PricePerUser {get;set;}
+        public int BillDayOfMonth {get;set;}
+        public string BraintreeSubscriptionId {get;set;}
+        public bool ActiveAccount {get;set;}
+        public DateTime? TrialExpires {get;set;}
+        public DateTime? AccountCanceled {get;set;}
+        public bool PayedEditionTrialPeriodUsed {get;set;}
+        public bool PerpetualTrial {get;set;}
+
+    }
+}

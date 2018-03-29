@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ScopeSecretsService
+{
+    public class Delete : IDeleteEvent<ScopeSecretsViewModel,ScopeSecret>
+    {
+
+        public bool Run(ScopeSecrets ViewModel model, ref IQueryable<ScopeSecret>repository, IUnitOfWork unitOfWork, Response<ScopeSecretsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<ScopeSecret>().Find(model.Id);unitOfWork.With<ScopeSecret>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

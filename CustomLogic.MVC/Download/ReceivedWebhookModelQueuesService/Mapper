@@ -1,0 +1,57 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ReceivedWebhookModelQueuesService
+{
+public static class ReceivedWebhookModelQueuesMapper
+{
+
+public static ReceivedWebhookModelQueue MapInsertModelToDbModel(ReceivedWebhookModelQueuesViewModel model, ReceivedWebhookModelQueue newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ReceivedWebhookModelQueue();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.OrganisationId = model.OrganisationId;
+            newDomainModel.ReceivedWebhookModel = model.ReceivedWebhookModel;
+            newDomainModel.Attempts = model.Attempts;
+            newDomainModel.CreateDateTime = model.CreateDateTime;
+            newDomainModel.LastModifiedDateTime = model.LastModifiedDateTime;
+    return newDomainModel;
+    }
+
+
+
+public static ReceivedWebhookModelQueuesViewModel MapDbModelToViewModel(ReceivedWebhookModelQueue dbModel)
+{
+var viewModel = new  ReceivedWebhookModelQueuesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+            viewModel.ReceivedWebhookModel = dbModel.ReceivedWebhookModel;
+            viewModel.Attempts = dbModel.Attempts;
+            viewModel.CreateDateTime = dbModel.CreateDateTime;
+            viewModel.LastModifiedDateTime = dbModel.LastModifiedDateTime;
+
+return viewModel;
+}
+
+
+public static IQueryable<ReceivedWebhookModelQueuesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ReceivedWebhookModelQueue> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ReceivedWebhookModelQueuesViewModel()
+        {
+Id = c.Id,
+OrganisationId = c.OrganisationId,
+ReceivedWebhookModel = c.ReceivedWebhookModel,
+Attempts = c.Attempts,
+CreateDateTime = c.CreateDateTime,
+LastModifiedDateTime = c.LastModifiedDateTime,
+        });
+        }
+    }
+}
+
+

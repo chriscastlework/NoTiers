@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ChannelsService
+{
+    public class Delete : IDeleteEvent<ChannelsViewModel,Channel>
+    {
+
+        public bool Run(Channels ViewModel model, ref IQueryable<Channel>repository, IUnitOfWork unitOfWork, Response<ChannelsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<Channel>().Find(model.Id);unitOfWork.With<Channel>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

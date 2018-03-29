@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.RelationshipObjectService
+{
+public static class RelationshipObjectMapper
+{
+
+public static RelationshipObject MapInsertModelToDbModel(RelationshipObjectViewModel model, RelationshipObject newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new RelationshipObject();
+    }
+
+            newDomainModel.Id = model.ID;
+            newDomainModel.RelationshipMetaId = model.RelationshipMetaId;
+            newDomainModel.PkAomFieldObjectId = model.PkAomFieldObjectId;
+            newDomainModel.FkAomFieldObjectId = model.FkAomFieldObjectId;
+    return newDomainModel;
+    }
+
+
+
+public static RelationshipObjectViewModel MapDbModelToViewModel(RelationshipObject dbModel)
+{
+var viewModel = new  RelationshipObjectViewModel();
+
+            viewModel.ID = dbModel.Id;
+            viewModel.RelationshipMetaId = dbModel.RelationshipMetaId;
+            viewModel.PkAomFieldObjectId = dbModel.PkAomFieldObjectId;
+            viewModel.FkAomFieldObjectId = dbModel.FkAomFieldObjectId;
+
+return viewModel;
+}
+
+
+public static IQueryable<RelationshipObjectViewModel> MapDbModelQueryToViewModelQuery(IQueryable<RelationshipObject> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new RelationshipObjectViewModel()
+        {
+ID = c.Id,
+RelationshipMetaId = c.RelationshipMetaId,
+PkAomFieldObjectId = c.PkAomFieldObjectId,
+FkAomFieldObjectId = c.FkAomFieldObjectId,
+        });
+        }
+    }
+}
+
+

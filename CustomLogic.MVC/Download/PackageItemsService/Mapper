@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.PackageItemsService
+{
+public static class PackageItemsMapper
+{
+
+public static PackageItem MapInsertModelToDbModel(PackageItemsViewModel model, PackageItem newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new PackageItem();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.ItemId = model.ItemId;
+            newDomainModel.ItemType = model.ItemType;
+            newDomainModel.Package_Id = model.Package_Id;
+    return newDomainModel;
+    }
+
+
+
+public static PackageItemsViewModel MapDbModelToViewModel(PackageItem dbModel)
+{
+var viewModel = new  PackageItemsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.ItemId = dbModel.ItemId;
+            viewModel.ItemType = dbModel.ItemType;
+            viewModel.Package_Id = dbModel.Package_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<PackageItemsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<PackageItem> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new PackageItemsViewModel()
+        {
+Id = c.Id,
+ItemId = c.ItemId,
+ItemType = c.ItemType,
+Package_Id = c.Package_Id,
+        });
+        }
+    }
+}
+
+

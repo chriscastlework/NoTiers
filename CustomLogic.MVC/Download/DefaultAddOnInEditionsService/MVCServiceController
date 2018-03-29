@@ -1,0 +1,143 @@
+using System;
+using System.Linq;
+using System.Net;
+using System.Web.Mvc;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Models;
+using CustomLogic.Services.DefaultAddOnInEditionsService;
+
+
+public class DefaultAddOnInEditionsController : Controller
+{
+    //private AomDbContext db = new AomDbContext();
+    private readonly IService<DefaultAddOnInEditionsViewModel>_DefaultAddOnInEditionsService = new DefaultAddOnInEditionsService(new DbContext());
+
+
+        // GET: DefaultAddOnInEditions
+        public ActionResult Index()
+        {
+        return View(_DefaultAddOnInEditions
+        Service.List(new NgTableParams() {page = 1, count = 1000}, null).Data.ToList());
+        }
+
+        // GET: DefaultAddOnInEditions/Details/5
+        public ActionResult Details(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        return View(_DefaultAddOnInEditions
+        Service.View(new DefaultAddOnInEditions
+        ViewModel() { ID = id.Value}, null));
+        }
+
+        // GET: DefaultAddOnInEditions/Create
+        public ActionResult Create()
+        {
+        return View();
+        }
+
+        // POST: DefaultAddOnInEditions/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Name")] DefaultAddOnInEditions
+        ViewModel aomMeta)
+        {
+        if (ModelState.IsValid)
+        {
+        var result =_DefaultAddOnInEditions
+        Service.Insert(aomMeta, null);
+        if(result.Success)
+        return RedirectToAction("Index");
+
+        // what if it went wrong?
+        }
+
+        return View(aomMeta);
+        }
+
+        // GET: DefaultAddOnInEditions
+        s/Edit/5
+        public ActionResult Edit(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var result = _DefaultAddOnInEditions
+        Service.View(new DefaultAddOnInEditions
+        ViewModel {ID = id.Value}, null);
+        if (!result.Success)
+        {
+        return HttpNotFound();
+        }
+        return View(result.Data);
+        }
+
+        // POST: DefaultAddOnInEditions
+        s/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Name")] DefaultAddOnInEditions
+        ViewModel aomMeta)
+        {
+        if (ModelState.IsValid)
+        {
+        var result = _DefaultAddOnInEditions
+        Service.Update(aomMeta, null);
+        if(result.Success)
+        return RedirectToAction("Index");
+
+        // what if it goes wrong?
+        }
+        return View(aomMeta);
+        }
+
+        // GET: DefaultAddOnInEditions
+        s/Delete/5
+        public ActionResult Delete(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var result = _DefaultAddOnInEditions
+        Service.View(new DefaultAddOnInEditions
+        ViewModel {ID = id.Value}, null);
+        if (!result.Success)
+        {
+        return HttpNotFound();
+        }
+        return View(result.Data);
+        }
+
+        // POST: DefaultAddOnInEditions
+        s/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(Guid id)
+        {
+        var result = _DefaultAddOnInEditions
+        Service.Delete(new DefaultAddOnInEditions
+        ViewModel {ID = id}, null);
+        return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+        if (disposing)
+        {
+        // _DefaultAddOnInEditions
+        Service = null; // make services disposeable?
+        }
+        base.Dispose(disposing);
+        }
+        }
+
+

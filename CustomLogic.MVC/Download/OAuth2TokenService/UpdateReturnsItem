@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.OAuth2TokenService
+{
+public class ReturnResultEvent : IUpdateEvent<OAuth2TokenViewModel, OAuth2Token>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(OAuth2TokenViewModel model, ref IQueryable< OAuth2Token> repository, IUnitOfWork unitOfWork, Response<OAuth2TokenViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<OAuth2Token>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = OAuth2Token
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

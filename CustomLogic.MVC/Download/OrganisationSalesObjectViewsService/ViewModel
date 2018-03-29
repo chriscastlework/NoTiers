@@ -1,0 +1,17 @@
+using System;
+
+namespace CustomLogic.Services.OrganisationSalesObjectViewService
+{
+    public class OrganisationSalesObjectViewsViewModel
+    {
+
+        public int Id {get;set;}
+        public int SalesObjectViewId {get;set;}
+        public int OrgId {get;set;}
+        public int? Organisation_Id {get;set;}
+        public bool IsDefault {get;set;}
+        public bool? Allowed {get;set;}
+        public bool? IsEnabled {get;set;}
+
+    }
+}

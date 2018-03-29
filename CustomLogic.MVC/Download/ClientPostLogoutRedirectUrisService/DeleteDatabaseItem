@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ClientPostLogoutRedirectUrisService
+{
+    public class Delete : IDeleteEvent<ClientPostLogoutRedirectUrisViewModel,ClientPostLogoutRedirectUri>
+    {
+
+        public bool Run(ClientPostLogoutRedirectUris ViewModel model, ref IQueryable<ClientPostLogoutRedirectUri>repository, IUnitOfWork unitOfWork, Response<ClientPostLogoutRedirectUrisViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<ClientPostLogoutRedirectUri>().Find(model.Id);unitOfWork.With<ClientPostLogoutRedirectUri>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

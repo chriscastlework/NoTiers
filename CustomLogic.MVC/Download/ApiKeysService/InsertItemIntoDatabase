@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.ApiKeysService
+{
+    public class Save : IInsertEvent<ApiKeysViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(ApiKeysViewModel model, IUnitOfWork unitOfWork, Response<ApiKeysViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = ApiKeys();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<ApiKey>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = ApiKeys
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(ApiKeysViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<ApiKey>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<ApiKey>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

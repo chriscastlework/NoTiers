@@ -1,0 +1,15 @@
+using System;
+
+namespace CustomLogic.Services.AcheivedAwardService
+{
+    public class AcheivedAwardsViewModel
+    {
+
+        public int Id {get;set;}
+        public int UserId {get;set;}
+        public int AwardId {get;set;}
+        public DateTime? AcheviedDate {get;set;}
+        public string User_Id {get;set;}
+
+    }
+}

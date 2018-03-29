@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ThemesService
+{
+public static class ThemesMapper
+{
+
+public static Theme MapInsertModelToDbModel(ThemesViewModel model, Theme newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Theme();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static ThemesViewModel MapDbModelToViewModel(Theme dbModel)
+{
+var viewModel = new  ThemesViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<ThemesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Theme> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ThemesViewModel()
+        {
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,57 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ExternalIntegrationFieldMappingsService
+{
+public static class ExternalIntegrationFieldMappingsMapper
+{
+
+public static ExternalIntegrationFieldMapping MapInsertModelToDbModel(ExternalIntegrationFieldMappingsViewModel model, ExternalIntegrationFieldMapping newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ExternalIntegrationFieldMapping();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.ExternalIntegrationTypeMappingId = model.ExternalIntegrationTypeMappingId;
+            newDomainModel.ExternalField = model.ExternalField;
+            newDomainModel.VrField = model.VrField;
+            newDomainModel.DirectionalSyncUpRule = model.DirectionalSyncUpRule;
+            newDomainModel.DirectionalSyncDownRule = model.DirectionalSyncDownRule;
+    return newDomainModel;
+    }
+
+
+
+public static ExternalIntegrationFieldMappingsViewModel MapDbModelToViewModel(ExternalIntegrationFieldMapping dbModel)
+{
+var viewModel = new  ExternalIntegrationFieldMappingsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.ExternalIntegrationTypeMappingId = dbModel.ExternalIntegrationTypeMappingId;
+            viewModel.ExternalField = dbModel.ExternalField;
+            viewModel.VrField = dbModel.VrField;
+            viewModel.DirectionalSyncUpRule = dbModel.DirectionalSyncUpRule;
+            viewModel.DirectionalSyncDownRule = dbModel.DirectionalSyncDownRule;
+
+return viewModel;
+}
+
+
+public static IQueryable<ExternalIntegrationFieldMappingsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ExternalIntegrationFieldMapping> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ExternalIntegrationFieldMappingsViewModel()
+        {
+Id = c.Id,
+ExternalIntegrationTypeMappingId = c.ExternalIntegrationTypeMappingId,
+ExternalField = c.ExternalField,
+VrField = c.VrField,
+DirectionalSyncUpRule = c.DirectionalSyncUpRule,
+DirectionalSyncDownRule = c.DirectionalSyncDownRule,
+        });
+        }
+    }
+}
+
+

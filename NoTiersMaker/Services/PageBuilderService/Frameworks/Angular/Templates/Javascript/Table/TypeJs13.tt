@@ -1,0 +1,35 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+
+  // Deal Table Controller
+        angular.module('app').controller('dealTableController', dealTableController);
+        dealTableController.$inject = ["NgTableParams", "dealApiService"];
+        function dealTableController(NgTableParams, dealApiService) {
+            var vm = this;
+            vm.tableParams = new NgTableParams({
+                page: 1,            // show first page
+                count: 10           // count per page
+            }, {
+                getData: function (params) {
+
+                    var postParams = {};
+                    postParams.page = params.page();
+                    postParams.count = params.count();
+                    postParams.total = params.total();
+                    postParams.filter = params.filter();
+                    postParams.sorting = params.sorting();
+                    postParams.group = params.group();
+
+                    return dealApiService.Post(postParams) // back end use NgTableParams ... awards controller 
+                        .then(function (response) {
+                            params.total(response.Count);
+                            return response.Data;
+                        });
+                }
+            });
+        };
+        // Deal Table Controller End

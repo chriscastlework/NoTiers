@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.IntegrationPackagesService
+{
+    public class Update : IUpdateEvent<IntegrationPackagesViewModel,IntegrationPackage>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(IntegrationPackagesViewModel model, ref IQueryable<IntegrationPackage> repository, IUnitOfWork unitOfWork, Response<IntegrationPackagesViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = IntegrationPackages
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<IntegrationPackage>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = IntegrationPackagesMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

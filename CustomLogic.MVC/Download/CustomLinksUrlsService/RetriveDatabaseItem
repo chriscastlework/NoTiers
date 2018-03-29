@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CustomLinksUrlsService
+{
+    public class View : IViewEvent<CustomLinksUrlsViewModel,CustomLinksUrl>
+    {
+        public int CreatedId = 0;
+
+        public Response<CustomLinksUrlsViewModel> Run(CustomLinksUrlsViewModel model,ref IQueryable<CustomLinksUrl> repository, IUnitOfWork unitOfWork, Response<CustomLinksUrlsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = CustomLinksUrls
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing CustomLinksUrls");
+            }
+
+            return result;
+        }
+
+    }
+}

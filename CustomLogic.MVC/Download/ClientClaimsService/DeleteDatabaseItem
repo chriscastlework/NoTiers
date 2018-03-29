@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ClientClaimsService
+{
+    public class Delete : IDeleteEvent<ClientClaimsViewModel,ClientClaim>
+    {
+
+        public bool Run(ClientClaims ViewModel model, ref IQueryable<ClientClaim>repository, IUnitOfWork unitOfWork, Response<ClientClaimsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<ClientClaim>().Find(model.Id);unitOfWork.With<ClientClaim>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

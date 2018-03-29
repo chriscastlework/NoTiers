@@ -1,0 +1,84 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CustomLinksAndButtonsService
+{
+public static class CustomLinksAndButtonsMapper
+{
+
+public static CustomLinksAndButton MapInsertModelToDbModel(CustomLinksAndButtonsViewModel model, CustomLinksAndButton newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CustomLinksAndButton();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Label = model.Label;
+            newDomainModel.Url = model.Url;
+            newDomainModel.IconType = model.IconType;
+            newDomainModel.IconClass = model.IconClass;
+            newDomainModel.IconImage = model.IconImage;
+            newDomainModel.IsActive = model.IsActive;
+            newDomainModel.CustomLinksButtonPlacement_Id = model.CustomLinksButtonPlacement_Id;
+            newDomainModel.CustomLinksUrl_Id = model.CustomLinksUrl_Id;
+            newDomainModel.OrganisationId = model.OrganisationId;
+            newDomainModel.Action = model.Action;
+            newDomainModel.ButtonType = model.ButtonType;
+            newDomainModel.EntityType = model.EntityType;
+            newDomainModel.PlacementCustomObjectKey = model.PlacementCustomObjectKey;
+    return newDomainModel;
+    }
+
+
+
+public static CustomLinksAndButtonsViewModel MapDbModelToViewModel(CustomLinksAndButton dbModel)
+{
+var viewModel = new  CustomLinksAndButtonsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.Label = dbModel.Label;
+            viewModel.Url = dbModel.Url;
+            viewModel.IconType = dbModel.IconType;
+            viewModel.IconClass = dbModel.IconClass;
+            viewModel.IconImage = dbModel.IconImage;
+            viewModel.IsActive = dbModel.IsActive;
+            viewModel.CustomLinksButtonPlacement_Id = dbModel.CustomLinksButtonPlacement_Id;
+            viewModel.CustomLinksUrl_Id = dbModel.CustomLinksUrl_Id;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+            viewModel.Action = dbModel.Action;
+            viewModel.ButtonType = dbModel.ButtonType;
+            viewModel.EntityType = dbModel.EntityType;
+            viewModel.PlacementCustomObjectKey = dbModel.PlacementCustomObjectKey;
+
+return viewModel;
+}
+
+
+public static IQueryable<CustomLinksAndButtonsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CustomLinksAndButton> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CustomLinksAndButtonsViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+Label = c.Label,
+Url = c.Url,
+IconType = c.IconType,
+IconClass = c.IconClass,
+IconImage = c.IconImage,
+IsActive = c.IsActive,
+CustomLinksButtonPlacement_Id = c.CustomLinksButtonPlacement_Id,
+CustomLinksUrl_Id = c.CustomLinksUrl_Id,
+OrganisationId = c.OrganisationId,
+Action = c.Action,
+ButtonType = c.ButtonType,
+EntityType = c.EntityType,
+PlacementCustomObjectKey = c.PlacementCustomObjectKey,
+        });
+        }
+    }
+}
+
+

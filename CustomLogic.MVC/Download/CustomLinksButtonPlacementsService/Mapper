@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CustomLinksButtonPlacementsService
+{
+public static class CustomLinksButtonPlacementsMapper
+{
+
+public static CustomLinksButtonPlacement MapInsertModelToDbModel(CustomLinksButtonPlacementsViewModel model, CustomLinksButtonPlacement newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CustomLinksButtonPlacement();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Key = model.Key;
+            newDomainModel.Label = model.Label;
+            newDomainModel.IsDefault = model.IsDefault;
+    return newDomainModel;
+    }
+
+
+
+public static CustomLinksButtonPlacementsViewModel MapDbModelToViewModel(CustomLinksButtonPlacement dbModel)
+{
+var viewModel = new  CustomLinksButtonPlacementsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Key = dbModel.Key;
+            viewModel.Label = dbModel.Label;
+            viewModel.IsDefault = dbModel.IsDefault;
+
+return viewModel;
+}
+
+
+public static IQueryable<CustomLinksButtonPlacementsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CustomLinksButtonPlacement> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CustomLinksButtonPlacementsViewModel()
+        {
+Id = c.Id,
+Key = c.Key,
+Label = c.Label,
+IsDefault = c.IsDefault,
+        });
+        }
+    }
+}
+
+

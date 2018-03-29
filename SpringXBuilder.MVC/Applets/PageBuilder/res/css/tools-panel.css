@@ -1,0 +1,46 @@
+.pb-toolitem
+{
+    margin:5px 0px 0px 0px;
+    background:white;
+    border:grey;
+    overflow:hidden;
+}
+
+.pb-toolitem *
+{
+    margin:4px;
+}
+
+.pb-toolicon
+{
+    width:40px;
+    height:40px;
+    float:left;
+    background-size:100%;
+}
+
+.pb-toolitem .pb-content
+{
+    margin-left: 40px;
+    margin-right:0px;
+    color:grey;
+}
+
+.pb-toolitem .pb-content .pb-name
+{
+    font-size:0.8em;
+    font-weight:bold;
+}
+.pb-toolitem .pb-content .pb-description
+{
+    font-size:0.7em;
+}
+
+.pb-toolicon-large
+{
+    width:60px;
+    height:60px;
+    float:left;
+    margin:5px 5px 0px 0px;
+    background-size:100%;
+}

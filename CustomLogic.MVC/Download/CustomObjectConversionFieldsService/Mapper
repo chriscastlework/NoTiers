@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CustomObjectConversionFieldsService
+{
+public static class CustomObjectConversionFieldsMapper
+{
+
+public static CustomObjectConversionField MapInsertModelToDbModel(CustomObjectConversionFieldsViewModel model, CustomObjectConversionField newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CustomObjectConversionField();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static CustomObjectConversionFieldsViewModel MapDbModelToViewModel(CustomObjectConversionField dbModel)
+{
+var viewModel = new  CustomObjectConversionFieldsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<CustomObjectConversionFieldsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CustomObjectConversionField> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CustomObjectConversionFieldsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,22 @@
+using System;
+
+namespace CustomLogic.Services.SalesProcessService
+{
+    public class SalesProcessesViewModel
+    {
+
+        public int Id {get;set;}
+        public string Name {get;set;}
+        public string Description {get;set;}
+        public int? OrganisationId {get;set;}
+        public int SalesProcessStatus {get;set;}
+        public bool StepLevelProbability {get;set;}
+        public int? CustomTableId {get;set;}
+        public int EntityType {get;set;}
+        public string RecordTypeId {get;set;}
+        public bool AutomaticMandatoryStepProgression {get;set;}
+        public bool? HideProbability {get;set;}
+        public bool? HideVerifiableOutcomes {get;set;}
+
+    }
+}

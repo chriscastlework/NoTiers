@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.TagsService
+{
+public static class TagsMapper
+{
+
+public static Tag MapInsertModelToDbModel(TagsViewModel model, Tag newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Tag();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static TagsViewModel MapDbModelToViewModel(Tag dbModel)
+{
+var viewModel = new  TagsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<TagsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Tag> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new TagsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

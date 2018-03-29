@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.CustomLinksAndButtonsForRolesService
+{
+    public class Save : IInsertEvent<CustomLinksAndButtonsForRolesViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(CustomLinksAndButtonsForRolesViewModel model, IUnitOfWork unitOfWork, Response<CustomLinksAndButtonsForRolesViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = CustomLinksAndButtonsForRoles();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<CustomLinksAndButtonsForRole>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = CustomLinksAndButtonsForRoles
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(CustomLinksAndButtonsForRolesViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<CustomLinksAndButtonsForRole>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<CustomLinksAndButtonsForRole>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

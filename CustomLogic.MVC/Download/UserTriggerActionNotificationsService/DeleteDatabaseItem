@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.UserTriggerActionNotificationsService
+{
+    public class Delete : IDeleteEvent<UserTriggerActionNotificationsViewModel,UserTriggerActionNotification>
+    {
+
+        public bool Run(UserTriggerActionNotifications ViewModel model, ref IQueryable<UserTriggerActionNotification>repository, IUnitOfWork unitOfWork, Response<UserTriggerActionNotificationsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<UserTriggerActionNotification>().Find(model.Id);unitOfWork.With<UserTriggerActionNotification>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,143 @@
+using System;
+using System.Linq;
+using System.Net;
+using System.Web.Mvc;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Models;
+using CustomLogic.Services.OrganisationAllowedRolesService;
+
+
+public class OrganisationAllowedRolesController : Controller
+{
+    //private AomDbContext db = new AomDbContext();
+    private readonly IService<OrganisationAllowedRolesViewModel>_OrganisationAllowedRolesService = new OrganisationAllowedRolesService(new DbContext());
+
+
+        // GET: OrganisationAllowedRoles
+        public ActionResult Index()
+        {
+        return View(_OrganisationAllowedRoles
+        Service.List(new NgTableParams() {page = 1, count = 1000}, null).Data.ToList());
+        }
+
+        // GET: OrganisationAllowedRoles/Details/5
+        public ActionResult Details(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        return View(_OrganisationAllowedRoles
+        Service.View(new OrganisationAllowedRoles
+        ViewModel() { ID = id.Value}, null));
+        }
+
+        // GET: OrganisationAllowedRoles/Create
+        public ActionResult Create()
+        {
+        return View();
+        }
+
+        // POST: OrganisationAllowedRoles/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Name")] OrganisationAllowedRoles
+        ViewModel aomMeta)
+        {
+        if (ModelState.IsValid)
+        {
+        var result =_OrganisationAllowedRoles
+        Service.Insert(aomMeta, null);
+        if(result.Success)
+        return RedirectToAction("Index");
+
+        // what if it went wrong?
+        }
+
+        return View(aomMeta);
+        }
+
+        // GET: OrganisationAllowedRoles
+        s/Edit/5
+        public ActionResult Edit(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var result = _OrganisationAllowedRoles
+        Service.View(new OrganisationAllowedRoles
+        ViewModel {ID = id.Value}, null);
+        if (!result.Success)
+        {
+        return HttpNotFound();
+        }
+        return View(result.Data);
+        }
+
+        // POST: OrganisationAllowedRoles
+        s/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Name")] OrganisationAllowedRoles
+        ViewModel aomMeta)
+        {
+        if (ModelState.IsValid)
+        {
+        var result = _OrganisationAllowedRoles
+        Service.Update(aomMeta, null);
+        if(result.Success)
+        return RedirectToAction("Index");
+
+        // what if it goes wrong?
+        }
+        return View(aomMeta);
+        }
+
+        // GET: OrganisationAllowedRoles
+        s/Delete/5
+        public ActionResult Delete(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var result = _OrganisationAllowedRoles
+        Service.View(new OrganisationAllowedRoles
+        ViewModel {ID = id.Value}, null);
+        if (!result.Success)
+        {
+        return HttpNotFound();
+        }
+        return View(result.Data);
+        }
+
+        // POST: OrganisationAllowedRoles
+        s/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(Guid id)
+        {
+        var result = _OrganisationAllowedRoles
+        Service.Delete(new OrganisationAllowedRoles
+        ViewModel {ID = id}, null);
+        return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+        if (disposing)
+        {
+        // _OrganisationAllowedRoles
+        Service = null; // make services disposeable?
+        }
+        base.Dispose(disposing);
+        }
+        }
+
+

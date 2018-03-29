@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CustomObjectRowTriggersService
+{
+    public class Delete : IDeleteEvent<CustomObjectRowTriggersViewModel,CustomObjectRowTrigger>
+    {
+
+        public bool Run(CustomObjectRowTriggers ViewModel model, ref IQueryable<CustomObjectRowTrigger>repository, IUnitOfWork unitOfWork, Response<CustomObjectRowTriggersViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<CustomObjectRowTrigger>().Find(model.Id);unitOfWork.With<CustomObjectRowTrigger>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

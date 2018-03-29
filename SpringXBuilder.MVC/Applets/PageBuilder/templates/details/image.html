@@ -1,0 +1,24 @@
+<div class="pb-details form-group">
+    <div>
+        <span>Image Source</span><input type="text" class="form-control" id="source"/>
+        <input type="button" id="file-button" value="Select File"/>
+        <input type="file" name="file-input" id="file-input"/>
+    </div>
+    <div>
+        <span class="pb-label">Width</span>
+        <input type="radio" name="width" value="match">Match image</input>
+        <input type="radio" name="width" value="aspect">Keep aspect ratio</input>
+        <input type="radio" name="width" value="fill">Stretch to fill</input>
+        <input type="radio" name="width" value="specify">Specify</input>
+        <input type="number" id="specified-width" min="0" max="5000"/>
+    </div>
+    <div>
+        <span class="pb-label">Height</span>
+        <input type="radio" name="height" value="match">Match image</input>
+        <input type="radio" name="height" value="aspect">Keep aspect ratio</input>
+        <input type="radio" name="height" value="fill">Stretch to fill</input>
+        <input type="radio" name="height" value="specify">Specify</input>
+        <input type="number" id="specified-height" min="0" max="5000"/>
+    </div>
+
+</div>

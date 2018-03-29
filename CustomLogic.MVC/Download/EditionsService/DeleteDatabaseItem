@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.EditionsService
+{
+    public class Delete : IDeleteEvent<EditionsViewModel,Edition>
+    {
+
+        public bool Run(Editions ViewModel model, ref IQueryable<Edition>repository, IUnitOfWork unitOfWork, Response<EditionsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<Edition>().Find(model.Id);unitOfWork.With<Edition>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

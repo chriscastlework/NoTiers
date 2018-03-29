@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.AdminEventLogService
+{
+    public class View : IViewEvent<AdminEventLogViewModel,AdminEventLog>
+    {
+        public int CreatedId = 0;
+
+        public Response<AdminEventLogViewModel> Run(AdminEventLogViewModel model,ref IQueryable<AdminEventLog> repository, IUnitOfWork unitOfWork, Response<AdminEventLogViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = AdminEventLog
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing AdminEventLog");
+            }
+
+            return result;
+        }
+
+    }
+}

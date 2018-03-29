@@ -1,0 +1,12 @@
+using System;
+
+namespace CustomLogic.Services.FeatureEditionService
+{
+    public class FeatureEditionsViewModel
+    {
+
+        public int Feature_Id {get;set;}
+        public int Edition_Id {get;set;}
+
+    }
+}

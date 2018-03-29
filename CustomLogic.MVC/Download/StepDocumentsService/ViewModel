@@ -1,0 +1,27 @@
+using System;
+
+namespace CustomLogic.Services.StepDocumentService
+{
+    public class StepDocumentsViewModel
+    {
+
+        public int Id {get;set;}
+        public int? DealId {get;set;}
+        public int StepId {get;set;}
+        public string OriginalName {get;set;}
+        public string Name {get;set;}
+        public string Extension {get;set;}
+        public string ContentType {get;set;}
+        public int Size {get;set;}
+        public byte[]? Content {get;set;}
+        public DateTime Uploaded {get;set;}
+        public int? CustomTableRowId {get;set;}
+        public int? LeadId {get;set;}
+        public int? AccountId {get;set;}
+        public int? PartnerId {get;set;}
+        public int? TaskId {get;set;}
+        public int? CountactId {get;set;}
+        public int? Contact_Id {get;set;}
+
+    }
+}

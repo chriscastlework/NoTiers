@@ -1,0 +1,34 @@
+.preloader {
+}
+.preloader .mask {
+    background: none repeat scroll 0 0 white;
+    opacity: 0.7;
+}
+.preloader .content {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+}
+.preloader .label {
+    position: fixed;
+    text-align: center;
+    font-weight: normal;
+    top: 50px;
+    width: 100%;
+}
+
+.preloader .content>div:first-child
+{
+    background: url('../res/springs/preloader.gif');
+    width:50px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    margin-left: -25px;
+}
+
+.preloader .content>div:first-child img
+{
+    display: none;
+}

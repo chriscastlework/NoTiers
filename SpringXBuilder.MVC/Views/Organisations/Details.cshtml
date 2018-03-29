@@ -1,0 +1,226 @@
+﻿@model CustomLogic.LegacyDatabase.Organisation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Organisation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastModifiedBy.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastModifiedBy.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesTrainingCompany.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesTrainingCompany.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StcTheme.NavBarBackgroundColour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StcTheme.NavBarBackgroundColour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subscription.BillingCurrency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subscription.BillingCurrency)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BillingCurrency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BillingCurrency)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BraintreeCustomerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BraintreeCustomerId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsGlobalPermissions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsGlobalPermissions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateLastModeified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateLastModeified)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AllowMultipleDealContactRoles)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AllowMultipleDealContactRoles)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DefaultOrgCurrency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DefaultOrgCurrency)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinacialYearEndDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinacialYearEndDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewTrialNotificationEmailSent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewTrialNotificationEmailSent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GlobalEmailPreferences)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GlobalEmailPreferences)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DefaultStcId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DefaultStcId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HasOrganisationTheme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HasOrganisationTheme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DealsLimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DealsLimit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeadsLimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeadsLimit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactsLimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactsLimit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PartnersLimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartnersLimit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountsLimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountsLimit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TasksLimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TasksLimit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomObjectsLimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomObjectsLimit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnableImpersonate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnableImpersonate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,15 @@
+using System;
+
+namespace CustomLogic.Services.UserTargetService
+{
+    public class UserTargetsViewModel
+    {
+
+        public int UserTargetId {get;set;}
+        public decimal TargetAmount {get;set;}
+        public DateTime StartDate {get;set;}
+        public DateTime EndDate {get;set;}
+        public string User_Id {get;set;}
+
+    }
+}

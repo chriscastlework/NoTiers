@@ -1,0 +1,15 @@
+using System;
+
+namespace CustomLogic.Services.TempNotificationFieldService
+{
+    public class TempNotificationFieldsViewModel
+    {
+
+        public int Id {get;set;}
+        public string FieldName {get;set;}
+        public string OldValue {get;set;}
+        public string NewValue {get;set;}
+        public int? Notification_Id {get;set;}
+
+    }
+}

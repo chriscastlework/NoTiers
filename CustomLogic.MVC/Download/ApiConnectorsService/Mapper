@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ApiConnectorsService
+{
+public static class ApiConnectorsMapper
+{
+
+public static ApiConnector MapInsertModelToDbModel(ApiConnectorsViewModel model, ApiConnector newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ApiConnector();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.ConnectorEndPoint = model.ConnectorEndPoint;
+            newDomainModel.ApiEndPoint = model.ApiEndPoint;
+            newDomainModel.ExternalCodeSetupEndPoint = model.ExternalCodeSetupEndPoint;
+    return newDomainModel;
+    }
+
+
+
+public static ApiConnectorsViewModel MapDbModelToViewModel(ApiConnector dbModel)
+{
+var viewModel = new  ApiConnectorsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.ConnectorEndPoint = dbModel.ConnectorEndPoint;
+            viewModel.ApiEndPoint = dbModel.ApiEndPoint;
+            viewModel.ExternalCodeSetupEndPoint = dbModel.ExternalCodeSetupEndPoint;
+
+return viewModel;
+}
+
+
+public static IQueryable<ApiConnectorsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ApiConnector> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ApiConnectorsViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+ConnectorEndPoint = c.ConnectorEndPoint,
+ApiEndPoint = c.ApiEndPoint,
+ExternalCodeSetupEndPoint = c.ExternalCodeSetupEndPoint,
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ChannelsService
+{
+    public class QueryLogic : IViewListEvent<ChannelsViewModel, Channel>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<Channel> repository, NgTable<ChannelsViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<ChannelsViewModel>();
+
+            var query = Channels
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

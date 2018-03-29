@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ClientClaimsService
+{
+public static class ClientClaimsMapper
+{
+
+public static ClientClaim MapInsertModelToDbModel(ClientClaimsViewModel model, ClientClaim newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ClientClaim();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static ClientClaimsViewModel MapDbModelToViewModel(ClientClaim dbModel)
+{
+var viewModel = new  ClientClaimsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<ClientClaimsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ClientClaim> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ClientClaimsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

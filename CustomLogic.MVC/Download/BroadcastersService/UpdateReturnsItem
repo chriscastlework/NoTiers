@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.BroadcastersService
+{
+public class ReturnResultEvent : IUpdateEvent<BroadcastersViewModel, Broadcaster>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(BroadcastersViewModel model, ref IQueryable< Broadcaster> repository, IUnitOfWork unitOfWork, Response<BroadcastersViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<Broadcaster>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = Broadcasters
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

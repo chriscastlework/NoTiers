@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.CurrencyAmountsService
+{
+    public class Update : IUpdateEvent<CurrencyAmountsViewModel,CurrencyAmount>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(CurrencyAmountsViewModel model, ref IQueryable<CurrencyAmount> repository, IUnitOfWork unitOfWork, Response<CurrencyAmountsViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = CurrencyAmounts
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<CurrencyAmount>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = CurrencyAmountsMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.DealStageHistoriesService
+{
+    public class QueryLogic : IViewListEvent<DealStageHistoriesViewModel, DealStageHistory>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<DealStageHistory> repository, NgTable<DealStageHistoriesViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<DealStageHistoriesViewModel>();
+
+            var query = DealStageHistories
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

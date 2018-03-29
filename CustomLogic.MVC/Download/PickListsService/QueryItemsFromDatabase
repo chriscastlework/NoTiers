@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.PickListsService
+{
+    public class QueryLogic : IViewListEvent<PickListsViewModel, PickList>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<PickList> repository, NgTable<PickListsViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<PickListsViewModel>();
+
+            var query = PickLists
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.UserProfilesService
+{
+    public class Delete : IDeleteEvent<UserProfilesViewModel,UserProfile>
+    {
+
+        public bool Run(UserProfiles ViewModel model, ref IQueryable<UserProfile>repository, IUnitOfWork unitOfWork, Response<UserProfilesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<UserProfile>().Find(model.Id);unitOfWork.With<UserProfile>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.UsageRecordsService
+{
+    public class View : IViewEvent<UsageRecordsViewModel,UsageRecord>
+    {
+        public int CreatedId = 0;
+
+        public Response<UsageRecordsViewModel> Run(UsageRecordsViewModel model,ref IQueryable<UsageRecord> repository, IUnitOfWork unitOfWork, Response<UsageRecordsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = UsageRecords
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing UsageRecords");
+            }
+
+            return result;
+        }
+
+    }
+}

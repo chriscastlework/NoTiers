@@ -1,0 +1,11 @@
+using System;
+
+namespace CustomLogic.Services.SystemPreferenceService
+{
+    public class SystemPreferencesViewModel
+    {
+
+        public int Id {get;set;}
+
+    }
+}

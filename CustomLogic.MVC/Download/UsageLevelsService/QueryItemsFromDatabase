@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.UsageLevelsService
+{
+    public class QueryLogic : IViewListEvent<UsageLevelsViewModel, UsageLevel>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<UsageLevel> repository, NgTable<UsageLevelsViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<UsageLevelsViewModel>();
+
+            var query = UsageLevels
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,10 @@
+.sp_ui_draggroup_dragging>*
+{
+    opacity: 0.5;
+    filter:alpha(opacity=50);
+}
+
+.placeholder
+{
+    color: #aaa;
+}

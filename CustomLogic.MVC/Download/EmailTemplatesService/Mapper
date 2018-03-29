@@ -1,0 +1,78 @@
+using System.Linq;
+
+namespace CustomLogic.Services.EmailTemplatesService
+{
+public static class EmailTemplatesMapper
+{
+
+public static EmailTemplate MapInsertModelToDbModel(EmailTemplatesViewModel model, EmailTemplate newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new EmailTemplate();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Subject = model.Subject;
+            newDomainModel.DocumentFieldCountentHtml = model.DocumentFieldCountentHtml;
+            newDomainModel.DocumentFieldCountentPlain = model.DocumentFieldCountentPlain;
+            newDomainModel.LanguageCode = model.LanguageCode;
+            newDomainModel.OrganisationId = model.OrganisationId;
+            newDomainModel.Active = model.Active;
+            newDomainModel.EmailTemplateConfiguration_TemplateID = model.EmailTemplateConfiguration_TemplateID;
+            newDomainModel.EmailTemplateConfigurationId = model.EmailTemplateConfigurationId;
+            newDomainModel.EmailType = model.EmailType;
+            newDomainModel.CreatedDate = model.CreatedDate;
+            newDomainModel.LastModified = model.LastModified;
+            newDomainModel.DeletedDate = model.DeletedDate;
+    return newDomainModel;
+    }
+
+
+
+public static EmailTemplatesViewModel MapDbModelToViewModel(EmailTemplate dbModel)
+{
+var viewModel = new  EmailTemplatesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Subject = dbModel.Subject;
+            viewModel.DocumentFieldCountentHtml = dbModel.DocumentFieldCountentHtml;
+            viewModel.DocumentFieldCountentPlain = dbModel.DocumentFieldCountentPlain;
+            viewModel.LanguageCode = dbModel.LanguageCode;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+            viewModel.Active = dbModel.Active;
+            viewModel.EmailTemplateConfiguration_TemplateID = dbModel.EmailTemplateConfiguration_TemplateID;
+            viewModel.EmailTemplateConfigurationId = dbModel.EmailTemplateConfigurationId;
+            viewModel.EmailType = dbModel.EmailType;
+            viewModel.CreatedDate = dbModel.CreatedDate;
+            viewModel.LastModified = dbModel.LastModified;
+            viewModel.DeletedDate = dbModel.DeletedDate;
+
+return viewModel;
+}
+
+
+public static IQueryable<EmailTemplatesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<EmailTemplate> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new EmailTemplatesViewModel()
+        {
+Id = c.Id,
+Subject = c.Subject,
+DocumentFieldCountentHtml = c.DocumentFieldCountentHtml,
+DocumentFieldCountentPlain = c.DocumentFieldCountentPlain,
+LanguageCode = c.LanguageCode,
+OrganisationId = c.OrganisationId,
+Active = c.Active,
+EmailTemplateConfiguration_TemplateID = c.EmailTemplateConfiguration_TemplateID,
+EmailTemplateConfigurationId = c.EmailTemplateConfigurationId,
+EmailType = c.EmailType,
+CreatedDate = c.CreatedDate,
+LastModified = c.LastModified,
+DeletedDate = c.DeletedDate,
+        });
+        }
+    }
+}
+
+

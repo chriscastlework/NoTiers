@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CustomObjectsService
+{
+    public class View : IViewEvent<CustomObjectsViewModel,CustomObject>
+    {
+        public int CreatedId = 0;
+
+        public Response<CustomObjectsViewModel> Run(CustomObjectsViewModel model,ref IQueryable<CustomObject> repository, IUnitOfWork unitOfWork, Response<CustomObjectsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = CustomObjects
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing CustomObjects");
+            }
+
+            return result;
+        }
+
+    }
+}

@@ -1,0 +1,57 @@
+using System.Linq;
+
+namespace CustomLogic.Services.DealStageHistoriesService
+{
+public static class DealStageHistoriesMapper
+{
+
+public static DealStageHistory MapInsertModelToDbModel(DealStageHistoriesViewModel model, DealStageHistory newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new DealStageHistory();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.DealId = model.DealId;
+            newDomainModel.OldStageId = model.OldStageId;
+            newDomainModel.NewStageId = model.NewStageId;
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.Date = model.Date;
+    return newDomainModel;
+    }
+
+
+
+public static DealStageHistoriesViewModel MapDbModelToViewModel(DealStageHistory dbModel)
+{
+var viewModel = new  DealStageHistoriesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.DealId = dbModel.DealId;
+            viewModel.OldStageId = dbModel.OldStageId;
+            viewModel.NewStageId = dbModel.NewStageId;
+            viewModel.UserId = dbModel.UserId;
+            viewModel.Date = dbModel.Date;
+
+return viewModel;
+}
+
+
+public static IQueryable<DealStageHistoriesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<DealStageHistory> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new DealStageHistoriesViewModel()
+        {
+Id = c.Id,
+DealId = c.DealId,
+OldStageId = c.OldStageId,
+NewStageId = c.NewStageId,
+UserId = c.UserId,
+Date = c.Date,
+        });
+        }
+    }
+}
+
+

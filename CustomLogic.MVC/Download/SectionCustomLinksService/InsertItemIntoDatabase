@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.SectionCustomLinksService
+{
+    public class Save : IInsertEvent<SectionCustomLinksViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(SectionCustomLinksViewModel model, IUnitOfWork unitOfWork, Response<SectionCustomLinksViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = SectionCustomLinks();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<SectionCustomLink>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = SectionCustomLinks
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(SectionCustomLinksViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<SectionCustomLink>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<SectionCustomLink>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

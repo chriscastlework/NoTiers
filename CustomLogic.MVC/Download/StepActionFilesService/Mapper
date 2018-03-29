@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.StepActionFilesService
+{
+public static class StepActionFilesMapper
+{
+
+public static StepActionFile MapInsertModelToDbModel(StepActionFilesViewModel model, StepActionFile newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new StepActionFile();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.FileName = model.FileName;
+            newDomainModel.OriginalFileName = model.OriginalFileName;
+            newDomainModel.ContentType = model.ContentType;
+    return newDomainModel;
+    }
+
+
+
+public static StepActionFilesViewModel MapDbModelToViewModel(StepActionFile dbModel)
+{
+var viewModel = new  StepActionFilesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.FileName = dbModel.FileName;
+            viewModel.OriginalFileName = dbModel.OriginalFileName;
+            viewModel.ContentType = dbModel.ContentType;
+
+return viewModel;
+}
+
+
+public static IQueryable<StepActionFilesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<StepActionFile> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new StepActionFilesViewModel()
+        {
+Id = c.Id,
+FileName = c.FileName,
+OriginalFileName = c.OriginalFileName,
+ContentType = c.ContentType,
+        });
+        }
+    }
+}
+
+

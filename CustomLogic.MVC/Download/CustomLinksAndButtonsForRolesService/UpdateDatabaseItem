@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.CustomLinksAndButtonsForRolesService
+{
+    public class Update : IUpdateEvent<CustomLinksAndButtonsForRolesViewModel,CustomLinksAndButtonsForRole>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(CustomLinksAndButtonsForRolesViewModel model, ref IQueryable<CustomLinksAndButtonsForRole> repository, IUnitOfWork unitOfWork, Response<CustomLinksAndButtonsForRolesViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = CustomLinksAndButtonsForRoles
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<CustomLinksAndButtonsForRole>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = CustomLinksAndButtonsForRolesMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

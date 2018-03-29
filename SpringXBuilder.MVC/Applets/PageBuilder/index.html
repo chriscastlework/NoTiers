@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Velocity Rocket PageBuilder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./libraries/jquery-ui-1.11.4/jquery-ui-1.11.4/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="./libraries/bootstrap-3.3.6-dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="./libraries/angular_treeview/css/angular.treeview.css"/>
+    <link rel="stylesheet" href="res/css/main.css"/>
+    <script type="text/javascript" src="./libraries/jquery.js"></script>
+    <script type="text/javascript" src="./libraries/di4js.min.js"></script>
+    <script type="text/javascript" src="./libraries/jquery-ui-1.11.4/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./libraries/Highcharts-4.2.4/js/highcharts.js"></script>
+    <script type="text/javascript" src="./libraries/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./libraries/angular.js"></script>
+    <script type="text/javascript" src="./libraries/lodash.js"></script>
+    <script type="text/javascript" src="./libraries/springs/springs.js"></script>
+    <script type="text/javascript" src="./libraries/springs/core/events.js"></script>
+    <script type="text/javascript" src="./libraries/springs/core/data.js"></script>
+    <script type="text/javascript" src="./libraries/springs/core/comms.js"></script>
+    <script type="text/javascript" src="./libraries/springs/core/graphics.js"></script>
+    <script type="text/javascript" src="./libraries/drag.js"></script>
+    <script type="text/javascript" src="./libraries/angular_treeview/angular.treeview.js"></script>
+    <script type="text/javascript" src="./src/view/graphics.js"></script>
+    <script type="text/javascript" src="./src/model/model-events.js"></script>
+    <script type="text/javascript" src="./src/model/model-fields.js"></script>
+    <script type="text/javascript" src="./src/model/model-fields-conditionals.js"></script>
+    <script type="text/javascript" src="./src/model/model-page-elements.js"></script>
+    <script type="text/javascript" src="./src/model/model-page-elements-grid.js"></script>
+    <script type="text/javascript" src="./src/model/model.js"></script>
+    <script type="text/javascript" src="./src/main.js"></script>
+    <script type="text/javascript" src="./src/angular/controllers.js"></script>
+    <script type="text/javascript" src="./src/angular/services.js"></script>
+    <script type="text/javascript" src="./src/angular/directives/page.js"></script>
+    <script type="text/javascript" src="./src/angular/directives/userfields.js"></script>
+    <script type="text/javascript" src="./src/angular/directives/valueinputs.js"></script>
+    <script type="text/javascript" src="./src/angular/directives/common.js"></script>
+    <script type="text/javascript" src="./src/view/view-page-elements.js"></script>
+    <script type="text/javascript" src="./src/view/view-page-elements-grid.js"></script>
+    <script type="text/javascript" src="./src/controller/controller-page-elements.js"></script>
+    <script type="text/javascript" src="./src/controller/controller-details-elements.js"></script>
+    <script type="text/javascript" src="./src/controller/controller-details-elements-chart.js"></script>
+    <script type="text/javascript" src="./src/controller/controller-details-elements-maps.js"></script>
+</head>
+<body>
+    <div ng-app="app" ng-controller="main">
+        <!-- Application builder 'stage' area -->
+        <div class="col-md-8 col-xs-6 pb-stage">
+            <div id="page-editor" class="pb-page-container"></div>
+        </div>
+        <!-- Side panel -->
+        <div class="col-md-4 col-xs-6 pb-tools">
+            <!--Navigation options -->
+            <div class="pb-navbar pb-no-select">
+                <div class="pb-navlink" ng-click="selectPanel('details')" ng-class="{selected:selectedPanel=='details'}">Details</div>
+                <div class="pb-navlink" ng-click="selectPanel('tools')" ng-class="{selected:selectedPanel=='tools'}">Tools</div>
+                <div class="pb-navlink" ng-click="selectPanel('logic')" ng-class="{selected:selectedPanel=='logic'}">Objects</div>
+                <div class="pb-navlink" ng-click="selectPanel('schema')" ng-class="{selected:selectedPanel=='schema'}">Schema</div>
+            </div>
+            <!-- Details view -->
+            <div id="details-view" class="pb-panel" ng-show="selectedPanel=='details'"></div>
+            <!-- Tools panel -->
+            <div id="tools" class="pb-panel" ng-show="selectedPanel=='tools'">
+                <div class="tools-header pb-no-select">
+                    <div>
+                        Drag elements from here onto the page on the left. Drag elements out of the page to remove them. Hold CTRL key while dragging to create a clone of an existing element.
+                    </div>
+                    <div>
+                        <a ng-show="displayAsIcons" ng-click="toggleView()">Switch to detail view</a>
+                        <a ng-hide="displayAsIcons" ng-click="toggleView()">Switch to icon view</a>
+                    </div>
+                </div>
+                <div ng-show="displayAsIcons">
+                    <tool-icon ng-repeat="tool in tools" tool-id="{{tool.id}}"></tool-icon>
+                </div>
+                <div ng-hide="displayAsIcons">
+                    <tool-item ng-repeat="tool in tools" tool-id="{{tool.id}}"></tool-item>
+                </div>
+            </div>
+            <!-- User defined fields, angular code -->
+            <div id="userFields" class="pb-panel" ng-show="selectedPanel=='logic'" ng-controller="fieldsController">
+                <div class="pb-navbar">
+                    <div class="pb-float-right">
+                        <span class="pb-navlink" ng-click="selectFieldsPanel('values')" ng-class="{selected:selectedFieldsPanel=='values'}">
+                            <span class="glyphicon glyphicon-book"></span>
+                        </span>
+                        <span class="pb-navlink" ng-click="selectFieldsPanel('deriveds')" ng-class="{selected:selectedFieldsPanel=='deriveds'}">
+                            <span class="glyphicon glyphicon-filter"></span>
+                        </span>
+                        <span class="pb-navlink" ng-click="selectFieldsPanel('conditionals')" ng-class="{selected:selectedFieldsPanel=='conditionals'}">
+                            <span class="glyphicon glyphicon-random"></span>
+                        </span>
+                    </div>
+                </div>
+                <!--Values-->
+                <div ng-show="selectedFieldsPanel=='values'">
+                    <h4 class="pb-title">Fixed Values</h4>
+                    <div class="pb-button-bar">
+                        <div class="pb-icon-button pb-bordered pb-rounded-corners-5" ng-click="addValue()">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </div>
+                    </div>
+                    <user-field-value item="item" ng-repeat="item in valueItems"></user-field-value>
+                </div>
+                <!--Derived Fields-->
+                <div ng-show="selectedFieldsPanel=='deriveds'">
+                    <h4 class="pb-title">Derived Values</h4>
+                    <div class="pb-button-bar">
+                        <div class="pb-icon-button pb-bordered pb-rounded-corners-5" ng-click="addDerived()">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </div>
+                    </div>
+                    <user-field-derived ng-repeat="item in derivedItems" item="item"></user-field-derived>
+                </div>
+                <!--Conditionals-->
+                <div ng-show="selectedFieldsPanel=='conditionals'">
+                    <h4 class="pb-title">Conditional Values</h4>
+                    <div class="pb-button-bar">
+                        <div class="pb-icon-button pb-bordered pb-rounded-corners-5" ng-click="addConditional()">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </div>
+                    </div>
+                    <user-field-conditional ng-repeat="item in conditionalItems" item="item"></user-field-conditional>
+                </div>
+            </div>
+            <!-- Shows tree view of schema -->
+            <div id="schema" class="pb-panel" ng-show="selectedPanel=='schema'" ng-controller="schemaController">
+                <div>
+                    The tree view below shows the fields available on the item you have associated with your page.
+                </div>
+                <div
+                        class="schema"
+                        data-tree-id="schematree"
+                        data-angular-treeview="true"
+                        data-tree-model="fields"
+                        data-node-id="_id"
+                        data-node-label="_name"
+                        data-node-children="_fields">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

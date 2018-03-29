@@ -1,0 +1,48 @@
+using System.Linq;
+
+namespace CustomLogic.Services.UsageActionsService
+{
+public static class UsageActionsMapper
+{
+
+public static UsageAction MapInsertModelToDbModel(UsageActionsViewModel model, UsageAction newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new UsageAction();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Description = model.Description;
+    return newDomainModel;
+    }
+
+
+
+public static UsageActionsViewModel MapDbModelToViewModel(UsageAction dbModel)
+{
+var viewModel = new  UsageActionsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.Description = dbModel.Description;
+
+return viewModel;
+}
+
+
+public static IQueryable<UsageActionsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<UsageAction> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new UsageActionsViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+Description = c.Description,
+        });
+        }
+    }
+}
+
+

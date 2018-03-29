@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ContactSharesService
+{
+    public class Delete : IDeleteEvent<ContactSharesViewModel,ContactShare>
+    {
+
+        public bool Run(ContactShares ViewModel model, ref IQueryable<ContactShare>repository, IUnitOfWork unitOfWork, Response<ContactSharesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<ContactShare>().Find(model.Id);unitOfWork.With<ContactShare>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,45 @@
+using System.Linq;
+
+namespace CustomLogic.Services.SideNavsService
+{
+public static class SideNavsMapper
+{
+
+public static SideNav MapInsertModelToDbModel(SideNavsViewModel model, SideNav newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new SideNav();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Route = model.Route;
+    return newDomainModel;
+    }
+
+
+
+public static SideNavsViewModel MapDbModelToViewModel(SideNav dbModel)
+{
+var viewModel = new  SideNavsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Route = dbModel.Route;
+
+return viewModel;
+}
+
+
+public static IQueryable<SideNavsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<SideNav> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new SideNavsViewModel()
+        {
+Id = c.Id,
+Route = c.Route,
+        });
+        }
+    }
+}
+
+

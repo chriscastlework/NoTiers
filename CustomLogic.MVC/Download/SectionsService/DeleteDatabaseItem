@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.SectionsService
+{
+    public class Delete : IDeleteEvent<SectionsViewModel,Section>
+    {
+
+        public bool Run(Sections ViewModel model, ref IQueryable<Section>repository, IUnitOfWork unitOfWork, Response<SectionsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<Section>().Find(model.Id);unitOfWork.With<Section>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

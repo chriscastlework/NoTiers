@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.OAuth2TokenService
+{
+    public class Delete : IDeleteEvent<OAuth2TokenViewModel,OAuth2Token>
+    {
+
+        public bool Run(OAuth2Token ViewModel model, ref IQueryable<OAuth2Token>repository, IUnitOfWork unitOfWork, Response<OAuth2TokenViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<OAuth2Token>().Find(model.Id);unitOfWork.With<OAuth2Token>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

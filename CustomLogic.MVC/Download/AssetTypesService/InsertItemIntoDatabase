@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.AssetTypesService
+{
+    public class Save : IInsertEvent<AssetTypesViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(AssetTypesViewModel model, IUnitOfWork unitOfWork, Response<AssetTypesViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = AssetTypes();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<AssetType>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = AssetTypes
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(AssetTypesViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<AssetType>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<AssetType>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

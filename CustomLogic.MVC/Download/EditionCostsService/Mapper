@@ -1,0 +1,57 @@
+using System.Linq;
+
+namespace CustomLogic.Services.EditionCostsService
+{
+public static class EditionCostsMapper
+{
+
+public static EditionCost MapInsertModelToDbModel(EditionCostsViewModel model, EditionCost newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new EditionCost();
+    }
+
+            newDomainModel.LastUpdated = model.LastUpdated;
+            newDomainModel.Currency = model.Currency;
+            newDomainModel.Cost = model.Cost;
+            newDomainModel.Edition_Id = model.Edition_Id;
+            newDomainModel.BraintreePlanId = model.BraintreePlanId;
+            newDomainModel.EditionCostId = model.EditionCostId;
+    return newDomainModel;
+    }
+
+
+
+public static EditionCostsViewModel MapDbModelToViewModel(EditionCost dbModel)
+{
+var viewModel = new  EditionCostsViewModel();
+
+            viewModel.LastUpdated = dbModel.LastUpdated;
+            viewModel.Currency = dbModel.Currency;
+            viewModel.Cost = dbModel.Cost;
+            viewModel.Edition_Id = dbModel.Edition_Id;
+            viewModel.BraintreePlanId = dbModel.BraintreePlanId;
+            viewModel.EditionCostId = dbModel.EditionCostId;
+
+return viewModel;
+}
+
+
+public static IQueryable<EditionCostsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<EditionCost> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new EditionCostsViewModel()
+        {
+LastUpdated = c.LastUpdated,
+Currency = c.Currency,
+Cost = c.Cost,
+Edition_Id = c.Edition_Id,
+BraintreePlanId = c.BraintreePlanId,
+EditionCostId = c.EditionCostId,
+        });
+        }
+    }
+}
+
+

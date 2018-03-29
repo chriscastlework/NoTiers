@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.CustomObjectRowTriggersService
+{
+    public class Update : IUpdateEvent<CustomObjectRowTriggersViewModel,CustomObjectRowTrigger>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(CustomObjectRowTriggersViewModel model, ref IQueryable<CustomObjectRowTrigger> repository, IUnitOfWork unitOfWork, Response<CustomObjectRowTriggersViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = CustomObjectRowTriggers
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<CustomObjectRowTrigger>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = CustomObjectRowTriggersMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

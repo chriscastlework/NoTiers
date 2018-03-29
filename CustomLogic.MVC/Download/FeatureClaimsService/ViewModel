@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.FeatureClaimService
+{
+    public class FeatureClaimsViewModel
+    {
+
+        public int Id {get;set;}
+        public int FeatureId {get;set;}
+        public string ClaimType {get;set;}
+        public string ClaimValue {get;set;}
+
+    }
+}

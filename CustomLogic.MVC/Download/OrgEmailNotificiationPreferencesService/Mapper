@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.OrgEmailNotificiationPreferencesService
+{
+public static class OrgEmailNotificiationPreferencesMapper
+{
+
+public static OrgEmailNotificiationPreference MapInsertModelToDbModel(OrgEmailNotificiationPreferencesViewModel model, OrgEmailNotificiationPreference newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new OrgEmailNotificiationPreference();
+    }
+
+            newDomainModel.EmailTemplateConfigurationId = model.EmailTemplateConfigurationId;
+            newDomainModel.OrgId = model.OrgId;
+            newDomainModel.ReceiveEmail = model.ReceiveEmail;
+            newDomainModel.Organisation_Id = model.Organisation_Id;
+    return newDomainModel;
+    }
+
+
+
+public static OrgEmailNotificiationPreferencesViewModel MapDbModelToViewModel(OrgEmailNotificiationPreference dbModel)
+{
+var viewModel = new  OrgEmailNotificiationPreferencesViewModel();
+
+            viewModel.EmailTemplateConfigurationId = dbModel.EmailTemplateConfigurationId;
+            viewModel.OrgId = dbModel.OrgId;
+            viewModel.ReceiveEmail = dbModel.ReceiveEmail;
+            viewModel.Organisation_Id = dbModel.Organisation_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<OrgEmailNotificiationPreferencesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<OrgEmailNotificiationPreference> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new OrgEmailNotificiationPreferencesViewModel()
+        {
+EmailTemplateConfigurationId = c.EmailTemplateConfigurationId,
+OrgId = c.OrgId,
+ReceiveEmail = c.ReceiveEmail,
+Organisation_Id = c.Organisation_Id,
+        });
+        }
+    }
+}
+
+

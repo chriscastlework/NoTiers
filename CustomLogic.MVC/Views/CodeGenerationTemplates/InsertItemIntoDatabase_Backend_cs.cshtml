@@ -1,0 +1,46 @@
+﻿@model CustomLogic.SchemaBuilder.MicrosoftSQL.SchemaModels.ModelInfo
+
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.@Html.Raw(Model.TT_ViewModelName())Service
+{
+    public class Save : IInsertEvent<@Html.Raw(Model.TT_ViewModelName())ViewModel>
+    {
+    public @Html.Raw(Model.TT_PrimaryKeyType()) CreatedId; // Might be a composite key!
+
+    public bool Run(@Html.Raw(Model.TT_ViewModelName())ViewModel model, IUnitOfWork unitOfWork, Response<@Html.Raw(Model.TT_ViewModelName())ViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = @Html.Raw(Model.TT_ViewModelName()+"();")
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<@Html.Raw(Model.TT_TableName())>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = @Html.Raw(Model.TT_ViewModelName())
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+return true;
+
+        }
+
+        public bool Rollback(@Html.Raw(Model.TT_ViewModelName())ViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<@Html.Raw(Model.TT_TableName())>().FirstOrDefault(c=>c.@Model.TT_PrimaryKey()) == CreatedId);
+            unitOfWork.With<@Html.Raw(Model.TT_TableName())>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

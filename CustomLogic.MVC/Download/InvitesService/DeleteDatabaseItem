@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.InvitesService
+{
+    public class Delete : IDeleteEvent<InvitesViewModel,Invite>
+    {
+
+        public bool Run(Invites ViewModel model, ref IQueryable<Invite>repository, IUnitOfWork unitOfWork, Response<InvitesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<Invite>().Find(model.Id);unitOfWork.With<Invite>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

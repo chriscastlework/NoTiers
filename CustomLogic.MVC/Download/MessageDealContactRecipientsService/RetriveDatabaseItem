@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.MessageDealContactRecipientsService
+{
+    public class View : IViewEvent<MessageDealContactRecipientsViewModel,MessageDealContactRecipient>
+    {
+        public int CreatedId = 0;
+
+        public Response<MessageDealContactRecipientsViewModel> Run(MessageDealContactRecipientsViewModel model,ref IQueryable<MessageDealContactRecipient> repository, IUnitOfWork unitOfWork, Response<MessageDealContactRecipientsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = MessageDealContactRecipients
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing MessageDealContactRecipients");
+            }
+
+            return result;
+        }
+
+    }
+}

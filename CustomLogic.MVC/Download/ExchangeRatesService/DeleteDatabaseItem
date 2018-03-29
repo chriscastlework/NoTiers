@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ExchangeRatesService
+{
+    public class Delete : IDeleteEvent<ExchangeRatesViewModel,ExchangeRate>
+    {
+
+        public bool Run(ExchangeRates ViewModel model, ref IQueryable<ExchangeRate>repository, IUnitOfWork unitOfWork, Response<ExchangeRatesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<ExchangeRate>().Find(model.Id);unitOfWork.With<ExchangeRate>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

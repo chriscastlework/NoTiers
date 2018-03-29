@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.NotificationFieldsService
+{
+public static class NotificationFieldsMapper
+{
+
+public static NotificationField MapInsertModelToDbModel(NotificationFieldsViewModel model, NotificationField newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new NotificationField();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.FieldName = model.FieldName;
+            newDomainModel.OldValue = model.OldValue;
+            newDomainModel.NewValue = model.NewValue;
+            newDomainModel.Notification_Id = model.Notification_Id;
+    return newDomainModel;
+    }
+
+
+
+public static NotificationFieldsViewModel MapDbModelToViewModel(NotificationField dbModel)
+{
+var viewModel = new  NotificationFieldsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.FieldName = dbModel.FieldName;
+            viewModel.OldValue = dbModel.OldValue;
+            viewModel.NewValue = dbModel.NewValue;
+            viewModel.Notification_Id = dbModel.Notification_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<NotificationFieldsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<NotificationField> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new NotificationFieldsViewModel()
+        {
+Id = c.Id,
+FieldName = c.FieldName,
+OldValue = c.OldValue,
+NewValue = c.NewValue,
+Notification_Id = c.Notification_Id,
+        });
+        }
+    }
+}
+
+

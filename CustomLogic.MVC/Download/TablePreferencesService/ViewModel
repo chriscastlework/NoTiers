@@ -1,0 +1,13 @@
+using System;
+
+namespace CustomLogic.Services.TablePreferenceService
+{
+    public class TablePreferencesViewModel
+    {
+
+        public int Id {get;set;}
+        public string Name {get;set;}
+        public int? SystemPreferences_Id {get;set;}
+
+    }
+}

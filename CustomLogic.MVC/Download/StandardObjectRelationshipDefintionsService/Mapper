@@ -1,0 +1,84 @@
+using System.Linq;
+
+namespace CustomLogic.Services.StandardObjectRelationshipDefintionsService
+{
+public static class StandardObjectRelationshipDefintionsMapper
+{
+
+public static StandardObjectRelationshipDefintion MapInsertModelToDbModel(StandardObjectRelationshipDefintionsViewModel model, StandardObjectRelationshipDefintion newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new StandardObjectRelationshipDefintion();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Relationship = model.Relationship;
+            newDomainModel.CustomObject_Id = model.CustomObject_Id;
+            newDomainModel.StandardObjectType = model.StandardObjectType;
+            newDomainModel.StandardObjectId = model.StandardObjectId;
+            newDomainModel.OnDelete = model.OnDelete;
+            newDomainModel.Organisation_Id = model.Organisation_Id;
+            newDomainModel.Contact_Id = model.Contact_Id;
+            newDomainModel.Deal_Id = model.Deal_Id;
+            newDomainModel.Task_Id = model.Task_Id;
+            newDomainModel.Account_Id = model.Account_Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Key = model.Key;
+            newDomainModel.DependencySideLabel = model.DependencySideLabel;
+            newDomainModel.PrincipleSideLabel = model.PrincipleSideLabel;
+    return newDomainModel;
+    }
+
+
+
+public static StandardObjectRelationshipDefintionsViewModel MapDbModelToViewModel(StandardObjectRelationshipDefintion dbModel)
+{
+var viewModel = new  StandardObjectRelationshipDefintionsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Relationship = dbModel.Relationship;
+            viewModel.CustomObject_Id = dbModel.CustomObject_Id;
+            viewModel.StandardObjectType = dbModel.StandardObjectType;
+            viewModel.StandardObjectId = dbModel.StandardObjectId;
+            viewModel.OnDelete = dbModel.OnDelete;
+            viewModel.Organisation_Id = dbModel.Organisation_Id;
+            viewModel.Contact_Id = dbModel.Contact_Id;
+            viewModel.Deal_Id = dbModel.Deal_Id;
+            viewModel.Task_Id = dbModel.Task_Id;
+            viewModel.Account_Id = dbModel.Account_Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.Key = dbModel.Key;
+            viewModel.DependencySideLabel = dbModel.DependencySideLabel;
+            viewModel.PrincipleSideLabel = dbModel.PrincipleSideLabel;
+
+return viewModel;
+}
+
+
+public static IQueryable<StandardObjectRelationshipDefintionsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<StandardObjectRelationshipDefintion> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new StandardObjectRelationshipDefintionsViewModel()
+        {
+Id = c.Id,
+Relationship = c.Relationship,
+CustomObject_Id = c.CustomObject_Id,
+StandardObjectType = c.StandardObjectType,
+StandardObjectId = c.StandardObjectId,
+OnDelete = c.OnDelete,
+Organisation_Id = c.Organisation_Id,
+Contact_Id = c.Contact_Id,
+Deal_Id = c.Deal_Id,
+Task_Id = c.Task_Id,
+Account_Id = c.Account_Id,
+Name = c.Name,
+Key = c.Key,
+DependencySideLabel = c.DependencySideLabel,
+PrincipleSideLabel = c.PrincipleSideLabel,
+        });
+        }
+    }
+}
+
+

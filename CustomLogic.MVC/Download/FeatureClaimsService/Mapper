@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.FeatureClaimsService
+{
+public static class FeatureClaimsMapper
+{
+
+public static FeatureClaim MapInsertModelToDbModel(FeatureClaimsViewModel model, FeatureClaim newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new FeatureClaim();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.FeatureId = model.FeatureId;
+            newDomainModel.ClaimType = model.ClaimType;
+            newDomainModel.ClaimValue = model.ClaimValue;
+    return newDomainModel;
+    }
+
+
+
+public static FeatureClaimsViewModel MapDbModelToViewModel(FeatureClaim dbModel)
+{
+var viewModel = new  FeatureClaimsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.FeatureId = dbModel.FeatureId;
+            viewModel.ClaimType = dbModel.ClaimType;
+            viewModel.ClaimValue = dbModel.ClaimValue;
+
+return viewModel;
+}
+
+
+public static IQueryable<FeatureClaimsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<FeatureClaim> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new FeatureClaimsViewModel()
+        {
+Id = c.Id,
+FeatureId = c.FeatureId,
+ClaimType = c.ClaimType,
+ClaimValue = c.ClaimValue,
+        });
+        }
+    }
+}
+
+

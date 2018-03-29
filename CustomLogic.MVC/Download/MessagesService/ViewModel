@@ -1,0 +1,20 @@
+using System;
+
+namespace CustomLogic.Services.MessageService
+{
+    public class MessagesViewModel
+    {
+
+        public int ID {get;set;}
+        public string Topic {get;set;}
+        public string Body {get;set;}
+        public DateTime DateSent {get;set;}
+        public int? FromDealContactId {get;set;}
+        public DateTime? DateReadBySeller {get;set;}
+        public string Discriminator {get;set;}
+        public int ConversationId {get;set;}
+        public DateTime? DateReadByBuyer {get;set;}
+        public string FromUserId {get;set;}
+
+    }
+}

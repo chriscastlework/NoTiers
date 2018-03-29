@@ -1,0 +1,10 @@
+using System;
+
+namespace CustomLogic.Services.ConsentService
+{
+    public class ConsentsViewModel
+    {
+
+
+    }
+}

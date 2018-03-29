@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.PasswordResetRequestsService
+{
+    public class Save : IInsertEvent<PasswordResetRequestsViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(PasswordResetRequestsViewModel model, IUnitOfWork unitOfWork, Response<PasswordResetRequestsViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = PasswordResetRequests();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<PasswordResetRequest>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = PasswordResetRequests
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(PasswordResetRequestsViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<PasswordResetRequest>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<PasswordResetRequest>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

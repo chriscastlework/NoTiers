@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ClientSecretsService
+{
+public static class ClientSecretsMapper
+{
+
+public static ClientSecret MapInsertModelToDbModel(ClientSecretsViewModel model, ClientSecret newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ClientSecret();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static ClientSecretsViewModel MapDbModelToViewModel(ClientSecret dbModel)
+{
+var viewModel = new  ClientSecretsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<ClientSecretsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ClientSecret> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ClientSecretsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

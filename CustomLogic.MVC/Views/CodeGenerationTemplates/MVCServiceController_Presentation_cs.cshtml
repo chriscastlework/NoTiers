@@ -1,0 +1,145 @@
+﻿@model CustomLogic.SchemaBuilder.MicrosoftSQL.SchemaModels.ModelInfo
+
+using System;
+using System.Linq;
+using System.Net;
+using System.Web.Mvc;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Models;
+using CustomLogic.Services.@Html.Raw(Model.TT_ViewModelName())Service;
+
+
+public class @Html.Raw(Model.TT_ViewModelName())Controller : Controller
+{
+    //private AomDbContext db = new AomDbContext();
+    private readonly IService<@Html.Raw(Model.TT_ViewModelName())ViewModel>_@Html.Raw(Model.TT_ViewModelName())Service = new @Html.Raw(Model.TT_ViewModelName())Service(new DbContext());
+
+
+        // GET: @Html.Raw(Model.TT_ViewModelName())
+        public ActionResult Index()
+        {
+        return View(_@Html.Raw(Model.TT_ViewModelName())
+        Service.List(new NgTableParams() {page = 1, count = 1000}, null).Data.ToList());
+        }
+
+        // GET: @Html.Raw(Model.TT_ViewModelName())/Details/5
+        public ActionResult Details(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        return View(_@Html.Raw(Model.TT_ViewModelName())
+        Service.View(new @Html.Raw(Model.TT_ViewModelName())
+        ViewModel() { ID = id.Value}, null));
+        }
+
+        // GET: @Html.Raw(Model.TT_ViewModelName())/Create
+        public ActionResult Create()
+        {
+        return View();
+        }
+
+        // POST: @Html.Raw(Model.TT_ViewModelName())/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Name")] @Html.Raw(Model.TT_ViewModelName())
+        ViewModel aomMeta)
+        {
+        if (ModelState.IsValid)
+        {
+        var result =_@Html.Raw(Model.TT_ViewModelName())
+        Service.Insert(aomMeta, null);
+        if(result.Success)
+        return RedirectToAction("Index");
+
+        // what if it went wrong?
+        }
+
+        return View(aomMeta);
+        }
+
+        // GET: @Html.Raw(Model.TT_ViewModelName())
+        s/Edit/5
+        public ActionResult Edit(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var result = _@Html.Raw(Model.TT_ViewModelName())
+        Service.View(new @Html.Raw(Model.TT_ViewModelName())
+        ViewModel {ID = id.Value}, null);
+        if (!result.Success)
+        {
+        return HttpNotFound();
+        }
+        return View(result.Data);
+        }
+
+        // POST: @Html.Raw(Model.TT_ViewModelName())
+        s/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Name")] @Html.Raw(Model.TT_ViewModelName())
+        ViewModel aomMeta)
+        {
+        if (ModelState.IsValid)
+        {
+        var result = _@Html.Raw(Model.TT_ViewModelName())
+        Service.Update(aomMeta, null);
+        if(result.Success)
+        return RedirectToAction("Index");
+
+        // what if it goes wrong?
+        }
+        return View(aomMeta);
+        }
+
+        // GET: @Html.Raw(Model.TT_ViewModelName())
+        s/Delete/5
+        public ActionResult Delete(Guid? id)
+        {
+        if (id == null)
+        {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var result = _@Html.Raw(Model.TT_ViewModelName())
+        Service.View(new @Html.Raw(Model.TT_ViewModelName())
+        ViewModel {ID = id.Value}, null);
+        if (!result.Success)
+        {
+        return HttpNotFound();
+        }
+        return View(result.Data);
+        }
+
+        // POST: @Html.Raw(Model.TT_ViewModelName())
+        s/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(Guid id)
+        {
+        var result = _@Html.Raw(Model.TT_ViewModelName())
+        Service.Delete(new @Html.Raw(Model.TT_ViewModelName())
+        ViewModel {ID = id}, null);
+        return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+        if (disposing)
+        {
+        // _@Html.Raw(Model.TT_ViewModelName())
+        Service = null; // make services disposeable?
+        }
+        base.Dispose(disposing);
+        }
+        }
+
+

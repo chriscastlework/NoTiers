@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.OrganisationAllowedRolesService
+{
+public static class OrganisationAllowedRolesMapper
+{
+
+public static OrganisationAllowedRole MapInsertModelToDbModel(OrganisationAllowedRolesViewModel model, OrganisationAllowedRole newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new OrganisationAllowedRole();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.OrgId = model.OrgId;
+            newDomainModel.RoleId = model.RoleId;
+            newDomainModel.NotAllowed = model.NotAllowed;
+    return newDomainModel;
+    }
+
+
+
+public static OrganisationAllowedRolesViewModel MapDbModelToViewModel(OrganisationAllowedRole dbModel)
+{
+var viewModel = new  OrganisationAllowedRolesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.OrgId = dbModel.OrgId;
+            viewModel.RoleId = dbModel.RoleId;
+            viewModel.NotAllowed = dbModel.NotAllowed;
+
+return viewModel;
+}
+
+
+public static IQueryable<OrganisationAllowedRolesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<OrganisationAllowedRole> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new OrganisationAllowedRolesViewModel()
+        {
+Id = c.Id,
+OrgId = c.OrgId,
+RoleId = c.RoleId,
+NotAllowed = c.NotAllowed,
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,78 @@
+using System.Linq;
+
+namespace CustomLogic.Services.StepsService
+{
+public static class StepsMapper
+{
+
+public static Step MapInsertModelToDbModel(StepsViewModel model, Step newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Step();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.StageId = model.StageId;
+            newDomainModel.Description = model.Description;
+            newDomainModel.StepAction = model.StepAction;
+            newDomainModel.YellowFlagDays = model.YellowFlagDays;
+            newDomainModel.YellowFlagStart = model.YellowFlagStart;
+            newDomainModel.RedFlagDays = model.RedFlagDays;
+            newDomainModel.RedFlagStart = model.RedFlagStart;
+            newDomainModel.StepPercent = model.StepPercent;
+            newDomainModel.AssetId = model.AssetId;
+            newDomainModel.OrderInStage = model.OrderInStage;
+            newDomainModel.Mandatory = model.Mandatory;
+    return newDomainModel;
+    }
+
+
+
+public static StepsViewModel MapDbModelToViewModel(Step dbModel)
+{
+var viewModel = new  StepsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.StageId = dbModel.StageId;
+            viewModel.Description = dbModel.Description;
+            viewModel.StepAction = dbModel.StepAction;
+            viewModel.YellowFlagDays = dbModel.YellowFlagDays;
+            viewModel.YellowFlagStart = dbModel.YellowFlagStart;
+            viewModel.RedFlagDays = dbModel.RedFlagDays;
+            viewModel.RedFlagStart = dbModel.RedFlagStart;
+            viewModel.StepPercent = dbModel.StepPercent;
+            viewModel.AssetId = dbModel.AssetId;
+            viewModel.OrderInStage = dbModel.OrderInStage;
+            viewModel.Mandatory = dbModel.Mandatory;
+
+return viewModel;
+}
+
+
+public static IQueryable<StepsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Step> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new StepsViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+StageId = c.StageId,
+Description = c.Description,
+StepAction = c.StepAction,
+YellowFlagDays = c.YellowFlagDays,
+YellowFlagStart = c.YellowFlagStart,
+RedFlagDays = c.RedFlagDays,
+RedFlagStart = c.RedFlagStart,
+StepPercent = c.StepPercent,
+AssetId = c.AssetId,
+OrderInStage = c.OrderInStage,
+Mandatory = c.Mandatory,
+        });
+        }
+    }
+}
+
+

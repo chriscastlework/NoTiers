@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.BuyingProcessesService
+{
+    public class View : IViewEvent<BuyingProcessesViewModel,BuyingProcess>
+    {
+        public int CreatedId = 0;
+
+        public Response<BuyingProcessesViewModel> Run(BuyingProcessesViewModel model,ref IQueryable<BuyingProcess> repository, IUnitOfWork unitOfWork, Response<BuyingProcessesViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = BuyingProcesses
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing BuyingProcesses");
+            }
+
+            return result;
+        }
+
+    }
+}

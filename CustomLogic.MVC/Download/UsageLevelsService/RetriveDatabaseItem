@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.UsageLevelsService
+{
+    public class View : IViewEvent<UsageLevelsViewModel,UsageLevel>
+    {
+        public int CreatedId = 0;
+
+        public Response<UsageLevelsViewModel> Run(UsageLevelsViewModel model,ref IQueryable<UsageLevel> repository, IUnitOfWork unitOfWork, Response<UsageLevelsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = UsageLevels
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing UsageLevels");
+            }
+
+            return result;
+        }
+
+    }
+}

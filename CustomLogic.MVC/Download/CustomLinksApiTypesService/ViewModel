@@ -1,0 +1,13 @@
+using System;
+
+namespace CustomLogic.Services.CustomLinksApiTypeService
+{
+    public class CustomLinksApiTypesViewModel
+    {
+
+        public int Id {get;set;}
+        public string Key {get;set;}
+        public string Label {get;set;}
+
+    }
+}

@@ -1,0 +1,34 @@
+<div class="form-group pb-user-field pb-rounded-corners-5 col-sm-12">
+    <!--Constraint:{{item.getConstraint().toString()}}-->
+    ValueType:
+    <div class="pb-icon-button" ng-click="delete()">
+        <span class="glyphicon glyphicon-trash"></span>
+    </div>
+    <div class="col-sm-12 no-padding">
+        <span class="col-sm-2">If</span>
+        <span class="col-sm-10">
+            <select class="form-control col-sm-10"
+                    ng-model="item.targetId"
+                    ng-model-options="{getterSetter:true}"
+                    ng-options="field.id as field.label for field in targets"/>
+        </span>
+    </div>
+    <div class="col-sm-12 no-padding">
+        <span class="col-sm-2"></span>
+        <span class="col-sm-10">
+            <select class="form-control"
+                    ng-model="item.operator"
+                    ng-model-options="{getterSetter:true}"
+                    ng-options="operator.id as operator.label for operator in operators"/>
+        </span>
+    </div>
+    <div class="col-sm-12 no-padding">
+        <span class="col-sm-2">..this</span>
+        <span class="col-sm-10">
+            <select class="form-control"
+                    ng-model="item.operandId"
+                    ng-model-options="{getterSetter:true}"
+                    ng-options="option.id as option.label for option in operands"/>
+        </span>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+using System.Linq;
+
+namespace CustomLogic.Services.StcOrgsService
+{
+public static class StcOrgsMapper
+{
+
+public static StcOrg MapInsertModelToDbModel(StcOrgsViewModel model, StcOrg newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new StcOrg();
+    }
+
+            newDomainModel.SalesTrainingCompanyId = model.SalesTrainingCompanyId;
+            newDomainModel.OrganisationId = model.OrganisationId;
+            newDomainModel.Priority = model.Priority;
+    return newDomainModel;
+    }
+
+
+
+public static StcOrgsViewModel MapDbModelToViewModel(StcOrg dbModel)
+{
+var viewModel = new  StcOrgsViewModel();
+
+            viewModel.SalesTrainingCompanyId = dbModel.SalesTrainingCompanyId;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+            viewModel.Priority = dbModel.Priority;
+
+return viewModel;
+}
+
+
+public static IQueryable<StcOrgsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<StcOrg> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new StcOrgsViewModel()
+        {
+SalesTrainingCompanyId = c.SalesTrainingCompanyId,
+OrganisationId = c.OrganisationId,
+Priority = c.Priority,
+        });
+        }
+    }
+}
+
+

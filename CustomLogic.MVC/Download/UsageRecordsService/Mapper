@@ -1,0 +1,57 @@
+using System.Linq;
+
+namespace CustomLogic.Services.UsageRecordsService
+{
+public static class UsageRecordsMapper
+{
+
+public static UsageRecord MapInsertModelToDbModel(UsageRecordsViewModel model, UsageRecord newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new UsageRecord();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.UsageActionId = model.UsageActionId;
+            newDomainModel.StandardObjectDefinitionId = model.StandardObjectDefinitionId;
+            newDomainModel.RecordId = model.RecordId;
+            newDomainModel.DateOfAction = model.DateOfAction;
+    return newDomainModel;
+    }
+
+
+
+public static UsageRecordsViewModel MapDbModelToViewModel(UsageRecord dbModel)
+{
+var viewModel = new  UsageRecordsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.UserId = dbModel.UserId;
+            viewModel.UsageActionId = dbModel.UsageActionId;
+            viewModel.StandardObjectDefinitionId = dbModel.StandardObjectDefinitionId;
+            viewModel.RecordId = dbModel.RecordId;
+            viewModel.DateOfAction = dbModel.DateOfAction;
+
+return viewModel;
+}
+
+
+public static IQueryable<UsageRecordsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<UsageRecord> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new UsageRecordsViewModel()
+        {
+Id = c.Id,
+UserId = c.UserId,
+UsageActionId = c.UsageActionId,
+StandardObjectDefinitionId = c.StandardObjectDefinitionId,
+RecordId = c.RecordId,
+DateOfAction = c.DateOfAction,
+        });
+        }
+    }
+}
+
+

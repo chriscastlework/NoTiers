@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.SubscriptionsService
+{
+    public class QueryLogic : IViewListEvent<SubscriptionsViewModel, Subscription>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<Subscription> repository, NgTable<SubscriptionsViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<SubscriptionsViewModel>();
+
+            var query = Subscriptions
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

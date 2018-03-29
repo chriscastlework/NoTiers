@@ -1,0 +1,10 @@
+using System;
+
+namespace CustomLogic.Services.CustomFieldOptionMappingService
+{
+    public class CustomFieldOptionMappingsViewModel
+    {
+
+
+    }
+}

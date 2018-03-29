@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CurrenciesService
+{
+    public class QueryLogic : IViewListEvent<CurrenciesViewModel, Currency>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<Currency> repository, NgTable<CurrenciesViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<CurrenciesViewModel>();
+
+            var query = Currencies
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.NotesService
+{
+    public class View : IViewEvent<NotesViewModel,Note>
+    {
+        public int CreatedId = 0;
+
+        public Response<NotesViewModel> Run(NotesViewModel model,ref IQueryable<Note> repository, IUnitOfWork unitOfWork, Response<NotesViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = Notes
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing Notes");
+            }
+
+            return result;
+        }
+
+    }
+}

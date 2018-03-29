@@ -1,0 +1,15 @@
+using System;
+
+namespace CustomLogic.Services.CustomFieldValidationService
+{
+    public class CustomFieldValidationsViewModel
+    {
+
+        public int Id {get;set;}
+        public string Name {get;set;}
+        public string Regex {get;set;}
+        public int FieldType {get;set;}
+        public string ErrorMessage {get;set;}
+
+    }
+}

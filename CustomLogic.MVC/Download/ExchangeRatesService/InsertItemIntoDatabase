@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.ExchangeRatesService
+{
+    public class Save : IInsertEvent<ExchangeRatesViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(ExchangeRatesViewModel model, IUnitOfWork unitOfWork, Response<ExchangeRatesViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = ExchangeRates();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<ExchangeRate>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = ExchangeRates
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(ExchangeRatesViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<ExchangeRate>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<ExchangeRate>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

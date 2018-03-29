@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.UserClaimsService
+{
+public static class UserClaimsMapper
+{
+
+public static UserClaim MapInsertModelToDbModel(UserClaimsViewModel model, UserClaim newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new UserClaim();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.ClaimType = model.ClaimType;
+            newDomainModel.ClaimValue = model.ClaimValue;
+            newDomainModel.IdentityUser_Id = model.IdentityUser_Id;
+    return newDomainModel;
+    }
+
+
+
+public static UserClaimsViewModel MapDbModelToViewModel(UserClaim dbModel)
+{
+var viewModel = new  UserClaimsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.UserId = dbModel.UserId;
+            viewModel.ClaimType = dbModel.ClaimType;
+            viewModel.ClaimValue = dbModel.ClaimValue;
+            viewModel.IdentityUser_Id = dbModel.IdentityUser_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<UserClaimsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<UserClaim> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new UserClaimsViewModel()
+        {
+Id = c.Id,
+UserId = c.UserId,
+ClaimType = c.ClaimType,
+ClaimValue = c.ClaimValue,
+IdentityUser_Id = c.IdentityUser_Id,
+        });
+        }
+    }
+}
+
+

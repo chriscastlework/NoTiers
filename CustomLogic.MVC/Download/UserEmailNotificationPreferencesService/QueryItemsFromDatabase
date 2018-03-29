@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.UserEmailNotificationPreferencesService
+{
+    public class QueryLogic : IViewListEvent<UserEmailNotificationPreferencesViewModel, UserEmailNotificationPreference>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<UserEmailNotificationPreference> repository, NgTable<UserEmailNotificationPreferencesViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<UserEmailNotificationPreferencesViewModel>();
+
+            var query = UserEmailNotificationPreferences
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

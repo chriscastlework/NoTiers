@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ExchangeRatesService
+{
+public static class ExchangeRatesMapper
+{
+
+public static ExchangeRate MapInsertModelToDbModel(ExchangeRatesViewModel model, ExchangeRate newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ExchangeRate();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Date = model.Date;
+            newDomainModel.CurrencyCode = model.CurrencyCode;
+            newDomainModel.RateAgainstEuro = model.RateAgainstEuro;
+    return newDomainModel;
+    }
+
+
+
+public static ExchangeRatesViewModel MapDbModelToViewModel(ExchangeRate dbModel)
+{
+var viewModel = new  ExchangeRatesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Date = dbModel.Date;
+            viewModel.CurrencyCode = dbModel.CurrencyCode;
+            viewModel.RateAgainstEuro = dbModel.RateAgainstEuro;
+
+return viewModel;
+}
+
+
+public static IQueryable<ExchangeRatesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ExchangeRate> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ExchangeRatesViewModel()
+        {
+Id = c.Id,
+Date = c.Date,
+CurrencyCode = c.CurrencyCode,
+RateAgainstEuro = c.RateAgainstEuro,
+        });
+        }
+    }
+}
+
+

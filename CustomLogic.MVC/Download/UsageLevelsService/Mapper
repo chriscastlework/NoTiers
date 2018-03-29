@@ -1,0 +1,48 @@
+using System.Linq;
+
+namespace CustomLogic.Services.UsageLevelsService
+{
+public static class UsageLevelsMapper
+{
+
+public static UsageLevel MapInsertModelToDbModel(UsageLevelsViewModel model, UsageLevel newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new UsageLevel();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.RequiredPoints = model.RequiredPoints;
+    return newDomainModel;
+    }
+
+
+
+public static UsageLevelsViewModel MapDbModelToViewModel(UsageLevel dbModel)
+{
+var viewModel = new  UsageLevelsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.RequiredPoints = dbModel.RequiredPoints;
+
+return viewModel;
+}
+
+
+public static IQueryable<UsageLevelsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<UsageLevel> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new UsageLevelsViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+RequiredPoints = c.RequiredPoints,
+        });
+        }
+    }
+}
+
+

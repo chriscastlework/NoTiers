@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CustomFieldOptionsService
+{
+    public class View : IViewEvent<CustomFieldOptionsViewModel,CustomFieldOption>
+    {
+        public int CreatedId = 0;
+
+        public Response<CustomFieldOptionsViewModel> Run(CustomFieldOptionsViewModel model,ref IQueryable<CustomFieldOption> repository, IUnitOfWork unitOfWork, Response<CustomFieldOptionsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = CustomFieldOptions
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing CustomFieldOptions");
+            }
+
+            return result;
+        }
+
+    }
+}

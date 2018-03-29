@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.LeadStatusService
+{
+    public class QueryLogic : IViewListEvent<LeadStatusViewModel, LeadStatu>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<LeadStatu> repository, NgTable<LeadStatusViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<LeadStatusViewModel>();
+
+            var query = LeadStatus
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

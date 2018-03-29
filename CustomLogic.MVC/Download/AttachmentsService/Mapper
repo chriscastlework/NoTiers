@@ -1,0 +1,72 @@
+using System.Linq;
+
+namespace CustomLogic.Services.AttachmentsService
+{
+public static class AttachmentsMapper
+{
+
+public static Attachment MapInsertModelToDbModel(AttachmentsViewModel model, Attachment newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Attachment();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.OwnerId = model.OwnerId;
+            newDomainModel.Size = model.Size;
+            newDomainModel.Type = model.Type;
+            newDomainModel.Content = model.Content;
+            newDomainModel.Deal_Id = model.Deal_Id;
+            newDomainModel.Uploaded = model.Uploaded;
+            newDomainModel.GuidPath = model.GuidPath;
+            newDomainModel.Extension = model.Extension;
+            newDomainModel.Account_Id = model.Account_Id;
+    return newDomainModel;
+    }
+
+
+
+public static AttachmentsViewModel MapDbModelToViewModel(Attachment dbModel)
+{
+var viewModel = new  AttachmentsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.OwnerId = dbModel.OwnerId;
+            viewModel.Size = dbModel.Size;
+            viewModel.Type = dbModel.Type;
+            viewModel.Content = dbModel.Content;
+            viewModel.Deal_Id = dbModel.Deal_Id;
+            viewModel.Uploaded = dbModel.Uploaded;
+            viewModel.GuidPath = dbModel.GuidPath;
+            viewModel.Extension = dbModel.Extension;
+            viewModel.Account_Id = dbModel.Account_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<AttachmentsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Attachment> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new AttachmentsViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+OwnerId = c.OwnerId,
+Size = c.Size,
+Type = c.Type,
+Content = c.Content,
+Deal_Id = c.Deal_Id,
+Uploaded = c.Uploaded,
+GuidPath = c.GuidPath,
+Extension = c.Extension,
+Account_Id = c.Account_Id,
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.AccountWatchingUsersService
+{
+    public class Delete : IDeleteEvent<AccountWatchingUsersViewModel,AccountWatchingUser>
+    {
+
+        public bool Run(AccountWatchingUsers ViewModel model, ref IQueryable<AccountWatchingUser>repository, IUnitOfWork unitOfWork, Response<AccountWatchingUsersViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<AccountWatchingUser>().Find(model.Id);unitOfWork.With<AccountWatchingUser>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

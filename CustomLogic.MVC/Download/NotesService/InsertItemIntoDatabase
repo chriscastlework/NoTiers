@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.NotesService
+{
+    public class Save : IInsertEvent<NotesViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(NotesViewModel model, IUnitOfWork unitOfWork, Response<NotesViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = Notes();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<Note>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = Notes
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(NotesViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<Note>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<Note>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

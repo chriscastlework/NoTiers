@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.AcheivedAwardsService
+{
+    public class Delete : IDeleteEvent<AcheivedAwardsViewModel,AcheivedAward>
+    {
+
+        public bool Run(AcheivedAwards ViewModel model, ref IQueryable<AcheivedAward>repository, IUnitOfWork unitOfWork, Response<AcheivedAwardsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<AcheivedAward>().Find(model.Id);unitOfWork.With<AcheivedAward>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.AvailableSlotsService
+{
+    public class Delete : IDeleteEvent<AvailableSlotsViewModel,AvailableSlot>
+    {
+
+        public bool Run(AvailableSlots ViewModel model, ref IQueryable<AvailableSlot>repository, IUnitOfWork unitOfWork, Response<AvailableSlotsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<AvailableSlot>().Find(model.Id);unitOfWork.With<AvailableSlot>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

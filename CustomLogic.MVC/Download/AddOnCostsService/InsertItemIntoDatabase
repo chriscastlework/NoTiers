@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.AddOnCostsService
+{
+    public class Save : IInsertEvent<AddOnCostsViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(AddOnCostsViewModel model, IUnitOfWork unitOfWork, Response<AddOnCostsViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = AddOnCosts();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<AddOnCost>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = AddOnCosts
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(AddOnCostsViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<AddOnCost>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<AddOnCost>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

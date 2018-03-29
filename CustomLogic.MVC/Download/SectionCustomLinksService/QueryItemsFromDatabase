@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.SectionCustomLinksService
+{
+    public class QueryLogic : IViewListEvent<SectionCustomLinksViewModel, SectionCustomLink>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<SectionCustomLink> repository, NgTable<SectionCustomLinksViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<SectionCustomLinksViewModel>();
+
+            var query = SectionCustomLinks
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

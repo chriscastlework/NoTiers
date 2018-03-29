@@ -1,0 +1,45 @@
+using System.Linq;
+
+namespace CustomLogic.Services.DefaultAddOnInEditionsService
+{
+public static class DefaultAddOnInEditionsMapper
+{
+
+public static DefaultAddOnInEdition MapInsertModelToDbModel(DefaultAddOnInEditionsViewModel model, DefaultAddOnInEdition newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new DefaultAddOnInEdition();
+    }
+
+            newDomainModel.AddOnId = model.AddOnId;
+            newDomainModel.EditionId = model.EditionId;
+    return newDomainModel;
+    }
+
+
+
+public static DefaultAddOnInEditionsViewModel MapDbModelToViewModel(DefaultAddOnInEdition dbModel)
+{
+var viewModel = new  DefaultAddOnInEditionsViewModel();
+
+            viewModel.AddOnId = dbModel.AddOnId;
+            viewModel.EditionId = dbModel.EditionId;
+
+return viewModel;
+}
+
+
+public static IQueryable<DefaultAddOnInEditionsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<DefaultAddOnInEdition> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new DefaultAddOnInEditionsViewModel()
+        {
+AddOnId = c.AddOnId,
+EditionId = c.EditionId,
+        });
+        }
+    }
+}
+
+

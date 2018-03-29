@@ -1,0 +1,16 @@
+using System;
+
+namespace CustomLogic.Services.ReceivedWebhookModelQueueService
+{
+    public class ReceivedWebhookModelQueuesViewModel
+    {
+
+        public int Id {get;set;}
+        public int OrganisationId {get;set;}
+        public string ReceivedWebhookModel {get;set;}
+        public int Attempts {get;set;}
+        public DateTime CreateDateTime {get;set;}
+        public DateTime LastModifiedDateTime {get;set;}
+
+    }
+}

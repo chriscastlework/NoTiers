@@ -1,0 +1,12 @@
+using System;
+
+namespace CustomLogic.Services.AccountWatchingUserService
+{
+    public class AccountWatchingUsersViewModel
+    {
+
+        public int WatchedAccountId {get;set;}
+        public string WatchingUserId {get;set;}
+
+    }
+}

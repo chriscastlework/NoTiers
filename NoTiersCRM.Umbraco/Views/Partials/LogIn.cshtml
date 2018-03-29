@@ -1,0 +1,40 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+
+@using System.Web.Mvc.Html
+@using ClientDependency.Core.Mvc
+@using Umbraco.Web
+@using Umbraco.Web.Models
+@using Umbraco.Web.Controllers
+
+@{
+    var loginModel = new LoginModel();
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+    Html.RequiresJs("/umbraco_client/ui/jquery.js");
+    Html.RequiresJs("/umbraco_client/Application/JQuery/jquery.validate.min.js");
+    Html.RequiresJs("/umbraco_client/Application/JQuery/jquery.validate.unobtrusive.min.js");
+}
+
+
+@using (Html.BeginUmbracoForm<UmbLoginController>("HandleLogin"))
+{
+
+                        <div class="form-group">
+                            <div class="controls with-icon-over-input">
+                                <!--<input name="ctl00$ContentPlaceHolder1$EmailTextBox" id="EmailTextBox" placeholder="E-mail" class="form-control" data-rule-email="true" data-rule-required="true" type="email">-->
+                                  @Html.TextBoxFor(m => loginModel.Username, new {@id="EmailTextBox", @placeholder="E-mail", @class="form-control", @type="email"})
+                                <i class="icon-user text-muted"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="controls with-icon-over-input">
+                                <!--<input name="ctl00$ContentPlaceHolder1$PasswordTextBox" id="PasswordTextBox" placeholder="Password" class="form-control" data-rule-required="true" type="password">-->
+                                  @Html.TextBoxFor(m => loginModel.Password, new{ @id="PasswordTextBox", @placeholder="Password", @class="form-control", @type="password"})
+                                <i class="icon-lock text-muted"></i>
+                            </div>
+                        </div>
+                       <button value="Sign In" id="SignInButton" class="btn btn-block">Login</button>
+                       
+}
+

@@ -1,0 +1,99 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Page Viewer</title>
+
+    <link rel="stylesheet" href="~/Content/res/css/styles.css" />
+    <!--<link href="res/css/spiStyles.css" rel="stylesheet" />-- THIS FILE DOES NOT EXIST>
+    <!-- Libraries -->
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/libraries/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/libraries/jquery-ui-1.8.14.custom.min.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/libraries/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/libraries/jquery.cookie.js"></script>
+    <!--[if lt IE 9]><script type="text/javascript" src="~/Content/libraries/SpringsFramework/libraries/jqplot/excanvas.min.js"></script><![endif]-->
+
+    <script type="text/javascript" src="~/Content/libraries/Highcharts-4.2.4/js/highcharts.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/lodash.js"></script>
+
+    <!-- Framework - Springs -->
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/springs.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/lang/en.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/core/locale.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/utils/xml.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/utils/array.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/utils/math.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/core/events.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/core/log.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/core/data.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/core/graphics.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/core/comms.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/core/geom.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/ui/dialogs.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/core/date.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/core/number.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/ui/tabset.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/ui/list.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/ui/menu.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/ui/preloader.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/ui/inputs.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/ui/tooltips.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/ui/table.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/ui/selection.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/ws/applet/contacts.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/ui/accordion.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/ui/layout.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/ui/dragselect.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/ui/buttonbar.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/ws/applet/applet.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/ui/sortable.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/ui/navigation.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/ui/radiogroup.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/core/validation.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springs/ui/relationalchart.js"></script>
+
+    <!-- Framework - SpringX -->
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springx/springx.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springx/view/view.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springx/model/model.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springx/controller/controller.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springx/model/strings.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springx/model/layout.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springx/model/datastructure.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springx/model/datalayers.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springx/model/resources.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springx/model/format.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springx/events/events.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springx/core/date.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/springx/utils/utils.js"></script>
+
+
+    <!-- Framework - SpringX Plugins -->
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/plugins/contacts.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/plugins/user.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/plugins/application.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/plugins/locale.js"></script>
+    <script type="text/javascript" src="~/Content/libraries/SpringsFramework/plugins/dialog.js"></script>
+    <!-- Applet -->
+    <script type="text/javascript" src="~/Content/src/ui/ui.js"></script>
+    <script type="text/javascript" src="~/Content/src/model/model.js"></script>
+    <script type="text/javascript" src="~/Content/src/view/view.js"></script>
+    <script type="text/javascript" src="~/Content/src/controller/controller.js"></script>
+    <script type="text/javascript">
+				$(document).ready(function()
+				{
+				pv.Preloader = new sp.ui.preloader.Preloader(new sp.ui.preloader.PreloaderOptions({ container: document.body, imageURL: "./res/images/main/preloader.gif" }));
+				},null);
+    </script>
+</head>
+<body>
+    <div> 
+    </div>
+</body>
+</html>

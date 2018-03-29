@@ -1,0 +1,45 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ConversationsService
+{
+public static class ConversationsMapper
+{
+
+public static Conversation MapInsertModelToDbModel(ConversationsViewModel model, Conversation newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Conversation();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.DealId = model.DealId;
+    return newDomainModel;
+    }
+
+
+
+public static ConversationsViewModel MapDbModelToViewModel(Conversation dbModel)
+{
+var viewModel = new  ConversationsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.DealId = dbModel.DealId;
+
+return viewModel;
+}
+
+
+public static IQueryable<ConversationsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Conversation> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ConversationsViewModel()
+        {
+Id = c.Id,
+DealId = c.DealId,
+        });
+        }
+    }
+}
+
+

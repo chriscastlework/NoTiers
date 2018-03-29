@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ApiKeysService
+{
+    public class QueryLogic : IViewListEvent<ApiKeysViewModel, ApiKey>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<ApiKey> repository, NgTable<ApiKeysViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<ApiKeysViewModel>();
+
+            var query = ApiKeys
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

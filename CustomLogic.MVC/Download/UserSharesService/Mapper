@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.UserSharesService
+{
+public static class UserSharesMapper
+{
+
+public static UserShare MapInsertModelToDbModel(UserSharesViewModel model, UserShare newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new UserShare();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static UserSharesViewModel MapDbModelToViewModel(UserShare dbModel)
+{
+var viewModel = new  UserSharesViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<UserSharesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<UserShare> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new UserSharesViewModel()
+        {
+        });
+        }
+    }
+}
+
+

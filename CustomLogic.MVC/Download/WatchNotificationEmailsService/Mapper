@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.WatchNotificationEmailsService
+{
+public static class WatchNotificationEmailsMapper
+{
+
+public static WatchNotificationEmail MapInsertModelToDbModel(WatchNotificationEmailsViewModel model, WatchNotificationEmail newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new WatchNotificationEmail();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.WatchedEntityType = model.WatchedEntityType;
+            newDomainModel.WatchedEntityId = model.WatchedEntityId;
+            newDomainModel.LastNotified = model.LastNotified;
+    return newDomainModel;
+    }
+
+
+
+public static WatchNotificationEmailsViewModel MapDbModelToViewModel(WatchNotificationEmail dbModel)
+{
+var viewModel = new  WatchNotificationEmailsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.UserId = dbModel.UserId;
+            viewModel.WatchedEntityType = dbModel.WatchedEntityType;
+            viewModel.WatchedEntityId = dbModel.WatchedEntityId;
+            viewModel.LastNotified = dbModel.LastNotified;
+
+return viewModel;
+}
+
+
+public static IQueryable<WatchNotificationEmailsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<WatchNotificationEmail> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new WatchNotificationEmailsViewModel()
+        {
+Id = c.Id,
+UserId = c.UserId,
+WatchedEntityType = c.WatchedEntityType,
+WatchedEntityId = c.WatchedEntityId,
+LastNotified = c.LastNotified,
+        });
+        }
+    }
+}
+
+

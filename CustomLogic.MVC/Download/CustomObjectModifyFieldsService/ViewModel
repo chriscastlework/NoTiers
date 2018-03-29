@@ -1,0 +1,10 @@
+using System;
+
+namespace CustomLogic.Services.CustomObjectModifyFieldService
+{
+    public class CustomObjectModifyFieldsViewModel
+    {
+
+
+    }
+}

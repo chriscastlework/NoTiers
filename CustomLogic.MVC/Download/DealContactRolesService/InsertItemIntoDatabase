@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.DealContactRolesService
+{
+    public class Save : IInsertEvent<DealContactRolesViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(DealContactRolesViewModel model, IUnitOfWork unitOfWork, Response<DealContactRolesViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = DealContactRoles();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<DealContactRole>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = DealContactRoles
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(DealContactRolesViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<DealContactRole>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<DealContactRole>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

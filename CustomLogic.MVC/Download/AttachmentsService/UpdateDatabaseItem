@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.AttachmentsService
+{
+    public class Update : IUpdateEvent<AttachmentsViewModel,Attachment>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(AttachmentsViewModel model, ref IQueryable<Attachment> repository, IUnitOfWork unitOfWork, Response<AttachmentsViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = Attachments
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<Attachment>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = AttachmentsMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

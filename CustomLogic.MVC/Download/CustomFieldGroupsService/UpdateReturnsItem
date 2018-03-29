@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CustomFieldGroupsService
+{
+public class ReturnResultEvent : IUpdateEvent<CustomFieldGroupsViewModel, CustomFieldGroup>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(CustomFieldGroupsViewModel model, ref IQueryable< CustomFieldGroup> repository, IUnitOfWork unitOfWork, Response<CustomFieldGroupsViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<CustomFieldGroup>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = CustomFieldGroups
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

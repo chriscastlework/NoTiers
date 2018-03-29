@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.ConvertActionsService
+{
+    public class Save : IInsertEvent<ConvertActionsViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(ConvertActionsViewModel model, IUnitOfWork unitOfWork, Response<ConvertActionsViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = ConvertActions();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<ConvertAction>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = ConvertActions
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(ConvertActionsViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<ConvertAction>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<ConvertAction>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

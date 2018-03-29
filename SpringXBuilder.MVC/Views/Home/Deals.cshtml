@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "Deals";
+}
+
+<h2>Deals</h2>
+
+<script>
+    
+    (function () {
+
+        var app = angular.module("app", ["ngTable"]);
+
+        // Deal Service
+        angular.module('app').factory('dealApiService', dealApiService);
+        dealApiService.$inject = ['$http'];
+        function dealApiService($http) {
+
+            return {
+                Get: get,
+                Post: post,
+                Put: put,
+                Delete: deleteApi
+            };
+
+            function get(id) {
+                return $http.get('/api/Deal/' + id)
+                   .then(getDealComplete)
+                   .catch(getDealFail);
+
+                function getDealComplete(response) {
+                    return response.data.Data;
+                }
+
+                function getDealFail(error) {
+                    debugger;
+                }
+            };
+
+            function post(data) {
+                return $http.post('/api/Deal/', data)
+                   .then(postDealComplete)
+                   .catch(postDealFail);
+
+                function postDealComplete(response) {
+                    return response.data;
+                }
+
+                function postDealFail(error) {
+                    debugger;
+                }
+            };
+
+            function put(id, data) {
+                return $http.put('/api/Deal/' + id, data)
+                   .then(putDealComplete)
+                   .catch(putDealFail);
+
+                function putDealComplete(response) {
+                    return response.data.Data;
+                }
+
+                function putDealFail(error) {
+                    debugger;
+                }
+            };
+
+            function deleteApi(id) {
+                return $http.delete('/api/Deal/' + id)
+                   .then(deleteDealComplete)
+                   .catch(deleteDealFail);
+
+                function deleteDealComplete(response) {
+                    return response.data.Data;
+                }
+
+                function deleteDealFail(error) {
+                    debugger;
+                }
+            };
+        };
+        // Deal Service End
+
+        // Deal Table Controller
+        angular.module('app').controller('dealTableController', dealTableController);
+        dealTableController.$inject = ["NgTableParams", "dealApiService"];
+        function dealTableController(NgTableParams, dealApiService) {
+            var vm = this;
+            vm.tableParams = new NgTableParams({
+                page: 1,            // show first page
+                count: 10           // count per page
+            }, {
+                getData: function (params) {
+
+                    var postParams = {};
+                    postParams.page = params.page();
+                    postParams.count = params.count();
+                    postParams.total = params.total();
+                    postParams.filter = params.filter();
+                    postParams.sorting = params.sorting();
+                    postParams.group = params.group();
+
+                    return dealApiService.Post(postParams) // back end use NgTableParams ... awards controller 
+                        .then(function (response) {
+                            params.total(response.Count);
+                            return response.Data;
+                        });
+                }
+            });
+        };
+        // Deal Table Controller End
+
+
+    })();
+</script>
+
+<div ng-app="app">
+    
+    <div ng-controller="dealTableController as deals">
+
+        <h2 class="page-header">Deals Table</h2>
+
+        <table ng-table="deals.tableParams" class="table table-bordered table-striped table-responsive">
+            <tr ng-repeat="row in $data track by row.Id">
+                <td data-title="'Id'" filter="{Id: 'number'}" sortable="'Id'">{{row.Id}}</td>
+                <td data-title="'Name'" filter="{Name: 'text'}" sortable="'Name'">{{row.Name}}</td>
+                <td data-title="'Revenue Currency'" filter="{RevenueCurrency: 'text'}" sortable="'RevenueCurrency'">{{row.RevenueCurrency}}</td>
+                <td data-title="'Revenue Amount'" filter="{RevenueAmount: 'text'}" sortable="'RevenueAmount'">{{row.RevenueAmount}}</td>
+                <td data-title="'Everything'" filter="{Name: 'text'}" sortable="'Name'">{{row}}</td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>

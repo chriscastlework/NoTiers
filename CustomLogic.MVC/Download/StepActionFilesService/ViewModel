@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.StepActionFileService
+{
+    public class StepActionFilesViewModel
+    {
+
+        public int Id {get;set;}
+        public string FileName {get;set;}
+        public string OriginalFileName {get;set;}
+        public string ContentType {get;set;}
+
+    }
+}

@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.WatchNotificationEmailsService
+{
+public class ReturnResultEvent : IUpdateEvent<WatchNotificationEmailsViewModel, WatchNotificationEmail>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(WatchNotificationEmailsViewModel model, ref IQueryable< WatchNotificationEmail> repository, IUnitOfWork unitOfWork, Response<WatchNotificationEmailsViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<WatchNotificationEmail>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = WatchNotificationEmails
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

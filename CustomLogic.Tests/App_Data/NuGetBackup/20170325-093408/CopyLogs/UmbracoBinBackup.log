@@ -1,0 +1,56 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows                              
+-------------------------------------------------------------------------------
+
+  Started : 25 March 2017 09:34:08
+   Source : C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\SpringXBuilder.MVC\CustomLogic.Tests\bin\
+     Dest : C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\SpringXBuilder.MVC\CustomLogic.Tests\App_Data\NuGetBackup\20170325-093408\bin\
+
+    Files : *.*
+	    
+  Options : *.* /S /E /DCOPY:DA /COPY:DAT /R:1000000 /W:30 
+
+------------------------------------------------------------------------------
+
+	                   2	C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\SpringXBuilder.MVC\CustomLogic.Tests\bin\
+	    New File  		   29344	Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll  0%  100%  
+	    New File  		    1805	Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml  0%  100%  
+	  New Dir         20	C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\SpringXBuilder.MVC\CustomLogic.Tests\bin\Debug\
+	    New File  		   34304	AlexaSkillsKit.dll  0%  100%  
+	    New File  		   2.1 m	BouncyCastle.Crypto.dll  0%   23%   46%   70%   93%  100%  
+	    New File  		   71680	CustomLogic.dll  0%  100%  
+	    New File  		  239104	CustomLogic.pdb  0%   54%  100%  
+	    New File  		   22016	CustomLogic.Tests.dll  0%  100%  
+	    New File  		    1726	CustomLogic.Tests.dll.config  0%  100%  
+	    New File  		   69120	CustomLogic.Tests.pdb  0%  100%  
+	    New File  		   4.9 m	EntityFramework.dll  0%   10%   20%   30%   40%   50%   60%   70%   80%   90%  100%  
+	    New File  		  621264	EntityFramework.SqlServer.dll  0%   42%   84%  100%  
+	    New File  		  154866	EntityFramework.SqlServer.xml  0%   84%  100%  
+	    New File  		   3.4 m	EntityFramework.xml  0%   14%   28%   43%   57%   71%   86%  100%  
+	    New File  		  171672	Microsoft.AspNet.Identity.Core.dll  0%   76%  100%  
+	    New File  		  124939	Microsoft.AspNet.Identity.Core.xml  0%  100%  
+	    New File  		   86440	Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll  0%  100%  
+	    New File  		  520192	Newtonsoft.Json.dll  0%   25%   50%   75%  100%  
+	    New File  		  501178	Newtonsoft.Json.xml  0%   26%   52%   78%  100%  
+	    New File  		  488960	NLog.dll  0%   26%   53%   80%  100%  
+	    New File  		   1.2 m	NLog.xml  0%   19%   39%   59%   78%   98%  100%  
+	    New File  		  185544	System.Net.Http.Formatting.dll  0%   70%  100%  
+	    New File  		  192626	System.Net.Http.Formatting.xml  0%   68%  100%  
+	  New Dir          1	C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\SpringXBuilder.MVC\CustomLogic.Tests\bin\Debug\Speechlet\
+	    New File  		     918	TestJson.json  0%  100%  
+	  New Dir          0	C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\SpringXBuilder.MVC\CustomLogic.Tests\bin\Release\
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :         4         3         1         0         0         0
+   Files :        23        23         0         0         0         0
+   Bytes :   15.19 m   15.19 m         0         0         0         0
+   Times :   0:00:00   0:00:00                       0:00:00   0:00:00
+
+
+   Speed :            32582255 Bytes/sec.
+   Speed :            1864.371 MegaBytes/min.
+   Ended : 25 March 2017 09:34:09
+

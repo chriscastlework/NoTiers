@@ -1,0 +1,16 @@
+using System;
+
+namespace CustomLogic.Services.ExternalIntegrationFieldMappingService
+{
+    public class ExternalIntegrationFieldMappingsViewModel
+    {
+
+        public int Id {get;set;}
+        public int ExternalIntegrationTypeMappingId {get;set;}
+        public string ExternalField {get;set;}
+        public string VrField {get;set;}
+        public string DirectionalSyncUpRule {get;set;}
+        public string DirectionalSyncDownRule {get;set;}
+
+    }
+}

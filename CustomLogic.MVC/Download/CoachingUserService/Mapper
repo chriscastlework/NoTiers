@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CoachingUserService
+{
+public static class CoachingUserMapper
+{
+
+public static CoachingUser MapInsertModelToDbModel(CoachingUserViewModel model, CoachingUser newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CoachingUser();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static CoachingUserViewModel MapDbModelToViewModel(CoachingUser dbModel)
+{
+var viewModel = new  CoachingUserViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<CoachingUserViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CoachingUser> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CoachingUserViewModel()
+        {
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,61 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="CustomLogic.Services.PageBuilderService.FrameWorks.Angular" #>
+<#@ import namespace="CustomLogic.Services.PageBuilderService.FrameWorks.Angular" #>
+
+<script>
+    (function () {
+        // Deal Table Controller
+        angular.module('app').controller('<#=NgHelp.GetNgTableControllerName(_model)#>', <#=NgHelp.GetNgTableControllerName(_model)#>);
+        <#=NgHelp.GetNgTableControllerName(_model)#>.$inject = ["NgTableParams", "<#=NgHelp.GetServiceName(_model)#>ApiService"];
+        function <#=NgHelp.GetNgTableControllerName(_model)#>(NgTableParams,<#=NgHelp.GetServiceName(_model)#>ApiService) {
+            var vm = this;
+            vm.tableParams = new NgTableParams({
+                page: 1,            // show first page
+                count: 10           // count per page
+            }, {
+                getData: function (params) {
+
+                    var postParams = {};
+                    postParams.page = params.page();
+                    postParams.count = params.count();
+                    postParams.total = params.total();
+                    postParams.filter = params.filter();
+                    postParams.sorting = params.sorting();
+                    postParams.group = params.group();
+
+                    return <#=NgHelp.GetServiceName(_model)#>ApiService.Post(postParams) // back end use NgTableParams ... awards controller 
+                        .then(function (response) {
+                            params.total(response.Count);
+                            return response.Data;
+                        });
+                }
+            });
+        };
+        // Deal Table Controller End
+    })();
+</script>
+
+
+<div class="btn btn-sm">I am a button<div>
+
+ <div ng-controller="<#=NgHelp.GetNgTableController(_model)#>">
+
+        <h2 class="page-header">Testing <#=NgHelp.GetNgTableControllerName(_model)#></h2>
+
+        <table ng-table="<#=NgHelp.GetNgTable(_model)#>" class="table table-bordered table-striped table-condensed">
+            <tr ng-repeat="row in $data track by row.Id">
+<# 
+foreach(var item in _model.gridColumnOptions)
+{
+#>
+        <td data-title="'<#=item.name#>'" <#=NgHelp.GetNgTableTdFilter(item.elements[0])#> <#=NgHelp.GetNgTableTdSort(item.elements[0])#>>{{row.<#=NgHelp.GetNgTableTdBinding(item.elements[0])#>}}</td>
+<# 
+}
+#>
+            </tr>
+        </table>
+    </div>

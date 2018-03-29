@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.EmailTemplateConfigurationService
+{
+    public class QueryLogic : IViewListEvent<EmailTemplateConfigurationViewModel, EmailTemplateConfiguration>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<EmailTemplateConfiguration> repository, NgTable<EmailTemplateConfigurationViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<EmailTemplateConfigurationViewModel>();
+
+            var query = EmailTemplateConfiguration
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

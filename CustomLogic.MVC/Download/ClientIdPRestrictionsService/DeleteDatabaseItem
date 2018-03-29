@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ClientIdPRestrictionsService
+{
+    public class Delete : IDeleteEvent<ClientIdPRestrictionsViewModel,ClientIdPRestriction>
+    {
+
+        public bool Run(ClientIdPRestrictions ViewModel model, ref IQueryable<ClientIdPRestriction>repository, IUnitOfWork unitOfWork, Response<ClientIdPRestrictionsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<ClientIdPRestriction>().Find(model.Id);unitOfWork.With<ClientIdPRestriction>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.AddOnsService
+{
+public static class AddOnsMapper
+{
+
+public static AddOn MapInsertModelToDbModel(AddOnsViewModel model, AddOn newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new AddOn();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.AddOnId = model.AddOnId;
+            newDomainModel.Version = model.Version;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Description = model.Description;
+    return newDomainModel;
+    }
+
+
+
+public static AddOnsViewModel MapDbModelToViewModel(AddOn dbModel)
+{
+var viewModel = new  AddOnsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.AddOnId = dbModel.AddOnId;
+            viewModel.Version = dbModel.Version;
+            viewModel.Name = dbModel.Name;
+            viewModel.Description = dbModel.Description;
+
+return viewModel;
+}
+
+
+public static IQueryable<AddOnsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<AddOn> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new AddOnsViewModel()
+        {
+Id = c.Id,
+AddOnId = c.AddOnId,
+Version = c.Version,
+Name = c.Name,
+Description = c.Description,
+        });
+        }
+    }
+}
+
+

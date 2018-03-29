@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.LogoImagesService
+{
+    public class View : IViewEvent<LogoImagesViewModel,LogoImage>
+    {
+        public int CreatedId = 0;
+
+        public Response<LogoImagesViewModel> Run(LogoImagesViewModel model,ref IQueryable<LogoImage> repository, IUnitOfWork unitOfWork, Response<LogoImagesViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = LogoImages
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing LogoImages");
+            }
+
+            return result;
+        }
+
+    }
+}

@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.GroupsService
+{
+public static class GroupsMapper
+{
+
+public static Group MapInsertModelToDbModel(GroupsViewModel model, Group newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Group();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.OrgId = model.OrgId;
+            newDomainModel.DateCreated = model.DateCreated;
+    return newDomainModel;
+    }
+
+
+
+public static GroupsViewModel MapDbModelToViewModel(Group dbModel)
+{
+var viewModel = new  GroupsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.OrgId = dbModel.OrgId;
+            viewModel.DateCreated = dbModel.DateCreated;
+
+return viewModel;
+}
+
+
+public static IQueryable<GroupsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Group> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new GroupsViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+OrgId = c.OrgId,
+DateCreated = c.DateCreated,
+        });
+        }
+    }
+}
+
+

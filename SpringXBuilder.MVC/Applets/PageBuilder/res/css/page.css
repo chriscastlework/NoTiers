@@ -1,0 +1,458 @@
+.pb-page-container
+{
+    width:100%;
+    height:100vh;
+}
+
+.pb-page
+{
+    /*background-color: #f2f2f2 !important;*/
+    border-style: dotted;
+    /*min-height:800px !important;*/
+     width:100%;
+    /*margin:20px 0px 0px 0px !important;*/
+}
+.pb-page>.pb-content
+{
+    /*min-height:800px !important;*/
+    height:100vh;
+    overflow-y: auto;
+    padding:8px;
+    overflow-x:hidden;
+}
+
+.pb-content
+{
+    min-height:20px;
+    height:100%;
+}
+
+.pb-section
+{
+    /*padding:8px;*/
+    overflow:hidden;
+}
+.pb-section>.pb-content
+{
+    min-height:40px;
+    padding:8px;
+    overflow:hidden;
+}
+
+.pb-section .pb-page-element:not(.pb-section)
+{
+    background: #ffffff;
+}
+
+.pb-section
+{
+    border:1px dashed #a9a9a9;
+    overflow-x: hidden;
+    overflow-y:auto; /* ? really ? */
+}
+
+
+.pb-page-element:not(.pb-vertical)+.pb-page-element:not(.pb-vertical)
+{
+    /*margin-left:10px;*/
+}
+
+.pb-page-element.pb-vertical+.pb-page-element.pb-vertical
+{
+    margin-top:3px;
+}
+
+.pb-page>.pb-content>.pb-page-element
+{
+    /*margin-left:0px !important;*/
+    margin-top:3px !important;
+    position:relative;
+}
+
+.pb-page>.pb-content>.pb-page-element:first-child
+{
+    /*margin-top:0px !important;*/
+}
+
+.pb-page-element.pb-selected
+{
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
+
+.pb-page-element
+{
+    box-sizing: border-box;
+    float:left;
+    /*-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius:5px;*/
+    background:white;
+    border:1px solid lightgrey;
+    overflow:hidden;
+    min-height:30px;
+    min-width:30px;
+}
+
+.pb-page-element.pb-single-row
+{
+    max-height:40px;
+}
+
+.pb-page-element input
+{
+    padding:1px !important;
+}
+
+.pb-page-element input
+{
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+
+
+.pb-page-element.pb-width-full
+{
+    float:none !important;
+    clear:both;
+}
+.pb-page-element.pb-width-small
+{
+    width:25%;
+}
+.pb-page-element.pb-width-medium
+{
+    width:50%;
+}
+.pb-page-element.pb-width-large
+{
+    width:75%;
+}
+
+.pb-page-element.pb-height-small
+{
+    height:120px;
+}
+.pb-page-element.pb-height-medium
+{
+    height:220px;
+}
+.pb-page-element.pb-height-large
+{
+    height:440px;
+}
+
+
+.pb-textlabel
+{
+    float:left;
+    border:dotted #d3d3d3 1px;
+}
+
+.pb-rounded-border
+{
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.pb-inner
+{
+    min-width:60px;
+    min-height:30px;
+    padding:3px;
+    margin:4px;
+}
+
+.pb-horizontal .pb-inner
+{
+    height:30px;
+    overflow:hidden;
+}
+
+.pb-input
+{
+    /*background:#EAEAEA;
+    border:solid 1px grey;*/
+    overflow:hidden;
+}
+
+.pb-inner.pb-checkbox
+{
+    min-width: 25px; !important;
+}
+
+.pb-inner.left
+{
+    text-align:left;
+}
+.pb-inner.center
+{
+    text-align:center;
+}
+.pb-inner.right
+{
+    text-align:right;
+}
+
+.pb-page-element select
+{
+    height:22px;
+    width:100%;
+}
+
+.pb-slider
+{
+
+}
+.pb-slider #content
+{
+    width:100%;
+    display:table;
+}
+.pb-slider #inner
+{
+    overflow:hidden;
+    display:table-row;
+}
+.pb-slider #inner>*
+{
+    display:table-cell;
+    padding:3px;
+}
+.pb-slider #min,
+.pb-slider #max
+{
+    font-size: 0.8em;
+    width:30px
+}
+.pb-slider #max
+{
+    text-align: right;
+}
+.pb-slider #slider
+{
+}
+
+.pb-slider .ui-slider-horizontal .ui-slider-handle
+{
+    top:-15%;
+}
+.pb-slider .ui-slider .ui-slider-handle
+{
+    height:130%;
+}
+.pb-text.multiline
+{
+    max-height:none;
+}
+
+
+
+
+.no-padding
+{
+    padding:0px !important;
+}
+
+.no-overflow
+{
+    overflow:hidden;
+}
+
+.pb-checkbox>*:nth-child(2),
+.pb-date-picker>*:nth-child(2),
+.pb-radio>*:nth-child(2)
+{
+    margin-left:4px;
+}
+
+.pb-image
+{
+    margin:3px;
+}
+
+
+.pb-radiobuttons>.pb-content
+{
+    padding:3px;
+}
+.pb-radio:not(.pb-vertical)+.pb-radio:not(.pb-vertical)
+{
+    margin-left:3px;
+}
+.pb-radio.pb-vertical+.pb-radio.pb-vertical
+{
+    margin-top:3px;
+}
+
+
+.pb-padding-10
+{
+    padding:8px;
+}
+
+.pb-map
+{
+
+}
+
+.pb-map-card
+{
+    padding:8px;
+    height:100%;
+    min-height:40px;
+
+    width:50%;
+}
+
+.pb-mapcard-container
+{
+    overflow-y:auto;
+}
+
+.pb-mapcard-container>*
+{
+    margin-top:3px !important;
+    margin-left:0px !important;
+    margin-right:0px !important;
+    margin-bottom:0px !important;
+    max-width:100%;
+}
+.pb-map-card>.pb-mapcard-container>*
+{
+    margin-top:3px;
+}
+
+.pb-map-card>.pb-mapcard-container>.pb-section
+{
+    /*min-width:100% !important;*/
+    overflow:hidden;
+}
+
+.pb-map-card>.pb-mapcard-title
+{
+    font-size: 0.9em;
+    color: grey;
+    text-align: center;
+    float:none !important;
+    border-bottom: dashed 1px lightgrey;
+}
+
+.pb-map-lookup-section
+{
+
+}
+
+.pb-map-cards-section
+{
+    margin-top:3px;
+}
+
+.pb-mapcard-container
+{
+    /*min-height:10px;*/
+}
+
+
+.pb-grid-preview
+{
+    border:1px solid lightgray;
+    height:80px;
+
+}
+.pb-grid-column
+{
+    height:100%;
+    /*background:lightblue;*/
+}
+.pb-grid-column.pb-selected
+{
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+    border-spacing:10px;
+}
+
+.pb-grid-column>.pb-content
+{
+   /* background:purple;*/
+}
+.pb-grid-column-name
+{
+    background: #969696;
+    font-weight:bold;
+    color:white;
+    padding:4px;
+    height:30px;
+}
+.pb-grid-column-summary
+{
+    background: #ebebeb;
+    font-weight:bold;
+    padding:4px;
+    height:30px;
+}
+.pb-grid-column-container
+{
+    min-height:30px;
+    overflow:hidden;
+    padding:4px;
+    height:100%;
+}
+.pb-grid-column-container .pb-page-element:not(.pb-image)
+{
+    width:100% !important;
+}
+
+.pb-grid .pb-grid-column-view
+{
+    width:100%;
+    height:100%;
+}
+
+table
+{
+    border-collapse: separate; !important;
+}
+
+table.pb-grid-preview
+{
+    width:100%;
+   /* border-collapse:collapse;*/
+    border-spacing:4px;/**/
+    empty-cells: show;
+    /*border:solid 1px;*/
+}
+tr.pb-grid-preview:nth-child(even)
+{
+    background:lightgrey;
+}
+
+tr.pb-grid-preview:nth-child(odd)
+{
+    background: #ededed;
+}
+
+
+th.pb-grid-preview
+{
+    background:grey;
+    color:white;
+}
+td.pb-grid-column
+{
+    min-height:24px;
+    border:1px solid lightgrey;
+    vertical-align: top;
+    height:100%;
+}
+
+.pb-dialog
+{
+    width:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
+}

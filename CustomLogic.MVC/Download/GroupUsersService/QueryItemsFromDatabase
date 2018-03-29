@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.GroupUsersService
+{
+    public class QueryLogic : IViewListEvent<GroupUsersViewModel, GroupUser>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<GroupUser> repository, NgTable<GroupUsersViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<GroupUsersViewModel>();
+
+            var query = GroupUsers
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,57 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ImportedDatasService
+{
+public static class ImportedDatasMapper
+{
+
+public static ImportedData MapInsertModelToDbModel(ImportedDatasViewModel model, ImportedData newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ImportedData();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.RecordId = model.RecordId;
+            newDomainModel.RecordType = model.RecordType;
+            newDomainModel.DateImported = model.DateImported;
+            newDomainModel.OrganisationId = model.OrganisationId;
+            newDomainModel.RecordName = model.RecordName;
+    return newDomainModel;
+    }
+
+
+
+public static ImportedDatasViewModel MapDbModelToViewModel(ImportedData dbModel)
+{
+var viewModel = new  ImportedDatasViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.RecordId = dbModel.RecordId;
+            viewModel.RecordType = dbModel.RecordType;
+            viewModel.DateImported = dbModel.DateImported;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+            viewModel.RecordName = dbModel.RecordName;
+
+return viewModel;
+}
+
+
+public static IQueryable<ImportedDatasViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ImportedData> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ImportedDatasViewModel()
+        {
+Id = c.Id,
+RecordId = c.RecordId,
+RecordType = c.RecordType,
+DateImported = c.DateImported,
+OrganisationId = c.OrganisationId,
+RecordName = c.RecordName,
+        });
+        }
+    }
+}
+
+

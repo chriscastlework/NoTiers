@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.AcheivedAwardsService
+{
+public static class AcheivedAwardsMapper
+{
+
+public static AcheivedAward MapInsertModelToDbModel(AcheivedAwardsViewModel model, AcheivedAward newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new AcheivedAward();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.AwardId = model.AwardId;
+            newDomainModel.AcheviedDate = model.AcheviedDate;
+            newDomainModel.User_Id = model.User_Id;
+    return newDomainModel;
+    }
+
+
+
+public static AcheivedAwardsViewModel MapDbModelToViewModel(AcheivedAward dbModel)
+{
+var viewModel = new  AcheivedAwardsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.UserId = dbModel.UserId;
+            viewModel.AwardId = dbModel.AwardId;
+            viewModel.AcheviedDate = dbModel.AcheviedDate;
+            viewModel.User_Id = dbModel.User_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<AcheivedAwardsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<AcheivedAward> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new AcheivedAwardsViewModel()
+        {
+Id = c.Id,
+UserId = c.UserId,
+AwardId = c.AwardId,
+AcheviedDate = c.AcheviedDate,
+User_Id = c.User_Id,
+        });
+        }
+    }
+}
+
+

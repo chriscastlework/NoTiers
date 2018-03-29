@@ -1,0 +1,16 @@
+using System;
+
+namespace CustomLogic.Services.PickListService
+{
+    public class PickListsViewModel
+    {
+
+        public int Id {get;set;}
+        public string Accessor {get;set;}
+        public string Name {get;set;}
+        public bool MultipleSelections {get;set;}
+        public bool MultipleSelectionsAllowed {get;set;}
+        public int? OrganisationId {get;set;}
+
+    }
+}

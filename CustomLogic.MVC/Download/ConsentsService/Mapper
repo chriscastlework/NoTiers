@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ConsentsService
+{
+public static class ConsentsMapper
+{
+
+public static Consent MapInsertModelToDbModel(ConsentsViewModel model, Consent newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Consent();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static ConsentsViewModel MapDbModelToViewModel(Consent dbModel)
+{
+var viewModel = new  ConsentsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<ConsentsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Consent> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ConsentsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

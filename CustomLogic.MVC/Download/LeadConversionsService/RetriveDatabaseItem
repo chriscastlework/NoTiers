@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.LeadConversionsService
+{
+    public class View : IViewEvent<LeadConversionsViewModel,LeadConversion>
+    {
+        public int CreatedId = 0;
+
+        public Response<LeadConversionsViewModel> Run(LeadConversionsViewModel model,ref IQueryable<LeadConversion> repository, IUnitOfWork unitOfWork, Response<LeadConversionsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = LeadConversions
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing LeadConversions");
+            }
+
+            return result;
+        }
+
+    }
+}

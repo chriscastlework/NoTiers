@@ -1,0 +1,63 @@
+using System.Linq;
+
+namespace CustomLogic.Services.SalesTrainingCompaniesService
+{
+public static class SalesTrainingCompaniesMapper
+{
+
+public static SalesTrainingCompany MapInsertModelToDbModel(SalesTrainingCompaniesViewModel model, SalesTrainingCompany newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new SalesTrainingCompany();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Active = model.Active;
+            newDomainModel.Created = model.Created;
+            newDomainModel.StcTheme_Id = model.StcTheme_Id;
+            newDomainModel.OrganisationId = model.OrganisationId;
+            newDomainModel.Subdomain = model.Subdomain;
+            newDomainModel.CustomHelpUrl = model.CustomHelpUrl;
+    return newDomainModel;
+    }
+
+
+
+public static SalesTrainingCompaniesViewModel MapDbModelToViewModel(SalesTrainingCompany dbModel)
+{
+var viewModel = new  SalesTrainingCompaniesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.Active = dbModel.Active;
+            viewModel.Created = dbModel.Created;
+            viewModel.StcTheme_Id = dbModel.StcTheme_Id;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+            viewModel.Subdomain = dbModel.Subdomain;
+            viewModel.CustomHelpUrl = dbModel.CustomHelpUrl;
+
+return viewModel;
+}
+
+
+public static IQueryable<SalesTrainingCompaniesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<SalesTrainingCompany> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new SalesTrainingCompaniesViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+Active = c.Active,
+Created = c.Created,
+StcTheme_Id = c.StcTheme_Id,
+OrganisationId = c.OrganisationId,
+Subdomain = c.Subdomain,
+CustomHelpUrl = c.CustomHelpUrl,
+        });
+        }
+    }
+}
+
+

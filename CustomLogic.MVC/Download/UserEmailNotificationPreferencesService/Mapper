@@ -1,0 +1,48 @@
+using System.Linq;
+
+namespace CustomLogic.Services.UserEmailNotificationPreferencesService
+{
+public static class UserEmailNotificationPreferencesMapper
+{
+
+public static UserEmailNotificationPreference MapInsertModelToDbModel(UserEmailNotificationPreferencesViewModel model, UserEmailNotificationPreference newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new UserEmailNotificationPreference();
+    }
+
+            newDomainModel.EmailTemplateConfigurationId = model.EmailTemplateConfigurationId;
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.ReceiveEmail = model.ReceiveEmail;
+    return newDomainModel;
+    }
+
+
+
+public static UserEmailNotificationPreferencesViewModel MapDbModelToViewModel(UserEmailNotificationPreference dbModel)
+{
+var viewModel = new  UserEmailNotificationPreferencesViewModel();
+
+            viewModel.EmailTemplateConfigurationId = dbModel.EmailTemplateConfigurationId;
+            viewModel.UserId = dbModel.UserId;
+            viewModel.ReceiveEmail = dbModel.ReceiveEmail;
+
+return viewModel;
+}
+
+
+public static IQueryable<UserEmailNotificationPreferencesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<UserEmailNotificationPreference> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new UserEmailNotificationPreferencesViewModel()
+        {
+EmailTemplateConfigurationId = c.EmailTemplateConfigurationId,
+UserId = c.UserId,
+ReceiveEmail = c.ReceiveEmail,
+        });
+        }
+    }
+}
+
+

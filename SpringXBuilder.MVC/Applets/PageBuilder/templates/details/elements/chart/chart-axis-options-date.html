@@ -1,0 +1,34 @@
+<div class="pb-details form-group">
+    <div class="pb-content">
+        <div>
+            <div>
+                <label>Show entire range<input type="radio" name="scaleType" value="showAll"/></label>
+            </div>
+            <div>
+                <label>Filter values<input type="radio" name="scaleType" value="filter"/></label>
+            </div>
+            <div id="filterOptions">
+                <div>
+                    <label>Current..<input type="radio" name="filterType" value="current"/></label>
+                </div>
+                <div id="currentOptions">
+                    <label class=""><input type="radio" name="currentUnitsType" value="year"/>..year</label>
+                    <label class=""><input type="radio" name="currentUnitsType" value="month"/>..month</label>
+                    <label class=""><input type="radio" name="currentUnitsType" value="week"/>..week</label>
+                    <label class=""><input type="radio" name="currentUnitsType" value="day"/>..day</label>
+                </div>
+                <div>
+                    <label>Rolling..<input type="radio" name="filterType" value="rolling"/></label>
+                </div>
+                <div id="rollingOptions">
+                    <input class="form-control" id="rollingUnits" type="number"/>
+                    <label class=""><input type="radio" name="rollingUnitsType" value="year"/>years</label>
+                    <label class=""><input type="radio" name="rollingUnitsType" value="month"/>months</label>
+                    <label class=""><input type="radio" name="rollingUnitsType" value="week"/>weeks</label>
+                    <label class=""><input type="radio" name="rollingUnitsType" value="day"/>days</label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

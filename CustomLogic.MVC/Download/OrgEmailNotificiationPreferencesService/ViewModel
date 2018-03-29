@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.OrgEmailNotificiationPreferenceService
+{
+    public class OrgEmailNotificiationPreferencesViewModel
+    {
+
+        public string EmailTemplateConfigurationId {get;set;}
+        public int OrgId {get;set;}
+        public bool ReceiveEmail {get;set;}
+        public int? Organisation_Id {get;set;}
+
+    }
+}

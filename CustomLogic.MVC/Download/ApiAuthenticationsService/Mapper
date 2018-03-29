@@ -1,0 +1,60 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ApiAuthenticationsService
+{
+public static class ApiAuthenticationsMapper
+{
+
+public static ApiAuthentication MapInsertModelToDbModel(ApiAuthenticationsViewModel model, ApiAuthentication newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ApiAuthentication();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.ApiAuthenticationToken = model.ApiAuthenticationToken;
+            newDomainModel.Expiry = model.Expiry;
+            newDomainModel.DateCreated = model.DateCreated;
+            newDomainModel.DateLastModeified = model.DateLastModeified;
+            newDomainModel.CreatedById = model.CreatedById;
+            newDomainModel.LastModifiedById = model.LastModifiedById;
+    return newDomainModel;
+    }
+
+
+
+public static ApiAuthenticationsViewModel MapDbModelToViewModel(ApiAuthentication dbModel)
+{
+var viewModel = new  ApiAuthenticationsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.ApiAuthenticationToken = dbModel.ApiAuthenticationToken;
+            viewModel.Expiry = dbModel.Expiry;
+            viewModel.DateCreated = dbModel.DateCreated;
+            viewModel.DateLastModeified = dbModel.DateLastModeified;
+            viewModel.CreatedById = dbModel.CreatedById;
+            viewModel.LastModifiedById = dbModel.LastModifiedById;
+
+return viewModel;
+}
+
+
+public static IQueryable<ApiAuthenticationsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ApiAuthentication> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ApiAuthenticationsViewModel()
+        {
+Id = c.Id,
+ApiAuthenticationToken = c.ApiAuthenticationToken,
+Expiry = c.Expiry,
+DateCreated = c.DateCreated,
+DateLastModeified = c.DateLastModeified,
+CreatedById = c.CreatedById,
+LastModifiedById = c.LastModifiedById,
+        });
+        }
+    }
+}
+
+

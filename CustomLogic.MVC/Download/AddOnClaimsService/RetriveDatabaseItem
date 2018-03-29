@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.AddOnClaimsService
+{
+    public class View : IViewEvent<AddOnClaimsViewModel,AddOnClaim>
+    {
+        public int CreatedId = 0;
+
+        public Response<AddOnClaimsViewModel> Run(AddOnClaimsViewModel model,ref IQueryable<AddOnClaim> repository, IUnitOfWork unitOfWork, Response<AddOnClaimsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = AddOnClaims
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing AddOnClaims");
+            }
+
+            return result;
+        }
+
+    }
+}

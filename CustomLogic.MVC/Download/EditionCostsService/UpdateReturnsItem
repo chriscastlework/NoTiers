@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.EditionCostsService
+{
+public class ReturnResultEvent : IUpdateEvent<EditionCostsViewModel, EditionCost>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(EditionCostsViewModel model, ref IQueryable< EditionCost> repository, IUnitOfWork unitOfWork, Response<EditionCostsViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<EditionCost>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = EditionCosts
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

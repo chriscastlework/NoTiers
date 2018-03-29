@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ExternalIntegrationTypeMappingsService
+{
+    public class View : IViewEvent<ExternalIntegrationTypeMappingsViewModel,ExternalIntegrationTypeMapping>
+    {
+        public int CreatedId = 0;
+
+        public Response<ExternalIntegrationTypeMappingsViewModel> Run(ExternalIntegrationTypeMappingsViewModel model,ref IQueryable<ExternalIntegrationTypeMapping> repository, IUnitOfWork unitOfWork, Response<ExternalIntegrationTypeMappingsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = ExternalIntegrationTypeMappings
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing ExternalIntegrationTypeMappings");
+            }
+
+            return result;
+        }
+
+    }
+}

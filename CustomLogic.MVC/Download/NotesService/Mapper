@@ -1,0 +1,60 @@
+using System.Linq;
+
+namespace CustomLogic.Services.NotesService
+{
+public static class NotesMapper
+{
+
+public static Note MapInsertModelToDbModel(NotesViewModel model, Note newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Note();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.DealId = model.DealId;
+            newDomainModel.Content = model.Content;
+            newDomainModel.DateCreated = model.DateCreated;
+            newDomainModel.DateLastModeified = model.DateLastModeified;
+            newDomainModel.CreatedById = model.CreatedById;
+            newDomainModel.LastModifiedById = model.LastModifiedById;
+    return newDomainModel;
+    }
+
+
+
+public static NotesViewModel MapDbModelToViewModel(Note dbModel)
+{
+var viewModel = new  NotesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.DealId = dbModel.DealId;
+            viewModel.Content = dbModel.Content;
+            viewModel.DateCreated = dbModel.DateCreated;
+            viewModel.DateLastModeified = dbModel.DateLastModeified;
+            viewModel.CreatedById = dbModel.CreatedById;
+            viewModel.LastModifiedById = dbModel.LastModifiedById;
+
+return viewModel;
+}
+
+
+public static IQueryable<NotesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Note> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new NotesViewModel()
+        {
+Id = c.Id,
+DealId = c.DealId,
+Content = c.Content,
+DateCreated = c.DateCreated,
+DateLastModeified = c.DateLastModeified,
+CreatedById = c.CreatedById,
+LastModifiedById = c.LastModifiedById,
+        });
+        }
+    }
+}
+
+

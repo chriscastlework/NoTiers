@@ -1,0 +1,48 @@
+<div class="form-group pb-user-field pb-rounded-corners-5 col-sm-12 pb-expression">
+    <!--ObjectType:{{item.objectType().toString()}}
+    Object Type Constraint:{{item.getObjectTypeConstraint().toString()}}-->
+    <div class="pb-icon-button" ng-click="delete()">
+        <span class="glyphicon glyphicon-trash"></span>
+    </div>
+    <div class="col-sm-12 no-padding">
+        <span class="col-sm-2">Return this value</span>
+        <span class="col-sm-10">
+            <select class="form-control"
+                    ng-model="item.returnValueId"
+                    ng-model-options="{getterSetter:true}"
+                    ng-options="option.id as option.label for option in returnValueOptions"/>
+        </span>
+    </div>
+    <div class="col-sm-12 no-padding">
+        <!--<span class="col-sm-6 no-padding">
+            <label>
+                <input type="radio"
+                       ng-model="item.logicType"
+                       ng-model-options="{getterSetter:true}"
+                       name="logic{{item.id()}}"
+                       value="AND"/>
+                If all are true..
+            </label>
+        </span>
+        <span class="col-sm-6 no-padding">
+            <label>
+                <input type="radio"
+                       ng-model="item.logicType"
+                       ng-model-options="{getterSetter:true}"
+                       name="logic{{item.id()}}"
+                       value="OR"/>
+                If any are true..
+            </label>
+        </span>-->
+    </div>
+    <div>
+        <user-field-condition ng-repeat="condition in item.conditions()" item="condition"></user-field-condition>
+    </div>
+    <div class="col-sm-12 pb-button-bar">
+        <a href="" ng-click="item.addCondition()">
+            <!--<span ng-if="item.conditions().length">Add another condition</span>-->
+            <span ng-if="!item.conditions().length">Add a condition</span>
+        </a>
+    </div>
+
+</div>

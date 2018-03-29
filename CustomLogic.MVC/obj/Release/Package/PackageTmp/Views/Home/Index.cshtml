@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "NT: Homepage";
+}
+
+
+<div class="jumbotron">
+    <h1>No-tiers</h1>
+    <blockquote class="blockquote">No-tiers is modular architecture built using SOLID priciples for creating data centric application with complex business logic</blockquote>
+    
+        @Html.ActionLink("Learn More", "About", "Home", new { area = "" }, new { @class = "btn btn-primary" })
+
+
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Why a modular architecture?</h2>
+        <blockquote class="blockquote"> 
+            Modules allows you to replace or add any one component (module) without affecting the rest of the system....
+        </blockquote>
+             @Html.ActionLink("Architecture", "Architecture", "Home", new { area = "" }, new { @class = "btn btn-primary" })
+    </div>
+    <div class="col-md-4">
+        <h2>How No-tiers works?</h2>
+        <blockquote class="blockquote">
+            In a nut shell each module automatically inherits the core functionality which replaces tiers with a strategy patten, complex logic is dynamically loaded in using simple factories...
+        </blockquote>
+               @Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "btn btn-primary"} )
+    </div>
+    <div class="col-md-4">
+        <h2>Getting started?</h2>
+        <blockquote class="blockquote">
+            Insure you have a MSSQL database which is accessible over the Internet and then click start...
+        </blockquote>
+        
+        @Html.ActionLink("Start", "Index", "Schema", new { area = "" }, new { @class = "btn btn-primary" })
+        
+    </div>
+  
+</div>
+
+@section scripts {
+    <script src="~/Scripts/main.js"></script>
+}

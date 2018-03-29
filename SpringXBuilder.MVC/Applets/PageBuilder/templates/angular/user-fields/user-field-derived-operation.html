@@ -1,0 +1,32 @@
+<div>
+    <!-- Operations -->
+    <div class="col-sm-12 no-padding">
+        <div class="col-sm-12 pb-rounded-corners-5 pb-operation">
+            <div ng-show="operation.showDeleteIcon()" class="col-sm-12">
+                <div class="pb-icon-button" ng-click="operation.remove()">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </div>
+            </div>
+            <div class="col-sm-12 no-padding">
+                <span class="col-sm-2">..then</span>
+                <span class="col-sm-10">
+                    <select class="form-control"
+                            ng-model="operation.operator"
+                            ng-model-options="{getterSetter:true}"
+                            ng-options="option.id as option.label for option in operators"/>
+                </span>
+            </div>
+            <div class="col-sm-12 no-padding">
+                <span class="col-sm-2">..this</span>
+                <span class="col-sm-10">
+                    <select class="form-control"
+                            ng-model="operation.operandId"
+                            ng-model-options="{getterSetter:true}"
+                            ng-options="option.id as option.label for option in operands"
+                            ng-disabled="operation.disableOperands()"/>
+
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

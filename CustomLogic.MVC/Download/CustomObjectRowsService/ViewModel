@@ -1,0 +1,22 @@
+using System;
+
+namespace CustomLogic.Services.CustomObjectRowService
+{
+    public class CustomObjectRowsViewModel
+    {
+
+        public int Id {get;set;}
+        public string Name {get;set;}
+        public DateTime? Created {get;set;}
+        public DateTime? LastModified {get;set;}
+        public string CreatedBy_Id {get;set;}
+        public string LastModifiedBy_Id {get;set;}
+        public int? Organisation_Id {get;set;}
+        public int? CustomObject_Id {get;set;}
+        public string OwnerId {get;set;}
+        public int? SalesProcessId {get;set;}
+        public int? StageId {get;set;}
+        public string ExternalId {get;set;}
+
+    }
+}

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.SalesObjectViewArchiveItemsService
+{
+    public class Delete : IDeleteEvent<SalesObjectViewArchiveItemsViewModel,SalesObjectViewArchiveItem>
+    {
+
+        public bool Run(SalesObjectViewArchiveItems ViewModel model, ref IQueryable<SalesObjectViewArchiveItem>repository, IUnitOfWork unitOfWork, Response<SalesObjectViewArchiveItemsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<SalesObjectViewArchiveItem>().Find(model.Id);unitOfWork.With<SalesObjectViewArchiveItem>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

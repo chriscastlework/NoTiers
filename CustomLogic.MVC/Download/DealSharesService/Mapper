@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.DealSharesService
+{
+public static class DealSharesMapper
+{
+
+public static DealShare MapInsertModelToDbModel(DealSharesViewModel model, DealShare newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new DealShare();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.DateShared = model.DateShared;
+            newDomainModel.Deal_Id = model.Deal_Id;
+            newDomainModel.Writable = model.Writable;
+    return newDomainModel;
+    }
+
+
+
+public static DealSharesViewModel MapDbModelToViewModel(DealShare dbModel)
+{
+var viewModel = new  DealSharesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.UserId = dbModel.UserId;
+            viewModel.DateShared = dbModel.DateShared;
+            viewModel.Deal_Id = dbModel.Deal_Id;
+            viewModel.Writable = dbModel.Writable;
+
+return viewModel;
+}
+
+
+public static IQueryable<DealSharesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<DealShare> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new DealSharesViewModel()
+        {
+Id = c.Id,
+UserId = c.UserId,
+DateShared = c.DateShared,
+Deal_Id = c.Deal_Id,
+Writable = c.Writable,
+        });
+        }
+    }
+}
+
+

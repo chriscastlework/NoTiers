@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CountryListsService
+{
+    public class Delete : IDeleteEvent<CountryListsViewModel,CountryList>
+    {
+
+        public bool Run(CountryLists ViewModel model, ref IQueryable<CountryList>repository, IUnitOfWork unitOfWork, Response<CountryListsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<CountryList>().Find(model.Id);unitOfWork.With<CountryList>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

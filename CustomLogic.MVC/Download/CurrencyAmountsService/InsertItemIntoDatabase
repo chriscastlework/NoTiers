@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.CurrencyAmountsService
+{
+    public class Save : IInsertEvent<CurrencyAmountsViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(CurrencyAmountsViewModel model, IUnitOfWork unitOfWork, Response<CurrencyAmountsViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = CurrencyAmounts();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<CurrencyAmount>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = CurrencyAmounts
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(CurrencyAmountsViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<CurrencyAmount>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<CurrencyAmount>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+using System;
+
+namespace CustomLogic.Services.ChannelService
+{
+    public class ChannelsViewModel
+    {
+
+
+    }
+}

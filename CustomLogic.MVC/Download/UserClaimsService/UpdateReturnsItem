@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.UserClaimsService
+{
+public class ReturnResultEvent : IUpdateEvent<UserClaimsViewModel, UserClaim>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(UserClaimsViewModel model, ref IQueryable< UserClaim> repository, IUnitOfWork unitOfWork, Response<UserClaimsViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<UserClaim>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = UserClaims
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

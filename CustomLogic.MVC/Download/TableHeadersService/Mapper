@@ -1,0 +1,60 @@
+using System.Linq;
+
+namespace CustomLogic.Services.TableHeadersService
+{
+public static class TableHeadersMapper
+{
+
+public static TableHeader MapInsertModelToDbModel(TableHeadersViewModel model, TableHeader newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new TableHeader();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Display = model.Display;
+            newDomainModel.Visible = model.Visible;
+            newDomainModel.StandardObjectDefinition_Id = model.StandardObjectDefinition_Id;
+            newDomainModel.FieldType = model.FieldType;
+            newDomainModel.TestMigration = model.TestMigration;
+    return newDomainModel;
+    }
+
+
+
+public static TableHeadersViewModel MapDbModelToViewModel(TableHeader dbModel)
+{
+var viewModel = new  TableHeadersViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.Display = dbModel.Display;
+            viewModel.Visible = dbModel.Visible;
+            viewModel.StandardObjectDefinition_Id = dbModel.StandardObjectDefinition_Id;
+            viewModel.FieldType = dbModel.FieldType;
+            viewModel.TestMigration = dbModel.TestMigration;
+
+return viewModel;
+}
+
+
+public static IQueryable<TableHeadersViewModel> MapDbModelQueryToViewModelQuery(IQueryable<TableHeader> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new TableHeadersViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+Display = c.Display,
+Visible = c.Visible,
+StandardObjectDefinition_Id = c.StandardObjectDefinition_Id,
+FieldType = c.FieldType,
+TestMigration = c.TestMigration,
+        });
+        }
+    }
+}
+
+

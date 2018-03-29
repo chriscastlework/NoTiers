@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ClientRedirectUrisService
+{
+public static class ClientRedirectUrisMapper
+{
+
+public static ClientRedirectUri MapInsertModelToDbModel(ClientRedirectUrisViewModel model, ClientRedirectUri newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ClientRedirectUri();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static ClientRedirectUrisViewModel MapDbModelToViewModel(ClientRedirectUri dbModel)
+{
+var viewModel = new  ClientRedirectUrisViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<ClientRedirectUrisViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ClientRedirectUri> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ClientRedirectUrisViewModel()
+        {
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ExternalIntegrationFieldMappingsService
+{
+    public class QueryLogic : IViewListEvent<ExternalIntegrationFieldMappingsViewModel, ExternalIntegrationFieldMapping>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<ExternalIntegrationFieldMapping> repository, NgTable<ExternalIntegrationFieldMappingsViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<ExternalIntegrationFieldMappingsViewModel>();
+
+            var query = ExternalIntegrationFieldMappings
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

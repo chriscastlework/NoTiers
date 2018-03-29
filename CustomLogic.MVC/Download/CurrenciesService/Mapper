@@ -1,0 +1,45 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CurrenciesService
+{
+public static class CurrenciesMapper
+{
+
+public static Currency MapInsertModelToDbModel(CurrenciesViewModel model, Currency newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Currency();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.CurrencySymbol = model.CurrencySymbol;
+    return newDomainModel;
+    }
+
+
+
+public static CurrenciesViewModel MapDbModelToViewModel(Currency dbModel)
+{
+var viewModel = new  CurrenciesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.CurrencySymbol = dbModel.CurrencySymbol;
+
+return viewModel;
+}
+
+
+public static IQueryable<CurrenciesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Currency> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CurrenciesViewModel()
+        {
+Id = c.Id,
+CurrencySymbol = c.CurrencySymbol,
+        });
+        }
+    }
+}
+
+

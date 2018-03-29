@@ -1,0 +1,45 @@
+using System.Linq;
+
+namespace CustomLogic.Services.DealWatchingUsersService
+{
+public static class DealWatchingUsersMapper
+{
+
+public static DealWatchingUser MapInsertModelToDbModel(DealWatchingUsersViewModel model, DealWatchingUser newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new DealWatchingUser();
+    }
+
+            newDomainModel.WatchedDealId = model.WatchedDealId;
+            newDomainModel.WatchingUserId = model.WatchingUserId;
+    return newDomainModel;
+    }
+
+
+
+public static DealWatchingUsersViewModel MapDbModelToViewModel(DealWatchingUser dbModel)
+{
+var viewModel = new  DealWatchingUsersViewModel();
+
+            viewModel.WatchedDealId = dbModel.WatchedDealId;
+            viewModel.WatchingUserId = dbModel.WatchingUserId;
+
+return viewModel;
+}
+
+
+public static IQueryable<DealWatchingUsersViewModel> MapDbModelQueryToViewModelQuery(IQueryable<DealWatchingUser> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new DealWatchingUsersViewModel()
+        {
+WatchedDealId = c.WatchedDealId,
+WatchingUserId = c.WatchingUserId,
+        });
+        }
+    }
+}
+
+

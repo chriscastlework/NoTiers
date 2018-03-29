@@ -1,0 +1,251 @@
+.pb-page > .pb-page-element.org_chart
+{
+    min-height: 500px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    position: relative;
+    /*padding-top: 30px;*/
+    overflow-y: hidden;
+    /*margin: 0 !important;*/
+}
+
+.org_chart .ui-state-disabled
+{
+    opacity: 1 !important;
+}
+
+.org_chart .toolbox
+{
+    height:60px;
+    width: 100%;
+    background: #ACACAC;
+    padding:10px;
+}
+
+.org_chart .chart_outer
+{
+    width: 100%;
+    min-height: 500px;
+    background-color:#FAFAFA;
+    overflow:hidden;
+}
+
+.org_chart .chart_container
+{
+    width: 100%;
+    min-height: 500px;
+    position:relative;
+    /*background-color:#FAFAFA;*/
+    /*overflow:hidden;*/
+}
+
+.org_chart .toolbox > div
+{
+    width: 26px;
+    height: 26px;
+    margin: 2px 4px;
+    display: inline-block;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.org_chart .toolbox > div.active,
+.org_chart .toolbox > div:hover
+{
+    opacity: 1;
+}
+
+.org_chart .toolbox .add
+{
+    background: url('../images/orgchart/add.png') no-repeat 50% 50%;
+}
+
+.org_chart .toolbox .remove
+{
+    background: url('../images/orgchart/remove.png') no-repeat 50% 50%;
+}
+
+.org_chart .toolbox .select
+{
+    background-image: url('../images/orgchart/arrow.png');
+}
+
+.org_chart .toolbox .drag
+{
+    background-image: url('../images/orgchart/hand.png');
+}
+
+.org_chart .toolbox .snap
+{
+    background-image: url('../images/orgchart/grid.png');
+}
+
+.org_chart .toolbox .zoom_in
+{
+    background-image: url('../images/orgchart/zoom_in.png');
+}
+
+.org_chart .toolbox .zoom_out
+{
+    background-image: url('../images/orgchart/zoom_out.png');
+}
+
+.org_chart .toolbox .link
+{
+    background-image: url('../images/orgchart/link.png');
+}
+
+.org_chart_box
+{
+    background:white;
+    /*text-align: center;*/
+    position: absolute;
+    padding: 5%;
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    /*font-size: 14px;
+    line-height: 18px;*/
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: -moz-none;
+    border:1px solid #ebebeb;
+    -webkit-box-shadow: 4px 4px 5px 0px rgba(158,158,158,1);
+    -moz-box-shadow: 4px 4px 5px 0px rgba(158,158,158,1);
+    box-shadow: 4px 4px 5px 0px rgba(158,158,158,1);
+}
+
+
+.org_chart_dialog
+{
+    left: 50%;
+    top: 50%;
+    margin-left: -110px;
+    margin-top: -50px;
+    width: 440px;
+    /*min-height: 300px;*/
+    background: inherit;
+    text-align: center;
+    position: absolute;
+    padding: 30px 10px 10px 10px;
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    font-size: 14px;
+    line-height: 18px;
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: -moz-none;
+    border:1px solid #969696;
+    -webkit-box-shadow: 4px 4px 5px 0px rgb(51, 51, 51);
+    -moz-box-shadow: 4px 4px 5px 0px rgb(51, 51, 51);
+    box-shadow: 4px 4px 5px 0px rgb(51, 51, 51);
+}
+
+.org_chart_box.selected,
+.org_chart_dialog.selected
+{
+    border:1px solid #969696;
+    -webkit-box-shadow: 4px 4px 5px 0px rgb(51, 51, 51);
+    -moz-box-shadow: 4px 4px 5px 0px rgb(51, 51, 51);
+    box-shadow: 4px 4px 5px 0px rgb(51, 51, 51);
+}
+
+
+.org_chart_box>*:not(.org_chart_dialog) .pb-page-element
+{
+    /*height:auto !important;*/
+    line-height:normal !important;
+    min-height:initial !important;
+    min-width:initial !important;
+}
+
+.org_chart_box>*:not(.org_chart_dialog) input,textarea
+{
+    min-width:inherit !important;
+    padding:0px !important;
+}
+
+.org_chart_box>*:not(.org_chart_dialog) .pb-page-element input
+{
+    min-height: initial !important;
+}
+
+
+.org_chart_box .pb-page-element.pb-section
+{
+    padding:0px !important;
+}
+/**/
+.dragger
+{
+    border-radius: 50%;
+}
+
+.dragger.manager
+{
+    background-color: #000000;
+}
+
+.dragger.influencee
+{
+    background-color: #999999;
+}
+
+.org_chart_dialog .btn_close
+{
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+}
+
+.org_chart_dialog input
+{
+    background: none transparent;
+    border: 1px solid transparent;
+    padding: 2px !important;
+    text-align: center;
+    /*height: 24px;*/
+}
+
+.org_chart_dialog input:hover,
+.org_chart_dialog input:focus
+{
+    background-color: #6691C1;
+    border: 1px solid #003161;
+    border-radius: 0;
+}
+
+/*
+.org_chart_dialog div.pb-page-element
+{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    min-width: 0;
+    border-radius: 0;
+    min-height: 0;
+}
+*/
+
+.sp_relational_chart_element
+{
+    width: 100%;
+    height: 100%;
+}
+/* overwrites the springs ui css */
+
+.sp_ui_dragselect
+{
+    border:dashed 2px #a9a9a9;
+}
+
+.pb-zoom-label
+{
+ float:right;
+    font-weight:bold;
+}
+

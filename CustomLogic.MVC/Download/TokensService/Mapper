@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.TokensService
+{
+public static class TokensMapper
+{
+
+public static Token MapInsertModelToDbModel(TokensViewModel model, Token newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Token();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static TokensViewModel MapDbModelToViewModel(Token dbModel)
+{
+var viewModel = new  TokensViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<TokensViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Token> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new TokensViewModel()
+        {
+        });
+        }
+    }
+}
+
+

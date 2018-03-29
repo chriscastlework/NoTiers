@@ -1,0 +1,22 @@
+﻿@model CustomLogic.SchemaBuilder.MicrosoftSQL.SchemaModels.ModelInfo
+
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.@Html.Raw(Model.TT_ViewModelName())Service
+{
+    public class Delete : IDeleteEvent<@Html.Raw(Model.TT_ViewModelName())ViewModel,@Html.Raw(Model.TT_TableName())>
+    {
+
+        public bool Run(@Html.Raw(Model.TT_ViewModelName()) ViewModel model, ref IQueryable<@Html.Raw(Model.TT_TableName())>repository, IUnitOfWork unitOfWork, Response<@Html.Raw(Model.TT_ViewModelName())ViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<@Html.Raw(Model.TT_TableName())>().Find(model.Id);unitOfWork.With<@Html.Raw(Model.TT_TableName())>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

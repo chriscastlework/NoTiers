@@ -1,0 +1,16 @@
+using System;
+
+namespace CustomLogic.Services.NotificationService
+{
+    public class NotificationsViewModel
+    {
+
+        public int Id {get;set;}
+        public string TableName {get;set;}
+        public string UserId {get;set;}
+        public string Actions {get;set;}
+        public int TableIdValue {get;set;}
+        public DateTime? UpdateDate {get;set;}
+
+    }
+}

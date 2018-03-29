@@ -1,0 +1,48 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CustomLinksApiTypesService
+{
+public static class CustomLinksApiTypesMapper
+{
+
+public static CustomLinksApiType MapInsertModelToDbModel(CustomLinksApiTypesViewModel model, CustomLinksApiType newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CustomLinksApiType();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Key = model.Key;
+            newDomainModel.Label = model.Label;
+    return newDomainModel;
+    }
+
+
+
+public static CustomLinksApiTypesViewModel MapDbModelToViewModel(CustomLinksApiType dbModel)
+{
+var viewModel = new  CustomLinksApiTypesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Key = dbModel.Key;
+            viewModel.Label = dbModel.Label;
+
+return viewModel;
+}
+
+
+public static IQueryable<CustomLinksApiTypesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CustomLinksApiType> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CustomLinksApiTypesViewModel()
+        {
+Id = c.Id,
+Key = c.Key,
+Label = c.Label,
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.AwardsService
+{
+public static class AwardsMapper
+{
+
+public static Award MapInsertModelToDbModel(AwardsViewModel model, Award newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Award();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Accessor = model.Accessor;
+            newDomainModel.Points = model.Points;
+            newDomainModel.IconName = model.IconName;
+    return newDomainModel;
+    }
+
+
+
+public static AwardsViewModel MapDbModelToViewModel(Award dbModel)
+{
+var viewModel = new  AwardsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.Accessor = dbModel.Accessor;
+            viewModel.Points = dbModel.Points;
+            viewModel.IconName = dbModel.IconName;
+
+return viewModel;
+}
+
+
+public static IQueryable<AwardsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Award> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new AwardsViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+Accessor = c.Accessor,
+Points = c.Points,
+IconName = c.IconName,
+        });
+        }
+    }
+}
+
+

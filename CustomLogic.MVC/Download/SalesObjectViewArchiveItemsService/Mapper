@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.SalesObjectViewArchiveItemsService
+{
+public static class SalesObjectViewArchiveItemsMapper
+{
+
+public static SalesObjectViewArchiveItem MapInsertModelToDbModel(SalesObjectViewArchiveItemsViewModel model, SalesObjectViewArchiveItem newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new SalesObjectViewArchiveItem();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.SalesObjectViewArchiveId = model.SalesObjectViewArchiveId;
+            newDomainModel.SalesObjectViewId = model.SalesObjectViewId;
+            newDomainModel.IsDefault = model.IsDefault;
+    return newDomainModel;
+    }
+
+
+
+public static SalesObjectViewArchiveItemsViewModel MapDbModelToViewModel(SalesObjectViewArchiveItem dbModel)
+{
+var viewModel = new  SalesObjectViewArchiveItemsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.SalesObjectViewArchiveId = dbModel.SalesObjectViewArchiveId;
+            viewModel.SalesObjectViewId = dbModel.SalesObjectViewId;
+            viewModel.IsDefault = dbModel.IsDefault;
+
+return viewModel;
+}
+
+
+public static IQueryable<SalesObjectViewArchiveItemsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<SalesObjectViewArchiveItem> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new SalesObjectViewArchiveItemsViewModel()
+        {
+Id = c.Id,
+SalesObjectViewArchiveId = c.SalesObjectViewArchiveId,
+SalesObjectViewId = c.SalesObjectViewId,
+IsDefault = c.IsDefault,
+        });
+        }
+    }
+}
+
+

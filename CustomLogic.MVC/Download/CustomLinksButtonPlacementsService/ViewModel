@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.CustomLinksButtonPlacementService
+{
+    public class CustomLinksButtonPlacementsViewModel
+    {
+
+        public int Id {get;set;}
+        public string Key {get;set;}
+        public string Label {get;set;}
+        public bool IsDefault {get;set;}
+
+    }
+}

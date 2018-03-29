@@ -1,0 +1,69 @@
+using System.Linq;
+
+namespace CustomLogic.Services.EmailTemplateConfigurationService
+{
+public static class EmailTemplateConfigurationMapper
+{
+
+public static EmailTemplateConfiguration MapInsertModelToDbModel(EmailTemplateConfigurationViewModel model, EmailTemplateConfiguration newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new EmailTemplateConfiguration();
+    }
+
+            newDomainModel.TemplateID = model.TemplateID;
+            newDomainModel.AuthorID = model.AuthorID;
+            newDomainModel.AuthorName = model.AuthorName;
+            newDomainModel.Subject = model.Subject;
+            newDomainModel.Active = model.Active;
+            newDomainModel.EmailConfigurationID = model.EmailConfigurationID;
+            newDomainModel.Optional = model.Optional;
+            newDomainModel.HtmlTemplate = model.HtmlTemplate;
+            newDomainModel.TextTemplate = model.TextTemplate;
+            newDomainModel.OptionalEnabledByDefault = model.OptionalEnabledByDefault;
+    return newDomainModel;
+    }
+
+
+
+public static EmailTemplateConfigurationViewModel MapDbModelToViewModel(EmailTemplateConfiguration dbModel)
+{
+var viewModel = new  EmailTemplateConfigurationViewModel();
+
+            viewModel.TemplateID = dbModel.TemplateID;
+            viewModel.AuthorID = dbModel.AuthorID;
+            viewModel.AuthorName = dbModel.AuthorName;
+            viewModel.Subject = dbModel.Subject;
+            viewModel.Active = dbModel.Active;
+            viewModel.EmailConfigurationID = dbModel.EmailConfigurationID;
+            viewModel.Optional = dbModel.Optional;
+            viewModel.HtmlTemplate = dbModel.HtmlTemplate;
+            viewModel.TextTemplate = dbModel.TextTemplate;
+            viewModel.OptionalEnabledByDefault = dbModel.OptionalEnabledByDefault;
+
+return viewModel;
+}
+
+
+public static IQueryable<EmailTemplateConfigurationViewModel> MapDbModelQueryToViewModelQuery(IQueryable<EmailTemplateConfiguration> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new EmailTemplateConfigurationViewModel()
+        {
+TemplateID = c.TemplateID,
+AuthorID = c.AuthorID,
+AuthorName = c.AuthorName,
+Subject = c.Subject,
+Active = c.Active,
+EmailConfigurationID = c.EmailConfigurationID,
+Optional = c.Optional,
+HtmlTemplate = c.HtmlTemplate,
+TextTemplate = c.TextTemplate,
+OptionalEnabledByDefault = c.OptionalEnabledByDefault,
+        });
+        }
+    }
+}
+
+

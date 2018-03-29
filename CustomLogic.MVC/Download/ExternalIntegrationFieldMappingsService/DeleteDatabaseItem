@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ExternalIntegrationFieldMappingsService
+{
+    public class Delete : IDeleteEvent<ExternalIntegrationFieldMappingsViewModel,ExternalIntegrationFieldMapping>
+    {
+
+        public bool Run(ExternalIntegrationFieldMappings ViewModel model, ref IQueryable<ExternalIntegrationFieldMapping>repository, IUnitOfWork unitOfWork, Response<ExternalIntegrationFieldMappingsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<ExternalIntegrationFieldMapping>().Find(model.Id);unitOfWork.With<ExternalIntegrationFieldMapping>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

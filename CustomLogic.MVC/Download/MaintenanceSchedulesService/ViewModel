@@ -1,0 +1,17 @@
+using System;
+
+namespace CustomLogic.Services.MaintenanceScheduleService
+{
+    public class MaintenanceSchedulesViewModel
+    {
+
+        public int Id {get;set;}
+        public string Reason {get;set;}
+        public DateTime? Start {get;set;}
+        public DateTime? ExpectedFinish {get;set;}
+        public DateTime? ActualFinish {get;set;}
+        public int Status {get;set;}
+        public DateTime? NotifyFrom {get;set;}
+
+    }
+}

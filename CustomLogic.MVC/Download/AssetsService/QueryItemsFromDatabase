@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.AssetsService
+{
+    public class QueryLogic : IViewListEvent<AssetsViewModel, Asset>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<Asset> repository, NgTable<AssetsViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<AssetsViewModel>();
+
+            var query = Assets
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

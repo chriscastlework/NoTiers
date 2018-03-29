@@ -1,0 +1,8 @@
+C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\CSharpeToolSet\NoTiersMaker\bin\Debug\NoTiersMaker.dll
+C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\CSharpeToolSet\NoTiersMaker\bin\Debug\NoTiersMaker.pdb
+C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\CSharpeToolSet\NoTiersMaker\bin\Debug\NoTiersMaker.pssym
+C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\CSharpeToolSet\NoTiersMaker\obj\Debug\NoTiersMaker.dll.postsharp
+C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\CSharpeToolSet\NoTiersMaker\obj\Debug\NoTiersMaker.dll
+C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\CSharpeToolSet\NoTiersMaker\obj\Debug\NoTiersMaker.pdb
+C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\CSharpeToolSet\NoTiersMaker\obj\Debug\PostSharpHost.config
+C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\CSharpeToolSet\NoTiersMaker\obj\Debug\NoTiersMaker.csprojResolveAssemblyReference.cache

@@ -1,0 +1,12 @@
+using System;
+
+namespace CustomLogic.Services.DefaultAddOnInEditionService
+{
+    public class DefaultAddOnInEditionViewModel
+    {
+
+        public int AddOnId {get;set;}
+        public int EditionId {get;set;}
+
+    }
+}

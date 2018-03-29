@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ScopeClaimsService
+{
+    public class Delete : IDeleteEvent<ScopeClaimsViewModel,ScopeClaim>
+    {
+
+        public bool Run(ScopeClaims ViewModel model, ref IQueryable<ScopeClaim>repository, IUnitOfWork unitOfWork, Response<ScopeClaimsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<ScopeClaim>().Find(model.Id);unitOfWork.With<ScopeClaim>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

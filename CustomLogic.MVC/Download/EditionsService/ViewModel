@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.EditionService
+{
+    public class EditionsViewModel
+    {
+
+        public int Id {get;set;}
+        public string Name {get;set;}
+        public int Status {get;set;}
+        public int EditionLevel {get;set;}
+
+    }
+}

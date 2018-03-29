@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ExchangeRatesService
+{
+    public class View : IViewEvent<ExchangeRatesViewModel,ExchangeRate>
+    {
+        public int CreatedId = 0;
+
+        public Response<ExchangeRatesViewModel> Run(ExchangeRatesViewModel model,ref IQueryable<ExchangeRate> repository, IUnitOfWork unitOfWork, Response<ExchangeRatesViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = ExchangeRates
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing ExchangeRates");
+            }
+
+            return result;
+        }
+
+    }
+}

@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.LocalizationsService
+{
+public class ReturnResultEvent : IUpdateEvent<LocalizationsViewModel, Localization>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(LocalizationsViewModel model, ref IQueryable< Localization> repository, IUnitOfWork unitOfWork, Response<LocalizationsViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<Localization>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = Localizations
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

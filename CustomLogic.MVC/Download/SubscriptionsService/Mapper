@@ -1,0 +1,78 @@
+using System.Linq;
+
+namespace CustomLogic.Services.SubscriptionsService
+{
+public static class SubscriptionsMapper
+{
+
+public static Subscription MapInsertModelToDbModel(SubscriptionsViewModel model, Subscription newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Subscription();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.EditionId = model.EditionId;
+            newDomainModel.GracePeriodDays = model.GracePeriodDays;
+            newDomainModel.BillingCurrency = model.BillingCurrency;
+            newDomainModel.BasePrice = model.BasePrice;
+            newDomainModel.PricePerUser = model.PricePerUser;
+            newDomainModel.BillDayOfMonth = model.BillDayOfMonth;
+            newDomainModel.BraintreeSubscriptionId = model.BraintreeSubscriptionId;
+            newDomainModel.ActiveAccount = model.ActiveAccount;
+            newDomainModel.TrialExpires = model.TrialExpires;
+            newDomainModel.AccountCanceled = model.AccountCanceled;
+            newDomainModel.PayedEditionTrialPeriodUsed = model.PayedEditionTrialPeriodUsed;
+            newDomainModel.PerpetualTrial = model.PerpetualTrial;
+    return newDomainModel;
+    }
+
+
+
+public static SubscriptionsViewModel MapDbModelToViewModel(Subscription dbModel)
+{
+var viewModel = new  SubscriptionsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.EditionId = dbModel.EditionId;
+            viewModel.GracePeriodDays = dbModel.GracePeriodDays;
+            viewModel.BillingCurrency = dbModel.BillingCurrency;
+            viewModel.BasePrice = dbModel.BasePrice;
+            viewModel.PricePerUser = dbModel.PricePerUser;
+            viewModel.BillDayOfMonth = dbModel.BillDayOfMonth;
+            viewModel.BraintreeSubscriptionId = dbModel.BraintreeSubscriptionId;
+            viewModel.ActiveAccount = dbModel.ActiveAccount;
+            viewModel.TrialExpires = dbModel.TrialExpires;
+            viewModel.AccountCanceled = dbModel.AccountCanceled;
+            viewModel.PayedEditionTrialPeriodUsed = dbModel.PayedEditionTrialPeriodUsed;
+            viewModel.PerpetualTrial = dbModel.PerpetualTrial;
+
+return viewModel;
+}
+
+
+public static IQueryable<SubscriptionsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Subscription> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new SubscriptionsViewModel()
+        {
+Id = c.Id,
+EditionId = c.EditionId,
+GracePeriodDays = c.GracePeriodDays,
+BillingCurrency = c.BillingCurrency,
+BasePrice = c.BasePrice,
+PricePerUser = c.PricePerUser,
+BillDayOfMonth = c.BillDayOfMonth,
+BraintreeSubscriptionId = c.BraintreeSubscriptionId,
+ActiveAccount = c.ActiveAccount,
+TrialExpires = c.TrialExpires,
+AccountCanceled = c.AccountCanceled,
+PayedEditionTrialPeriodUsed = c.PayedEditionTrialPeriodUsed,
+PerpetualTrial = c.PerpetualTrial,
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.FeatureClaimsService
+{
+    public class Delete : IDeleteEvent<FeatureClaimsViewModel,FeatureClaim>
+    {
+
+        public bool Run(FeatureClaims ViewModel model, ref IQueryable<FeatureClaim>repository, IUnitOfWork unitOfWork, Response<FeatureClaimsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<FeatureClaim>().Find(model.Id);unitOfWork.With<FeatureClaim>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

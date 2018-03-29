@@ -1,0 +1,45 @@
+using System.Linq;
+
+namespace CustomLogic.Services.DealContactRoleDealContactsService
+{
+public static class DealContactRoleDealContactsMapper
+{
+
+public static DealContactRoleDealContact MapInsertModelToDbModel(DealContactRoleDealContactsViewModel model, DealContactRoleDealContact newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new DealContactRoleDealContact();
+    }
+
+            newDomainModel.DealContactRole_Id = model.DealContactRole_Id;
+            newDomainModel.DealContact_Id = model.DealContact_Id;
+    return newDomainModel;
+    }
+
+
+
+public static DealContactRoleDealContactsViewModel MapDbModelToViewModel(DealContactRoleDealContact dbModel)
+{
+var viewModel = new  DealContactRoleDealContactsViewModel();
+
+            viewModel.DealContactRole_Id = dbModel.DealContactRole_Id;
+            viewModel.DealContact_Id = dbModel.DealContact_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<DealContactRoleDealContactsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<DealContactRoleDealContact> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new DealContactRoleDealContactsViewModel()
+        {
+DealContactRole_Id = c.DealContactRole_Id,
+DealContact_Id = c.DealContact_Id,
+        });
+        }
+    }
+}
+
+

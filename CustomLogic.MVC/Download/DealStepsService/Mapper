@@ -1,0 +1,63 @@
+using System.Linq;
+
+namespace CustomLogic.Services.DealStepsService
+{
+public static class DealStepsMapper
+{
+
+public static DealStep MapInsertModelToDbModel(DealStepsViewModel model, DealStep newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new DealStep();
+    }
+
+            newDomainModel.DealId = model.DealId;
+            newDomainModel.StepId = model.StepId;
+            newDomainModel.ActionValue = model.ActionValue;
+            newDomainModel.ActionIdValue = model.ActionIdValue;
+            newDomainModel.CompletedDateTime = model.CompletedDateTime;
+            newDomainModel.Hidden = model.Hidden;
+            newDomainModel.Completed = model.Completed;
+            newDomainModel.ReminderTaskId = model.ReminderTaskId;
+    return newDomainModel;
+    }
+
+
+
+public static DealStepsViewModel MapDbModelToViewModel(DealStep dbModel)
+{
+var viewModel = new  DealStepsViewModel();
+
+            viewModel.DealId = dbModel.DealId;
+            viewModel.StepId = dbModel.StepId;
+            viewModel.ActionValue = dbModel.ActionValue;
+            viewModel.ActionIdValue = dbModel.ActionIdValue;
+            viewModel.CompletedDateTime = dbModel.CompletedDateTime;
+            viewModel.Hidden = dbModel.Hidden;
+            viewModel.Completed = dbModel.Completed;
+            viewModel.ReminderTaskId = dbModel.ReminderTaskId;
+
+return viewModel;
+}
+
+
+public static IQueryable<DealStepsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<DealStep> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new DealStepsViewModel()
+        {
+DealId = c.DealId,
+StepId = c.StepId,
+ActionValue = c.ActionValue,
+ActionIdValue = c.ActionIdValue,
+CompletedDateTime = c.CompletedDateTime,
+Hidden = c.Hidden,
+Completed = c.Completed,
+ReminderTaskId = c.ReminderTaskId,
+        });
+        }
+    }
+}
+
+

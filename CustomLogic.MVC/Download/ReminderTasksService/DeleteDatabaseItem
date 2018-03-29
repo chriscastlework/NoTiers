@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ReminderTasksService
+{
+    public class Delete : IDeleteEvent<ReminderTasksViewModel,ReminderTask>
+    {
+
+        public bool Run(ReminderTasks ViewModel model, ref IQueryable<ReminderTask>repository, IUnitOfWork unitOfWork, Response<ReminderTasksViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<ReminderTask>().Find(model.Id);unitOfWork.With<ReminderTask>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

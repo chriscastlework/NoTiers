@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CustomFieldValidationsService
+{
+public class ReturnResultEvent : IUpdateEvent<CustomFieldValidationsViewModel, CustomFieldValidation>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(CustomFieldValidationsViewModel model, ref IQueryable< CustomFieldValidation> repository, IUnitOfWork unitOfWork, Response<CustomFieldValidationsViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<CustomFieldValidation>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = CustomFieldValidations
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

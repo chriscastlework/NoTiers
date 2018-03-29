@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.PackageItemService
+{
+    public class PackageItemsViewModel
+    {
+
+        public int Id {get;set;}
+        public int ItemId {get;set;}
+        public int ItemType {get;set;}
+        public Guid? Package_Id {get;set;}
+
+    }
+}

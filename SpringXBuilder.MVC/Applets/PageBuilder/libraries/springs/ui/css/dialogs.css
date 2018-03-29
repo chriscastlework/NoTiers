@@ -1,0 +1,9 @@
+.sp_dialog
+{
+
+}
+
+.contactSearchDialog .preloader, .contactSearchDialog .mask
+{
+    position: absolute !important;
+}

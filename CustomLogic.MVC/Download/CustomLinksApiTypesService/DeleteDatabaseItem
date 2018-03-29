@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CustomLinksApiTypesService
+{
+    public class Delete : IDeleteEvent<CustomLinksApiTypesViewModel,CustomLinksApiType>
+    {
+
+        public bool Run(CustomLinksApiTypes ViewModel model, ref IQueryable<CustomLinksApiType>repository, IUnitOfWork unitOfWork, Response<CustomLinksApiTypesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<CustomLinksApiType>().Find(model.Id);unitOfWork.With<CustomLinksApiType>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

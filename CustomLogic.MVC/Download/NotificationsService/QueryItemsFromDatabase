@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.NotificationsService
+{
+    public class QueryLogic : IViewListEvent<NotificationsViewModel, Notification>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<Notification> repository, NgTable<NotificationsViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<NotificationsViewModel>();
+
+            var query = Notifications
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

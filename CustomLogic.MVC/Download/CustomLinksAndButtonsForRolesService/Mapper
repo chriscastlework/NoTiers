@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CustomLinksAndButtonsForRolesService
+{
+public static class CustomLinksAndButtonsForRolesMapper
+{
+
+public static CustomLinksAndButtonsForRole MapInsertModelToDbModel(CustomLinksAndButtonsForRolesViewModel model, CustomLinksAndButtonsForRole newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CustomLinksAndButtonsForRole();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.OrgId = model.OrgId;
+            newDomainModel.RoleId = model.RoleId;
+            newDomainModel.CustomLinksAndButtonsId = model.CustomLinksAndButtonsId;
+    return newDomainModel;
+    }
+
+
+
+public static CustomLinksAndButtonsForRolesViewModel MapDbModelToViewModel(CustomLinksAndButtonsForRole dbModel)
+{
+var viewModel = new  CustomLinksAndButtonsForRolesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.OrgId = dbModel.OrgId;
+            viewModel.RoleId = dbModel.RoleId;
+            viewModel.CustomLinksAndButtonsId = dbModel.CustomLinksAndButtonsId;
+
+return viewModel;
+}
+
+
+public static IQueryable<CustomLinksAndButtonsForRolesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CustomLinksAndButtonsForRole> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CustomLinksAndButtonsForRolesViewModel()
+        {
+Id = c.Id,
+OrgId = c.OrgId,
+RoleId = c.RoleId,
+CustomLinksAndButtonsId = c.CustomLinksAndButtonsId,
+        });
+        }
+    }
+}
+
+

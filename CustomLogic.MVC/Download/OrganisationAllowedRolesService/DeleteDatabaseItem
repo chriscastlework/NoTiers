@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.OrganisationAllowedRolesService
+{
+    public class Delete : IDeleteEvent<OrganisationAllowedRolesViewModel,OrganisationAllowedRole>
+    {
+
+        public bool Run(OrganisationAllowedRoles ViewModel model, ref IQueryable<OrganisationAllowedRole>repository, IUnitOfWork unitOfWork, Response<OrganisationAllowedRolesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<OrganisationAllowedRole>().Find(model.Id);unitOfWork.With<OrganisationAllowedRole>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

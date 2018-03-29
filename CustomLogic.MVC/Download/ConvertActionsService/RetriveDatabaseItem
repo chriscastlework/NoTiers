@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ConvertActionsService
+{
+    public class View : IViewEvent<ConvertActionsViewModel,ConvertAction>
+    {
+        public int CreatedId = 0;
+
+        public Response<ConvertActionsViewModel> Run(ConvertActionsViewModel model,ref IQueryable<ConvertAction> repository, IUnitOfWork unitOfWork, Response<ConvertActionsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = ConvertActions
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing ConvertActions");
+            }
+
+            return result;
+        }
+
+    }
+}

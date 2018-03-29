@@ -1,0 +1,208 @@
+﻿@model CustomLogic.Core.Models.Response<CustomLogic.Services.PageBuilderService.FrameWorks.Angular.PageObject>
+
+<div class="form-group">
+    &nbsp;
+</div>
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <h1>Testing a new page builder for Deal</h1>
+    </div>
+</div>
+
+<script>
+    (function () {
+
+        // Main Module
+        var app = angular.module("app", ["ngTable"]);
+        // Main Module End
+
+        // Main Controller
+        angular.module('app').controller('mainController', mainController);
+
+        function mainController(DealsApiService) {
+            var vm = this;
+            vm.Id = 31580;
+            //vm.Id = @Html.Raw(Model.Data.Id);
+
+            DealsApiService.Get(vm.Id).then(
+                function (data) {
+                    vm.Deal = data;
+                }
+            ).catch(
+             function () { }
+            );
+
+            vm.update = function() {
+                DealsApiService.Put(vm.Id, vm.Account).then(
+                    function(data) {
+                        vm.Deal = data;
+                    }
+                ).catch(
+                    function() {}
+                );
+            };
+        };
+        // Main Controller End
+
+        // Account Service
+        angular.module('app').factory('AccountApiService', AccountApiService);
+        AccountApiService.$inject = ['$http'];
+        function AccountApiService($http) {
+
+            return {
+                Get: get,
+                Post: post,
+                Put: put,
+                Delete: deleteApi
+            };
+
+            function get(id) {
+                return $http.get('/api/Account/' + id)
+                   .then(getAccountComplete)
+                   .catch(getAccountFail);
+
+                function getAccountComplete(response) {
+                    return response.data.Data;
+                }
+
+                function getAccountFail(error) {
+                    debugger;
+                }
+            };
+
+            function post(data) {
+                return $http.get('/api/Account/', data)
+                   .then(postAccountComplete)
+                   .catch(postAccountFail);
+
+                function postAccountComplete(response) {
+                    return response.data.Data;
+                }
+
+                function postAccountFail(error) {
+                    debugger;
+                }
+            };
+
+            function put(id, data) {
+                return $http.put('/api/Account/' + id, data)
+                   .then(putAccountComplete)
+                   .catch(putAccountFail);
+
+                function putAccountComplete(response) {
+                    return response.data.Data;
+                }
+
+                function putAccountFail(error) {
+                    debugger;
+                }
+            };
+
+            function deleteApi(id) {
+                return $http.delete('/api/Account/' + id)
+                   .then(deleteAccountComplete)
+                   .catch(deleteAccountFail);
+
+                function deleteAccountComplete(response) {
+                    return response.data.Data;
+                }
+
+                function deleteAccountFail(error) {
+                    debugger;
+                }
+            };
+        };
+        // Account Service End
+
+        // Deal Service
+        angular.module('app').factory('DealsApiService', DealsApiService);
+        DealsApiService.$inject = ['$http'];
+        function DealsApiService($http) {
+
+            return {
+                Get: get,
+                Post: post,
+                Put: put,
+                Delete: deleteApi
+            };
+
+            function get(id) {
+                return $http.get('/api/Deal/' + id)
+                   .then(getDealComplete)
+                   .catch(getDealFail);
+
+                function getDealComplete(response) {
+                    return response.data.Data;
+                }
+
+                function getDealFail(error) {
+                    debugger;
+                }
+            };
+
+            function post(data) {
+                return $http.post('/api/Deal/', data)
+                   .then(postDealComplete)
+                   .catch(postDealFail);
+
+                function postDealComplete(response) {
+                    return response.data;
+                }
+
+                function postDealFail(error) {
+                    debugger;
+                }
+            };
+
+            function put(id, data) {
+                return $http.put('/api/Deal/' + id, data)
+                   .then(putDealComplete)
+                   .catch(putDealFail);
+
+                function putDealComplete(response) {
+                    return response.data.Data;
+                }
+
+                function putDealFail(error) {
+                    debugger;
+                }
+            };
+
+            function deleteApi(id) {
+                return $http.delete('/api/Deal/' + id)
+                   .then(deleteDealComplete)
+                   .catch(deleteDealFail);
+
+                function deleteDealComplete(response) {
+                    return response.data.Data;
+                }
+
+                function deleteDealFail(error) {
+                    debugger;
+                }
+            };
+        };
+        // Deal Service End
+        @Html.Raw(Model.Data.JavaScript)
+
+    })();;
+</script>
+
+<style>
+    @Html.Raw(Model.Data.Css)
+</style>
+
+    <div class="row">
+        <div data-ng-app="app">
+            <div ng-controller="mainController as Org" ng-cloak>
+                <div class="btn btn-primary" ng-click="Org.update()"> Save</div>
+                @Html.Raw(Model.Data.Html)
+                
+                {{Org}}
+            </div>
+        </div>
+    </div>
+
+

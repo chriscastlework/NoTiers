@@ -1,0 +1,10 @@
+using System;
+
+namespace CustomLogic.Services.ClientService
+{
+    public class ClientsViewModel
+    {
+
+
+    }
+}

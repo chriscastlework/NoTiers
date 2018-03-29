@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.LocalizationsService
+{
+    public class Save : IInsertEvent<LocalizationsViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(LocalizationsViewModel model, IUnitOfWork unitOfWork, Response<LocalizationsViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = Localizations();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<Localization>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = Localizations
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(LocalizationsViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<Localization>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<Localization>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

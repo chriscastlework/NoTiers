@@ -1,0 +1,60 @@
+using System.Linq;
+
+namespace CustomLogic.Services.MeetingVisualiserChartItemsService
+{
+public static class MeetingVisualiserChartItemsMapper
+{
+
+public static MeetingVisualiserChartItem MapInsertModelToDbModel(MeetingVisualiserChartItemsViewModel model, MeetingVisualiserChartItem newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new MeetingVisualiserChartItem();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.TaskId = model.TaskId;
+            newDomainModel.Type = model.Type;
+            newDomainModel.X = model.X;
+            newDomainModel.Y = model.Y;
+            newDomainModel.Width = model.Width;
+            newDomainModel.Height = model.Height;
+    return newDomainModel;
+    }
+
+
+
+public static MeetingVisualiserChartItemsViewModel MapDbModelToViewModel(MeetingVisualiserChartItem dbModel)
+{
+var viewModel = new  MeetingVisualiserChartItemsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.TaskId = dbModel.TaskId;
+            viewModel.Type = dbModel.Type;
+            viewModel.X = dbModel.X;
+            viewModel.Y = dbModel.Y;
+            viewModel.Width = dbModel.Width;
+            viewModel.Height = dbModel.Height;
+
+return viewModel;
+}
+
+
+public static IQueryable<MeetingVisualiserChartItemsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<MeetingVisualiserChartItem> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new MeetingVisualiserChartItemsViewModel()
+        {
+Id = c.Id,
+TaskId = c.TaskId,
+Type = c.Type,
+X = c.X,
+Y = c.Y,
+Width = c.Width,
+Height = c.Height,
+        });
+        }
+    }
+}
+
+

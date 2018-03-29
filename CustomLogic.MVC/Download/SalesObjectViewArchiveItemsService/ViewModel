@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.SalesObjectViewArchiveItemService
+{
+    public class SalesObjectViewArchiveItemsViewModel
+    {
+
+        public int Id {get;set;}
+        public int SalesObjectViewArchiveId {get;set;}
+        public int SalesObjectViewId {get;set;}
+        public bool IsDefault {get;set;}
+
+    }
+}

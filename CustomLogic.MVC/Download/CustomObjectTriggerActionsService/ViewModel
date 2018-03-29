@@ -1,0 +1,10 @@
+using System;
+
+namespace CustomLogic.Services.CustomObjectTriggerActionService
+{
+    public class CustomObjectTriggerActionsViewModel
+    {
+
+
+    }
+}

@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.GroupsService
+{
+    public class View : IViewEvent<GroupsViewModel,Group>
+    {
+        public int CreatedId = 0;
+
+        public Response<GroupsViewModel> Run(GroupsViewModel model,ref IQueryable<Group> repository, IUnitOfWork unitOfWork, Response<GroupsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = Groups
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing Groups");
+            }
+
+            return result;
+        }
+
+    }
+}

@@ -1,0 +1,45 @@
+using System.Linq;
+
+namespace CustomLogic.Services.AccountWatchingUsersService
+{
+public static class AccountWatchingUsersMapper
+{
+
+public static AccountWatchingUser MapInsertModelToDbModel(AccountWatchingUsersViewModel model, AccountWatchingUser newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new AccountWatchingUser();
+    }
+
+            newDomainModel.WatchedAccountId = model.WatchedAccountId;
+            newDomainModel.WatchingUserId = model.WatchingUserId;
+    return newDomainModel;
+    }
+
+
+
+public static AccountWatchingUsersViewModel MapDbModelToViewModel(AccountWatchingUser dbModel)
+{
+var viewModel = new  AccountWatchingUsersViewModel();
+
+            viewModel.WatchedAccountId = dbModel.WatchedAccountId;
+            viewModel.WatchingUserId = dbModel.WatchingUserId;
+
+return viewModel;
+}
+
+
+public static IQueryable<AccountWatchingUsersViewModel> MapDbModelQueryToViewModelQuery(IQueryable<AccountWatchingUser> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new AccountWatchingUsersViewModel()
+        {
+WatchedAccountId = c.WatchedAccountId,
+WatchingUserId = c.WatchingUserId,
+        });
+        }
+    }
+}
+
+

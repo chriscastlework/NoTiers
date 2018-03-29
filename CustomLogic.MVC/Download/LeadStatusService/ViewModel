@@ -1,0 +1,13 @@
+using System;
+
+namespace CustomLogic.Services.LeadStatuService
+{
+    public class LeadStatusViewModel
+    {
+
+        public int Id {get;set;}
+        public string Label {get;set;}
+        public string Key {get;set;}
+
+    }
+}

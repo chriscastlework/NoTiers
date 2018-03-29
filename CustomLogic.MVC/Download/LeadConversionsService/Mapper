@@ -1,0 +1,66 @@
+using System.Linq;
+
+namespace CustomLogic.Services.LeadConversionsService
+{
+public static class LeadConversionsMapper
+{
+
+public static LeadConversion MapInsertModelToDbModel(LeadConversionsViewModel model, LeadConversion newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new LeadConversion();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.DealId = model.DealId;
+            newDomainModel.DateCreated = model.DateCreated;
+            newDomainModel.DateLastModeified = model.DateLastModeified;
+            newDomainModel.CreatedById = model.CreatedById;
+            newDomainModel.LastModifiedById = model.LastModifiedById;
+            newDomainModel.ApprovalDate = model.ApprovalDate;
+            newDomainModel.Approved = model.Approved;
+            newDomainModel.FailureReason = model.FailureReason;
+    return newDomainModel;
+    }
+
+
+
+public static LeadConversionsViewModel MapDbModelToViewModel(LeadConversion dbModel)
+{
+var viewModel = new  LeadConversionsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.DealId = dbModel.DealId;
+            viewModel.DateCreated = dbModel.DateCreated;
+            viewModel.DateLastModeified = dbModel.DateLastModeified;
+            viewModel.CreatedById = dbModel.CreatedById;
+            viewModel.LastModifiedById = dbModel.LastModifiedById;
+            viewModel.ApprovalDate = dbModel.ApprovalDate;
+            viewModel.Approved = dbModel.Approved;
+            viewModel.FailureReason = dbModel.FailureReason;
+
+return viewModel;
+}
+
+
+public static IQueryable<LeadConversionsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<LeadConversion> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new LeadConversionsViewModel()
+        {
+Id = c.Id,
+DealId = c.DealId,
+DateCreated = c.DateCreated,
+DateLastModeified = c.DateLastModeified,
+CreatedById = c.CreatedById,
+LastModifiedById = c.LastModifiedById,
+ApprovalDate = c.ApprovalDate,
+Approved = c.Approved,
+FailureReason = c.FailureReason,
+        });
+        }
+    }
+}
+
+

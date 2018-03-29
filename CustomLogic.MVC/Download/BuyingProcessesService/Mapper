@@ -1,0 +1,45 @@
+using System.Linq;
+
+namespace CustomLogic.Services.BuyingProcessesService
+{
+public static class BuyingProcessesMapper
+{
+
+public static BuyingProcess MapInsertModelToDbModel(BuyingProcessesViewModel model, BuyingProcess newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new BuyingProcess();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+    return newDomainModel;
+    }
+
+
+
+public static BuyingProcessesViewModel MapDbModelToViewModel(BuyingProcess dbModel)
+{
+var viewModel = new  BuyingProcessesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+
+return viewModel;
+}
+
+
+public static IQueryable<BuyingProcessesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<BuyingProcess> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new BuyingProcessesViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+        });
+        }
+    }
+}
+
+

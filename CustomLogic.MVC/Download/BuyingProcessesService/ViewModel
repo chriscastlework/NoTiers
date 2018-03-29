@@ -1,0 +1,12 @@
+using System;
+
+namespace CustomLogic.Services.BuyingProcessService
+{
+    public class BuyingProcessesViewModel
+    {
+
+        public int Id {get;set;}
+        public string Name {get;set;}
+
+    }
+}

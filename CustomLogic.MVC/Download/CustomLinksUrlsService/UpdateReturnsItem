@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CustomLinksUrlsService
+{
+public class ReturnResultEvent : IUpdateEvent<CustomLinksUrlsViewModel, CustomLinksUrl>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(CustomLinksUrlsViewModel model, ref IQueryable< CustomLinksUrl> repository, IUnitOfWork unitOfWork, Response<CustomLinksUrlsViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<CustomLinksUrl>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = CustomLinksUrls
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.RolesService
+{
+    public class View : IViewEvent<RolesViewModel,Role>
+    {
+        public int CreatedId = 0;
+
+        public Response<RolesViewModel> Run(RolesViewModel model,ref IQueryable<Role> repository, IUnitOfWork unitOfWork, Response<RolesViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = Roles
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing Roles");
+            }
+
+            return result;
+        }
+
+    }
+}

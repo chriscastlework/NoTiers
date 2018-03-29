@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.AcheivedAwardsService
+{
+    public class View : IViewEvent<AcheivedAwardsViewModel,AcheivedAward>
+    {
+        public int CreatedId = 0;
+
+        public Response<AcheivedAwardsViewModel> Run(AcheivedAwardsViewModel model,ref IQueryable<AcheivedAward> repository, IUnitOfWork unitOfWork, Response<AcheivedAwardsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = AcheivedAwards
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing AcheivedAwards");
+            }
+
+            return result;
+        }
+
+    }
+}

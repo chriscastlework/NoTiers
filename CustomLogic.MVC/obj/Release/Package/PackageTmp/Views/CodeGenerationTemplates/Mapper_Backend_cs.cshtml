@@ -1,0 +1,72 @@
+﻿@model CustomLogic.SchemaBuilder.MicrosoftSQL.SchemaModels.ModelInfo
+
+using System.Linq;
+
+namespace CustomLogic.Services.@Html.Raw(Model.TT_ViewModelName())Service
+{
+public static class @Html.Raw(Model.TT_ViewModelName())Mapper
+{
+
+public static @Html.Raw(Model.TT_TableName()) MapInsertModelToDbModel(@Html.Raw(Model.TT_ViewModelName())ViewModel model, @Html.Raw(Model.TT_TableName()) newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new @Html.Raw(Model.TT_TableName() + "();")
+    }
+
+    @if (Model.ColumnInfo != null)
+    {
+    foreach (var item in Model.ColumnInfo)
+    {
+        if (item.IncludeInView)
+        {
+            @:newDomainModel.@Html.Raw(item.TT_Column_name()) = model.@item.ColumnNameInView;
+
+        }
+    }
+    @:return newDomainModel;
+    @:}
+}
+
+
+
+public static @Html.Raw(Model.TT_ViewModelName())ViewModel MapDbModelToViewModel(@Html.Raw(Model.TT_TableName()) dbModel)
+{
+var viewModel = new  @Html.Raw(Model.TT_ViewModelName())ViewModel();
+
+@if (Model.ColumnInfo != null)
+{
+    foreach (var item in Model.ColumnInfo)
+    {
+        if (item.IncludeInView)
+        {
+            @:viewModel.@item.ColumnNameInView = dbModel.@Html.Raw(item.TT_Column_name());
+        }
+    }
+}
+
+return viewModel;
+}
+
+
+public static IQueryable<@Html.Raw(Model.TT_ViewModelName())ViewModel> MapDbModelQueryToViewModelQuery(IQueryable<@Html.Raw(Model.TT_TableName())> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new @Html.Raw(Model.TT_ViewModelName())ViewModel()
+        {
+        @if (Model.ColumnInfo != null)
+        {
+            foreach (var item in Model.ColumnInfo)
+            {
+                if (item.IncludeInView)
+                {
+                    @item.ColumnNameInView @:= c.@Html.Raw(item.TT_Column_name()),
+                }
+            }
+        }
+        });
+        }
+    }
+}
+
+

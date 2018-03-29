@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.UserProfileService
+{
+    public class UserProfilesViewModel
+    {
+
+        public int Id {get;set;}
+        public string Culture {get;set;}
+        public string Timezone {get;set;}
+        public string Currency {get;set;}
+
+    }
+}

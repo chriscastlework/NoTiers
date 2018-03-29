@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.UserRolesService
+{
+    public class QueryLogic : IViewListEvent<UserRolesViewModel, UserRole>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<UserRole> repository, NgTable<UserRolesViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<UserRolesViewModel>();
+
+            var query = UserRoles
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

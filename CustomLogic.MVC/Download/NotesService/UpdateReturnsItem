@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.NotesService
+{
+public class ReturnResultEvent : IUpdateEvent<NotesViewModel, Note>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(NotesViewModel model, ref IQueryable< Note> repository, IUnitOfWork unitOfWork, Response<NotesViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<Note>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = Notes
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

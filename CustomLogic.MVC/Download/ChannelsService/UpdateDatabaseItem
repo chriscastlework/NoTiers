@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.ChannelsService
+{
+    public class Update : IUpdateEvent<ChannelsViewModel,Channel>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(ChannelsViewModel model, ref IQueryable<Channel> repository, IUnitOfWork unitOfWork, Response<ChannelsViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = Channels
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<Channel>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = ChannelsMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

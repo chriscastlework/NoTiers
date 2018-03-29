@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.ChannelsService
+{
+    public class Save : IInsertEvent<ChannelsViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(ChannelsViewModel model, IUnitOfWork unitOfWork, Response<ChannelsViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = Channels();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<Channel>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = Channels
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(ChannelsViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<Channel>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<Channel>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

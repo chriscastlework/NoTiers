@@ -1,0 +1,60 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ApiTypeImportQueueItemsService
+{
+public static class ApiTypeImportQueueItemsMapper
+{
+
+public static ApiTypeImportQueueItem MapInsertModelToDbModel(ApiTypeImportQueueItemsViewModel model, ApiTypeImportQueueItem newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ApiTypeImportQueueItem();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.RecordType = model.RecordType;
+            newDomainModel.BatchId = model.BatchId;
+            newDomainModel.JobId = model.JobId;
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.CustomObjectKey = model.CustomObjectKey;
+            newDomainModel.ExternalIntegrationId = model.ExternalIntegrationId;
+    return newDomainModel;
+    }
+
+
+
+public static ApiTypeImportQueueItemsViewModel MapDbModelToViewModel(ApiTypeImportQueueItem dbModel)
+{
+var viewModel = new  ApiTypeImportQueueItemsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.RecordType = dbModel.RecordType;
+            viewModel.BatchId = dbModel.BatchId;
+            viewModel.JobId = dbModel.JobId;
+            viewModel.UserId = dbModel.UserId;
+            viewModel.CustomObjectKey = dbModel.CustomObjectKey;
+            viewModel.ExternalIntegrationId = dbModel.ExternalIntegrationId;
+
+return viewModel;
+}
+
+
+public static IQueryable<ApiTypeImportQueueItemsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ApiTypeImportQueueItem> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ApiTypeImportQueueItemsViewModel()
+        {
+Id = c.Id,
+RecordType = c.RecordType,
+BatchId = c.BatchId,
+JobId = c.JobId,
+UserId = c.UserId,
+CustomObjectKey = c.CustomObjectKey,
+ExternalIntegrationId = c.ExternalIntegrationId,
+        });
+        }
+    }
+}
+
+

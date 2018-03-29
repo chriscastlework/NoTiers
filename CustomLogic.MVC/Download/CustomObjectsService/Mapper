@@ -1,0 +1,72 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CustomObjectsService
+{
+public static class CustomObjectsMapper
+{
+
+public static CustomObject MapInsertModelToDbModel(CustomObjectsViewModel model, CustomObject newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CustomObject();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Created = model.Created;
+            newDomainModel.LastModified = model.LastModified;
+            newDomainModel.CreatedBy_Id = model.CreatedBy_Id;
+            newDomainModel.LastModifiedBy_Id = model.LastModifiedBy_Id;
+            newDomainModel.Organisation_Id = model.Organisation_Id;
+            newDomainModel.Key = model.Key;
+            newDomainModel.NumericLimit = model.NumericLimit;
+            newDomainModel.VrReadOnly = model.VrReadOnly;
+            newDomainModel.AdminOnly = model.AdminOnly;
+    return newDomainModel;
+    }
+
+
+
+public static CustomObjectsViewModel MapDbModelToViewModel(CustomObject dbModel)
+{
+var viewModel = new  CustomObjectsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.Created = dbModel.Created;
+            viewModel.LastModified = dbModel.LastModified;
+            viewModel.CreatedBy_Id = dbModel.CreatedBy_Id;
+            viewModel.LastModifiedBy_Id = dbModel.LastModifiedBy_Id;
+            viewModel.Organisation_Id = dbModel.Organisation_Id;
+            viewModel.Key = dbModel.Key;
+            viewModel.NumericLimit = dbModel.NumericLimit;
+            viewModel.VrReadOnly = dbModel.VrReadOnly;
+            viewModel.AdminOnly = dbModel.AdminOnly;
+
+return viewModel;
+}
+
+
+public static IQueryable<CustomObjectsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CustomObject> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CustomObjectsViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+Created = c.Created,
+LastModified = c.LastModified,
+CreatedBy_Id = c.CreatedBy_Id,
+LastModifiedBy_Id = c.LastModifiedBy_Id,
+Organisation_Id = c.Organisation_Id,
+Key = c.Key,
+NumericLimit = c.NumericLimit,
+VrReadOnly = c.VrReadOnly,
+AdminOnly = c.AdminOnly,
+        });
+        }
+    }
+}
+
+

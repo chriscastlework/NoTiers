@@ -1,0 +1,15 @@
+using System;
+
+namespace CustomLogic.Services.StatementService
+{
+    public class StatementsViewModel
+    {
+
+        public int Id {get;set;}
+        public string Name {get;set;}
+        public string ClassName {get;set;}
+        public string Amount {get;set;}
+        public int Rule_Id {get;set;}
+
+    }
+}

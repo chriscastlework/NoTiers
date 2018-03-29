@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.WatchNotificationEmailsService
+{
+    public class Delete : IDeleteEvent<WatchNotificationEmailsViewModel,WatchNotificationEmail>
+    {
+
+        public bool Run(WatchNotificationEmails ViewModel model, ref IQueryable<WatchNotificationEmail>repository, IUnitOfWork unitOfWork, Response<WatchNotificationEmailsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<WatchNotificationEmail>().Find(model.Id);unitOfWork.With<WatchNotificationEmail>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

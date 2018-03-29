@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.RulesService
+{
+    public class View : IViewEvent<RulesViewModel,Rule>
+    {
+        public int CreatedId = 0;
+
+        public Response<RulesViewModel> Run(RulesViewModel model,ref IQueryable<Rule> repository, IUnitOfWork unitOfWork, Response<RulesViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = Rules
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing Rules");
+            }
+
+            return result;
+        }
+
+    }
+}

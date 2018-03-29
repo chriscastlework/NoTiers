@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.DefaultAddOnInEditionsService
+{
+    public class Delete : IDeleteEvent<DefaultAddOnInEditionsViewModel,DefaultAddOnInEdition>
+    {
+
+        public bool Run(DefaultAddOnInEditions ViewModel model, ref IQueryable<DefaultAddOnInEdition>repository, IUnitOfWork unitOfWork, Response<DefaultAddOnInEditionsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<DefaultAddOnInEdition>().Find(model.Id);unitOfWork.With<DefaultAddOnInEdition>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

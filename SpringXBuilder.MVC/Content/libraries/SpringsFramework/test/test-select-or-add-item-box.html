@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>test</title>
+
+    <script type="text/javascript" src="../libraries/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../springs/springs.js"></script>
+    <script type="text/javascript" src="../springs/lang/en.js"></script>
+    <script type="text/javascript" src="../springs/core/locale.js"></script>
+    <script type="text/javascript" src="../springs/utils/xml.js"></script>
+    <script type="text/javascript" src="../springs/utils/array.js"></script>
+    <script type="text/javascript" src="../springs/core/events.js"></script>
+    <script type="text/javascript" src="../springs/core/log.js"></script>
+    <script type="text/javascript" src="../springs/core/graphics.js"></script>
+    <script type="text/javascript" src="../springs/core/data.js"></script>
+    <script type="text/javascript" src="../springs/core/comms.js"></script>
+    <script type="text/javascript" src="../springs/core/geom.js"></script>
+    <script type="text/javascript" src="../springs/ui/dialogs.js"></script>
+    <script type="text/javascript" src="../springs/core/date.js"></script>
+    <script type="text/javascript" src="../springs/core/number.js"></script>
+    <script type="text/javascript" src="../springs/ui/tabset.js"></script>
+    <script type="text/javascript" src="../springs/ui/list.js"></script>
+    <script type="text/javascript" src="../springs/ui/preloader.js"></script>
+    <script type="text/javascript" src="../springs/ui/inputs.js"></script>
+    <script type="text/javascript" src="../springs/ui/tooltips.js"></script>
+    <script type="text/javascript" src="../springs/ui/table.js"></script>
+    <script type="text/javascript" src="../springs/ui/selection.js"></script>
+    <script type="text/javascript" src="../springs/ui/charts/charts.js"></script>
+    <script type="text/javascript" src="../ws/applet/contacts.js"></script>
+    <script type="text/javascript" src="../springs/ui/accordion.js"></script>
+
+    <link rel="stylesheet" href="../springs/ui/css/select-or-add-item-box.css" />
+    <script type="text/javascript" src="../springs/ui/select-or-add-item-box.js"></script>
+    <script>$(document).ready(function(){
+        var model = new sp.core.data.IndexedDataList()
+        var i=0,res=[]; for(;i<10; i++)model.updateItem({ID:"test"+i, Label:"test"+i});
+        var selBox = new sp.ui.SelectOrAddItemBox(model)
+        $(document.body).append(selBox.getGraphic())
+        selBox.addEventListener(this, sp.core.data.DataEvent.ADD, function(e){
+            model.updateItem(e.data)
+        })
+        selBox.addEventListener(this, sp.core.data.DataEvent.CHANGE, function(e){
+            console.log('change ', selBox.getValue())
+        })
+    })
+    </script>
+</head>
+<body>
+</body>
+</html>

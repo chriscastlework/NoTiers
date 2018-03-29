@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CustomObjectConversionFieldsService
+{
+    public class View : IViewEvent<CustomObjectConversionFieldsViewModel,CustomObjectConversionField>
+    {
+        public int CreatedId = 0;
+
+        public Response<CustomObjectConversionFieldsViewModel> Run(CustomObjectConversionFieldsViewModel model,ref IQueryable<CustomObjectConversionField> repository, IUnitOfWork unitOfWork, Response<CustomObjectConversionFieldsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = CustomObjectConversionFields
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing CustomObjectConversionFields");
+            }
+
+            return result;
+        }
+
+    }
+}

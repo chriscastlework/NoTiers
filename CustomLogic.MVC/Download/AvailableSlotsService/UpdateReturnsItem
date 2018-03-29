@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.AvailableSlotsService
+{
+public class ReturnResultEvent : IUpdateEvent<AvailableSlotsViewModel, AvailableSlot>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(AvailableSlotsViewModel model, ref IQueryable< AvailableSlot> repository, IUnitOfWork unitOfWork, Response<AvailableSlotsViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<AvailableSlot>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = AvailableSlots
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

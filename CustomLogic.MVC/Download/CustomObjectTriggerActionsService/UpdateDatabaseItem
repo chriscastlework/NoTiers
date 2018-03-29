@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.CustomObjectTriggerActionsService
+{
+    public class Update : IUpdateEvent<CustomObjectTriggerActionsViewModel,CustomObjectTriggerAction>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(CustomObjectTriggerActionsViewModel model, ref IQueryable<CustomObjectTriggerAction> repository, IUnitOfWork unitOfWork, Response<CustomObjectTriggerActionsViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = CustomObjectTriggerActions
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<CustomObjectTriggerAction>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = CustomObjectTriggerActionsMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,12 @@
+using System;
+
+namespace CustomLogic.Services.DealContactRoleDealContactService
+{
+    public class DealContactRoleDealContactsViewModel
+    {
+
+        public int DealContactRole_Id {get;set;}
+        public int DealContact_Id {get;set;}
+
+    }
+}

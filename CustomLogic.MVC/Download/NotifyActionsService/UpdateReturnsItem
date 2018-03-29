@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.NotifyActionsService
+{
+public class ReturnResultEvent : IUpdateEvent<NotifyActionsViewModel, NotifyAction>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(NotifyActionsViewModel model, ref IQueryable< NotifyAction> repository, IUnitOfWork unitOfWork, Response<NotifyActionsViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<NotifyAction>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = NotifyActions
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.StagesService
+{
+    public class Delete : IDeleteEvent<StagesViewModel,Stage>
+    {
+
+        public bool Run(Stages ViewModel model, ref IQueryable<Stage>repository, IUnitOfWork unitOfWork, Response<StagesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<Stage>().Find(model.Id);unitOfWork.With<Stage>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.StepDocumentsService
+{
+    public class View : IViewEvent<StepDocumentsViewModel,StepDocument>
+    {
+        public int CreatedId = 0;
+
+        public Response<StepDocumentsViewModel> Run(StepDocumentsViewModel model,ref IQueryable<StepDocument> repository, IUnitOfWork unitOfWork, Response<StepDocumentsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = StepDocuments
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing StepDocuments");
+            }
+
+            return result;
+        }
+
+    }
+}

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.TablePreferencesService
+{
+    public class Delete : IDeleteEvent<TablePreferencesViewModel,TablePreference>
+    {
+
+        public bool Run(TablePreferences ViewModel model, ref IQueryable<TablePreference>repository, IUnitOfWork unitOfWork, Response<TablePreferencesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<TablePreference>().Find(model.Id);unitOfWork.With<TablePreference>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

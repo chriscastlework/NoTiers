@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.AdminEventLogService
+{
+    public class Delete : IDeleteEvent<AdminEventLogViewModel,AdminEventLog>
+    {
+
+        public bool Run(AdminEventLog ViewModel model, ref IQueryable<AdminEventLog>repository, IUnitOfWork unitOfWork, Response<AdminEventLogViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<AdminEventLog>().Find(model.Id);unitOfWork.With<AdminEventLog>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.AssetsService
+{
+    public class Delete : IDeleteEvent<AssetsViewModel,Asset>
+    {
+
+        public bool Run(Assets ViewModel model, ref IQueryable<Asset>repository, IUnitOfWork unitOfWork, Response<AssetsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<Asset>().Find(model.Id);unitOfWork.With<Asset>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

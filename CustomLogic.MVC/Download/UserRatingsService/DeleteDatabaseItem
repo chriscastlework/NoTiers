@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.UserRatingsService
+{
+    public class Delete : IDeleteEvent<UserRatingsViewModel,UserRating>
+    {
+
+        public bool Run(UserRatings ViewModel model, ref IQueryable<UserRating>repository, IUnitOfWork unitOfWork, Response<UserRatingsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<UserRating>().Find(model.Id);unitOfWork.With<UserRating>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

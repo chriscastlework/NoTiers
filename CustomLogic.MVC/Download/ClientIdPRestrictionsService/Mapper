@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ClientIdPRestrictionsService
+{
+public static class ClientIdPRestrictionsMapper
+{
+
+public static ClientIdPRestriction MapInsertModelToDbModel(ClientIdPRestrictionsViewModel model, ClientIdPRestriction newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ClientIdPRestriction();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static ClientIdPRestrictionsViewModel MapDbModelToViewModel(ClientIdPRestriction dbModel)
+{
+var viewModel = new  ClientIdPRestrictionsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<ClientIdPRestrictionsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ClientIdPRestriction> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ClientIdPRestrictionsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.AccountSharesService
+{
+    public class Delete : IDeleteEvent<AccountSharesViewModel,AccountShare>
+    {
+
+        public bool Run(AccountShares ViewModel model, ref IQueryable<AccountShare>repository, IUnitOfWork unitOfWork, Response<AccountSharesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<AccountShare>().Find(model.Id);unitOfWork.With<AccountShare>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "NT Architecture";
+}
+
+<h2>Architecture</h2>
+
+<p>No-Tiers is a database driven modular service architecture. Each service has conceptional layers implemented by inheriting the service base class which uses a template patten</p>
+
+<p>
+    Each class has a single reason to exist and should only change for one reason keeping to the single responsibility principle 
+</p>
+<h3>Modules</h3>
+<p>Each module must contain: </p>
+<ul>
+    <li>View Model Class</li>
+    <li>Service Class </li>
+    <li>Mapper Class </li>
+    <li>Optional Rule Classes for (Insert/Update/View/Delete)</li>
+    <li>Optional Event Classes for (Insert/Update/View/Delete)</li>
+</ul>
+
+<h3>View Model Class</h3>
+<p>
+    This class is required to define what is available to the end user. 
+</p>
+
+<h3>Service Class</h3>
+<p>This is required to define what view model the service is returning to the user and what database model this view model is formed mainly connected to</p>
+
+<h3>Mapper Class</h3>
+<p>Defines hard mapping for casting domain model to and from view model</p>
+
+<h3>Rule Classes</h3>
+<p>These classes hold you specific business logic for different functions i.e Only managers can insert new Opportunities would be a class that implements IInsertRule</p>
+
+<h3>Event Classes</h3>
+<p>These classes hold your specific event logic for different functions i.e Save Opportunity to database would be a class that implements IInsertEvent </p>
+

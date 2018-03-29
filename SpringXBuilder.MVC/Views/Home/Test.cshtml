@@ -1,0 +1,208 @@
+﻿<script>
+    (function () {
+
+        var app = angular.module("app", ["ngTable"]);
+
+        // Deal Service
+        angular.module('app').factory('DealApiService', DealApiService);
+        DealApiService.$inject = ['$http'];
+        function DealApiService($http) {
+
+            return {
+                Get: get,
+                Post: post,
+                Put: put,
+                Delete: deleteApi
+            };
+
+            function get(id) {
+                return $http.get('/api/Deal/' + id)
+                   .then(getDealComplete)
+                   .catch(getDealFail);
+
+                function getDealComplete(response) {
+                    return response.data.Data;
+                }
+
+                function getDealsFail(error) {
+                    debugger;
+                }
+            };
+
+            function post(data) {
+                return $http.post('/api/Deal/', data)
+                   .then(postDealComplete)
+                   .catch(postDealFail);
+
+                function postDealComplete(response) {
+                    return response.data;
+                }
+
+                function postDealFail(error) {
+                    debugger;
+                }
+            };
+
+            function put(id, data) {
+                return $http.put('/api/Deal/' + id, data)
+                   .then(putDealComplete)
+                   .catch(putDealFail);
+
+                function putDealComplete(response) {
+                    return response.data.Data;
+                }
+
+                function putDealFail(error) {
+                    debugger;
+                }
+            };
+
+            function deleteApi(id) {
+                return $http.delete('/api/Deal/' + id)
+                   .then(deleteDealComplete)
+                   .catch(deleteDealFail);
+
+                function deleteDealComplete(response) {
+                    return response.data.Data;
+                }
+
+                function deleteDealFail(error) {
+                    debugger;
+                }
+            };
+        };
+        // Deal Service End
+
+        // Deal Table Controller
+        angular.module('app').controller('DealController', DealController);
+        DealController.$inject = ["NgTableParams", "DealApiService"];
+        function DealController(NgTableParams, DealApiService) {
+            var vm = this;
+            vm.tableParams = new NgTableParams({
+                page: 1,            // show first page
+                count: 10           // count per page
+            }, {
+                getData: function (params) {
+                    var postParams = {};
+                    postParams.page = params.page();
+                    postParams.count = params.count();
+                    postParams.total = params.total();
+                    postParams.filter = params.filter();
+                    postParams.sorting = params.sorting();
+                    postParams.group = params.group();
+                    return DealApiService.Post(postParams)
+                        .then(function (response) {
+                            params.total(response.Count);
+                            return response.Data;
+                        });
+                }
+            });
+        };
+        // Deal Table Controller End
+    })();
+</script>
+
+
+<div ng-app="app">
+
+    <div ng-controller="DealController as Deals">
+
+        <h2 class="page-header">Deal Table</h2>
+
+        <table ng-table="Deals.tableParams" class="table table-bordered table-striped table-condensed">
+            <tr ng-repeat="row in $data track by row.Id">
+
+                <td data-title="'Id'">
+                    {{row.Id}}
+                </td>
+                <td data-title="'Name'">
+                    {{row.Name}}
+                </td>
+                <td data-title="'OwnerId'">
+                    {{row.OwnerId}}
+                </td>
+                <td data-title="'StartDate'">
+                    {{row.StartDate}}
+                </td>
+                <td data-title="'ExpectedCloseDate'">
+                    {{row.ExpectedCloseDate}}
+                </td>
+                <td data-title="'RevenueCurrency'">
+                    {{row.RevenueCurrency}}
+                </td>
+                <td data-title="'RevenueAmount'">
+                    {{row.RevenueAmount}}
+                </td>
+                <td data-title="'StageId'">
+                    {{row.StageId}}
+                </td>
+                <td data-title="'MainDealContactId'">
+                    {{row.MainDealContactId}}
+                </td>
+                <td data-title="'AccountId'">
+                    {{row.AccountId}}
+                </td>
+                <td data-title="'SalesProcessId'">
+                    {{row.SalesProcessId}}
+                </td>
+                <td data-title="'CloseDate'">
+                    {{row.CloseDate}}
+                </td>
+                <td data-title="'CloseReason'">
+                    {{row.CloseReason}}
+                </td>
+                <td data-title="'CloseStatus'">
+                    {{row.CloseStatus}}
+                </td>
+                <td data-title="'DateCreated'">
+                    {{row.DateCreated}}
+                </td>
+                <td data-title="'DateLastModeified'">
+                    {{row.DateLastModeified}}
+                </td>
+                <td data-title="'CreatedById'">
+                    {{row.CreatedById}}
+                </td>
+                <td data-title="'LastModifiedById'">
+                    {{row.LastModifiedById}}
+                </td>
+                <td data-title="'StageLastUpdated'">
+                    {{row.StageLastUpdated}}
+                </td>
+                <td data-title="'Overview'">
+                    {{row.Overview}}
+                </td>
+                <td data-title="'TrashDate'">
+                    {{row.TrashDate}}
+                </td>
+                <td data-title="'TrashedUserId'">
+                    {{row.TrashedUserId}}
+                </td>
+                <td data-title="'DealType'">
+                    {{row.DealType}}
+                </td>
+                <td data-title="'LeadRating'">
+                    {{row.LeadRating}}
+                </td>
+                <td data-title="'LeadFollowUpDate'">
+                    {{row.LeadFollowUpDate}}
+                </td>
+                <td data-title="'LeadConversionApproverId'">
+                    {{row.LeadConversionApproverId}}
+                </td>
+                <td data-title="'LeadContactId'">
+                    {{row.LeadContactId}}
+                </td>
+                <td data-title="'LeadPotentialRevenue'">
+                    {{row.LeadPotentialRevenue}}
+                </td>
+                <td data-title="'LeadStatusId'">
+                    {{row.LeadStatusId}}
+                </td>
+                <td data-title="'ExternalId'">
+                    {{row.ExternalId}}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

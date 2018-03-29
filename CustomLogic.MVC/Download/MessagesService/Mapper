@@ -1,0 +1,69 @@
+using System.Linq;
+
+namespace CustomLogic.Services.MessagesService
+{
+public static class MessagesMapper
+{
+
+public static Message MapInsertModelToDbModel(MessagesViewModel model, Message newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Message();
+    }
+
+            newDomainModel.Id = model.ID;
+            newDomainModel.Topic = model.Topic;
+            newDomainModel.Body = model.Body;
+            newDomainModel.DateSent = model.DateSent;
+            newDomainModel.FromDealContactId = model.FromDealContactId;
+            newDomainModel.DateReadBySeller = model.DateReadBySeller;
+            newDomainModel.Discriminator = model.Discriminator;
+            newDomainModel.ConversationId = model.ConversationId;
+            newDomainModel.DateReadByBuyer = model.DateReadByBuyer;
+            newDomainModel.FromUserId = model.FromUserId;
+    return newDomainModel;
+    }
+
+
+
+public static MessagesViewModel MapDbModelToViewModel(Message dbModel)
+{
+var viewModel = new  MessagesViewModel();
+
+            viewModel.ID = dbModel.Id;
+            viewModel.Topic = dbModel.Topic;
+            viewModel.Body = dbModel.Body;
+            viewModel.DateSent = dbModel.DateSent;
+            viewModel.FromDealContactId = dbModel.FromDealContactId;
+            viewModel.DateReadBySeller = dbModel.DateReadBySeller;
+            viewModel.Discriminator = dbModel.Discriminator;
+            viewModel.ConversationId = dbModel.ConversationId;
+            viewModel.DateReadByBuyer = dbModel.DateReadByBuyer;
+            viewModel.FromUserId = dbModel.FromUserId;
+
+return viewModel;
+}
+
+
+public static IQueryable<MessagesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Message> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new MessagesViewModel()
+        {
+ID = c.Id,
+Topic = c.Topic,
+Body = c.Body,
+DateSent = c.DateSent,
+FromDealContactId = c.FromDealContactId,
+DateReadBySeller = c.DateReadBySeller,
+Discriminator = c.Discriminator,
+ConversationId = c.ConversationId,
+DateReadByBuyer = c.DateReadByBuyer,
+FromUserId = c.FromUserId,
+        });
+        }
+    }
+}
+
+

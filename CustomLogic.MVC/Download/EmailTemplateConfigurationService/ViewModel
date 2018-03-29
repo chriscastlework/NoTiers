@@ -1,0 +1,20 @@
+using System;
+
+namespace CustomLogic.Services.EmailTemplateConfigurationService
+{
+    public class EmailTemplateConfigurationViewModel
+    {
+
+        public string TemplateID {get;set;}
+        public string AuthorID {get;set;}
+        public string AuthorName {get;set;}
+        public string Subject {get;set;}
+        public bool? Active {get;set;}
+        public int? EmailConfigurationID {get;set;}
+        public bool? Optional {get;set;}
+        public string HtmlTemplate {get;set;}
+        public string TextTemplate {get;set;}
+        public bool OptionalEnabledByDefault {get;set;}
+
+    }
+}

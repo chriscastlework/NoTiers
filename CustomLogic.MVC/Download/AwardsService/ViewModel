@@ -1,0 +1,15 @@
+using System;
+
+namespace CustomLogic.Services.AwardService
+{
+    public class AwardsViewModel
+    {
+
+        public int Id {get;set;}
+        public string Name {get;set;}
+        public string Accessor {get;set;}
+        public int Points {get;set;}
+        public string IconName {get;set;}
+
+    }
+}

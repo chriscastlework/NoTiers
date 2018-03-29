@@ -1,0 +1,78 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ItemStepsService
+{
+public static class ItemStepsMapper
+{
+
+public static ItemStep MapInsertModelToDbModel(ItemStepsViewModel model, ItemStep newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ItemStep();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.ActionValue = model.ActionValue;
+            newDomainModel.ActionIdValue = model.ActionIdValue;
+            newDomainModel.Completed = model.Completed;
+            newDomainModel.CompletedDateTime = model.CompletedDateTime;
+            newDomainModel.Hidden = model.Hidden;
+            newDomainModel.StepId = model.StepId;
+            newDomainModel.ReminderTaskId = model.ReminderTaskId;
+            newDomainModel.CustomObjectRowId = model.CustomObjectRowId;
+            newDomainModel.TaskId = model.TaskId;
+            newDomainModel.ContactId = model.ContactId;
+            newDomainModel.AccountId = model.AccountId;
+            newDomainModel.Discriminator = model.Discriminator;
+    return newDomainModel;
+    }
+
+
+
+public static ItemStepsViewModel MapDbModelToViewModel(ItemStep dbModel)
+{
+var viewModel = new  ItemStepsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.ActionValue = dbModel.ActionValue;
+            viewModel.ActionIdValue = dbModel.ActionIdValue;
+            viewModel.Completed = dbModel.Completed;
+            viewModel.CompletedDateTime = dbModel.CompletedDateTime;
+            viewModel.Hidden = dbModel.Hidden;
+            viewModel.StepId = dbModel.StepId;
+            viewModel.ReminderTaskId = dbModel.ReminderTaskId;
+            viewModel.CustomObjectRowId = dbModel.CustomObjectRowId;
+            viewModel.TaskId = dbModel.TaskId;
+            viewModel.ContactId = dbModel.ContactId;
+            viewModel.AccountId = dbModel.AccountId;
+            viewModel.Discriminator = dbModel.Discriminator;
+
+return viewModel;
+}
+
+
+public static IQueryable<ItemStepsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ItemStep> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ItemStepsViewModel()
+        {
+Id = c.Id,
+ActionValue = c.ActionValue,
+ActionIdValue = c.ActionIdValue,
+Completed = c.Completed,
+CompletedDateTime = c.CompletedDateTime,
+Hidden = c.Hidden,
+StepId = c.StepId,
+ReminderTaskId = c.ReminderTaskId,
+CustomObjectRowId = c.CustomObjectRowId,
+TaskId = c.TaskId,
+ContactId = c.ContactId,
+AccountId = c.AccountId,
+Discriminator = c.Discriminator,
+        });
+        }
+    }
+}
+
+

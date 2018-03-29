@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.UserLoginsService
+{
+public static class UserLoginsMapper
+{
+
+public static UserLogin MapInsertModelToDbModel(UserLoginsViewModel model, UserLogin newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new UserLogin();
+    }
+
+            newDomainModel.LoginProvider = model.LoginProvider;
+            newDomainModel.ProviderKey = model.ProviderKey;
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.IdentityUser_Id = model.IdentityUser_Id;
+    return newDomainModel;
+    }
+
+
+
+public static UserLoginsViewModel MapDbModelToViewModel(UserLogin dbModel)
+{
+var viewModel = new  UserLoginsViewModel();
+
+            viewModel.LoginProvider = dbModel.LoginProvider;
+            viewModel.ProviderKey = dbModel.ProviderKey;
+            viewModel.UserId = dbModel.UserId;
+            viewModel.IdentityUser_Id = dbModel.IdentityUser_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<UserLoginsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<UserLogin> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new UserLoginsViewModel()
+        {
+LoginProvider = c.LoginProvider,
+ProviderKey = c.ProviderKey,
+UserId = c.UserId,
+IdentityUser_Id = c.IdentityUser_Id,
+        });
+        }
+    }
+}
+
+

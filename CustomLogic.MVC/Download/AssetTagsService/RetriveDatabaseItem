@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.AssetTagsService
+{
+    public class View : IViewEvent<AssetTagsViewModel,AssetTag>
+    {
+        public int CreatedId = 0;
+
+        public Response<AssetTagsViewModel> Run(AssetTagsViewModel model,ref IQueryable<AssetTag> repository, IUnitOfWork unitOfWork, Response<AssetTagsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = AssetTags
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing AssetTags");
+            }
+
+            return result;
+        }
+
+    }
+}

@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.AdminConnectorLogService
+{
+public static class AdminConnectorLogMapper
+{
+
+public static AdminConnectorLog MapInsertModelToDbModel(AdminConnectorLogViewModel model, AdminConnectorLog newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new AdminConnectorLog();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static AdminConnectorLogViewModel MapDbModelToViewModel(AdminConnectorLog dbModel)
+{
+var viewModel = new  AdminConnectorLogViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<AdminConnectorLogViewModel> MapDbModelQueryToViewModelQuery(IQueryable<AdminConnectorLog> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new AdminConnectorLogViewModel()
+        {
+        });
+        }
+    }
+}
+
+

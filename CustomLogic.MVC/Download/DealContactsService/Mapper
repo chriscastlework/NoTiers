@@ -1,0 +1,87 @@
+using System.Linq;
+
+namespace CustomLogic.Services.DealContactsService
+{
+public static class DealContactsMapper
+{
+
+public static DealContact MapInsertModelToDbModel(DealContactsViewModel model, DealContact newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new DealContact();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.DealId = model.DealId;
+            newDomainModel.ContactId = model.ContactId;
+            newDomainModel.IsBuyingInfluence = model.IsBuyingInfluence;
+            newDomainModel.IsGoalKeeper = model.IsGoalKeeper;
+            newDomainModel.PictureURL = model.PictureURL;
+            newDomainModel.LinkedInProfileURL = model.LinkedInProfileURL;
+            newDomainModel.Support = model.Support;
+            newDomainModel.Influence = model.Influence;
+            newDomainModel.Access = model.Access;
+            newDomainModel.Role = model.Role;
+            newDomainModel.X = model.X;
+            newDomainModel.Y = model.Y;
+            newDomainModel.Manager = model.Manager;
+            newDomainModel.Influencees = model.Influencees;
+            newDomainModel.DealContactRoleId = model.DealContactRoleId;
+    return newDomainModel;
+    }
+
+
+
+public static DealContactsViewModel MapDbModelToViewModel(DealContact dbModel)
+{
+var viewModel = new  DealContactsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.DealId = dbModel.DealId;
+            viewModel.ContactId = dbModel.ContactId;
+            viewModel.IsBuyingInfluence = dbModel.IsBuyingInfluence;
+            viewModel.IsGoalKeeper = dbModel.IsGoalKeeper;
+            viewModel.PictureURL = dbModel.PictureURL;
+            viewModel.LinkedInProfileURL = dbModel.LinkedInProfileURL;
+            viewModel.Support = dbModel.Support;
+            viewModel.Influence = dbModel.Influence;
+            viewModel.Access = dbModel.Access;
+            viewModel.Role = dbModel.Role;
+            viewModel.X = dbModel.X;
+            viewModel.Y = dbModel.Y;
+            viewModel.Manager = dbModel.Manager;
+            viewModel.Influencees = dbModel.Influencees;
+            viewModel.DealContactRoleId = dbModel.DealContactRoleId;
+
+return viewModel;
+}
+
+
+public static IQueryable<DealContactsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<DealContact> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new DealContactsViewModel()
+        {
+Id = c.Id,
+DealId = c.DealId,
+ContactId = c.ContactId,
+IsBuyingInfluence = c.IsBuyingInfluence,
+IsGoalKeeper = c.IsGoalKeeper,
+PictureURL = c.PictureURL,
+LinkedInProfileURL = c.LinkedInProfileURL,
+Support = c.Support,
+Influence = c.Influence,
+Access = c.Access,
+Role = c.Role,
+X = c.X,
+Y = c.Y,
+Manager = c.Manager,
+Influencees = c.Influencees,
+DealContactRoleId = c.DealContactRoleId,
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.GroupUsersService
+{
+    public class Delete : IDeleteEvent<GroupUsersViewModel,GroupUser>
+    {
+
+        public bool Run(GroupUsers ViewModel model, ref IQueryable<GroupUser>repository, IUnitOfWork unitOfWork, Response<GroupUsersViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<GroupUser>().Find(model.Id);unitOfWork.With<GroupUser>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

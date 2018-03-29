@@ -1,0 +1,15 @@
+using System;
+
+namespace CustomLogic.Services.WatchNotificationEmailService
+{
+    public class WatchNotificationEmailsViewModel
+    {
+
+        public int Id {get;set;}
+        public string UserId {get;set;}
+        public int WatchedEntityType {get;set;}
+        public int WatchedEntityId {get;set;}
+        public DateTime? LastNotified {get;set;}
+
+    }
+}

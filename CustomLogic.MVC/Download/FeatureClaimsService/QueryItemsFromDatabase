@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.FeatureClaimsService
+{
+    public class QueryLogic : IViewListEvent<FeatureClaimsViewModel, FeatureClaim>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<FeatureClaim> repository, NgTable<FeatureClaimsViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<FeatureClaimsViewModel>();
+
+            var query = FeatureClaims
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

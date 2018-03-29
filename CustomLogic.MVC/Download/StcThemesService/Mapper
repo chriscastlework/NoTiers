@@ -1,0 +1,114 @@
+using System.Linq;
+
+namespace CustomLogic.Services.StcThemesService
+{
+public static class StcThemesMapper
+{
+
+public static StcTheme MapInsertModelToDbModel(StcThemesViewModel model, StcTheme newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new StcTheme();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.NavBarBackgroundColour = model.NavBarBackgroundColour;
+            newDomainModel.Created = model.Created;
+            newDomainModel.CreatedUserId = model.CreatedUserId;
+            newDomainModel.LastUpdated = model.LastUpdated;
+            newDomainModel.LastUpdatedUserId = model.LastUpdatedUserId;
+            newDomainModel.Name = model.Name;
+            newDomainModel.LogoImage = model.LogoImage;
+            newDomainModel.CarotColour = model.CarotColour;
+            newDomainModel.HighlightedColour = model.HighlightedColour;
+            newDomainModel.TitleTextColour = model.TitleTextColour;
+            newDomainModel.ExternalReference = model.ExternalReference;
+            newDomainModel.DefaultTheme = model.DefaultTheme;
+            newDomainModel.IsOrganisationTheme = model.IsOrganisationTheme;
+            newDomainModel.SmallLogoImageByteArray144144 = model.SmallLogoImageByteArray144144;
+            newDomainModel.SmallLogoImageByteArray114114 = model.SmallLogoImageByteArray114114;
+            newDomainModel.SmallLogoImageByteArray7272 = model.SmallLogoImageByteArray7272;
+            newDomainModel.SmallLogoImageByteArray5757 = model.SmallLogoImageByteArray5757;
+            newDomainModel.BoxHeaderBackgroundColour = model.BoxHeaderBackgroundColour;
+            newDomainModel.BoxHeaderTextColour = model.BoxHeaderTextColour;
+            newDomainModel.SelectedNavStateTextColour = model.SelectedNavStateTextColour;
+            newDomainModel.DropDownListBackgoundHover = model.DropDownListBackgoundHover;
+            newDomainModel.DropDownListTextHoverColour = model.DropDownListTextHoverColour;
+            newDomainModel.MobileLogoImageByteArray = model.MobileLogoImageByteArray;
+            newDomainModel.LoadSpinnerUrl = model.LoadSpinnerUrl;
+    return newDomainModel;
+    }
+
+
+
+public static StcThemesViewModel MapDbModelToViewModel(StcTheme dbModel)
+{
+var viewModel = new  StcThemesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.NavBarBackgroundColour = dbModel.NavBarBackgroundColour;
+            viewModel.Created = dbModel.Created;
+            viewModel.CreatedUserId = dbModel.CreatedUserId;
+            viewModel.LastUpdated = dbModel.LastUpdated;
+            viewModel.LastUpdatedUserId = dbModel.LastUpdatedUserId;
+            viewModel.Name = dbModel.Name;
+            viewModel.LogoImage = dbModel.LogoImage;
+            viewModel.CarotColour = dbModel.CarotColour;
+            viewModel.HighlightedColour = dbModel.HighlightedColour;
+            viewModel.TitleTextColour = dbModel.TitleTextColour;
+            viewModel.ExternalReference = dbModel.ExternalReference;
+            viewModel.DefaultTheme = dbModel.DefaultTheme;
+            viewModel.IsOrganisationTheme = dbModel.IsOrganisationTheme;
+            viewModel.SmallLogoImageByteArray144144 = dbModel.SmallLogoImageByteArray144144;
+            viewModel.SmallLogoImageByteArray114114 = dbModel.SmallLogoImageByteArray114114;
+            viewModel.SmallLogoImageByteArray7272 = dbModel.SmallLogoImageByteArray7272;
+            viewModel.SmallLogoImageByteArray5757 = dbModel.SmallLogoImageByteArray5757;
+            viewModel.BoxHeaderBackgroundColour = dbModel.BoxHeaderBackgroundColour;
+            viewModel.BoxHeaderTextColour = dbModel.BoxHeaderTextColour;
+            viewModel.SelectedNavStateTextColour = dbModel.SelectedNavStateTextColour;
+            viewModel.DropDownListBackgoundHover = dbModel.DropDownListBackgoundHover;
+            viewModel.DropDownListTextHoverColour = dbModel.DropDownListTextHoverColour;
+            viewModel.MobileLogoImageByteArray = dbModel.MobileLogoImageByteArray;
+            viewModel.LoadSpinnerUrl = dbModel.LoadSpinnerUrl;
+
+return viewModel;
+}
+
+
+public static IQueryable<StcThemesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<StcTheme> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new StcThemesViewModel()
+        {
+Id = c.Id,
+NavBarBackgroundColour = c.NavBarBackgroundColour,
+Created = c.Created,
+CreatedUserId = c.CreatedUserId,
+LastUpdated = c.LastUpdated,
+LastUpdatedUserId = c.LastUpdatedUserId,
+Name = c.Name,
+LogoImage = c.LogoImage,
+CarotColour = c.CarotColour,
+HighlightedColour = c.HighlightedColour,
+TitleTextColour = c.TitleTextColour,
+ExternalReference = c.ExternalReference,
+DefaultTheme = c.DefaultTheme,
+IsOrganisationTheme = c.IsOrganisationTheme,
+SmallLogoImageByteArray144144 = c.SmallLogoImageByteArray144144,
+SmallLogoImageByteArray114114 = c.SmallLogoImageByteArray114114,
+SmallLogoImageByteArray7272 = c.SmallLogoImageByteArray7272,
+SmallLogoImageByteArray5757 = c.SmallLogoImageByteArray5757,
+BoxHeaderBackgroundColour = c.BoxHeaderBackgroundColour,
+BoxHeaderTextColour = c.BoxHeaderTextColour,
+SelectedNavStateTextColour = c.SelectedNavStateTextColour,
+DropDownListBackgoundHover = c.DropDownListBackgoundHover,
+DropDownListTextHoverColour = c.DropDownListTextHoverColour,
+MobileLogoImageByteArray = c.MobileLogoImageByteArray,
+LoadSpinnerUrl = c.LoadSpinnerUrl,
+        });
+        }
+    }
+}
+
+

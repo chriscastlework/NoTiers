@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.ExternalIntegrationTypeMappingsService
+{
+    public class Save : IInsertEvent<ExternalIntegrationTypeMappingsViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(ExternalIntegrationTypeMappingsViewModel model, IUnitOfWork unitOfWork, Response<ExternalIntegrationTypeMappingsViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = ExternalIntegrationTypeMappings();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<ExternalIntegrationTypeMapping>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = ExternalIntegrationTypeMappings
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(ExternalIntegrationTypeMappingsViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<ExternalIntegrationTypeMapping>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<ExternalIntegrationTypeMapping>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

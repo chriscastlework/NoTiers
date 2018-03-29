@@ -1,0 +1,18 @@
+using CustomLogic;
+using CustomLogic.Core.BaseClasses;
+using CustomLogic.Core.Interfaces;
+
+namespace CustomLogic.Services.CustomFieldValidationsService
+{
+    /// <summary>
+    /// This is the wrapper for the IService Please add your custom services here insert/update/get/list are already handled should be enough for rest api
+    ///
+    ///</summary>
+    public class CustomFieldValidationService : ServiceBase<CustomFieldValidationsViewModel, CustomFieldValidation>
+    {
+        public CustomFieldValidationService(IUnitOfWork unitOfWork) : base(unitOfWork)
+        {
+        }
+    }
+}
+

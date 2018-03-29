@@ -1,0 +1,35 @@
+using System;
+
+namespace CustomLogic.Services.StcThemeService
+{
+    public class StcThemesViewModel
+    {
+
+        public int Id {get;set;}
+        public string NavBarBackgroundColour {get;set;}
+        public DateTime? Created {get;set;}
+        public string CreatedUserId {get;set;}
+        public DateTime? LastUpdated {get;set;}
+        public string LastUpdatedUserId {get;set;}
+        public string Name {get;set;}
+        public byte[]? LogoImage {get;set;}
+        public string CarotColour {get;set;}
+        public string HighlightedColour {get;set;}
+        public string TitleTextColour {get;set;}
+        public string ExternalReference {get;set;}
+        public bool DefaultTheme {get;set;}
+        public bool IsOrganisationTheme {get;set;}
+        public byte[]? SmallLogoImageByteArray144144 {get;set;}
+        public byte[]? SmallLogoImageByteArray114114 {get;set;}
+        public byte[]? SmallLogoImageByteArray7272 {get;set;}
+        public byte[]? SmallLogoImageByteArray5757 {get;set;}
+        public string BoxHeaderBackgroundColour {get;set;}
+        public string BoxHeaderTextColour {get;set;}
+        public string SelectedNavStateTextColour {get;set;}
+        public string DropDownListBackgoundHover {get;set;}
+        public string DropDownListTextHoverColour {get;set;}
+        public byte[]? MobileLogoImageByteArray {get;set;}
+        public string LoadSpinnerUrl {get;set;}
+
+    }
+}

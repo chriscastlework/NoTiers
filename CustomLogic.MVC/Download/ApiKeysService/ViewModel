@@ -1,0 +1,22 @@
+using System;
+
+namespace CustomLogic.Services.ApiKeyService
+{
+    public class ApiKeysViewModel
+    {
+
+        public int Id {get;set;}
+        public string Key {get;set;}
+        public bool Enabled {get;set;}
+        public DateTime? DateCreated {get;set;}
+        public DateTime? DateLastModeified {get;set;}
+        public string CreatedById {get;set;}
+        public string LastModifiedById {get;set;}
+        public string ContactFirst {get;set;}
+        public string ContactLast {get;set;}
+        public string ContactEmail {get;set;}
+        public int? OrganisationId {get;set;}
+        public string Company {get;set;}
+
+    }
+}

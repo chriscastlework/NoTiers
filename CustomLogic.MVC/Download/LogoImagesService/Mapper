@@ -1,0 +1,57 @@
+using System.Linq;
+
+namespace CustomLogic.Services.LogoImagesService
+{
+public static class LogoImagesMapper
+{
+
+public static LogoImage MapInsertModelToDbModel(LogoImagesViewModel model, LogoImage newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new LogoImage();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Image = model.Image;
+            newDomainModel.AccountId = model.AccountId;
+            newDomainModel.Discriminator = model.Discriminator;
+            newDomainModel.ContactId = model.ContactId;
+            newDomainModel.UserId = model.UserId;
+    return newDomainModel;
+    }
+
+
+
+public static LogoImagesViewModel MapDbModelToViewModel(LogoImage dbModel)
+{
+var viewModel = new  LogoImagesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Image = dbModel.Image;
+            viewModel.AccountId = dbModel.AccountId;
+            viewModel.Discriminator = dbModel.Discriminator;
+            viewModel.ContactId = dbModel.ContactId;
+            viewModel.UserId = dbModel.UserId;
+
+return viewModel;
+}
+
+
+public static IQueryable<LogoImagesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<LogoImage> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new LogoImagesViewModel()
+        {
+Id = c.Id,
+Image = c.Image,
+AccountId = c.AccountId,
+Discriminator = c.Discriminator,
+ContactId = c.ContactId,
+UserId = c.UserId,
+        });
+        }
+    }
+}
+
+

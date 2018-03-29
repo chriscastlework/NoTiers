@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CommentsService
+{
+    public class Delete : IDeleteEvent<CommentsViewModel,Comment>
+    {
+
+        public bool Run(Comments ViewModel model, ref IQueryable<Comment>repository, IUnitOfWork unitOfWork, Response<CommentsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<Comment>().Find(model.Id);unitOfWork.With<Comment>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

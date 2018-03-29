@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.DealSharesService
+{
+    public class View : IViewEvent<DealSharesViewModel,DealShare>
+    {
+        public int CreatedId = 0;
+
+        public Response<DealSharesViewModel> Run(DealSharesViewModel model,ref IQueryable<DealShare> repository, IUnitOfWork unitOfWork, Response<DealSharesViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = DealShares
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing DealShares");
+            }
+
+            return result;
+        }
+
+    }
+}

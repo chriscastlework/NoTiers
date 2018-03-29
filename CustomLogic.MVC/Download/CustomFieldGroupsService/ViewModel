@@ -1,0 +1,16 @@
+using System;
+
+namespace CustomLogic.Services.CustomFieldGroupService
+{
+    public class CustomFieldGroupsViewModel
+    {
+
+        public int Id {get;set;}
+        public int OrganisationId {get;set;}
+        public string Name {get;set;}
+        public int GroupType {get;set;}
+        public bool IsEnabled {get;set;}
+        public int DisplayOrder {get;set;}
+
+    }
+}

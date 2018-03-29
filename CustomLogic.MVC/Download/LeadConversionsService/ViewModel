@@ -1,0 +1,19 @@
+using System;
+
+namespace CustomLogic.Services.LeadConversionService
+{
+    public class LeadConversionsViewModel
+    {
+
+        public int Id {get;set;}
+        public int DealId {get;set;}
+        public DateTime? DateCreated {get;set;}
+        public DateTime? DateLastModeified {get;set;}
+        public string CreatedById {get;set;}
+        public string LastModifiedById {get;set;}
+        public DateTime? ApprovalDate {get;set;}
+        public bool Approved {get;set;}
+        public string FailureReason {get;set;}
+
+    }
+}

@@ -1,0 +1,31 @@
+﻿{
+  "session": {
+    "sessionId": "SessionId.d58643d7-e901-458f-b4e7-521a28f059be",
+    "application": {
+      "applicationId": "amzn1.ask.skill.b2882479-5229-447f-a7af-e843eb272064"
+    },
+    "attributes": {},
+    "user": {
+      "userId": "amzn1.ask.account.AFUGNTSOYTHQIZIX3EYF74YYVZDXDYYDDCT35KJNK7JRN5KIC64KZNBXV4SSS4Z357X3GOB2LFQKQLP2KFMQCJRASE7FQGBB5CMQ72EL3KHBOHTALOO2CVLB4J4FFBJ3X2ZMOZAL3SW3XGQJYFK4Q73ICYMFGAE7T5OIDQTDPSZZCEF7DDQT7LCKPXNJZZT33K4CHQNMDDGABMA"
+    },
+    "new": true
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.65101c2f-09e3-4ef6-950c-b1d35c7c1a96",
+    "locale": "en-GB",
+    "timestamp": "2017-02-06T18:53:20Z",
+    "intent": {
+      "name": "GetHoroscope",
+      "slots": {
+        "Sign": {
+          "name": "Sign"
+        },
+        "Date": {
+          "name": "Date"
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

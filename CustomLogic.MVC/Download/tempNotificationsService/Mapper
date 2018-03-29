@@ -1,0 +1,57 @@
+using System.Linq;
+
+namespace CustomLogic.Services.TempNotificationsService
+{
+public static class TempNotificationsMapper
+{
+
+public static TempNotification MapInsertModelToDbModel(TempNotificationsViewModel model, TempNotification newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new TempNotification();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.TableName = model.TableName;
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.Actions = model.Actions;
+            newDomainModel.TableIdValue = model.TableIdValue;
+            newDomainModel.UpdateDate = model.UpdateDate;
+    return newDomainModel;
+    }
+
+
+
+public static TempNotificationsViewModel MapDbModelToViewModel(TempNotification dbModel)
+{
+var viewModel = new  TempNotificationsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.TableName = dbModel.TableName;
+            viewModel.UserId = dbModel.UserId;
+            viewModel.Actions = dbModel.Actions;
+            viewModel.TableIdValue = dbModel.TableIdValue;
+            viewModel.UpdateDate = dbModel.UpdateDate;
+
+return viewModel;
+}
+
+
+public static IQueryable<TempNotificationsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<TempNotification> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new TempNotificationsViewModel()
+        {
+Id = c.Id,
+TableName = c.TableName,
+UserId = c.UserId,
+Actions = c.Actions,
+TableIdValue = c.TableIdValue,
+UpdateDate = c.UpdateDate,
+        });
+        }
+    }
+}
+
+

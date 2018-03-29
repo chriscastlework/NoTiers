@@ -1,0 +1,13 @@
+using System;
+
+namespace CustomLogic.Services.SideNavSideNavItemLookupService
+{
+    public class SideNavSideNavItemLookupsViewModel
+    {
+
+        public int SideNavId {get;set;}
+        public int SideNavItemId {get;set;}
+        public int Order {get;set;}
+
+    }
+}

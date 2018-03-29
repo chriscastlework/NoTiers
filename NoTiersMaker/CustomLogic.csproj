@@ -1,0 +1,1841 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{74EFC513-34BB-4EB1-A68B-AD254F2A28D4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CustomLogic</RootNamespace>
+    <AssemblyName>CustomLogic</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <DontImportPostSharp>True</DontImportPostSharp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <SkipPostSharp>False</SkipPostSharp>
+    <PostSharpConstraintVerificationEnabled>False</PostSharpConstraintVerificationEnabled>
+    <PostSharpRuntimeVerificationEnabled>False</PostSharpRuntimeVerificationEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="businesslogic, Version=1.0.6361.21157, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\businesslogic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ClientDependency.Core, Version=1.9.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClientDependency.1.9.2\lib\net45\ClientDependency.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ClientDependency.Core.Mvc, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClientDependency-Mvc5.1.8.0.0\lib\net45\ClientDependency.Core.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="cms, Version=1.0.6361.21158, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\cms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="controls, Version=1.0.6361.21160, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\controls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
+      <HintPath>..\packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Examine, Version=0.1.82.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Examine.0.1.82\lib\net45\Examine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ImageProcessor, Version=2.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageProcessor.2.5.3\lib\net45\ImageProcessor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ImageProcessor.Web, Version=4.8.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageProcessor.Web.4.8.3\lib\net45\ImageProcessor.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="interfaces, Version=1.0.6361.21149, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Log4Net.Async, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Log4Net.Async.2.0.4\lib\net40\Log4Net.Async.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Lucene.Net, Version=2.9.4.1, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lucene.Net.2.9.4.1\lib\net40\Lucene.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MarkdownSharp, Version=1.14.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Markdown.1.14.7\lib\net45\MarkdownSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=1.0.1559.20655, Culture=neutral">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.2.1\lib\net45\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MiniProfiler, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Semver, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\semver.1.1.2\lib\net451\Semver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SQLCE4Umbraco, Version=1.0.6361.21159, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\SQLCE4Umbraco.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\System.Data.SqlServerCe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe.Entity, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\System.Data.SqlServerCe.Entity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.6.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Dataflow.4.7.0\lib\portable-net45+win8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TidyNet, Version=1.0.0.0, Culture=neutral">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\TidyNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="umbraco, Version=1.0.6361.21162, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\umbraco.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Umbraco.Core, Version=1.0.6361.21154, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\Umbraco.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="umbraco.DataLayer, Version=1.0.6361.21157, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\umbraco.DataLayer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="umbraco.editorControls, Version=1.0.6361.21165, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\umbraco.editorControls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="umbraco.MacroEngines, Version=1.0.6361.21166, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\umbraco.MacroEngines.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="umbraco.providers, Version=1.0.6361.21161, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\umbraco.providers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Umbraco.Web.UI, Version=1.0.6361.21168, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\Umbraco.Web.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="UmbracoExamine, Version=0.7.0.21159, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.6.3\lib\net45\UmbracoExamine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\BaseClasses\EntityModelBase.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Core\BaseClasses\ServiceBase.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Core\Database\DbContext.cs" />
+    <Compile Include="Core\Helpers\Extensions.cs" />
+    <Compile Include="Core\Helpers\InterfaceLoader.cs" />
+    <Compile Include="Core\Interfaces\BL\IDeleteRule.cs" />
+    <Compile Include="Core\Interfaces\BL\IInsertRule.cs" />
+    <Compile Include="Core\Interfaces\BL\IUpdateRule.cs" />
+    <Compile Include="Core\Interfaces\BL\IViewListRule.cs" />
+    <Compile Include="Core\Interfaces\BL\IViewRule.cs" />
+    <Compile Include="Core\Interfaces\DL\IDeleteEvent.cs" />
+    <Compile Include="Core\Interfaces\DL\IInsertEvent.cs" />
+    <Compile Include="Core\Interfaces\DL\IUpdateEvent.cs" />
+    <Compile Include="Core\Interfaces\DL\IViewEvent.cs" />
+    <Compile Include="Core\Interfaces\DL\IViewListEvent.cs" />
+    <Compile Include="Core\Interfaces\ICoreUser.cs" />
+    <Compile Include="Core\Interfaces\IRepoRules.cs" />
+    <Compile Include="Core\Interfaces\IService.cs" />
+    <Compile Include="Core\Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Core\Models\NgTable.cs" />
+    <Compile Include="Core\Models\NgTableParams.cs" />
+    <Compile Include="Core\Models\QueryToNgTable.cs" />
+    <Compile Include="Core\Models\Response.cs" />
+    <Compile Include="Factory\TemplateFactory.cs" />
+    <Compile Include="LegacyDatabase\Account.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\AccountMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\AccountShare.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\AccountShareMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\AcheivedAward.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\AcheivedAwardMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\AddOn.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\AddOnClaim.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\AddOnClaimMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\AddOnClaimValue.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\AddOnClaimValueMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\AddOnCost.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\AddOnCostMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\AddOnMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ApiAuthentication.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ApiAuthenticationMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ApiConnector.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ApiConnectorMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ApiKey.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ApiKeyMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ApiTypeImportQueueItem.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ApiTypeImportQueueItemMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Attachment.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\AttachmentMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Award.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\AwardMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\BuyingProcess.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\BuyingProcessMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\BuyingProcessStage.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\BuyingProcessStageMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsContent.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsContentMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsContentType.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsContentTypeAllowedContentType.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsContentTypeAllowedContentTypeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsContentTypeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsContentVersion.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsContentVersionMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsContentXml.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsContentXmlMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsDataType.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsDataTypeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsDataTypePreValue.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsDataTypePreValueMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsDictionary.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsDictionaryMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsDocument.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsDocumentMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsDocumentType.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsDocumentTypeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsLanguageText.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsLanguageTextMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsMacro.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsMacroMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsMacroProperty.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsMacroPropertyMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsMember.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsMemberMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsMemberType.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsMemberTypeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsPreviewXml.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsPreviewXmlMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsPropertyData.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsPropertyDataMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsPropertyType.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsPropertyTypeGroup.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsPropertyTypeGroupMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsPropertyTypeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsTag.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsTagMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsTagRelationship.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsTagRelationshipMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsTask.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsTaskMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsTaskType.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsTaskTypeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsTemplate.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CmsTemplateMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_AdminConnectorLog.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_AdminConnectorLogMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_AdminEventLog.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_AdminEventLogMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_Asset.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_AssetMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_AssetTag.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_AssetTagMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_AssetType.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_AssetTypeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_Broadcaster.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_BroadcasterMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_Channel.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_ChannelMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_CoachingUser.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_CoachingUserMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_Program.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_ProgramAsset.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_ProgramAssetMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_ProgramMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_StaTheme.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_StaThemeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_Tag.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_TagMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_Theme.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_ThemeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_UserFavorite.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_UserFavoriteMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_UserFolder.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_UserFolderMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_UserRating.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_UserRatingMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_UserShare.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_UserShareMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_UserView.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Coaching_UserViewMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ColumnPreference.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ColumnPreferenceMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Comment.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CommentMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Contact.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ContactMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ContactShare.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ContactShareMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CountryList.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CountryListMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Currency.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CurrencyAmount.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CurrencyAmountMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CurrencyMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomField.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomFieldGroup.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomFieldGroupMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomFieldMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomFieldOption.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomFieldOptionMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomFieldTypeGroup.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomFieldTypeGroupMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomFieldValidation.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomFieldValidationMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomFieldValue.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomFieldValueMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomLinksAndButton.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomLinksAndButtonMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomLinksApiType.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomLinksApiTypeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomLinksButtonPlacement.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomLinksButtonPlacementMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomLinksUrl.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomLinksUrlMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomObject.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomObjectFilter.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomObjectFilterField.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomObjectFilterFieldMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomObjectFilterMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomObjectMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomObjectRow.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomObjectRowField.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomObjectRowFieldMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\CustomObjectRowMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Deal.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\DealContact.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\DealContactMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\DealContactRole.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\DealContactRoleMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\DealMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\DealOrgChart.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\DealOrgChartMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\DealShare.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\DealShareMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\DealStageHistory.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\DealStageHistoryMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\DealStep.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\DealStepMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\DefaultAddOnInEdition1.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\DefaultAddOnInEdition1Mapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Edition.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\EditionCost.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\EditionCostMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\EditionMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\EmailConfiguration.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\EmailConfigurationMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\EmailNotification.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\EmailNotificationMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\EmailTemplate.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\EmailTemplateConfiguration.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\EmailTemplateConfigurationMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\EmailTemplateMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ExchangeRate.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ExchangeRateMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ExternalIntegration.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ExternalIntegrationFieldMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ExternalIntegrationFieldMappingMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ExternalIntegrationMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ExternalIntegrationTypeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ExternalIntegrationTypeMappingMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\FakeDbSet.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\FakeVelocityRocketLegacyContext.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Feature.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\FeatureClaim.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\FeatureClaimMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\FeatureMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Group.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\GroupMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_Client.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ClientClaim.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ClientClaimMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ClientCorsOrigin.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ClientCorsOriginMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ClientCustomGrantType.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ClientCustomGrantTypeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ClientIdPRestriction.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ClientIdPRestrictionMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ClientMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ClientPostLogoutRedirectUri.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ClientPostLogoutRedirectUriMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ClientRedirectUri.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ClientRedirectUriMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ClientScope.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ClientScopeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ClientSecret.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ClientSecretMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_Consent.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ConsentMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_Scope.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ScopeClaim.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ScopeClaimMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ScopeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ScopeSecret.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_ScopeSecretMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_Token.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IdenServ_TokenMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ImportedData.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ImportedDataMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IntegrationPackage.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IntegrationPackageMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Invite.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\InviteMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ItemStep.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ItemStepMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\IVelocityRocketLegacyContext.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\LeadConversion.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\LeadConversionMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\LeadStatu.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\LeadStatuMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Localization.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\LocalizationMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\LogoImage.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\LogoImageMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\MaintenanceSchedule.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\MaintenanceScheduleMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\MeetingVisualiserChartItem.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\MeetingVisualiserChartItemMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Notification.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\NotificationField.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\NotificationFieldMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\NotificationMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\OAuth2Token.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\OAuth2TokenMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Organisation.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\OrganisationAllowedRole.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\OrganisationAllowedRoleMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\OrganisationMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\OrganisationSalesObjectView.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\OrganisationSalesObjectViewMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\OrgEmailNotificiationPreference.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\OrgEmailNotificiationPreferenceMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\PackageItem.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\PackageItemMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\PasswordResetRequest.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\PasswordResetRequestMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\PickList.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\PickListMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\PickListOption.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\PickListOptionMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ReminderTask.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ReminderTaskMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Role.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\RoleClaim.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\RoleClaimMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\RoleMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Rule.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\RuleMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SalesObjectView.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SalesObjectViewArchive.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SalesObjectViewArchiveItem.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SalesObjectViewArchiveItemMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SalesObjectViewArchiveMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SalesObjectViewMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SalesProcess.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SalesProcessMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SalesTrainingCompany.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SalesTrainingCompanyMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Search.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SearchMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Section.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SectionCustomLink.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SectionCustomLinkMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SectionMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SideNav.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SideNavItem.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SideNavItemMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SideNavMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SideNavSideNavItemLookup.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SideNavSideNavItemLookupMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Stage.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\StageMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\StandardObjectDefinition.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\StandardObjectDefinitionMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\StandardObjectRelationshipDefintion.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\StandardObjectRelationshipDefintionMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\StandardRelationship.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\StandardRelationshipMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Statement.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\StatementMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\StcOrg.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\StcOrgMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\StcTheme.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\StcThemeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Step.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\StepActionFile.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\StepActionFileMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\StepDocument.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\StepDocumentMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\StepMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Subscription.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SubscriptionAddOn.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SubscriptionAddOnMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SubscriptionMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SystemPreference.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\SystemPreferenceMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\TableHeader.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\TableHeaderMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\TablePreference.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\TablePreferenceMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\Task.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\TaskContact.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\TaskContactMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\TaskMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\TaskShare.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\TaskShareMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\TaskType.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\TaskTypeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\TempNotification.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\TempNotificationField.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\TempNotificationFieldMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\TempNotificationMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoAccess.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoAccessMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoAccessRule.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoAccessRuleMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoCacheInstruction.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoCacheInstructionMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoDomain.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoDomainMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoExternalLogin.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoExternalLoginMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoLanguage.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoLanguageMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoLock.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoLockMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoLog.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoLogMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoMigration.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoMigrationMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoNode.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoNodeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoRedirectUrl.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoRedirectUrlMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoRelation.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoRelationMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoRelationType.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoRelationTypeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoServer.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoServerMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoUser.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoUser2App.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoUser2AppMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoUser2NodeNotify.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoUser2NodeNotifyMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoUser2NodePermission.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoUser2NodePermissionMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoUserMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoUserType.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UmbracoUserTypeMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UsageAction.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UsageActionMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UsageLevel.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UsageLevelMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UsageRecord.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UsageRecordMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\User.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UserClaim.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UserClaimMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UserEmailNotificationPreference.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UserEmailNotificationPreferenceMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UserLogin.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UserLoginMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UserMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UserProfile.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UserProfileMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UserRole.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UserRoleMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UserTarget.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\UserTargetMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\VelocityRocketLegacyContext.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\VelocityRocketLegacyContextCustom.cs" />
+    <Compile Include="LegacyDatabase\VelocityRocketLegacyDatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ViewRecord.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\ViewRecordMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\WatchNotificationEmail.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyDatabase\WatchNotificationEmailMapping.cs">
+      <DependentUpon>VelocityRocketLegacyDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705130924463_initilMigration.cs" />
+    <Compile Include="Migrations\201705130924463_initilMigration.Designer.cs">
+      <DependentUpon>201705130924463_initilMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SchemaBuilder\MicrosoftSQL\GetMicrosoftDatabaseSchemaDetails.cs" />
+    <Compile Include="SchemaBuilder\MicrosoftSQL\Helpers\DataTableHelpers.cs" />
+    <Compile Include="SchemaBuilder\MicrosoftSQL\SchemaModels\ColumnInfo.cs" />
+    <Compile Include="SchemaBuilder\MicrosoftSQL\SchemaModels\ConstraintInfo.cs" />
+    <Compile Include="SchemaBuilder\MicrosoftSQL\SchemaModels\DataInfo.cs" />
+    <Compile Include="SchemaBuilder\MicrosoftSQL\SchemaModels\IdentityInfo.cs" />
+    <Compile Include="SchemaBuilder\MicrosoftSQL\SchemaModels\IndexInfo.cs" />
+    <Compile Include="SchemaBuilder\MicrosoftSQL\SchemaModels\ModelInfo.cs" />
+    <Compile Include="SchemaBuilder\MicrosoftSQL\SchemaModels\RowGuidInfo.cs" />
+    <Compile Include="SchemaBuilder\MicrosoftSQL\SchemaModels\TableFkInfo.cs" />
+    <Compile Include="SchemaBuilder\MicrosoftSQL\SchemaModels\TableInfo.cs" />
+    <Compile Include="Services\AccountsService\AccountService.cs" />
+    <Compile Include="Services\AccountsService\AccountsMapper.cs" />
+    <Compile Include="Services\AccountsService\AccountsViewModel.cs" />
+    <Compile Include="Services\AccountsService\Delete.cs" />
+    <Compile Include="Services\AccountsService\QueryLogic.cs" />
+    <Compile Include="Services\AccountsService\QueryLogicRule.cs" />
+    <Compile Include="Services\AccountsService\Save.cs" />
+    <Compile Include="Services\AccountsService\View.cs" />
+    <Compile Include="Services\ContactsService\ContactService.cs" />
+    <Compile Include="Services\ContactsService\ContactsMapper.cs" />
+    <Compile Include="Services\ContactsService\ContactsViewModel.cs" />
+    <Compile Include="Services\ContactsService\Delete.cs" />
+    <Compile Include="Services\ContactsService\LimitContacts.cs" />
+    <Compile Include="Services\ContactsService\QueryLogic.cs" />
+    <Compile Include="Services\ContactsService\Save.cs" />
+    <Compile Include="Services\ContactsService\Update.cs" />
+    <Compile Include="Services\ContactsService\View.cs" />
+    <Compile Include="Services\CustomFieldsService\CustomFieldService.cs" />
+    <Compile Include="Services\CustomFieldsService\CustomFieldsMapper.cs" />
+    <Compile Include="Services\CustomFieldsService\CustomFieldsViewModel.cs" />
+    <Compile Include="Services\CustomFieldsService\Delete.cs" />
+    <Compile Include="Services\CustomFieldsService\QueryLogic.cs" />
+    <Compile Include="Services\CustomFieldsService\Save.cs" />
+    <Compile Include="Services\CustomFieldsService\Update.cs" />
+    <Compile Include="Services\CustomFieldsService\View.cs" />
+    <Compile Include="Services\CustomFieldValuesService\CustomFieldValueService.cs" />
+    <Compile Include="Services\CustomFieldValuesService\CustomFieldValuesMapper.cs" />
+    <Compile Include="Services\CustomFieldValuesService\CustomFieldValuesViewModel.cs" />
+    <Compile Include="Services\CustomFieldValuesService\Delete.cs" />
+    <Compile Include="Services\CustomFieldValuesService\QueryLogic.cs" />
+    <Compile Include="Services\CustomFieldValuesService\QueryLogicRule.cs" />
+    <Compile Include="Services\CustomFieldValuesService\Save.cs" />
+    <Compile Include="Services\CustomFieldValuesService\View.cs" />
+    <Compile Include="Services\CustomObjectRowFieldsService\Delete.cs" />
+    <Compile Include="Services\CustomObjectRowFieldsService\Mapper.cs" />
+    <Compile Include="Services\CustomObjectRowFieldsService\Query.cs" />
+    <Compile Include="Services\CustomObjectRowFieldsService\QueryLogicRule.cs" />
+    <Compile Include="Services\CustomObjectRowFieldsService\Save.cs" />
+    <Compile Include="Services\CustomObjectRowFieldsService\Service.cs" />
+    <Compile Include="Services\CustomObjectRowFieldsService\View.cs" />
+    <Compile Include="Services\CustomObjectRowFieldsService\ViewModel.cs" />
+    <Compile Include="Services\DealsService\CheckRequiredFields.cs" />
+    <Compile Include="Services\DealsService\DealService.cs" />
+    <Compile Include="Services\DealsService\DealsMapper.cs" />
+    <Compile Include="Services\DealsService\DealsViewModel.cs" />
+    <Compile Include="Services\DealsService\Delete.cs" />
+    <Compile Include="Services\DealsService\LimitDeals.cs" />
+    <Compile Include="Services\DealsService\QueryLogic.cs" />
+    <Compile Include="Services\DealsService\LimitOrganisation.cs" />
+    <Compile Include="Services\DealsService\Save.cs" />
+    <Compile Include="Services\DealsService\View.cs" />
+    <Compile Include="Services\PageBuilderService\Frameworks\Angular\AngularBuilder.cs" />
+    <Compile Include="Services\PageBuilderService\Frameworks\Angular\NgHelp.cs" />
+    <Compile Include="Services\PageBuilderService\Frameworks\Angular\PageObject.cs" />
+    <Compile Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Input\Checkbox\Type6.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Type6.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Input\Checkbox\Type6Loader.cs" />
+    <Compile Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Input\DatePicker\Type7.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Type7.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Input\DatePicker\Type7Loader.cs" />
+    <Compile Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Input\TextField\Type3.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Type3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Input\TextField\Type3Loader.cs" />
+    <Compile Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Label\Type2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Type2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Label\Type2Loader.cs" />
+    <Compile Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Picklist\Type5.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Type5.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Picklist\Type5Loader.cs" />
+    <Compile Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Section\Type1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Type1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Section\Type1Loader.cs" />
+    <Compile Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Table\Type13.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Type13.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Table\Type13Loader.cs" />
+    <Compile Include="Services\PageBuilderService\Frameworks\SpringX\SpringxBuilder.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\PageBuilderJsonClasses.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\Align.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\BackgroundColor.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\BorderColor.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\CardDetails.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\Date.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\Dialog.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\DisplayValue.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\Field.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\Height.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\Hyperlink.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\LayoutDirection.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\LookupData.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\MapDataMappingOptions.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\Options.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\SummaryOptions.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\TextColor.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\TextSize.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\Visibility.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\TypeProperties\Width.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\Types\Element.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\Types\IPageBuilderElement.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\Types\IPageBuilderTemplate.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\Types\Type1.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\Types\Type13.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\Types\Type2.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\Types\Type22.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\Types\Type23.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\Types\Type3.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\Types\Type5.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\Types\Type6.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\Types\Type7.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderDefinitionClasses\Types\Type8.cs" />
+    <Compile Include="Services\PageBuilderService\PageBuilderService.cs" />
+    <Compile Include="Services\TasksService\CastlesGetReturnItem.cs" />
+    <Compile Include="Services\TasksService\CastlesInsertLogic.cs" />
+    <Compile Include="Services\TasksService\CastlesMapper.cs" />
+    <Compile Include="Services\TasksService\CastlesQueryLogic.cs" />
+    <Compile Include="Services\TasksService\CastlesQueryRule.cs" />
+    <Compile Include="Services\TasksService\CastlesService.cs" />
+    <Compile Include="Services\TasksService\CastlesUpdateLogic.cs" />
+    <Compile Include="Services\TasksService\CastlesViewLogic.cs" />
+    <Compile Include="Services\TasksService\CastlesVm.cs" />
+    <Compile Include="Services\TasksService\DeleteLogic.cs" />
+    <Compile Include="Services\UsersService\Everything.cs" />
+    <Compile Include="StringHelpers\CastlesStringHelpers.cs" />
+    <Compile Include="Templates\Angular\NgHelp.cs" />
+    <Compile Include="Templates\Angular\Html\AngularTable.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AngularTable.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Angular\Html\AngularTableLoader.cs" />
+    <Compile Include="Templates\Angular\Js\App\App.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>App.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Angular\Js\App\AppLoader.cs" />
+    <Compile Include="Templates\Angular\Js\Controller\MainController.cs">
+      <DependentUpon>MainController.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Angular\Js\Controller\MainControllerLoader.cs" />
+    <Compile Include="Templates\Angular\Js\Service\Service.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Angular\Js\Service\ServiceLoader.cs" />
+    <Compile Include="Templates\Interfaces\IModelInfoTemplate.cs" />
+    <Compile Include="Templates\Interfaces\ITemplateAngular.cs" />
+    <Compile Include="Templates\Interfaces\ITemplateAngularJs.cs" />
+    <Compile Include="Templates\Angular\Html\CastlesAngularEditView.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CastlesAngularEditView.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Angular\Html\CastlesAngularEditViewLoader.cs" />
+    <Compile Include="Templates\Interfaces\ITempalateCustomLogic.cs" />
+    <Compile Include="Templates\Interfaces\ITempalatePresentation.cs" />
+    <Compile Include="Templates\Interfaces\ITempalateTest.cs" />
+    <Compile Include="UmbracoApis\CoreUser.cs" />
+    <Compile Include="UmbracoApis\RestControllers\TasksController.cs" />
+    <Compile Include="UmbracoApis\RestControllers\ContactsController.cs" />
+    <Compile Include="UmbracoApis\RestControllers\AccountsController.cs" />
+    <Compile Include="UmbracoApis\RestControllers\DealsController.cs" />
+    <Compile Include="UmbracoApis\SurfaceControllers\CastleRegisterController.cs" />
+    <Compile Include="UmbracoApis\SurfaceControllers\DealDetailController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Core\ReadMe.txt" />
+    <Content Include="LegacyDatabase\VelocityRocketLegacyDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>VelocityRocketLegacyDatabase.cs</LastGenOutput>
+    </Content>
+    <Content Include="README.txt" />
+    <Content Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Input\Checkbox\Type6.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Type6.cs</LastGenOutput>
+    </Content>
+    <Content Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Input\DatePicker\Type7.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Type7.cs</LastGenOutput>
+    </Content>
+    <Content Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Input\TextField\Type3.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Type3.cs</LastGenOutput>
+    </Content>
+    <Content Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Label\Type2.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Type2.cs</LastGenOutput>
+    </Content>
+    <Content Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Picklist\Type5.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Type5.cs</LastGenOutput>
+    </Content>
+    <Content Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Section\Type1.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Type1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Services\PageBuilderService\Frameworks\Angular\Templates\Html\Table\Type13.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Type13.cs</LastGenOutput>
+    </Content>
+    <Content Include="Services\PageBuilderService\Frameworks\Angular\Templates\Javascript\ReadMe.txt" />
+    <Content Include="Templates\Angular\Html\AngularTable.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AngularTable.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Angular\Js\App\App.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>App.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Angular\Js\Controller\MainController.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MainController.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Angular\Js\Service\Service.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Service.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Angular\Html\CastlesAngularEditView.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CastlesAngularEditView.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\PageBuilderService\Frameworks\Angular\Templates\css\" />
+    <Folder Include="Services\PageBuilderService\Frameworks\Angular\Templates\Javascript\Table\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="LegacyDatabase\EF.Reverse.POCO.Core.ttinclude" />
+    <None Include="LegacyDatabase\EF.Reverse.POCO.ttinclude" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201705130924463_initilMigration.resx">
+      <DependentUpon>201705130924463_initilMigration.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\PostSharp.4.3.30\tools\PostSharp.targets" Condition="Exists('..\packages\PostSharp.4.3.30\tools\PostSharp.targets')" />
+  <Target Name="EnsurePostSharpImported" BeforeTargets="BeforeBuild" Condition="'$(PostSharp30Imported)' == ''">
+    <Error Condition="!Exists('..\packages\PostSharp.4.3.30\tools\PostSharp.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://www.postsharp.net/links/nuget-restore." />
+    <Error Condition="Exists('..\packages\PostSharp.4.3.30\tools\PostSharp.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://www.postsharp.net/links/nuget-restore." />
+  </Target>
+  <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

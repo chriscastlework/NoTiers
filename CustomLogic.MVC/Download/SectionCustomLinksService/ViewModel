@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.SectionCustomLinkService
+{
+    public class SectionCustomLinksViewModel
+    {
+
+        public int Id {get;set;}
+        public int SectionId {get;set;}
+        public int CustomLinkId {get;set;}
+        public int OrderInSection {get;set;}
+
+    }
+}

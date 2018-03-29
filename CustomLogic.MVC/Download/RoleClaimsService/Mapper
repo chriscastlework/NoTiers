@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.RoleClaimsService
+{
+public static class RoleClaimsMapper
+{
+
+public static RoleClaim MapInsertModelToDbModel(RoleClaimsViewModel model, RoleClaim newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new RoleClaim();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.ClaimType = model.ClaimType;
+            newDomainModel.ClaimValue = model.ClaimValue;
+            newDomainModel.ApplicationRoleId = model.ApplicationRoleId;
+    return newDomainModel;
+    }
+
+
+
+public static RoleClaimsViewModel MapDbModelToViewModel(RoleClaim dbModel)
+{
+var viewModel = new  RoleClaimsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.ClaimType = dbModel.ClaimType;
+            viewModel.ClaimValue = dbModel.ClaimValue;
+            viewModel.ApplicationRoleId = dbModel.ApplicationRoleId;
+
+return viewModel;
+}
+
+
+public static IQueryable<RoleClaimsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<RoleClaim> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new RoleClaimsViewModel()
+        {
+Id = c.Id,
+ClaimType = c.ClaimType,
+ClaimValue = c.ClaimValue,
+ApplicationRoleId = c.ApplicationRoleId,
+        });
+        }
+    }
+}
+
+

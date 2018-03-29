@@ -1,0 +1,190 @@
+.sp_ui_sunchart
+{
+    /*border: 1px solid black;*/
+    top: 10px;
+    left: 10px;
+    position: relative;
+}
+
+.sp_ui_sunchart canvas.grid_canvas,
+.sp_ui_sunchart .items_overlay
+{
+    position: absolute;
+}
+
+.sp_ui_sunchart .items_overlay
+{
+    z-index: 100;
+}
+
+.sp_ui_sunchart .sunchart_label
+{
+    /*border: 1px solid black;*/
+    position: absolute;
+}
+
+.sp_ui_sunchart .sunchart_label.vertical
+{
+    min-width: 40px;
+    left: 0 !important;
+}
+
+.sp_ui_sunchart .sunchart_label.vertical canvas, .sp_ui_sunchart .sunchart_label.vertical input
+{
+    position: absolute;
+    left: 22px !important;
+    text-align: center;
+}
+
+.sunchart_label.vertical input
+{
+    top: 50%;
+    margin-top: -8px !important;
+}
+
+.sp_ui_sunchart .sunchart_label.vertical .hide_button
+{
+    left: 2px;
+    top: 50% !important;
+    margin-top: -8px;
+}
+
+.sp_ui_sunchart .sunchart_label.horizontal
+{
+    min-height: 40px;
+    top: 0 !important;
+}
+
+.sp_ui_sunchart .sunchart_label.horizontal canvas, .sp_ui_sunchart .sunchart_label.horizontal input
+{
+    position: absolute;
+    top: 22px !important;
+    text-align: center;
+}
+
+.sp_ui_sunchart .sunchart_label.horizontal .hide_button
+{
+    left: 50%;
+    top: 2px !important;
+    margin-left: -8px;
+}
+
+.sp_ui_sunchart .sunchart_label a.hide_button
+{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 16px;
+    height: 16px;
+    background: url('../res/icon_sunchart_hide_inactive.png') no-repeat center center;
+    text-decoration: none;
+}
+
+.sp_ui_sunchart .sunchart_label a.hide_button:hover
+{
+    background: url('../res/icon_sunchart_hide_active.png') no-repeat center center;
+}
+
+.sp_ui_sunchart  .post_it
+{
+    font-family: sans-serif;
+    position: absolute;
+    word-wrap: break-word;
+    overflow: hidden;
+    -webkit-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
+    box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
+}
+
+.sp_ui_sunchart  .arrow_container
+{
+    font-family: sans-serif;
+    background: url('../res/arrow_big.png') no-repeat center center;
+    background-size: contain;
+}
+
+.sp_ui_sunchart  .sunchart_button
+{
+    background-color: white;
+    font-family: sans-serif;
+    border: 1px solid #a9a9a9;
+    text-decoration: none;
+    color: black;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    padding: 2px;
+}
+
+.sp_ui_sunchart  .sunchart_button.add_column
+{
+    top: 2px;
+    font-size: 10pt;
+}
+
+.sp_ui_sunchart  .sunchart_button.add_row
+{
+    font-size: 10pt;
+    top: 24px;
+}
+
+.sp_ui_sunchart  .sunchart_button.axis_limit_selection
+{
+    font-size: 10pt;
+    top: 46px;
+}
+
+.sp_ui_sunchart  a.sunchart_button:hover
+{
+    background-color: #d3d3d3;
+}
+
+.sp_ui_sunchart  .new_postit_draggable
+{
+    position: absolute;
+    background-color: #d3d3d3;
+    font-size: 10pt;
+    top: 0;
+    right: 0;
+    z-index: 10000;
+}
+
+.sp_ui_sunchart_edit_postit_dialog textarea
+{
+    width: 96%;
+    height: 90%;
+    resize: none;
+}
+
+.sp_ui_sunchart_edit_arrow_dialog textarea
+{
+    width: 96%;
+    height: 90%;
+    resize: none;
+}
+
+.sp_ui_sunchart_edit_label_dialog input
+{
+    width: 96%;
+}
+
+.arrow_placeholder
+{
+    z-index: 99;
+}
+
+.arrow_placeholder.active
+{
+    z-index: 101;
+}
+
+
+.post_it textarea:focus
+{
+    margin: 0;
+    border: 1px solid black !important;
+    background-color: white !important;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}

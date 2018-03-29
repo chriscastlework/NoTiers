@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.UserFoldersService
+{
+    public class Save : IInsertEvent<UserFoldersViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(UserFoldersViewModel model, IUnitOfWork unitOfWork, Response<UserFoldersViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = UserFolders();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<UserFolder>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = UserFolders
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(UserFoldersViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<UserFolder>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<UserFolder>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

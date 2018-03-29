@@ -1,0 +1,32 @@
+﻿@model CustomLogic.SchemaBuilder.MicrosoftSQL.SchemaModels.ModelInfo
+
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.@Html.Raw(Model.TT_ViewModelName())Service
+{
+    public class Update : IUpdateEvent<@Html.Raw(Model.TT_ViewModelName())ViewModel,@Html.Raw(Model.TT_TableName())>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(@Html.Raw(Model.TT_ViewModelName())ViewModel model, ref IQueryable<@Html.Raw(Model.TT_TableName())> repository, IUnitOfWork unitOfWork, Response<@Html.Raw(Model.TT_ViewModelName())ViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = @Html.Raw(Model.TT_ViewModelName())
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<@Html.Raw(Model.TT_TableName())>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = @Html.Raw(Model.TT_ViewModelName())Mapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

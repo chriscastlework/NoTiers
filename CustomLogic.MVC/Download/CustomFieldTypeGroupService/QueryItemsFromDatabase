@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CustomFieldTypeGroupService
+{
+    public class QueryLogic : IViewListEvent<CustomFieldTypeGroupViewModel, CustomFieldTypeGroup>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<CustomFieldTypeGroup> repository, NgTable<CustomFieldTypeGroupViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<CustomFieldTypeGroupViewModel>();
+
+            var query = CustomFieldTypeGroup
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

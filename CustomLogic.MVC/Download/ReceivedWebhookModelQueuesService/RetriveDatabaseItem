@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ReceivedWebhookModelQueuesService
+{
+    public class View : IViewEvent<ReceivedWebhookModelQueuesViewModel,ReceivedWebhookModelQueue>
+    {
+        public int CreatedId = 0;
+
+        public Response<ReceivedWebhookModelQueuesViewModel> Run(ReceivedWebhookModelQueuesViewModel model,ref IQueryable<ReceivedWebhookModelQueue> repository, IUnitOfWork unitOfWork, Response<ReceivedWebhookModelQueuesViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = ReceivedWebhookModelQueues
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing ReceivedWebhookModelQueues");
+            }
+
+            return result;
+        }
+
+    }
+}

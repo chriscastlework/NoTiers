@@ -1,0 +1,15 @@
+using System;
+
+namespace CustomLogic.Services.AddOnClaimService
+{
+    public class AddOnClaimsViewModel
+    {
+
+        public int Id {get;set;}
+        public int AddOnId {get;set;}
+        public string Name {get;set;}
+        public string Description {get;set;}
+        public string ClaimType {get;set;}
+
+    }
+}

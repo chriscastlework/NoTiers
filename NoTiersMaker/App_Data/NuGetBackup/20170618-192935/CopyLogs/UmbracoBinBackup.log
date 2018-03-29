@@ -1,0 +1,68 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows                              
+-------------------------------------------------------------------------------
+
+  Started : 18 June 2017 19:29:35
+   Source : C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\CSharpeToolSet\NoTiersMaker\bin\
+     Dest : C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\CSharpeToolSet\NoTiersMaker\App_Data\NuGetBackup\20170618-192935\bin\
+
+    Files : *.*
+	    
+  Options : *.* /S /E /DCOPY:DA /COPY:DAT /R:1000000 /W:30 
+
+------------------------------------------------------------------------------
+
+	                   2	C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\CSharpeToolSet\NoTiersMaker\bin\
+	    New File  		   29344	Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll  0%  100%  
+	    New File  		    1805	Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml  0%  100%  
+	  New Dir         13	C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\CSharpeToolSet\NoTiersMaker\bin\Debug\
+	    New File  		   1.4 m	CustomLogic.dll  0%   16%   33%   50%   66%   83%  100%  
+	    New File  		    1049	CustomLogic.dll.config  0%  100%  
+	    New File  		   2.3 m	CustomLogic.pdb  0%   21%   42%   63%   84%  100%  
+	    New File  		     216	CustomLogic.pssym  0%  100%  
+	    New File  		   4.9 m	EntityFramework.dll  0%   10%   20%   30%   40%   50%   60%   70%   80%   90%  100%  
+	    New File  		  621264	EntityFramework.SqlServer.dll  0%   42%   84%  100%  
+	    New File  		  154866	EntityFramework.SqlServer.xml  0%   84%  100%  
+	    New File  		   3.4 m	EntityFramework.xml  0%   14%   28%   43%   57%   71%   86%  100%  
+	    New File  		  171672	Microsoft.AspNet.Identity.Core.dll  0%   76%  100%  
+	    New File  		  124939	Microsoft.AspNet.Identity.Core.xml  0%  100%  
+	    New File  		  502272	Newtonsoft.Json.dll  0%   26%   52%   78%  100%  
+	    New File  		  478726	Newtonsoft.Json.xml  0%   27%   54%   82%  100%  
+	    New File  		       9	nunit_random_seed.tmp  0%  100%  
+	  New Dir          0	C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\CSharpeToolSet\NoTiersMaker\bin\Debug\Core\
+	  New Dir          2	C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\CSharpeToolSet\NoTiersMaker\bin\Debug\Core\BaseClasses\
+	    New File  		     419	EntityModelBase.cs  0%  100%  
+	    New File  		   10165	ServiceBase.cs  0%  100%  
+	  New Dir         13	C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\CSharpeToolSet\NoTiersMaker\bin\Release\
+	    New File  		    4476	Core.7z  0%  100%  
+	    New File  		   1.4 m	CustomLogic.dll  0%   17%   35%   52%   70%   87%  100%  
+	    New File  		    1049	CustomLogic.dll.config  0%  100%  
+	    New File  		   2.3 m	CustomLogic.pdb  0%   21%   42%   63%   85%  100%  
+	    New File  		     216	CustomLogic.pssym  0%  100%  
+	    New File  		   4.9 m	EntityFramework.dll  0%   10%   20%   30%   40%   50%   60%   70%   80%   90%  100%  
+	    New File  		  621264	EntityFramework.SqlServer.dll  0%   42%   84%  100%  
+	    New File  		  154866	EntityFramework.SqlServer.xml  0%   84%  100%  
+	    New File  		   3.4 m	EntityFramework.xml  0%   14%   28%   43%   57%   71%   86%  100%  
+	    New File  		  171672	Microsoft.AspNet.Identity.Core.dll  0%   76%  100%  
+	    New File  		  124939	Microsoft.AspNet.Identity.Core.xml  0%  100%  
+	    New File  		  502272	Newtonsoft.Json.dll  0%   26%   52%   78%  100%  
+	    New File  		  478726	Newtonsoft.Json.xml  0%   27%   54%   82%  100%  
+	  New Dir          0	C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\CSharpeToolSet\NoTiersMaker\bin\Release\Core\
+	  New Dir          2	C:\Users\ChrisCastle\Documents\Visual Studio 2015\Projects\CSharpeToolSet\NoTiersMaker\bin\Release\Core\BaseClasses\
+	    New File  		     419	EntityModelBase.cs  0%  100%  
+	    New File  		   10163	ServiceBase.cs  0%  100%  
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :         7         6         1         0         0         0
+   Files :        32        32         0         0         0         0
+   Bytes :   28.47 m   28.47 m         0         0         0         0
+   Times :   0:00:02   0:00:02                       0:00:00   0:00:00
+
+
+   Speed :            14652803 Bytes/sec.
+   Speed :             838.440 MegaBytes/min.
+   Ended : 18 June 2017 19:29:37
+

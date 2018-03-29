@@ -1,0 +1,48 @@
+using System.Linq;
+
+namespace CustomLogic.Services.TablePreferencesService
+{
+public static class TablePreferencesMapper
+{
+
+public static TablePreference MapInsertModelToDbModel(TablePreferencesViewModel model, TablePreference newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new TablePreference();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.SystemPreferences_Id = model.SystemPreferences_Id;
+    return newDomainModel;
+    }
+
+
+
+public static TablePreferencesViewModel MapDbModelToViewModel(TablePreference dbModel)
+{
+var viewModel = new  TablePreferencesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.SystemPreferences_Id = dbModel.SystemPreferences_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<TablePreferencesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<TablePreference> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new TablePreferencesViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+SystemPreferences_Id = c.SystemPreferences_Id,
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.AddOnCostsService
+{
+    public class QueryLogic : IViewListEvent<AddOnCostsViewModel, AddOnCost>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<AddOnCost> repository, NgTable<AddOnCostsViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<AddOnCostsViewModel>();
+
+            var query = AddOnCosts
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,75 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CustomObjectRowsService
+{
+public static class CustomObjectRowsMapper
+{
+
+public static CustomObjectRow MapInsertModelToDbModel(CustomObjectRowsViewModel model, CustomObjectRow newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CustomObjectRow();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Created = model.Created;
+            newDomainModel.LastModified = model.LastModified;
+            newDomainModel.CreatedBy_Id = model.CreatedBy_Id;
+            newDomainModel.LastModifiedBy_Id = model.LastModifiedBy_Id;
+            newDomainModel.Organisation_Id = model.Organisation_Id;
+            newDomainModel.CustomObject_Id = model.CustomObject_Id;
+            newDomainModel.OwnerId = model.OwnerId;
+            newDomainModel.SalesProcessId = model.SalesProcessId;
+            newDomainModel.StageId = model.StageId;
+            newDomainModel.ExternalId = model.ExternalId;
+    return newDomainModel;
+    }
+
+
+
+public static CustomObjectRowsViewModel MapDbModelToViewModel(CustomObjectRow dbModel)
+{
+var viewModel = new  CustomObjectRowsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.Created = dbModel.Created;
+            viewModel.LastModified = dbModel.LastModified;
+            viewModel.CreatedBy_Id = dbModel.CreatedBy_Id;
+            viewModel.LastModifiedBy_Id = dbModel.LastModifiedBy_Id;
+            viewModel.Organisation_Id = dbModel.Organisation_Id;
+            viewModel.CustomObject_Id = dbModel.CustomObject_Id;
+            viewModel.OwnerId = dbModel.OwnerId;
+            viewModel.SalesProcessId = dbModel.SalesProcessId;
+            viewModel.StageId = dbModel.StageId;
+            viewModel.ExternalId = dbModel.ExternalId;
+
+return viewModel;
+}
+
+
+public static IQueryable<CustomObjectRowsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CustomObjectRow> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CustomObjectRowsViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+Created = c.Created,
+LastModified = c.LastModified,
+CreatedBy_Id = c.CreatedBy_Id,
+LastModifiedBy_Id = c.LastModifiedBy_Id,
+Organisation_Id = c.Organisation_Id,
+CustomObject_Id = c.CustomObject_Id,
+OwnerId = c.OwnerId,
+SalesProcessId = c.SalesProcessId,
+StageId = c.StageId,
+ExternalId = c.ExternalId,
+        });
+        }
+    }
+}
+
+

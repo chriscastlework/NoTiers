@@ -1,0 +1,37 @@
+using System;
+
+namespace CustomLogic.Services.OrganisationService
+{
+    public class OrganisationsViewModel
+    {
+
+        public int Id {get;set;}
+        public string Name {get;set;}
+        public string BillingCurrency {get;set;}
+        public int? Subscription_Id {get;set;}
+        public string BraintreeCustomerId {get;set;}
+        public bool IsGlobalPermissions {get;set;}
+        public DateTime? DateCreated {get;set;}
+        public DateTime? DateLastModeified {get;set;}
+        public string CreatedById {get;set;}
+        public string LastModifiedById {get;set;}
+        public bool AllowMultipleDealContactRoles {get;set;}
+        public string DefaultOrgCurrency {get;set;}
+        public DateTime? FinacialYearEndDateTime {get;set;}
+        public bool NewTrialNotificationEmailSent {get;set;}
+        public bool GlobalEmailPreferences {get;set;}
+        public int? DefaultStc_Id {get;set;}
+        public int? OrganisationTheme_Id {get;set;}
+        public bool HasOrganisationTheme {get;set;}
+        public int? IsStc_Id {get;set;}
+        public int? DealsLimit {get;set;}
+        public int? LeadsLimit {get;set;}
+        public int? ContactsLimit {get;set;}
+        public int? PartnersLimit {get;set;}
+        public int? AccountsLimit {get;set;}
+        public int? TasksLimit {get;set;}
+        public int? CustomObjectsLimit {get;set;}
+        public bool? EnableImpersonate {get;set;}
+
+    }
+}

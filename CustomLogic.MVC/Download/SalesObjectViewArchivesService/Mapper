@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.SalesObjectViewArchivesService
+{
+public static class SalesObjectViewArchivesMapper
+{
+
+public static SalesObjectViewArchive MapInsertModelToDbModel(SalesObjectViewArchivesViewModel model, SalesObjectViewArchive newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new SalesObjectViewArchive();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.OrganisationId = model.OrganisationId;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Created = model.Created;
+    return newDomainModel;
+    }
+
+
+
+public static SalesObjectViewArchivesViewModel MapDbModelToViewModel(SalesObjectViewArchive dbModel)
+{
+var viewModel = new  SalesObjectViewArchivesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+            viewModel.Name = dbModel.Name;
+            viewModel.Created = dbModel.Created;
+
+return viewModel;
+}
+
+
+public static IQueryable<SalesObjectViewArchivesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<SalesObjectViewArchive> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new SalesObjectViewArchivesViewModel()
+        {
+Id = c.Id,
+OrganisationId = c.OrganisationId,
+Name = c.Name,
+Created = c.Created,
+        });
+        }
+    }
+}
+
+

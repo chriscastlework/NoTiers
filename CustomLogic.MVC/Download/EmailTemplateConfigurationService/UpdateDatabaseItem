@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.EmailTemplateConfigurationService
+{
+    public class Update : IUpdateEvent<EmailTemplateConfigurationViewModel,EmailTemplateConfiguration>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(EmailTemplateConfigurationViewModel model, ref IQueryable<EmailTemplateConfiguration> repository, IUnitOfWork unitOfWork, Response<EmailTemplateConfigurationViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = EmailTemplateConfiguration
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<EmailTemplateConfiguration>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = EmailTemplateConfigurationMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

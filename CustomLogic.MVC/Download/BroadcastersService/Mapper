@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.BroadcastersService
+{
+public static class BroadcastersMapper
+{
+
+public static Broadcaster MapInsertModelToDbModel(BroadcastersViewModel model, Broadcaster newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Broadcaster();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static BroadcastersViewModel MapDbModelToViewModel(Broadcaster dbModel)
+{
+var viewModel = new  BroadcastersViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<BroadcastersViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Broadcaster> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new BroadcastersViewModel()
+        {
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.DealStepsService
+{
+    public class Delete : IDeleteEvent<DealStepsViewModel,DealStep>
+    {
+
+        public bool Run(DealSteps ViewModel model, ref IQueryable<DealStep>repository, IUnitOfWork unitOfWork, Response<DealStepsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<DealStep>().Find(model.Id);unitOfWork.With<DealStep>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

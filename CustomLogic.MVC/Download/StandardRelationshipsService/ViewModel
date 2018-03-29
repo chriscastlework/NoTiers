@@ -1,0 +1,24 @@
+using System;
+
+namespace CustomLogic.Services.StandardRelationshipService
+{
+    public class StandardRelationshipsViewModel
+    {
+
+        public int Id {get;set;}
+        public int? StandardObjectDefinition_Id {get;set;}
+        public int? Organisation_Id {get;set;}
+        public int? Contact_Id {get;set;}
+        public string Value {get;set;}
+        public int? CustomObjectRow_Id {get;set;}
+        public int? StandardObjectRelationshipDefintion_Id {get;set;}
+        public string ClassName {get;set;}
+        public int? Deal_Id {get;set;}
+        public int? Task_Id {get;set;}
+        public int? Account_Id {get;set;}
+        public string Key {get;set;}
+        public string DependantValue {get;set;}
+        public int? CustomObject_Id {get;set;}
+
+    }
+}

@@ -1,0 +1,63 @@
+using System.Linq;
+
+namespace CustomLogic.Services.InvitesService
+{
+public static class InvitesMapper
+{
+
+public static Invite MapInsertModelToDbModel(InvitesViewModel model, Invite newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Invite();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.EmailAccessor = model.EmailAccessor;
+            newDomainModel.Email = model.Email;
+            newDomainModel.Accepted = model.Accepted;
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.FirstName = model.FirstName;
+            newDomainModel.LastName = model.LastName;
+            newDomainModel.OrganisationId = model.OrganisationId;
+    return newDomainModel;
+    }
+
+
+
+public static InvitesViewModel MapDbModelToViewModel(Invite dbModel)
+{
+var viewModel = new  InvitesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.EmailAccessor = dbModel.EmailAccessor;
+            viewModel.Email = dbModel.Email;
+            viewModel.Accepted = dbModel.Accepted;
+            viewModel.UserId = dbModel.UserId;
+            viewModel.FirstName = dbModel.FirstName;
+            viewModel.LastName = dbModel.LastName;
+            viewModel.OrganisationId = dbModel.OrganisationId;
+
+return viewModel;
+}
+
+
+public static IQueryable<InvitesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Invite> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new InvitesViewModel()
+        {
+Id = c.Id,
+EmailAccessor = c.EmailAccessor,
+Email = c.Email,
+Accepted = c.Accepted,
+UserId = c.UserId,
+FirstName = c.FirstName,
+LastName = c.LastName,
+OrganisationId = c.OrganisationId,
+        });
+        }
+    }
+}
+
+

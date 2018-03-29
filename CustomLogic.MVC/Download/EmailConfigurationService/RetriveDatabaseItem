@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.EmailConfigurationService
+{
+    public class View : IViewEvent<EmailConfigurationViewModel,EmailConfiguration>
+    {
+        public int CreatedId = 0;
+
+        public Response<EmailConfigurationViewModel> Run(EmailConfigurationViewModel model,ref IQueryable<EmailConfiguration> repository, IUnitOfWork unitOfWork, Response<EmailConfigurationViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = EmailConfiguration
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing EmailConfiguration");
+            }
+
+            return result;
+        }
+
+    }
+}

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.DealContactsService
+{
+    public class Delete : IDeleteEvent<DealContactsViewModel,DealContact>
+    {
+
+        public bool Run(DealContacts ViewModel model, ref IQueryable<DealContact>repository, IUnitOfWork unitOfWork, Response<DealContactsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<DealContact>().Find(model.Id);unitOfWork.With<DealContact>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.SideNavSideNavItemLookupsService
+{
+    public class Delete : IDeleteEvent<SideNavSideNavItemLookupsViewModel,SideNavSideNavItemLookup>
+    {
+
+        public bool Run(SideNavSideNavItemLookups ViewModel model, ref IQueryable<SideNavSideNavItemLookup>repository, IUnitOfWork unitOfWork, Response<SideNavSideNavItemLookupsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<SideNavSideNavItemLookup>().Find(model.Id);unitOfWork.With<SideNavSideNavItemLookup>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

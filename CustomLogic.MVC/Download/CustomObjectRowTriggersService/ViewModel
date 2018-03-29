@@ -1,0 +1,10 @@
+using System;
+
+namespace CustomLogic.Services.CustomObjectRowTriggerService
+{
+    public class CustomObjectRowTriggersViewModel
+    {
+
+
+    }
+}

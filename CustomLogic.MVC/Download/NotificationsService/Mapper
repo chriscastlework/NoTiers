@@ -1,0 +1,57 @@
+using System.Linq;
+
+namespace CustomLogic.Services.NotificationsService
+{
+public static class NotificationsMapper
+{
+
+public static Notification MapInsertModelToDbModel(NotificationsViewModel model, Notification newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Notification();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.TableName = model.TableName;
+            newDomainModel.UserId = model.UserId;
+            newDomainModel.Actions = model.Actions;
+            newDomainModel.TableIdValue = model.TableIdValue;
+            newDomainModel.UpdateDate = model.UpdateDate;
+    return newDomainModel;
+    }
+
+
+
+public static NotificationsViewModel MapDbModelToViewModel(Notification dbModel)
+{
+var viewModel = new  NotificationsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.TableName = dbModel.TableName;
+            viewModel.UserId = dbModel.UserId;
+            viewModel.Actions = dbModel.Actions;
+            viewModel.TableIdValue = dbModel.TableIdValue;
+            viewModel.UpdateDate = dbModel.UpdateDate;
+
+return viewModel;
+}
+
+
+public static IQueryable<NotificationsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Notification> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new NotificationsViewModel()
+        {
+Id = c.Id,
+TableName = c.TableName,
+UserId = c.UserId,
+Actions = c.Actions,
+TableIdValue = c.TableIdValue,
+UpdateDate = c.UpdateDate,
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,18 @@
+using System;
+
+namespace CustomLogic.Services.SalesTrainingCompanyService
+{
+    public class SalesTrainingCompaniesViewModel
+    {
+
+        public int Id {get;set;}
+        public string Name {get;set;}
+        public bool Active {get;set;}
+        public DateTime? Created {get;set;}
+        public int? StcTheme_Id {get;set;}
+        public int? OrganisationId {get;set;}
+        public string Subdomain {get;set;}
+        public string CustomHelpUrl {get;set;}
+
+    }
+}

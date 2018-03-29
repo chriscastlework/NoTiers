@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ConsentsService
+{
+    public class Delete : IDeleteEvent<ConsentsViewModel,Consent>
+    {
+
+        public bool Run(Consents ViewModel model, ref IQueryable<Consent>repository, IUnitOfWork unitOfWork, Response<ConsentsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<Consent>().Find(model.Id);unitOfWork.With<Consent>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

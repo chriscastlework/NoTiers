@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ConversationsService
+{
+    public class View : IViewEvent<ConversationsViewModel,Conversation>
+    {
+        public int CreatedId = 0;
+
+        public Response<ConversationsViewModel> Run(ConversationsViewModel model,ref IQueryable<Conversation> repository, IUnitOfWork unitOfWork, Response<ConversationsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = Conversations
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing Conversations");
+            }
+
+            return result;
+        }
+
+    }
+}

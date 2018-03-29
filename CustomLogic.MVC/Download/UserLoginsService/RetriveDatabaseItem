@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.UserLoginsService
+{
+    public class View : IViewEvent<UserLoginsViewModel,UserLogin>
+    {
+        public int CreatedId = 0;
+
+        public Response<UserLoginsViewModel> Run(UserLoginsViewModel model,ref IQueryable<UserLogin> repository, IUnitOfWork unitOfWork, Response<UserLoginsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = UserLogins
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing UserLogins");
+            }
+
+            return result;
+        }
+
+    }
+}

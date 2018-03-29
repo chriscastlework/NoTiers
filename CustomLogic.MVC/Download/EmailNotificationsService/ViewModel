@@ -1,0 +1,13 @@
+using System;
+
+namespace CustomLogic.Services.EmailNotificationService
+{
+    public class EmailNotificationsViewModel
+    {
+
+        public string UserId {get;set;}
+        public int EmailType {get;set;}
+        public DateTime? SentEmailDateTime {get;set;}
+
+    }
+}

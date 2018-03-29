@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.SearchesService
+{
+public static class SearchesMapper
+{
+
+public static Search MapInsertModelToDbModel(SearchesViewModel model, Search newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Search();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.SerachType = model.SerachType;
+            newDomainModel.SearchValue = model.SearchValue;
+            newDomainModel.RuleId = model.RuleId;
+    return newDomainModel;
+    }
+
+
+
+public static SearchesViewModel MapDbModelToViewModel(Search dbModel)
+{
+var viewModel = new  SearchesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.SerachType = dbModel.SerachType;
+            viewModel.SearchValue = dbModel.SearchValue;
+            viewModel.RuleId = dbModel.RuleId;
+
+return viewModel;
+}
+
+
+public static IQueryable<SearchesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Search> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new SearchesViewModel()
+        {
+Id = c.Id,
+SerachType = c.SerachType,
+SearchValue = c.SearchValue,
+RuleId = c.RuleId,
+        });
+        }
+    }
+}
+
+

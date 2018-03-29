@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.UserRatingsService
+{
+    public class View : IViewEvent<UserRatingsViewModel,UserRating>
+    {
+        public int CreatedId = 0;
+
+        public Response<UserRatingsViewModel> Run(UserRatingsViewModel model,ref IQueryable<UserRating> repository, IUnitOfWork unitOfWork, Response<UserRatingsViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = UserRatings
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing UserRatings");
+            }
+
+            return result;
+        }
+
+    }
+}

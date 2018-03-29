@@ -1,0 +1,15 @@
+using System;
+
+namespace CustomLogic.Services.ApiConnectorService
+{
+    public class ApiConnectorsViewModel
+    {
+
+        public int Id {get;set;}
+        public string Name {get;set;}
+        public string ConnectorEndPoint {get;set;}
+        public string ApiEndPoint {get;set;}
+        public string ExternalCodeSetupEndPoint {get;set;}
+
+    }
+}

@@ -1,0 +1,15 @@
+using System;
+
+namespace CustomLogic.Services.OAuth2TokenService
+{
+    public class OAuth2TokenViewModel
+    {
+
+        public int Id {get;set;}
+        public int OAuth2TokenType {get;set;}
+        public DateTime? CreatedDateTime {get;set;}
+        public string User_Id {get;set;}
+        public string AccessToken {get;set;}
+
+    }
+}

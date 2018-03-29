@@ -1,0 +1,57 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CustomObjectFilterFieldsService
+{
+public static class CustomObjectFilterFieldsMapper
+{
+
+public static CustomObjectFilterField MapInsertModelToDbModel(CustomObjectFilterFieldsViewModel model, CustomObjectFilterField newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CustomObjectFilterField();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.CustomObjectFilterId = model.CustomObjectFilterId;
+            newDomainModel.CustomFieldId = model.CustomFieldId;
+            newDomainModel.PrefixText = model.PrefixText;
+            newDomainModel.SuffixText = model.SuffixText;
+            newDomainModel.Order = model.Order;
+    return newDomainModel;
+    }
+
+
+
+public static CustomObjectFilterFieldsViewModel MapDbModelToViewModel(CustomObjectFilterField dbModel)
+{
+var viewModel = new  CustomObjectFilterFieldsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.CustomObjectFilterId = dbModel.CustomObjectFilterId;
+            viewModel.CustomFieldId = dbModel.CustomFieldId;
+            viewModel.PrefixText = dbModel.PrefixText;
+            viewModel.SuffixText = dbModel.SuffixText;
+            viewModel.Order = dbModel.Order;
+
+return viewModel;
+}
+
+
+public static IQueryable<CustomObjectFilterFieldsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CustomObjectFilterField> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CustomObjectFilterFieldsViewModel()
+        {
+Id = c.Id,
+CustomObjectFilterId = c.CustomObjectFilterId,
+CustomFieldId = c.CustomFieldId,
+PrefixText = c.PrefixText,
+SuffixText = c.SuffixText,
+Order = c.Order,
+        });
+        }
+    }
+}
+
+

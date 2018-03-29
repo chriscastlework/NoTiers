@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.ClientSecretsService
+{
+    public class Update : IUpdateEvent<ClientSecretsViewModel,ClientSecret>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(ClientSecretsViewModel model, ref IQueryable<ClientSecret> repository, IUnitOfWork unitOfWork, Response<ClientSecretsViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = ClientSecrets
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<ClientSecret>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = ClientSecretsMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

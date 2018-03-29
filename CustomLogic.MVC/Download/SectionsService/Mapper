@@ -1,0 +1,54 @@
+using System.Linq;
+
+namespace CustomLogic.Services.SectionsService
+{
+public static class SectionsMapper
+{
+
+public static Section MapInsertModelToDbModel(SectionsViewModel model, Section newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Section();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.Description = model.Description;
+            newDomainModel.StageId = model.StageId;
+            newDomainModel.OrderInStage = model.OrderInStage;
+    return newDomainModel;
+    }
+
+
+
+public static SectionsViewModel MapDbModelToViewModel(Section dbModel)
+{
+var viewModel = new  SectionsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.Description = dbModel.Description;
+            viewModel.StageId = dbModel.StageId;
+            viewModel.OrderInStage = dbModel.OrderInStage;
+
+return viewModel;
+}
+
+
+public static IQueryable<SectionsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Section> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new SectionsViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+Description = c.Description,
+StageId = c.StageId,
+OrderInStage = c.OrderInStage,
+        });
+        }
+    }
+}
+
+

@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.LocalizationsService
+{
+    public class QueryLogic : IViewListEvent<LocalizationsViewModel, Localization>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<Localization> repository, NgTable<LocalizationsViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<LocalizationsViewModel>();
+
+            var query = Localizations
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

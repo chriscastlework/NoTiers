@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.PickListOptionsService
+{
+    public class Delete : IDeleteEvent<PickListOptionsViewModel,PickListOption>
+    {
+
+        public bool Run(PickListOptions ViewModel model, ref IQueryable<PickListOption>repository, IUnitOfWork unitOfWork, Response<PickListOptionsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<PickListOption>().Find(model.Id);unitOfWork.With<PickListOption>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

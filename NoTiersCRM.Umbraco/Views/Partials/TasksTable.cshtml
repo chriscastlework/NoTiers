@@ -1,0 +1,168 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using CustomLogic.Core.Database
+@using CustomLogic.Core.Models
+@using CustomLogic.UmbracoApis
+@using CustomLogic.Services.TasksService
+
+
+@{
+    var rawData = Json.Encode(new TaskService(new VelocityRocketLegacy()).List(new NgTableParams(), new CoreUser()).Data);
+}
+
+
+<script>
+    (function () {
+
+        var app = angular.module("app", ["ngTable"]);
+
+        // Task Service
+        angular.module('app').factory('TaskApiService', TaskApiService);
+        TaskApiService.$inject = ['$http'];
+        function TaskApiService($http) {
+
+            return {
+                Get: get,
+                Post: post,
+                Put: put,
+                Delete: deleteApi
+            };
+
+            function get(id) {
+                return $http.get('/Umbraco/Api/Tasks/Get/' + id)
+                   .then(getTaskComplete)
+                   .catch(getTaskFail);
+
+                function getTaskComplete(response) {
+                    return response.data.Data;
+                }
+
+                function getTaskFail(error) {
+                    debugger;
+                }
+            };
+
+            function post(data) {
+                return $http.post('/Umbraco/Api/Tasks/Post/', data)
+                   .then(postTaskComplete)
+                   .catch(postTaskFail);
+
+                function postTaskComplete(response) {
+                    return response.data;
+                }
+
+                function postTaskFail(error) {
+                    debugger;
+                }
+            };
+
+            function put(id, data) {
+                return $http.put('/Umbraco/Api/Tasks/Put/' + id, data)
+                   .then(putTaskComplete)
+                   .catch(putTaskFail);
+
+                function putTaskComplete(response) {
+                    return response.data.Data;
+                }
+
+                function putTaskFail(error) {
+                    debugger;
+                }
+            };
+
+            function deleteApi(id) {
+                return $http.delete('/Umbraco/Api/Tasks/Delete/' + id)
+                   .then(deleteTaskComplete)
+                   .catch(deleteTaskFail);
+
+                function deleteTaskComplete(response) {
+                    return response.data.Data;
+                }
+
+                function deleteTaskFail(error) {
+                    debugger;
+                }
+            };
+        };
+        // Task Service End
+
+        // Task Table Controller
+        angular.module('app').controller('TaskController', TaskController);
+        TaskController.$inject = ["NgTableParams", "TaskApiService"];
+        function TaskController(NgTableParams, TaskApiService) {
+            var vm = this;
+            vm.tableParams = new NgTableParams({
+                page: 1,            // show first page
+                count: 10           // count per page
+            }, {
+                getData: function (params) {
+                    var postParams = {};
+                    postParams.page = params.page();
+                    postParams.count = params.count();
+                    postParams.total = params.total();
+                    postParams.filter = params.filter();
+                    postParams.sorting = params.sorting();
+                    postParams.group = params.group();
+                    return TaskApiService.Post(postParams) 
+                        .then(function (response) {
+                            params.total(response.Count);
+                            return response.Data;
+                        });
+                }
+            });
+
+            vm.tableParams.data = @Html.Raw(rawData);
+        };
+        // Task Table Controller End
+    })();
+</script>
+
+
+<div ng-app="app">
+
+ <div ng-controller="TaskController as Tasks">
+
+        <h2 class="page-header">Task Table</h2>
+
+        <table ng-table="Tasks.tableParams" class="table table-bordered table-striped table-condensed">
+            <tr ng-repeat="row in $data track by row.Id">
+
+ <td data-title="'Id'" 
+ sortable="'Id'" 
+filter="{Id: 'text'}" >
+{{row.Id}}
+</td>
+ <td data-title="'Name'" 
+ sortable="'Name'" 
+filter="{Name: 'text'}" >
+{{row.Name}}
+</td>
+ <td data-title="'DueDate'" 
+ sortable="'DueDate'" 
+filter="{DueDate: 'text'}" >
+{{row.DueDate}}
+</td>
+ <td data-title="'IsImportant'" 
+ sortable="'IsImportant'" 
+filter="{IsImportant: 'text'}" >
+{{row.IsImportant}}
+</td>
+ <td data-title="'IsDone'" 
+ sortable="'IsDone'" 
+filter="{IsDone: 'text'}" >
+{{row.IsDone}}
+</td>
+ <td data-title="'DateCreated'" 
+ sortable="'DateCreated'" 
+filter="{DateCreated: 'text'}" >
+{{row.DateCreated}}
+</td>
+ <td data-title="'CompletedDate'" 
+ sortable="'CompletedDate'" 
+filter="{CompletedDate: 'text'}" >
+{{row.CompletedDate}}
+</td>
+
+            </tr>
+        </table>
+    </div>
+ </div>

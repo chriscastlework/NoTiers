@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ScopeClaimsService
+{
+public static class ScopeClaimsMapper
+{
+
+public static ScopeClaim MapInsertModelToDbModel(ScopeClaimsViewModel model, ScopeClaim newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ScopeClaim();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static ScopeClaimsViewModel MapDbModelToViewModel(ScopeClaim dbModel)
+{
+var viewModel = new  ScopeClaimsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<ScopeClaimsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ScopeClaim> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ScopeClaimsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

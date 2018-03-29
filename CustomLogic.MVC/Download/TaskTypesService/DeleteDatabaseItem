@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.TaskTypesService
+{
+    public class Delete : IDeleteEvent<TaskTypesViewModel,TaskType>
+    {
+
+        public bool Run(TaskTypes ViewModel model, ref IQueryable<TaskType>repository, IUnitOfWork unitOfWork, Response<TaskTypesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<TaskType>().Find(model.Id);unitOfWork.With<TaskType>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

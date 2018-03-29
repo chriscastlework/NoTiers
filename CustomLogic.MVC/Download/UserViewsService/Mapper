@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.UserViewsService
+{
+public static class UserViewsMapper
+{
+
+public static UserView MapInsertModelToDbModel(UserViewsViewModel model, UserView newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new UserView();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static UserViewsViewModel MapDbModelToViewModel(UserView dbModel)
+{
+var viewModel = new  UserViewsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<UserViewsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<UserView> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new UserViewsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

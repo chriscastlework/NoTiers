@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.UserProfilesService
+{
+public static class UserProfilesMapper
+{
+
+public static UserProfile MapInsertModelToDbModel(UserProfilesViewModel model, UserProfile newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new UserProfile();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Culture = model.Culture;
+            newDomainModel.Timezone = model.Timezone;
+            newDomainModel.Currency = model.Currency;
+    return newDomainModel;
+    }
+
+
+
+public static UserProfilesViewModel MapDbModelToViewModel(UserProfile dbModel)
+{
+var viewModel = new  UserProfilesViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Culture = dbModel.Culture;
+            viewModel.Timezone = dbModel.Timezone;
+            viewModel.Currency = dbModel.Currency;
+
+return viewModel;
+}
+
+
+public static IQueryable<UserProfilesViewModel> MapDbModelQueryToViewModelQuery(IQueryable<UserProfile> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new UserProfilesViewModel()
+        {
+Id = c.Id,
+Culture = c.Culture,
+Timezone = c.Timezone,
+Currency = c.Currency,
+        });
+        }
+    }
+}
+
+

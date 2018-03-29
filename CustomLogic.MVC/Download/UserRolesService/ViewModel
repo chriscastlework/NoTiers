@@ -1,0 +1,13 @@
+using System;
+
+namespace CustomLogic.Services.UserRoleService
+{
+    public class UserRolesViewModel
+    {
+
+        public string UserId {get;set;}
+        public string RoleId {get;set;}
+        public string IdentityUser_Id {get;set;}
+
+    }
+}

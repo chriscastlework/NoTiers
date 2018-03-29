@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.MessageDealContactRecipientsService
+{
+    public class Delete : IDeleteEvent<MessageDealContactRecipientsViewModel,MessageDealContactRecipient>
+    {
+
+        public bool Run(MessageDealContactRecipients ViewModel model, ref IQueryable<MessageDealContactRecipient>repository, IUnitOfWork unitOfWork, Response<MessageDealContactRecipientsViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<MessageDealContactRecipient>().Find(model.Id);unitOfWork.With<MessageDealContactRecipient>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

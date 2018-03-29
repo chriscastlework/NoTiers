@@ -1,0 +1,30 @@
+using System.Data.Entity.Migrations;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+using System.Linq;
+
+namespace CustomLogic.Services.CustomObjectModifyFieldsService
+{
+    public class Update : IUpdateEvent<CustomObjectModifyFieldsViewModel,CustomObjectModifyField>
+    {
+
+        public int priority()
+        {
+            return 0;
+        }
+    
+        public bool Run(CustomObjectModifyFieldsViewModel model, ref IQueryable<CustomObjectModifyField> repository, IUnitOfWork unitOfWork, Response<CustomObjectModifyFieldsViewModel> result, ICoreUser user)
+        {
+            var dbModel =  repository.Single(c=>c.Id == model.Id); // you need to be using the primary key could be composit
+            var updatedDbModel = CustomObjectModifyFields
+            Mapper.MapInsertModelToDbModel(model, dbModel);
+            unitOfWork.With<CustomObjectModifyField>().AddOrUpdate(updatedDbModel);
+            unitOfWork.SaveChanges();
+            var newCustomResult = CustomObjectModifyFieldsMapper.MapDbModelToViewModel(updatedDbModel);
+            result.Data = newCustomResult;
+            return true;
+        }
+    }
+}
+

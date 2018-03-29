@@ -1,0 +1,48 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CustomLinksUrlsService
+{
+public static class CustomLinksUrlsMapper
+{
+
+public static CustomLinksUrl MapInsertModelToDbModel(CustomLinksUrlsViewModel model, CustomLinksUrl newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CustomLinksUrl();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Key = model.Key;
+            newDomainModel.Label = model.Label;
+    return newDomainModel;
+    }
+
+
+
+public static CustomLinksUrlsViewModel MapDbModelToViewModel(CustomLinksUrl dbModel)
+{
+var viewModel = new  CustomLinksUrlsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Key = dbModel.Key;
+            viewModel.Label = dbModel.Label;
+
+return viewModel;
+}
+
+
+public static IQueryable<CustomLinksUrlsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CustomLinksUrl> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CustomLinksUrlsViewModel()
+        {
+Id = c.Id,
+Key = c.Key,
+Label = c.Label,
+        });
+        }
+    }
+}
+
+

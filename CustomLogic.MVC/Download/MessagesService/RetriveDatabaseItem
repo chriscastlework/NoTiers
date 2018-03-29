@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.MessagesService
+{
+    public class View : IViewEvent<MessagesViewModel,Message>
+    {
+        public int CreatedId = 0;
+
+        public Response<MessagesViewModel> Run(MessagesViewModel model,ref IQueryable<Message> repository, IUnitOfWork unitOfWork, Response<MessagesViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = Messages
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing Messages");
+            }
+
+            return result;
+        }
+
+    }
+}

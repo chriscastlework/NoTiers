@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ClientIdPRestrictionsService
+{
+public class ReturnResultEvent : IUpdateEvent<ClientIdPRestrictionsViewModel, ClientIdPRestriction>
+{
+    public int priority()
+    {
+        return 1000;
+    }
+
+    public bool Run(ClientIdPRestrictionsViewModel model, ref IQueryable< ClientIdPRestriction> repository, IUnitOfWork unitOfWork, Response<ClientIdPRestrictionsViewModel>result, ICoreUser user)
+    {
+        var updatedDbModel = unitOfWork.With<ClientIdPRestriction>().Single(c => c.Id == model.Id); // Might be a partial primary key template needs 
+        var newCustomResult = ClientIdPRestrictions
+        Mapper.MapDbModelToViewModel(updatedDbModel);
+        result.Data = newCustomResult;
+        return true;
+    }
+}
+

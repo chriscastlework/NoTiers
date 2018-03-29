@@ -1,0 +1,4829 @@
+﻿{
+  "page": {
+    "type": 18,
+    "id": "1T0HnGsEeYmj",
+    "mappedEntityId": "Org.Account",
+    "mappingContextId": "Org",
+    "name": "My Page",
+    "visibility": {
+      "type": "",
+      "id": "S8c11Q2p4iMr",
+      "mappedEntityId": 1,
+      "mappingContextId": null
+    },
+    "elements": [
+      {
+        "type": 2,
+        "id": "NlarjcGhmDLx",
+        "index": 0,
+        "mappedEntityId": null,
+        "mappingContextId": "Org.Account",
+        "name": "Label_K3gL",
+        "visibility": {
+          "type": "",
+          "id": "NQ2tAjtVyQ5N",
+          "mappedEntityId": 1,
+          "mappingContextId": null
+        },
+        "align": {
+          "type": "",
+          "id": "OhsqBS24bgYk",
+          "align": "left"
+        },
+        "width": {
+          "type": "",
+          "id": "BRHNvviWTGyE",
+          "width": 0,
+          "size": "full"
+        },
+        "textSize": {
+          "multiline": false,
+          "rows": 1
+        },
+        "textColor": {
+          "type": "",
+          "id": "FBFqCqdgiMQa",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        },
+        "backgroundColor": {
+          "type": "",
+          "id": "HVXI6HWdigpW",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        },
+        "displayValue": {
+          "type": "",
+          "id": "xwlu02S4pQMs",
+          "mappedEntityId": "cbt8",
+          "mappingContextId": "Org.Account"
+        },
+        "hyperlink": {
+          "type": "0",
+          "id": "loHUvD3VPjs3",
+          "mappedEntityId": null,
+          "mappingContextId": "Org.Account",
+          "url": ""
+        }
+      },
+      {
+        "type": 1,
+        "id": "m8oO50JITa5Q",
+        "index": 1,
+        "mappedEntityId": null,
+        "mappingContextId": "Org.Account",
+        "name": "Section_myuJ",
+        "visibility": {
+          "type": "",
+          "id": "5OJquBfIdANT",
+          "mappedEntityId": 1,
+          "mappingContextId": null
+        },
+        "elements": [
+          {
+            "type": 2,
+            "id": "3vagwzVMOgoQ",
+            "index": 0,
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account",
+            "name": "Label_T5H2",
+            "visibility": {
+              "type": "",
+              "id": "7OSCgwHzX56V",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "align": {
+              "type": "",
+              "id": "RYSDmUBS9isJ",
+              "align": "left"
+            },
+            "width": {
+              "type": "",
+              "id": "5MuanQC9Jnoo",
+              "width": 0,
+              "size": "small"
+            },
+            "textSize": {
+              "multiline": false,
+              "rows": 1
+            },
+            "textColor": {
+              "type": "",
+              "id": "Ej4uk4pdLYAr",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "T9XFI33Fvtkn",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "displayValue": {
+              "type": "",
+              "id": "gnyn6wRtfYFk",
+              "mappedEntityId": "zvDf",
+              "mappingContextId": "Org.Account"
+            },
+            "hyperlink": {
+              "type": "0",
+              "id": "3SMuMYDxsw9T",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account",
+              "url": ""
+            }
+          },
+          {
+            "type": 3,
+            "id": "ORdICpezco8t",
+            "index": 1,
+            "mappedEntityId": "Org.Account.Name",
+            "mappingContextId": "Org.Account",
+            "name": "Textfield_5Xm5",
+            "visibility": {
+              "type": "",
+              "id": "48nynwP9jTuE",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "align": {
+              "type": "",
+              "id": "iBJuYBhMftrB",
+              "align": "left"
+            },
+            "width": {
+              "type": "",
+              "id": "ctYESDwbdnqy",
+              "width": 0,
+              "size": "small"
+            },
+            "textSize": {
+              "multiline": false,
+              "rows": 1
+            },
+            "displayValue": {
+              "type": "",
+              "id": "B8s0i1W6xnx3",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account"
+            },
+            "textColor": {
+              "type": "",
+              "id": "RU49K4v8QLD8",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "hD5e23LEgqvN",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            }
+          }
+        ],
+        "width": {
+          "type": "",
+          "id": "puD7IJOKrYz8",
+          "width": 0,
+          "size": "full"
+        },
+        "layoutDirection": {
+          "type": "",
+          "id": "9PYp85JTTHWp",
+          "direction": "horizontal"
+        },
+        "backgroundColor": {
+          "type": "",
+          "id": "N7ArGevVlscw",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        },
+        "borderColor": {
+          "type": "",
+          "id": "1pRz9cDOjQ6c",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        }
+      },
+      {
+        "type": 1,
+        "id": "H9HzhH8q7c8k",
+        "index": 2,
+        "mappedEntityId": null,
+        "mappingContextId": "Org.Account",
+        "name": "Section_e05H",
+        "visibility": {
+          "type": "",
+          "id": "5OJquBfIdANT",
+          "mappedEntityId": 1,
+          "mappingContextId": null
+        },
+        "elements": [
+          {
+            "type": 2,
+            "id": "JrreyCwK5gza",
+            "index": 0,
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account",
+            "name": "Label_Wjdb",
+            "visibility": {
+              "type": "",
+              "id": "7OSCgwHzX56V",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "align": {
+              "type": "",
+              "id": "RYSDmUBS9isJ",
+              "align": "left"
+            },
+            "width": {
+              "type": "",
+              "id": "5MuanQC9Jnoo",
+              "width": 0,
+              "size": "small"
+            },
+            "textSize": {
+              "multiline": false,
+              "rows": 1
+            },
+            "textColor": {
+              "type": "",
+              "id": "Ej4uk4pdLYAr",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "T9XFI33Fvtkn",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "displayValue": {
+              "type": "",
+              "id": "gnyn6wRtfYFk",
+              "mappedEntityId": "dlKX",
+              "mappingContextId": "Org.Account"
+            },
+            "hyperlink": {
+              "type": "0",
+              "id": "3SMuMYDxsw9T",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account",
+              "url": ""
+            }
+          },
+          {
+            "type": 3,
+            "id": "aNuQmmGIP4m8",
+            "index": 1,
+            "mappedEntityId": "Org.Account.CustomField2919",
+            "mappingContextId": "Org.Account",
+            "name": "Textfield_Whd7",
+            "visibility": {
+              "type": "",
+              "id": "48nynwP9jTuE",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "align": {
+              "type": "",
+              "id": "iBJuYBhMftrB",
+              "align": "left"
+            },
+            "width": {
+              "type": "",
+              "id": "ctYESDwbdnqy",
+              "width": 0,
+              "size": "small"
+            },
+            "textSize": {
+              "multiline": false,
+              "rows": 1
+            },
+            "displayValue": {
+              "type": "",
+              "id": "B8s0i1W6xnx3",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account"
+            },
+            "textColor": {
+              "type": "",
+              "id": "RU49K4v8QLD8",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "hD5e23LEgqvN",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            }
+          }
+        ],
+        "width": {
+          "type": "",
+          "id": "puD7IJOKrYz8",
+          "width": 0,
+          "size": "full"
+        },
+        "layoutDirection": {
+          "type": "",
+          "id": "9PYp85JTTHWp",
+          "direction": "horizontal"
+        },
+        "backgroundColor": {
+          "type": "",
+          "id": "N7ArGevVlscw",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        },
+        "borderColor": {
+          "type": "",
+          "id": "1pRz9cDOjQ6c",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        }
+      },
+      {
+        "type": 1,
+        "id": "DnPNvYF81EAh",
+        "index": 3,
+        "mappedEntityId": null,
+        "mappingContextId": "Org.Account",
+        "name": "Section_0mmN",
+        "visibility": {
+          "type": "",
+          "id": "5OJquBfIdANT",
+          "mappedEntityId": 1,
+          "mappingContextId": null
+        },
+        "elements": [
+          {
+            "type": 2,
+            "id": "3xJ6oGFlfOjT",
+            "index": 0,
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account",
+            "name": "Label_1k3w",
+            "visibility": {
+              "type": "",
+              "id": "7OSCgwHzX56V",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "align": {
+              "type": "",
+              "id": "RYSDmUBS9isJ",
+              "align": "left"
+            },
+            "width": {
+              "type": "",
+              "id": "5MuanQC9Jnoo",
+              "width": 0,
+              "size": "small"
+            },
+            "textSize": {
+              "multiline": false,
+              "rows": 1
+            },
+            "textColor": {
+              "type": "",
+              "id": "Ej4uk4pdLYAr",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "T9XFI33Fvtkn",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "displayValue": {
+              "type": "",
+              "id": "gnyn6wRtfYFk",
+              "mappedEntityId": "2jHV",
+              "mappingContextId": "Org.Account"
+            },
+            "hyperlink": {
+              "type": "0",
+              "id": "3SMuMYDxsw9T",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account",
+              "url": ""
+            }
+          },
+          {
+            "type": 4,
+            "id": "BbHHmcP87Rg4",
+            "index": 1,
+            "mappedEntityId": "Org.Account.CustomField2920",
+            "mappingContextId": "Org.Account",
+            "name": "Numberfield_wD9n",
+            "visibility": {
+              "type": "",
+              "id": "GnxHoDHbINVI",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "format": {
+              "type": "number",
+              "id": "8A24QDBjL9vN",
+              "mappedEntityId": null,
+              "mappingContextId": null,
+              "name": "Undefined_hYaH",
+              "visibility": {
+                "type": "",
+                "id": "7IWYGp7ndPze",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              },
+              "places": 0
+            },
+            "width": {
+              "type": "",
+              "id": "bxQvgUW9n9I9",
+              "width": 0,
+              "size": "small"
+            },
+            "align": {
+              "type": "",
+              "id": "X126Kkm6fOQX",
+              "align": "left"
+            },
+            "textColor": {
+              "type": "",
+              "id": "VVvOAf1GrCzL",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "displayValue": {
+              "type": "",
+              "id": "uk7RuBEixmYP",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "mBEyj8iM4n8t",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            }
+          }
+        ],
+        "width": {
+          "type": "",
+          "id": "puD7IJOKrYz8",
+          "width": 0,
+          "size": "full"
+        },
+        "layoutDirection": {
+          "type": "",
+          "id": "9PYp85JTTHWp",
+          "direction": "horizontal"
+        },
+        "backgroundColor": {
+          "type": "",
+          "id": "N7ArGevVlscw",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        },
+        "borderColor": {
+          "type": "",
+          "id": "1pRz9cDOjQ6c",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        }
+      },
+      {
+        "type": 1,
+        "id": "Ees5z3ih3iqF",
+        "index": 4,
+        "mappedEntityId": null,
+        "mappingContextId": "Org.Account",
+        "name": "Section_yEbt",
+        "visibility": {
+          "type": "",
+          "id": "5OJquBfIdANT",
+          "mappedEntityId": 1,
+          "mappingContextId": null
+        },
+        "elements": [
+          {
+            "type": 2,
+            "id": "5vUGRRwM9OED",
+            "index": 0,
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account",
+            "name": "Label_oaVM",
+            "visibility": {
+              "type": "",
+              "id": "7OSCgwHzX56V",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "align": {
+              "type": "",
+              "id": "RYSDmUBS9isJ",
+              "align": "left"
+            },
+            "width": {
+              "type": "",
+              "id": "5MuanQC9Jnoo",
+              "width": 0,
+              "size": "small"
+            },
+            "textSize": {
+              "multiline": false,
+              "rows": 1
+            },
+            "textColor": {
+              "type": "",
+              "id": "Ej4uk4pdLYAr",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "T9XFI33Fvtkn",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "displayValue": {
+              "type": "",
+              "id": "gnyn6wRtfYFk",
+              "mappedEntityId": "qmRu",
+              "mappingContextId": "Org.Account"
+            },
+            "hyperlink": {
+              "type": "0",
+              "id": "3SMuMYDxsw9T",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account",
+              "url": ""
+            }
+          },
+          {
+            "type": 5,
+            "id": "eywRmU4hwM1T",
+            "index": 1,
+            "mappedEntityId": "Org.Account.CustomField2923",
+            "mappingContextId": "Org.Account",
+            "name": "Picklist_ASas",
+            "visibility": {
+              "type": "",
+              "id": "BvkMNM5mMS4k",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "width": {
+              "type": "",
+              "id": "uPitLSUrHQEn",
+              "width": 0,
+              "size": "small"
+            },
+            "textColor": {
+              "type": "",
+              "id": "M4cwqX4OpXCu",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "Ew4O571jLyC5",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "align": {
+              "type": "",
+              "id": "YTzlyMXtwcHl",
+              "align": "left"
+            }
+          }
+        ],
+        "width": {
+          "type": "",
+          "id": "puD7IJOKrYz8",
+          "width": 0,
+          "size": "full"
+        },
+        "layoutDirection": {
+          "type": "",
+          "id": "9PYp85JTTHWp",
+          "direction": "horizontal"
+        },
+        "backgroundColor": {
+          "type": "",
+          "id": "N7ArGevVlscw",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        },
+        "borderColor": {
+          "type": "",
+          "id": "1pRz9cDOjQ6c",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        }
+      },
+      {
+        "type": 1,
+        "id": "UwlFSxt0G7Cf",
+        "index": 5,
+        "mappedEntityId": null,
+        "mappingContextId": "Org.Account",
+        "name": "Section_eioD",
+        "visibility": {
+          "type": "",
+          "id": "5OJquBfIdANT",
+          "mappedEntityId": 1,
+          "mappingContextId": null
+        },
+        "elements": [
+          {
+            "type": 2,
+            "id": "13aSH3nERzFi",
+            "index": 0,
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account",
+            "name": "Label_mlqo",
+            "visibility": {
+              "type": "",
+              "id": "7OSCgwHzX56V",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "align": {
+              "type": "",
+              "id": "RYSDmUBS9isJ",
+              "align": "left"
+            },
+            "width": {
+              "type": "",
+              "id": "5MuanQC9Jnoo",
+              "width": 0,
+              "size": "small"
+            },
+            "textSize": {
+              "multiline": false,
+              "rows": 1
+            },
+            "textColor": {
+              "type": "",
+              "id": "Ej4uk4pdLYAr",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "T9XFI33Fvtkn",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "displayValue": {
+              "type": "",
+              "id": "gnyn6wRtfYFk",
+              "mappedEntityId": "da5Y",
+              "mappingContextId": "Org.Account"
+            },
+            "hyperlink": {
+              "type": "0",
+              "id": "3SMuMYDxsw9T",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account",
+              "url": ""
+            }
+          },
+          {
+            "type": 7,
+            "id": "1TLQo7OrmEiV",
+            "index": 1,
+            "mappedEntityId": "Org.Account.CustomField2922",
+            "mappingContextId": "Org.Account",
+            "name": "Datechooser_Hw6i",
+            "visibility": {
+              "type": "",
+              "id": "FVSudcI3G0JO",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "date": {
+              "id": "g2h6Sz2TYVF5",
+              "default": "today",
+              "specifiedDate": null,
+              "adjustmentFactor": 0,
+              "adjustmentUnit": "d",
+              "operator": "add"
+            },
+            "displayValue": {
+              "type": "",
+              "id": "PJbWMY8vxetu",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account"
+            },
+            "textColor": {
+              "type": "",
+              "id": "hIEuaMo83vNI",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "BTjAY0QlB9XY",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            }
+          }
+        ],
+        "width": {
+          "type": "",
+          "id": "puD7IJOKrYz8",
+          "width": 0,
+          "size": "full"
+        },
+        "layoutDirection": {
+          "type": "",
+          "id": "9PYp85JTTHWp",
+          "direction": "horizontal"
+        },
+        "backgroundColor": {
+          "type": "",
+          "id": "N7ArGevVlscw",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        },
+        "borderColor": {
+          "type": "",
+          "id": "1pRz9cDOjQ6c",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        }
+      },
+      {
+        "type": 1,
+        "id": "Rp1dEUBICUEF",
+        "index": 6,
+        "mappedEntityId": null,
+        "mappingContextId": "Org.Account",
+        "name": "Section_ya5b",
+        "visibility": {
+          "type": "",
+          "id": "VLOyjiPIV0yn",
+          "mappedEntityId": 1,
+          "mappingContextId": null
+        },
+        "elements": [
+          {
+            "type": 2,
+            "id": "tsHqjMebg6Ht",
+            "index": 0,
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account",
+            "name": "Label_NPgd",
+            "visibility": {
+              "type": "",
+              "id": "dS3GeEkRl6AQ",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "align": {
+              "type": "",
+              "id": "wjSL3N4CL6y1",
+              "align": "left"
+            },
+            "width": {
+              "type": "",
+              "id": "ih4S3ws1AX1n",
+              "width": 0,
+              "size": "small"
+            },
+            "textSize": {
+              "multiline": false,
+              "rows": 1
+            },
+            "textColor": {
+              "type": "",
+              "id": "gh1MVzEHrRLH",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "5Dv73FAcFYkW",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "displayValue": {
+              "type": "",
+              "id": "DsGC8KNA08rt",
+              "mappedEntityId": "XHNa",
+              "mappingContextId": "Org.Account"
+            },
+            "hyperlink": {
+              "type": "0",
+              "id": "yrXe6QYONv0e",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account",
+              "url": ""
+            }
+          },
+          {
+            "type": 23,
+            "id": "oaB7Q88gVfVU",
+            "index": 1,
+            "mappedEntityId": "Org.Account.OwnerId",
+            "mappingContextId": "Org.Account",
+            "name": "Undefined_LGmM",
+            "visibility": {
+              "type": "",
+              "id": "dwm3BUOCfl4i",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "width": {
+              "type": "",
+              "id": "cN9ndfaOrXzC",
+              "width": 0,
+              "size": "small"
+            },
+            "textColor": {
+              "type": "",
+              "id": "ANEcgVynpUjd",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "MfVyFiSBnoOe",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "displayFieldId": "Org.Account.Owner.FirstName",
+            "dialogFieldIds": [
+              "Org.Account.Owner.Id",
+              "Org.Account.Owner.Email",
+              "Org.Account.Owner.FirstName",
+              "Org.Account.Owner.LastName"
+            ],
+            "isHyperlink": true,
+            "lookUpPath": "/Users/",
+            "associatedFieldId": "Org.Account.Owner"
+          }
+        ],
+        "width": {
+          "type": "",
+          "id": "sMeH82o1I465",
+          "width": 0,
+          "size": "full"
+        },
+        "layoutDirection": {
+          "type": "",
+          "id": "UepH74xG74zf",
+          "direction": "horizontal"
+        },
+        "backgroundColor": {
+          "type": "",
+          "id": "W15K6EiI9niY",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        },
+        "borderColor": {
+          "type": "",
+          "id": "gPUmHCqpkISn",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        }
+      },
+      {
+        "type": 1,
+        "id": "fo632hKbEy0c",
+        "index": 7,
+        "mappedEntityId": null,
+        "mappingContextId": "Org.Account",
+        "name": "Section_Syib",
+        "visibility": {
+          "type": "",
+          "id": "V09TeNqhjpNO",
+          "mappedEntityId": 1,
+          "mappingContextId": null
+        },
+        "elements": [
+          {
+            "type": 2,
+            "id": "2g5lOYldcMKh",
+            "index": 0,
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account",
+            "name": "Label_3WGu",
+            "visibility": {
+              "type": "",
+              "id": "1xAHhdPKLNjc",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "align": {
+              "type": "",
+              "id": "G8HMTbAICvIg",
+              "align": "left"
+            },
+            "width": {
+              "type": "",
+              "id": "lVkNG0wjYXgL",
+              "width": 0,
+              "size": "small"
+            },
+            "textSize": {
+              "multiline": false,
+              "rows": 1
+            },
+            "textColor": {
+              "type": "",
+              "id": "fP79KiQbs6MB",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "yEfTJzIC0Gpt",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "displayValue": {
+              "type": "",
+              "id": "dd9rjOjjT0kS",
+              "mappedEntityId": "xNpe",
+              "mappingContextId": "Org.Account"
+            },
+            "hyperlink": {
+              "type": "0",
+              "id": "cUD3dozR1Skn",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account",
+              "url": ""
+            }
+          },
+          {
+            "type": 6,
+            "id": "JkIz4f5dEHDw",
+            "index": 1,
+            "mappedEntityId": "Org.Account.CustomField2924",
+            "mappingContextId": "Org.Account",
+            "name": "Checkbox_96t0",
+            "visibility": {
+              "type": "",
+              "id": "l9lrl6Ehtjl0",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "displayValue": {
+              "type": "",
+              "id": "O0bQ45YFXciA",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account"
+            },
+            "textColor": {
+              "type": "",
+              "id": "hnP9xDTWWzkl",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "660WJHgYr4bG",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            }
+          }
+        ],
+        "width": {
+          "type": "",
+          "id": "0QOnYLhlEqdr",
+          "width": 0,
+          "size": "full"
+        },
+        "layoutDirection": {
+          "type": "",
+          "id": "cK2cDM3DNyIH",
+          "direction": "horizontal"
+        },
+        "backgroundColor": {
+          "type": "",
+          "id": "kBWQyI2f6O3K",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        },
+        "borderColor": {
+          "type": "",
+          "id": "XrfR3eGUmfnv",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        }
+      },
+      {
+        "type": 2,
+        "id": "gOGR8Rlzjvee",
+        "index": 8,
+        "mappedEntityId": null,
+        "mappingContextId": "Org.Account",
+        "name": "Label_HFtI",
+        "visibility": {
+          "type": "",
+          "id": "3J8lLufhMFhf",
+          "mappedEntityId": 1,
+          "mappingContextId": null
+        },
+        "align": {
+          "type": "",
+          "id": "iAd9ePtaz6s1",
+          "align": "left"
+        },
+        "width": {
+          "type": "",
+          "id": "R5iDbIzo9Sdj",
+          "width": 0,
+          "size": "full"
+        },
+        "textSize": {
+          "multiline": false,
+          "rows": 1
+        },
+        "textColor": {
+          "type": "",
+          "id": "tu1Q27RiTyIG",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        },
+        "backgroundColor": {
+          "type": "",
+          "id": "tnBWJdUaUq0P",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        },
+        "displayValue": {
+          "type": "",
+          "id": "xBEf0a5mkoTG",
+          "mappedEntityId": "tWpR",
+          "mappingContextId": "Org.Account"
+        },
+        "hyperlink": {
+          "type": "0",
+          "id": "7DGfCCOcdgsf",
+          "mappedEntityId": null,
+          "mappingContextId": "Org.Account",
+          "url": ""
+        }
+      },
+      {
+        "type": 13,
+        "id": "y99TE6gFyU8E",
+        "index": 9,
+        "mappedEntityId": "Org.Account.Organizational_Structure",
+        "mappingContextId": "Org.Account",
+        "name": "Grid_YaSI",
+        "visibility": {
+          "type": "",
+          "id": "r5y8IopyPuyp",
+          "mappedEntityId": 1,
+          "mappingContextId": null
+        },
+        "gridColumnOptions": [
+          {
+            "type": 29,
+            "id": "jTaTiCEhL9Al",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Organizational_Structure",
+            "name": "Organisation Card Name",
+            "visibility": {
+              "type": "",
+              "id": "KWMCDhb4FfwL",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 3,
+                "id": "vmyVar2y9EWd",
+                "index": 0,
+                "mappedEntityId": null,
+                "mappingContextId": "Org.Account.Organizational_Structure",
+                "name": "Textfield_mp2G",
+                "visibility": {
+                  "type": "",
+                  "id": "r6FHDi9R2sIY",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "align": {
+                  "type": "",
+                  "id": "LictmQvCHMvQ",
+                  "align": "left"
+                },
+                "width": {
+                  "type": "",
+                  "id": "q6pxJDD5qfV3",
+                  "width": 0,
+                  "size": "small"
+                },
+                "textSize": {
+                  "multiline": false,
+                  "rows": 1
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "m803EIn4qU2t",
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Organizational_Structure"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "P9LenBwbXDmp",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "6vrgSilGNmht",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "XMNBpuAkQi8T",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Organizational_Structure",
+              "name": "Element_CRdK",
+              "visibility": {
+                "type": "",
+                "id": "FKcgtghXLnlK",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "Ho9xVpjiIldU",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Organizational_Structure"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "oizdYeaRaiz0",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "LYoiN9W6wbOu",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Organizational_Structure",
+            "name": "Organisation Card Id",
+            "visibility": {
+              "type": "",
+              "id": "nCz9hCYDCV9g",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 4,
+                "id": "ns67Bqctyceo",
+                "index": 0,
+                "mappedEntityId": null,
+                "mappingContextId": "Org.Account.Organizational_Structure",
+                "name": "Numberfield_y6cC",
+                "visibility": {
+                  "type": "",
+                  "id": "05Xxvb0enDMP",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "format": {
+                  "type": "number",
+                  "id": "pjbRksJQ7wyI",
+                  "mappedEntityId": null,
+                  "mappingContextId": null,
+                  "name": "Undefined_AlQw",
+                  "visibility": {
+                    "type": "",
+                    "id": "BYDvMaR9SLJc",
+                    "mappedEntityId": 1,
+                    "mappingContextId": null
+                  },
+                  "places": 0
+                },
+                "width": {
+                  "type": "",
+                  "id": "CSF06AY7JYfY",
+                  "width": 0,
+                  "size": "small"
+                },
+                "align": {
+                  "type": "",
+                  "id": "u6GOgLOh5CS3",
+                  "align": "left"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "dyRFya9CFeRh",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "deUl5Q67xWiP",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "p0JqDw8ecai1",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "eILFBPGcnVTz",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Organizational_Structure",
+              "name": "Element_OjxB",
+              "visibility": {
+                "type": "",
+                "id": "7cleHuuLM8tl",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "Jf1moWhcxyMB",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Organizational_Structure"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "XaCGRvJvT28k",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "tRqcR5AWklcG",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Organizational_Structure",
+            "name": "Organisation Card Type",
+            "visibility": {
+              "type": "",
+              "id": "ztLpRxRrSe3k",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 5,
+                "id": "CWjzueDzdexp",
+                "index": 0,
+                "mappedEntityId": null,
+                "mappingContextId": "Org.Account.Organizational_Structure",
+                "name": "Picklist_P68K",
+                "visibility": {
+                  "type": "",
+                  "id": "5BaSaqWsK2hh",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "width": {
+                  "type": "",
+                  "id": "MogJNYrWKGbD",
+                  "width": 0,
+                  "size": "small"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "FpIECV3hjq84",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "ou6hxwHufDw3",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "align": {
+                  "type": "",
+                  "id": "5y913HOcKjxu",
+                  "align": "left"
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "40uYbdFmDPvL",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Organizational_Structure",
+              "name": "Element_2bgE",
+              "visibility": {
+                "type": "",
+                "id": "cwGTWtUUIc9o",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "sTcqwcn2GmnY",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Organizational_Structure"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "1rCylSkKkAzt",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "zAVCN0BW9ESp",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Organizational_Structure",
+            "name": "Created ? Should this be here?",
+            "visibility": {
+              "type": "",
+              "id": "7uOPsGOmegoD",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 7,
+                "id": "bd5ir9r7F3bT",
+                "index": 0,
+                "mappedEntityId": null,
+                "mappingContextId": "Org.Account.Organizational_Structure",
+                "name": "Datechooser_zIlc",
+                "visibility": {
+                  "type": "",
+                  "id": "N8YXtCXnjsCD",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "date": {
+                  "id": "zX7OpueatLGR",
+                  "default": "today",
+                  "specifiedDate": null,
+                  "adjustmentFactor": 0,
+                  "adjustmentUnit": "d",
+                  "operator": "add"
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "OUtQMpA2W0G4",
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Organizational_Structure"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "XfqtlIBVJYdH",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "itddrjUCl7LB",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "6xg1u0tJ4PQn",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Organizational_Structure",
+              "name": "Element_lfo5",
+              "visibility": {
+                "type": "",
+                "id": "V3BYeyxAGeGi",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "dA4SH9S0gw1H",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Organizational_Structure"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "MEgvO7IpN07X",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "J9aEHhX8Qhzs",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Organizational_Structure",
+            "name": "Custom Checkbox",
+            "visibility": {
+              "type": "",
+              "id": "yMckMGGKXkMT",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 6,
+                "id": "BENsHoTCF7Sb",
+                "index": 0,
+                "mappedEntityId": null,
+                "mappingContextId": "Org.Account.Organizational_Structure",
+                "name": "Checkbox_XWG5",
+                "visibility": {
+                  "type": "",
+                  "id": "y7BNGyDApHJe",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "yS4S38XSeQms",
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Organizational_Structure"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "tJ5U8KcEXvKN",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "CTW0IDz6rcuQ",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "JCwW0iYdOYrJ",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Organizational_Structure",
+              "name": "Element_BeQK",
+              "visibility": {
+                "type": "",
+                "id": "SyTePXnLTdMn",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "MMC9k4wF88ln",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Organizational_Structure"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "azlWRfCvPPmd",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          }
+        ],
+        "width": {
+          "type": "",
+          "id": "SbPgyaOOpoF2",
+          "width": 0,
+          "size": "full"
+        },
+        "height": {
+          "type": "",
+          "id": "Ir9z0a5mG3gY",
+          "size": "medium"
+        },
+        "options": {
+          "allowEdit": true,
+          "editMethod": "inline",
+          "showSummary": false
+        },
+        "lookupData": {
+          "mappedEntityId": "Org.Account.Organizational_Structure",
+          "mappingContextId": "Org.Account",
+          "displayFieldId": "Org.Organizational_Structure__Cards.Name",
+          "dialogFieldIds": [
+            "Org.Organizational_Structure__Cards.Id",
+            "Org.Organizational_Structure__Cards.Name"
+          ],
+          "lookUpPath": "/CustomObject/Organizational_Structure__Cards?Name=",
+          "associatedFieldId": null
+        },
+        "dialogData": {
+          "type": 32,
+          "id": "8woSWor0cK60",
+          "mappedEntityId": "Org.Account.Organizational_Structure",
+          "mappingContextId": "Org.Account.Organizational_Structure",
+          "name": "Undefined_sB0Q",
+          "visibility": {
+            "type": "",
+            "id": "ovbQvJFg67nC",
+            "mappedEntityId": 1,
+            "mappingContextId": null
+          },
+          "elements": [],
+          "backgroundColor": {
+            "type": "",
+            "id": "f0GF6U3r05Jc",
+            "mappedEntityId": null,
+            "mappingContextId": null
+          },
+          "borderColor": {
+            "type": "",
+            "id": "wSmtLoSzocpf",
+            "mappedEntityId": null,
+            "mappingContextId": null
+          },
+          "showMethod": "doubleclick"
+        }
+      },
+      {
+        "type": 2,
+        "id": "YeCNkWD2cY0u",
+        "index": 10,
+        "mappedEntityId": null,
+        "mappingContextId": "Org.Account",
+        "name": "Label_NlAU",
+        "visibility": {
+          "type": "",
+          "id": "pjpmuwc5lf5C",
+          "mappedEntityId": 1,
+          "mappingContextId": null
+        },
+        "align": {
+          "type": "",
+          "id": "DfGrqfiRP6Rg",
+          "align": "left"
+        },
+        "width": {
+          "type": "",
+          "id": "Xb8Jy3WxnNkp",
+          "width": 0,
+          "size": "full"
+        },
+        "textSize": {
+          "multiline": false,
+          "rows": 1
+        },
+        "textColor": {
+          "type": "",
+          "id": "Tb1zs8Y6O08a",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        },
+        "backgroundColor": {
+          "type": "",
+          "id": "k8DEs6Rx24wi",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        },
+        "displayValue": {
+          "type": "",
+          "id": "3gpsp82cocdJ",
+          "mappedEntityId": "yqdF",
+          "mappingContextId": "Org.Account"
+        },
+        "hyperlink": {
+          "type": "0",
+          "id": "DP1tYLO6BoHw",
+          "mappedEntityId": null,
+          "mappingContextId": "Org.Account",
+          "url": ""
+        }
+      },
+      {
+        "type": 13,
+        "id": "pBWXjaQxgjlQ",
+        "index": 11,
+        "mappedEntityId": "Org.Account.Contacts",
+        "mappingContextId": "Org.Account",
+        "name": "Grid_qqXq",
+        "visibility": {
+          "type": "",
+          "id": "GOijxpsv3pRW",
+          "mappedEntityId": 1,
+          "mappingContextId": null
+        },
+        "gridColumnOptions": [
+          {
+            "type": 29,
+            "id": "n8HWFEj6FH8L",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Contacts",
+            "name": "Conatct FirstName",
+            "visibility": {
+              "type": "",
+              "id": "We07dkCoLFSL",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 3,
+                "id": "YwjiFug7cir0",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Contacts.FirstName",
+                "mappingContextId": "Org.Account.Contacts",
+                "name": "Textfield_zyKz",
+                "visibility": {
+                  "type": "",
+                  "id": "9xjzWjeYeNnK",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "align": {
+                  "type": "",
+                  "id": "5gCKnk0vDLTT",
+                  "align": "left"
+                },
+                "width": {
+                  "type": "",
+                  "id": "wyO4mhE7zIEo",
+                  "width": 0,
+                  "size": "small"
+                },
+                "textSize": {
+                  "multiline": false,
+                  "rows": 1
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "U0DA8mp6y3M8",
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Contacts"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "JOGrzQYeaKlw",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "Xh6acSofgtPu",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "MunkXichsRN1",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Contacts",
+              "name": "Element_Ki39",
+              "visibility": {
+                "type": "",
+                "id": "1LruCENaimtN",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "ljc4tkwQ3GX7",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Contacts"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "SgWfITWyiW39",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "UrAEWfkyBiO0",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Contacts",
+            "name": "Custom Decimal",
+            "visibility": {
+              "type": "",
+              "id": "i1bgMxQFAyVg",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 4,
+                "id": "3oiHmni3Uk95",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Contacts.CustomField2825",
+                "mappingContextId": "Org.Account.Contacts",
+                "name": "Numberfield_V3I6",
+                "visibility": {
+                  "type": "",
+                  "id": "eBFoe5dU2xso",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "format": {
+                  "type": "number",
+                  "id": "HKc6N85RDgqL",
+                  "mappedEntityId": null,
+                  "mappingContextId": null,
+                  "name": "Undefined_d06E",
+                  "visibility": {
+                    "type": "",
+                    "id": "iid20SWTotoq",
+                    "mappedEntityId": 1,
+                    "mappingContextId": null
+                  },
+                  "places": "2"
+                },
+                "width": {
+                  "type": "",
+                  "id": "7hsBvU6Aw1OI",
+                  "width": 0,
+                  "size": "small"
+                },
+                "align": {
+                  "type": "",
+                  "id": "dtmog4dFeyti",
+                  "align": "left"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "OmL6fK9j2hQD",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "rbHbelTOnOJP",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "HL3sEo29HcU2",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "X4OtfwhfCvus",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Contacts",
+              "name": "Element_qyei",
+              "visibility": {
+                "type": "",
+                "id": "SA83lj6gwgPM",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "ssbMFMp8MhAM",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Contacts"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "TRUQbDIPKd5A",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "R9gxEx4v59jl",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Contacts",
+            "name": "Level of support",
+            "visibility": {
+              "type": "",
+              "id": "360ohf88JegK",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 5,
+                "id": "vtCz0jxbMdWh",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Contacts.CustomField2762",
+                "mappingContextId": "Org.Account.Contacts",
+                "name": "Picklist_qa37",
+                "visibility": {
+                  "type": "",
+                  "id": "Rv6tkEqJ4iRS",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "width": {
+                  "type": "",
+                  "id": "3MDF9adNNH4l",
+                  "width": 0,
+                  "size": "small"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "EevO0SC7z4nv",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "z2H7yBJqfcnq",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "align": {
+                  "type": "",
+                  "id": "MVKoyfvQJJba",
+                  "align": "left"
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "P0Gl2fjwQjq7",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Contacts",
+              "name": "Element_aD2O",
+              "visibility": {
+                "type": "",
+                "id": "az4CtKTW6vWA",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "5sCD4i78ijWe",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Contacts"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "AXabpgePa7KQ",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "z7mDEYQGfzUF",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Contacts",
+            "name": "Custom DateTime",
+            "visibility": {
+              "type": "",
+              "id": "b00BloxLDQ5j",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 7,
+                "id": "HNTpwnATX5rl",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Contacts.CustomField2826",
+                "mappingContextId": "Org.Account.Contacts",
+                "name": "Datechooser_MB2T",
+                "visibility": {
+                  "type": "",
+                  "id": "vWFSGgiuEfoy",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "date": {
+                  "id": "TUso477yNRh7",
+                  "default": "today",
+                  "specifiedDate": null,
+                  "adjustmentFactor": 0,
+                  "adjustmentUnit": "d",
+                  "operator": "add"
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "vVbSrfcNg3h2",
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Contacts"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "XpPBKpiRchuO",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "PNfhzkRlqOK8",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "epK132Uvzx1P",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Contacts",
+              "name": "Element_1qud",
+              "visibility": {
+                "type": "",
+                "id": "tk3CTYwuqNQ7",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "af5NlKMDbqi4",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Contacts"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "f8hrh7XLSIeG",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "cnOynt77mTxH",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Contacts",
+            "name": "Custom Checkbox",
+            "visibility": {
+              "type": "",
+              "id": "dzl4eYbo67im",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 6,
+                "id": "m3ofFlAj5dDv",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Contacts.CustomField2827",
+                "mappingContextId": "Org.Account.Contacts",
+                "name": "Checkbox_SHAi",
+                "visibility": {
+                  "type": "",
+                  "id": "wMhDzcrBuSdW",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "cCVCI3yChbPm",
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Contacts"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "LgHozvV6KsIY",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "fv0h28wUMlYR",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "BLxDCtRhXEoj",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Contacts",
+              "name": "Element_nsAQ",
+              "visibility": {
+                "type": "",
+                "id": "Mhvf4nevNkQs",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "5yLlsNYg7JO7",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Contacts"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "W1GPzTris67r",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          }
+        ],
+        "width": {
+          "type": "",
+          "id": "OYt2w9Ga2RmB",
+          "width": 0,
+          "size": "full"
+        },
+        "height": {
+          "type": "",
+          "id": "OV0ojk6XXBgD",
+          "size": "small"
+        },
+        "options": {
+          "allowEdit": true,
+          "editMethod": "inline",
+          "showSummary": false
+        },
+        "lookupData": {
+          "mappedEntityId": "Org.Account.Contacts",
+          "mappingContextId": "Org.Account",
+          "displayFieldId": "Org.Contact.FirstName",
+          "dialogFieldIds": [
+            "Org.Contact.Id",
+            "Org.Contact.FirstName",
+            "Org.Contact.LastName"
+          ],
+          "lookUpPath": "/Contacts/",
+          "associatedFieldId": null
+        },
+        "dialogData": {
+          "type": 32,
+          "id": "U7nBghlzKyW7",
+          "mappedEntityId": "Org.Account.Contacts",
+          "mappingContextId": "Org.Account.Contacts",
+          "name": "Undefined_qPt6",
+          "visibility": {
+            "type": "",
+            "id": "wWO0udwHSARK",
+            "mappedEntityId": 1,
+            "mappingContextId": null
+          },
+          "elements": [],
+          "backgroundColor": {
+            "type": "",
+            "id": "R1cbFTrtoVAv",
+            "mappedEntityId": null,
+            "mappingContextId": null
+          },
+          "borderColor": {
+            "type": "",
+            "id": "1LQmMILM76HT",
+            "mappedEntityId": null,
+            "mappingContextId": null
+          },
+          "showMethod": "doubleclick"
+        }
+      },
+      {
+        "type": 2,
+        "id": "lLymO2bIi5N3",
+        "index": 12,
+        "mappedEntityId": null,
+        "mappingContextId": "Org.Account",
+        "name": "Label_yIfY",
+        "visibility": {
+          "type": "",
+          "id": "fjIi7X3Ub8qw",
+          "mappedEntityId": 1,
+          "mappingContextId": null
+        },
+        "align": {
+          "type": "",
+          "id": "HtnS5sPrxfyY",
+          "align": "left"
+        },
+        "width": {
+          "type": "",
+          "id": "wfUP4zF7MnWB",
+          "width": 0,
+          "size": "full"
+        },
+        "textSize": {
+          "multiline": false,
+          "rows": 1
+        },
+        "textColor": {
+          "type": "",
+          "id": "bDIWdivzecdF",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        },
+        "backgroundColor": {
+          "type": "",
+          "id": "NUfh8jgxWyCb",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        },
+        "displayValue": {
+          "type": "",
+          "id": "s92FkhdsvXu2",
+          "mappedEntityId": "85Lm",
+          "mappingContextId": "Org.Account"
+        },
+        "hyperlink": {
+          "type": "0",
+          "id": "oH0wuO9ItJOu",
+          "mappedEntityId": null,
+          "mappingContextId": "Org.Account",
+          "url": ""
+        }
+      },
+      {
+        "type": 13,
+        "id": "JKjujlkh5j1b",
+        "index": 13,
+        "mappedEntityId": "Org.Account.Deals",
+        "mappingContextId": "Org.Account",
+        "name": "Grid_m1So",
+        "visibility": {
+          "type": "",
+          "id": "y1RuVe9jE2Hc",
+          "mappedEntityId": 1,
+          "mappingContextId": null
+        },
+        "gridColumnOptions": [
+          {
+            "type": 29,
+            "id": "YV6QnK9KvEC6",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Deals",
+            "name": "Deal Name",
+            "visibility": {
+              "type": "",
+              "id": "kXuannWfANmm",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 3,
+                "id": "csMVViptSyl9",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Deals.Name",
+                "mappingContextId": "Org.Account.Deals",
+                "name": "Textfield_hKhY",
+                "visibility": {
+                  "type": "",
+                  "id": "fj7x5yrVLBhc",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "align": {
+                  "type": "",
+                  "id": "4mG1PTBvoW8g",
+                  "align": "left"
+                },
+                "width": {
+                  "type": "",
+                  "id": "Nv6qskrxFnQI",
+                  "width": 0,
+                  "size": "small"
+                },
+                "textSize": {
+                  "multiline": false,
+                  "rows": 1
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "UI3G0pJB5McW",
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Deals"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "V5Cvy7y3suRg",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "zahhedXbEpsX",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "usnpUHpuXTMK",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals",
+              "name": "Element_2mDf",
+              "visibility": {
+                "type": "",
+                "id": "VLyOFynIRrWx",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "toWyo1MBMnpF",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "7Gvh4yyJ0S4S",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "kmrxlIn0ryn4",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Deals",
+            "name": "Revenue Amount",
+            "visibility": {
+              "type": "",
+              "id": "aJeksMoj43Ir",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 4,
+                "id": "2hmCy9afqzWv",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Deals.RevenueAmount",
+                "mappingContextId": "Org.Account.Deals",
+                "name": "Numberfield_Y1FM",
+                "visibility": {
+                  "type": "",
+                  "id": "LjbT3mCfSe1x",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "format": {
+                  "type": "number",
+                  "id": "4gPMLRgBd9HE",
+                  "mappedEntityId": null,
+                  "mappingContextId": null,
+                  "name": "Undefined_spJ7",
+                  "visibility": {
+                    "type": "",
+                    "id": "zrgDokduNStw",
+                    "mappedEntityId": 1,
+                    "mappingContextId": null
+                  },
+                  "places": 0
+                },
+                "width": {
+                  "type": "",
+                  "id": "SLmTrWfY4kRb",
+                  "width": 0,
+                  "size": "small"
+                },
+                "align": {
+                  "type": "",
+                  "id": "WWBI0lE4jj4Q",
+                  "align": "left"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "aYzmf9xwd0EA",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "b22GH0cJVMhX",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "D05QPt2cu3KK",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "UK5MHYmoYbFD",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals",
+              "name": "Element_WwEf",
+              "visibility": {
+                "type": "",
+                "id": "lrbfyvz3P59o",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "DQwrGdufj4Gr",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "ilsUKjUJQDSh",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "9wKSmNdmJ1d2",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Deals",
+            "name": "Close Status",
+            "visibility": {
+              "type": "",
+              "id": "vi0fafRrmLvB",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 5,
+                "id": "glLzuYsmkvrb",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Deals.CloseStatus",
+                "mappingContextId": "Org.Account.Deals",
+                "name": "Picklist_XPx5",
+                "visibility": {
+                  "type": "",
+                  "id": "8a2sUW1dkeQe",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "width": {
+                  "type": "",
+                  "id": "n7CL7328e4GM",
+                  "width": 0,
+                  "size": "small"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "45cXXebGMmkb",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "LLXFHkV4eOTU",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "align": {
+                  "type": "",
+                  "id": "eUPeIHm0qS91",
+                  "align": "left"
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "j3LIixYMwUKk",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals",
+              "name": "Element_p8ov",
+              "visibility": {
+                "type": "",
+                "id": "gPmdqqLb93QV",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "6YR1eNvU19jT",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "EOV0D4NxyRrJ",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "RpTCgT3IMnVR",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Deals",
+            "name": "Expected Close Date",
+            "visibility": {
+              "type": "",
+              "id": "SF9S8q24lSHs",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 7,
+                "id": "WsnLsPnalQdW",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Deals.ExpectedCloseDate",
+                "mappingContextId": "Org.Account.Deals",
+                "name": "Datechooser_JDH9",
+                "visibility": {
+                  "type": "",
+                  "id": "nmV1pJAUsf2o",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "date": {
+                  "id": "xdykeWkGYWEr",
+                  "default": "today",
+                  "specifiedDate": null,
+                  "adjustmentFactor": 0,
+                  "adjustmentUnit": "d",
+                  "operator": "add"
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "BdtmSH5gfWIn",
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Deals"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "bn1FSt8BB6ca",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "TNGtYtptq2Bo",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "qNGOsGQ4KlyR",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals",
+              "name": "Element_H7WL",
+              "visibility": {
+                "type": "",
+                "id": "pSfW478j0k1V",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "ah120zSx7qOi",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "6oGEKAv8MA1M",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "9CAugafi1jXG",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Deals",
+            "name": "Custom Text",
+            "visibility": {
+              "type": "",
+              "id": "MSp5yRR2HM1u",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 3,
+                "id": "sVy4Y48RkVrW",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Deals.CustomField2841",
+                "mappingContextId": "Org.Account.Deals",
+                "name": "Textfield_33z5",
+                "visibility": {
+                  "type": "",
+                  "id": "jCrLDemtgT2H",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "align": {
+                  "type": "",
+                  "id": "bGdRKn6DMB4J",
+                  "align": "left"
+                },
+                "width": {
+                  "type": "",
+                  "id": "aTkCIbr5E4Nh",
+                  "width": 0,
+                  "size": "small"
+                },
+                "textSize": {
+                  "multiline": false,
+                  "rows": 1
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "o7moWKmo89t9",
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Deals"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "x3qrmM5CM9lP",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "qWJIfuV2AVe3",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "OPMipH37EiP7",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals",
+              "name": "Element_WJls",
+              "visibility": {
+                "type": "",
+                "id": "Gsu6REn5UfiH",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "a46QYaPHI7yI",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "3SLhxmEMArH0",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "WDFRr1FG2XsI",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Deals",
+            "name": "Custom Decimal",
+            "visibility": {
+              "type": "",
+              "id": "fTQOIrujqrMU",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 4,
+                "id": "R9UqN9WAprXS",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Deals.CustomField2843",
+                "mappingContextId": "Org.Account.Deals",
+                "name": "Numberfield_7zXd",
+                "visibility": {
+                  "type": "",
+                  "id": "TCd5tUovRyTv",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "format": {
+                  "type": "number",
+                  "id": "kmHJd2VN4pMI",
+                  "mappedEntityId": null,
+                  "mappingContextId": null,
+                  "name": "Undefined_4qJJ",
+                  "visibility": {
+                    "type": "",
+                    "id": "YBLcVGtofpgj",
+                    "mappedEntityId": 1,
+                    "mappingContextId": null
+                  },
+                  "places": "2"
+                },
+                "width": {
+                  "type": "",
+                  "id": "49vRTpQ2VeDC",
+                  "width": 0,
+                  "size": "small"
+                },
+                "align": {
+                  "type": "",
+                  "id": "mhMmdSxAoi08",
+                  "align": "left"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "uIcXWRnLdMD2",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "AWmWO72QVtrQ",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "zgefFxDACHC9",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "mzrO3d6UL92T",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals",
+              "name": "Element_yh2u",
+              "visibility": {
+                "type": "",
+                "id": "XpXhCiNIgYpg",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "Gx6G69luLX5M",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "CbbPmfYmKALF",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "Ledxn3eAH1ey",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Deals",
+            "name": "Custom Picklist",
+            "visibility": {
+              "type": "",
+              "id": "rzMos1QiwuqA",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 5,
+                "id": "83SmoDTbi60k",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Deals.CustomField2845",
+                "mappingContextId": "Org.Account.Deals",
+                "name": "Picklist_i7pt",
+                "visibility": {
+                  "type": "",
+                  "id": "OIKTmEwr62Kk",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "width": {
+                  "type": "",
+                  "id": "MdvU9gmdv1Uu",
+                  "width": 0,
+                  "size": "small"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "0seDWCScVYqj",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "4MSDiSoC4gGt",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "align": {
+                  "type": "",
+                  "id": "TQmEPaA1GzDR",
+                  "align": "left"
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "mjEeq4UhHv8S",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals",
+              "name": "Element_zeiS",
+              "visibility": {
+                "type": "",
+                "id": "2fQDe7SyrhC2",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "aCHx0mkb58fN",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "3ucmnKANBOj8",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "n4zoL79xxVKg",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Deals",
+            "name": "Custom DateTime",
+            "visibility": {
+              "type": "",
+              "id": "jckTxgjovncA",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 7,
+                "id": "9bWhi9kNHP6H",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Deals.CustomField2844",
+                "mappingContextId": "Org.Account.Deals",
+                "name": "Datechooser_5tT8",
+                "visibility": {
+                  "type": "",
+                  "id": "jsdojITr96jy",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "date": {
+                  "id": "nKpHkp2nzRvq",
+                  "default": "today",
+                  "specifiedDate": null,
+                  "adjustmentFactor": 0,
+                  "adjustmentUnit": "d",
+                  "operator": "add"
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "ylEqNFFapJ4B",
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Deals"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "maP0NcpuCMzH",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "Wv4lQmocC8Er",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "QBsX3PVG19h6",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals",
+              "name": "Element_N9b1",
+              "visibility": {
+                "type": "",
+                "id": "di1J3JI7dfQw",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "r7uwtUFJTmcY",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "08Ozytizxvi8",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "8Uo1YfBesu6X",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Deals",
+            "name": "Deal Owner",
+            "visibility": {
+              "type": "",
+              "id": "XwAQQlV0BLhk",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 23,
+                "id": "KTRfUEIM7pMO",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Deals.OwnerId",
+                "mappingContextId": "Org.Account.Deals",
+                "name": "Undefined_Vbta",
+                "visibility": {
+                  "type": "",
+                  "id": "CH7pRQKgCVNB",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "width": {
+                  "type": "",
+                  "id": "SAkk9csLUSQe",
+                  "width": 0,
+                  "size": "small"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "UYnXLEHGgb8t",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "fMcFNY7kTQEe",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "dialogFieldIds": [
+                  "Org.Account.Deals.Owner.Id",
+                  "Org.Account.Deals.Owner.Email",
+                  "Org.Account.Deals.Owner.FirstName",
+                  "Org.Account.Deals.Owner.LastName"
+                ],
+                "isHyperlink": true,
+                "lookUpPath": "/Users/",
+                "associatedFieldId": "Org.Account.Deals.Owner"
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "7fpYj5maaRpF",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals",
+              "name": "Element_bIbm",
+              "visibility": {
+                "type": "",
+                "id": "BBnnGH7aiHHS",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "NmTAuaDB4iVs",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "R30TaVl7QeQt",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "cvGtHmDDcbkN",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Deals",
+            "name": "Custom Checkbox",
+            "visibility": {
+              "type": "",
+              "id": "tWEBq7AYjgWx",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 6,
+                "id": "OjxSaFDTQqjj",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Deals.CustomField2846",
+                "mappingContextId": "Org.Account.Deals",
+                "name": "Checkbox_lcc7",
+                "visibility": {
+                  "type": "",
+                  "id": "FYeaGW82wiqp",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "G0APQybjbPdn",
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Deals"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "O8bV8hfnEHpO",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "KhMGOpwrcSaB",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "n8lK9pTLqf2G",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals",
+              "name": "Element_i4A4",
+              "visibility": {
+                "type": "",
+                "id": "S1hWF1a7VPrK",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "qGrwBA6QYp9C",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "LYcmOJ5BtVkV",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "kEWFOKkkWhyx",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Deals",
+            "name": "",
+            "visibility": {
+              "type": "",
+              "id": "vYprL7Dc1gAr",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 1,
+                "id": "RxHJ339FzFoy",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Deals.SalesProcess",
+                "mappingContextId": "Org.Account.Deals",
+                "name": "Section_alGD",
+                "visibility": {
+                  "type": "",
+                  "id": "0WDmMzS1rECJ",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "elements": [
+                  {
+                    "type": 3,
+                    "id": "gj47IiqYiv06",
+                    "index": 0,
+                    "mappedEntityId": "Org.Account.Deals.SalesProcess.Name",
+                    "mappingContextId": "Org.Account.Deals.SalesProcess",
+                    "name": "Textfield_qA2p",
+                    "visibility": {
+                      "type": "",
+                      "id": "4D9LYlRKGonX",
+                      "mappedEntityId": 1,
+                      "mappingContextId": null
+                    },
+                    "align": {
+                      "type": "",
+                      "id": "cJgI9UwBa8kG",
+                      "align": "left"
+                    },
+                    "width": {
+                      "type": "",
+                      "id": "AjoshcODu0el",
+                      "width": 0,
+                      "size": "small"
+                    },
+                    "textSize": {
+                      "multiline": false,
+                      "rows": 1
+                    },
+                    "displayValue": {
+                      "type": "",
+                      "id": "yOk9c8PBdDko",
+                      "mappedEntityId": null,
+                      "mappingContextId": "Org.Account.Deals.SalesProcess"
+                    },
+                    "textColor": {
+                      "type": "",
+                      "id": "GO3jxzh9LJnj",
+                      "mappedEntityId": null,
+                      "mappingContextId": null
+                    },
+                    "backgroundColor": {
+                      "type": "",
+                      "id": "oauLWBy1b7dy",
+                      "mappedEntityId": null,
+                      "mappingContextId": null
+                    }
+                  }
+                ],
+                "width": {
+                  "type": "",
+                  "id": "I6Olnr03VJRG",
+                  "width": 0,
+                  "size": "full"
+                },
+                "layoutDirection": {
+                  "type": "",
+                  "id": "189cLjVrA6Y2",
+                  "direction": "horizontal"
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "lbqinBw31NDR",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "borderColor": {
+                  "type": "",
+                  "id": "PAJvgR7MeAKY",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "Smg8Mhr1Ehoz",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals",
+              "name": "Element_hCJm",
+              "visibility": {
+                "type": "",
+                "id": "K8dMdIxOL22W",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "xvR0FLdiCgjl",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Deals"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "g0t2q9SeAooB",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          }
+        ],
+        "width": {
+          "type": "",
+          "id": "haxQlPycUSvU",
+          "width": 0,
+          "size": "full"
+        },
+        "height": {
+          "type": "",
+          "id": "T1YblR1AIM3V",
+          "size": "small"
+        },
+        "options": {
+          "allowEdit": true,
+          "editMethod": "inline",
+          "showSummary": false
+        },
+        "lookupData": {
+          "mappedEntityId": "Org.Account.Deals",
+          "mappingContextId": "Org.Account",
+          "displayFieldId": "Org.Deal.Name",
+          "dialogFieldIds": [
+            "Org.Deal.Id",
+            "Org.Deal.Name"
+          ],
+          "lookUpPath": "/Deals/",
+          "associatedFieldId": null
+        },
+        "dialogData": {
+          "type": 32,
+          "id": "ep0YOAG7XdUg",
+          "mappedEntityId": "Org.Account.Deals",
+          "mappingContextId": "Org.Account.Deals",
+          "name": "Undefined_SUXX",
+          "visibility": {
+            "type": "",
+            "id": "QMlj3m6IY0cY",
+            "mappedEntityId": 1,
+            "mappingContextId": null
+          },
+          "elements": [],
+          "backgroundColor": {
+            "type": "",
+            "id": "MMNgNtevXEN7",
+            "mappedEntityId": null,
+            "mappingContextId": null
+          },
+          "borderColor": {
+            "type": "",
+            "id": "Wf6BGUAWJzPn",
+            "mappedEntityId": null,
+            "mappingContextId": null
+          },
+          "showMethod": "doubleclick"
+        }
+      },
+      {
+        "type": 2,
+        "id": "HO637DHoU5PE",
+        "index": 14,
+        "mappedEntityId": null,
+        "mappingContextId": "Org.Account",
+        "name": "Label_BvRK",
+        "visibility": {
+          "type": "",
+          "id": "8MA32WnSlquk",
+          "mappedEntityId": 1,
+          "mappingContextId": null
+        },
+        "align": {
+          "type": "",
+          "id": "n8Kp0W0QBWlh",
+          "align": "left"
+        },
+        "width": {
+          "type": "",
+          "id": "DclTATN9h38t",
+          "width": 0,
+          "size": "full"
+        },
+        "textSize": {
+          "multiline": false,
+          "rows": 1
+        },
+        "textColor": {
+          "type": "",
+          "id": "xjNCjHaf2N5J",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        },
+        "backgroundColor": {
+          "type": "",
+          "id": "w1Q8N9TakILJ",
+          "mappedEntityId": null,
+          "mappingContextId": null
+        },
+        "displayValue": {
+          "type": "",
+          "id": "Kq3TaEpomlyO",
+          "mappedEntityId": "VphS",
+          "mappingContextId": "Org.Account"
+        },
+        "hyperlink": {
+          "type": "0",
+          "id": "qFDeOqfjMmAh",
+          "mappedEntityId": null,
+          "mappingContextId": "Org.Account",
+          "url": ""
+        }
+      },
+      {
+        "type": 13,
+        "id": "oiYmt9xfKJOX",
+        "index": 15,
+        "mappedEntityId": "Org.Account.Tasks",
+        "mappingContextId": "Org.Account",
+        "name": "Grid_ROQR",
+        "visibility": {
+          "type": "",
+          "id": "fBFE8mH6sDcc",
+          "mappedEntityId": 1,
+          "mappingContextId": null
+        },
+        "gridColumnOptions": [
+          {
+            "type": 29,
+            "id": "Y6Ve6JjjiBPz",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Tasks",
+            "name": "Task Name",
+            "visibility": {
+              "type": "",
+              "id": "BBWqqyMiN1ho",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 3,
+                "id": "my8dxC31QUjX",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Tasks.Name",
+                "mappingContextId": "Org.Account.Tasks",
+                "name": "Textfield_PdpM",
+                "visibility": {
+                  "type": "",
+                  "id": "i2RuPQQduaaQ",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "align": {
+                  "type": "",
+                  "id": "XoLp7clTe3Rn",
+                  "align": "left"
+                },
+                "width": {
+                  "type": "",
+                  "id": "qmgWPVRBp5FC",
+                  "width": 0,
+                  "size": "small"
+                },
+                "textSize": {
+                  "multiline": false,
+                  "rows": 1
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "d5YMrjPPd240",
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Tasks"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "MwoWOsPUVqsr",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "hsGVIqGrzzhr",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "yfSbhfcw4OEE",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks",
+              "name": "Element_sEaA",
+              "visibility": {
+                "type": "",
+                "id": "u69Onbbv66q0",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "ds9Pp7fXCo4i",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "wOCFKpfKd9oW",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "nfhAiiwgMAIX",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Tasks",
+            "name": "Custom Deciaml (1 of 3?)",
+            "visibility": {
+              "type": "",
+              "id": "7TzUXH1g3qAW",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 4,
+                "id": "wvYVSEDtV6gy",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Tasks.CustomField2834",
+                "mappingContextId": "Org.Account.Tasks",
+                "name": "Numberfield_A9YC",
+                "visibility": {
+                  "type": "",
+                  "id": "SmjiGWHaDd2j",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "format": {
+                  "type": "number",
+                  "id": "WTqqmfJPqFWk",
+                  "mappedEntityId": null,
+                  "mappingContextId": null,
+                  "name": "Undefined_uWF8",
+                  "visibility": {
+                    "type": "",
+                    "id": "SVbEfaIKqi8K",
+                    "mappedEntityId": 1,
+                    "mappingContextId": null
+                  },
+                  "places": "2"
+                },
+                "width": {
+                  "type": "",
+                  "id": "er6LN94DdIUY",
+                  "width": 0,
+                  "size": "small"
+                },
+                "align": {
+                  "type": "",
+                  "id": "pwxah7AV5c69",
+                  "align": "left"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "S22cQzeEcPKI",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "Wp1kfqBhUxyS",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "XrV2VrAnwy1A",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "muM6AOWkPn1B",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks",
+              "name": "Element_4oG9",
+              "visibility": {
+                "type": "",
+                "id": "5NGMhsJuevKM",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "cGpiUQfRRVCD",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "DGmf5Hc7Yin0",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "sVDMiy7VIxCB",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Tasks",
+            "name": "Custom Picklist",
+            "visibility": {
+              "type": "",
+              "id": "JIKajRtH2BF7",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 5,
+                "id": "QFrTtJ4UkoWY",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Tasks.CustomField2838",
+                "mappingContextId": "Org.Account.Tasks",
+                "name": "Picklist_WLlT",
+                "visibility": {
+                  "type": "",
+                  "id": "w0UqNlDrJDIR",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "width": {
+                  "type": "",
+                  "id": "SHFAD4IsaiqA",
+                  "width": 0,
+                  "size": "small"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "ojdBL8gKumVr",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "AxIfyYehp5b2",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "align": {
+                  "type": "",
+                  "id": "vQG8rupN0jEW",
+                  "align": "left"
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "WSNEhncRoyvP",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks",
+              "name": "Element_94Ts",
+              "visibility": {
+                "type": "",
+                "id": "H2Tj2dagx1T4",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "m3UrboWCMCHo",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "dMB7OSs4KnEB",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "UFUfmBEmtH7n",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Tasks",
+            "name": "Task Due Date",
+            "visibility": {
+              "type": "",
+              "id": "buApast5ltnB",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 7,
+                "id": "faetMVFrQukq",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Tasks.DueDate",
+                "mappingContextId": "Org.Account.Tasks",
+                "name": "Datechooser_YnVR",
+                "visibility": {
+                  "type": "",
+                  "id": "7liQoxEjKnKJ",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "date": {
+                  "id": "zmVryRrt49nr",
+                  "default": "today",
+                  "specifiedDate": null,
+                  "adjustmentFactor": 0,
+                  "adjustmentUnit": "d",
+                  "operator": "add"
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "aqIBaYxUOWJ8",
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Tasks"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "1K1D6rQcuyRg",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "s1zPqES85epj",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "7zn2V8HOiAtJ",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks",
+              "name": "Element_DdXy",
+              "visibility": {
+                "type": "",
+                "id": "zjnrXDcfxseX",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "H5huWaVQbhzm",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "8EGOv26YY6ia",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "j8seFpHrvyYF",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Tasks",
+            "name": "Task Custom Date",
+            "visibility": {
+              "type": "",
+              "id": "wQS5YR8cby93",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 7,
+                "id": "MtogLrTSRBVP",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Tasks.CustomField2831",
+                "mappingContextId": "Org.Account.Tasks",
+                "name": "Datechooser_JNTu",
+                "visibility": {
+                  "type": "",
+                  "id": "1vCpJ2bhnUqf",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "date": {
+                  "id": "vHgES5C4mexR",
+                  "default": "today",
+                  "specifiedDate": null,
+                  "adjustmentFactor": 0,
+                  "adjustmentUnit": "d",
+                  "operator": "add"
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "vzDVRAkkpDhI",
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Tasks"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "FqN7ac8fVUPa",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "lCgweSYNadah",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "nLtUoUjNVhrh",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks",
+              "name": "Element_UWLs",
+              "visibility": {
+                "type": "",
+                "id": "cg0M5pU5Tcs9",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "6hP9Mb0E7qA6",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "LY743QvrXDR5",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "4Khlp832efaW",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Tasks",
+            "name": "UserId (Owner)",
+            "visibility": {
+              "type": "",
+              "id": "qYupuEHD8tFi",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 23,
+                "id": "jjanYxEmzpVh",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Tasks.UserId",
+                "mappingContextId": "Org.Account.Tasks",
+                "name": "Undefined_r70K",
+                "visibility": {
+                  "type": "",
+                  "id": "07vQez5bJx3E",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "width": {
+                  "type": "",
+                  "id": "EPpR3RCwYsXi",
+                  "width": 0,
+                  "size": "small"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "l0gFU9Hw63tl",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "LDskvbsf5nQT",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "dialogFieldIds": [
+                  "Org.Account.Tasks.User.Email",
+                  "Org.Account.Tasks.User.FirstName",
+                  "Org.Account.Tasks.User.LastName"
+                ],
+                "isHyperlink": true,
+                "lookUpPath": "/Users/",
+                "associatedFieldId": "Org.Account.Tasks.User"
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "U7ccqC9qWTrN",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks",
+              "name": "Element_3rAf",
+              "visibility": {
+                "type": "",
+                "id": "ckrhUdI9s7kc",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "MQv157RgbUcT",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "Sg68IGjrNETY",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "mlAXlYA6a2RK",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Tasks",
+            "name": "Type",
+            "visibility": {
+              "type": "",
+              "id": "fCKBs2zcar9y",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 23,
+                "id": "8Ku1r7xntX2W",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Tasks.TaskTypeId",
+                "mappingContextId": "Org.Account.Tasks",
+                "name": "Undefined_pmc3",
+                "visibility": {
+                  "type": "",
+                  "id": "whgidg2cSUGD",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "width": {
+                  "type": "",
+                  "id": "iYUnVVgjlVew",
+                  "width": 0,
+                  "size": "small"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "bvOn6c68Q2sE",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "r5NoO4Sx5z73",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "displayFieldId": "Org.Account.Tasks.TaskType.Name",
+                "dialogFieldIds": [
+                  "Org.Account.Tasks.TaskType.Id",
+                  "Org.Account.Tasks.TaskType.Name"
+                ],
+                "isHyperlink": true,
+                "lookUpPath": "/TaskType/",
+                "associatedFieldId": "Org.Account.Tasks.TaskType"
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "qqK6EHD1OwcG",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks",
+              "name": "Element_L6Xb",
+              "visibility": {
+                "type": "",
+                "id": "2v1y2LYMU4cd",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "F8h2xSPmWYXj",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "qxzVXif8wmX1",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "30sHt6luAhAM",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Tasks",
+            "name": "IsDone",
+            "visibility": {
+              "type": "",
+              "id": "bLT0qiGVYiEK",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 6,
+                "id": "coXYmdXEsktp",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Tasks.IsDone",
+                "mappingContextId": "Org.Account.Tasks",
+                "name": "Checkbox_1VMy",
+                "visibility": {
+                  "type": "",
+                  "id": "kH3TrerKJlJj",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "ILNin6dbvR6K",
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Tasks"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "4frszrohde6Q",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "vKs7Nm7Wmk0e",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "O3vQL5CexDyS",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks",
+              "name": "Element_86tI",
+              "visibility": {
+                "type": "",
+                "id": "dUeJYWQI97iD",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "l71kRm2EsBOA",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "GlRoewhgW5Bl",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "PYVr5XXgytJG",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Tasks",
+            "name": "IsImportant",
+            "visibility": {
+              "type": "",
+              "id": "cIdisNqDEdeQ",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 6,
+                "id": "n83RQTYj1LiO",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Tasks.IsImportant",
+                "mappingContextId": "Org.Account.Tasks",
+                "name": "Checkbox_yh4i",
+                "visibility": {
+                  "type": "",
+                  "id": "8RnPCPGddWap",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "Im5Is1x6gWQk",
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Tasks"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "R58VO9JsmclK",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "HdtrXo8TkEs4",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "attciYpzF3QK",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks",
+              "name": "Element_0QiX",
+              "visibility": {
+                "type": "",
+                "id": "Xq5gzK1RiTrx",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "zk9BKROix7K1",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "dHDzO4b69VGw",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          },
+          {
+            "type": 29,
+            "id": "2pm5dO5xbP3O",
+            "mappedEntityId": null,
+            "mappingContextId": "Org.Account.Tasks",
+            "name": "Custom Checkbox",
+            "visibility": {
+              "type": "",
+              "id": "L43tVdvcywBv",
+              "mappedEntityId": 1,
+              "mappingContextId": null
+            },
+            "elements": [
+              {
+                "type": 6,
+                "id": "RKAzFVrG5H3x",
+                "index": 0,
+                "mappedEntityId": "Org.Account.Tasks.CustomField2837",
+                "mappingContextId": "Org.Account.Tasks",
+                "name": "Checkbox_AL1K",
+                "visibility": {
+                  "type": "",
+                  "id": "s9j5LBmg9YMg",
+                  "mappedEntityId": 1,
+                  "mappingContextId": null
+                },
+                "displayValue": {
+                  "type": "",
+                  "id": "KWvB5pMLhlUj",
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Tasks"
+                },
+                "textColor": {
+                  "type": "",
+                  "id": "54BzpkCklRur",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                },
+                "backgroundColor": {
+                  "type": "",
+                  "id": "5biktPTnVhuq",
+                  "mappedEntityId": null,
+                  "mappingContextId": null
+                }
+              }
+            ],
+            "field": {
+              "type": 0,
+              "id": "SQ65zSGvML2A",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks",
+              "name": "Element_P1fh",
+              "visibility": {
+                "type": "",
+                "id": "MagbjKPUKKsD",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              }
+            },
+            "displayValue": {
+              "type": "",
+              "id": "0XhEp34rNvuh",
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks"
+            },
+            "backgroundColor": {
+              "type": "",
+              "id": "5sPYtFiadyyP",
+              "mappedEntityId": null,
+              "mappingContextId": null
+            },
+            "summaryOptions": {}
+          }
+        ],
+        "width": {
+          "type": "",
+          "id": "oM2UuKRW9w5S",
+          "width": 0,
+          "size": "full"
+        },
+        "height": {
+          "type": "",
+          "id": "SUWANfyYBY0M",
+          "size": "medium"
+        },
+        "options": {
+          "allowEdit": true,
+          "editMethod": "inline",
+          "showSummary": false
+        },
+        "lookupData": {
+          "mappedEntityId": "Org.Account.Tasks",
+          "mappingContextId": "Org.Account",
+          "displayFieldId": "Org.Task.Name",
+          "dialogFieldIds": [
+            "Org.Task.Id",
+            "Org.Task.Name",
+            "Org.Task.TaskTypeId"
+          ],
+          "lookUpPath": "/Tasks/",
+          "associatedFieldId": null
+        },
+        "dialogData": {
+          "type": 32,
+          "id": "yprSOEJDX4jq",
+          "mappedEntityId": "Org.Account.Tasks",
+          "mappingContextId": "Org.Account.Tasks",
+          "name": "Undefined_U1VW",
+          "visibility": {
+            "type": "",
+            "id": "borCVURNua2S",
+            "mappedEntityId": 1,
+            "mappingContextId": null
+          },
+          "elements": [],
+          "backgroundColor": {
+            "type": "",
+            "id": "GrPOfO9vC5kV",
+            "mappedEntityId": null,
+            "mappingContextId": null
+          },
+          "borderColor": {
+            "type": "",
+            "id": "ERWFlFiG6qsu",
+            "mappedEntityId": null,
+            "mappingContextId": null
+          },
+          "showMethod": "doubleclick"
+        }
+      },
+      {
+        "type": 22,
+        "id": "NMO868UbzaO6",
+        "index": 16,
+        "mappedEntityId": "Org.Account.Tasks",
+        "mappingContextId": "Org.Account",
+        "name": "Undefined_NJ0f",
+        "visibility": {
+          "type": "",
+          "id": "bnKXS5Q1302n",
+          "mappedEntityId": 1,
+          "mappingContextId": null
+        },
+        "width": {
+          "type": "",
+          "id": "tS0mmUl5PMgd",
+          "width": 0,
+          "size": "full"
+        },
+        "height": {
+          "type": "",
+          "id": "7vudpACWdPGT",
+          "size": "medium"
+        },
+        "cardDetails": {
+          "type": 24,
+          "id": "fKeYyRa7iqRK",
+          "mappedEntityId": null,
+          "mappingContextId": "Org.Account.Tasks",
+          "name": "Undefined_7Nr5",
+          "visibility": {
+            "type": "",
+            "id": "iQmIKVnnYW0F",
+            "mappedEntityId": 1,
+            "mappingContextId": null
+          },
+          "elements": [
+            {
+              "type": 1,
+              "id": "TVWR5Pu1f7EE",
+              "index": 0,
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks",
+              "name": "Section_pp57",
+              "visibility": {
+                "type": "",
+                "id": "uStEAs1pT9GN",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              },
+              "elements": [
+                {
+                  "type": 3,
+                  "id": "q2AEBSl4FQ9A",
+                  "index": 0,
+                  "mappedEntityId": "Org.Account.Tasks.Name",
+                  "mappingContextId": "Org.Account.Tasks",
+                  "name": "Textfield_E09d",
+                  "visibility": {
+                    "type": "",
+                    "id": "lwSjCp6POoC0",
+                    "mappedEntityId": 1,
+                    "mappingContextId": null
+                  },
+                  "align": {
+                    "type": "",
+                    "id": "R7nC1a4GEggq",
+                    "align": "left"
+                  },
+                  "width": {
+                    "type": "",
+                    "id": "RdArjvdDB60E",
+                    "width": 0,
+                    "size": "full"
+                  },
+                  "textSize": {
+                    "multiline": false,
+                    "rows": 1
+                  },
+                  "displayValue": {
+                    "type": "",
+                    "id": "uA9BmreM2Y6W",
+                    "mappedEntityId": null,
+                    "mappingContextId": "Org.Account.Tasks"
+                  },
+                  "textColor": {
+                    "type": "",
+                    "id": "HxXA7W0P1QIL",
+                    "mappedEntityId": null,
+                    "mappingContextId": null
+                  },
+                  "backgroundColor": {
+                    "type": "",
+                    "id": "mjD7L9AweADY",
+                    "mappedEntityId": null,
+                    "mappingContextId": null
+                  }
+                }
+              ],
+              "width": {
+                "type": "",
+                "id": "MEC2Ibb6UdiM",
+                "width": 0,
+                "size": "full"
+              },
+              "layoutDirection": {
+                "type": "",
+                "id": "6Qg8U7UXoF5S",
+                "direction": "horizontal"
+              },
+              "backgroundColor": {
+                "type": "",
+                "id": "GlTU9pViP6y2",
+                "mappedEntityId": null,
+                "mappingContextId": null
+              },
+              "borderColor": {
+                "type": "",
+                "id": "Ogf5K6aSLVmS",
+                "mappedEntityId": null,
+                "mappingContextId": null
+              }
+            },
+            {
+              "type": 1,
+              "id": "iaKxqMUYFr1y",
+              "index": 1,
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks",
+              "name": "Section_Hfcr",
+              "visibility": {
+                "type": "",
+                "id": "JB2TJfNYKglB",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              },
+              "elements": [
+                {
+                  "type": 23,
+                  "id": "rfXvXyU6MIh4",
+                  "index": 0,
+                  "mappedEntityId": "Org.Account.Tasks.TaskTypeId",
+                  "mappingContextId": "Org.Account.Tasks",
+                  "name": "Undefined_2FXK",
+                  "visibility": {
+                    "type": "",
+                    "id": "jJouTNKrom2l",
+                    "mappedEntityId": 1,
+                    "mappingContextId": null
+                  },
+                  "width": {
+                    "type": "",
+                    "id": "iajsI9zqKMY7",
+                    "width": 0,
+                    "size": "full"
+                  },
+                  "textColor": {
+                    "type": "",
+                    "id": "CuKwRh4SLdB4",
+                    "mappedEntityId": null,
+                    "mappingContextId": null
+                  },
+                  "backgroundColor": {
+                    "type": "",
+                    "id": "vseF3kOGNDz9",
+                    "mappedEntityId": null,
+                    "mappingContextId": null
+                  },
+                  "displayFieldId": "Org.Account.Tasks.TaskType.Name",
+                  "dialogFieldIds": [
+                    "Org.Account.Tasks.TaskType.Id",
+                    "Org.Account.Tasks.TaskType.Name"
+                  ],
+                  "isHyperlink": true,
+                  "lookUpPath": "/TaskType/",
+                  "associatedFieldId": "Org.Account.Tasks.TaskType"
+                }
+              ],
+              "width": {
+                "type": "",
+                "id": "BMYvuJWivFLI",
+                "width": 0,
+                "size": "full"
+              },
+              "layoutDirection": {
+                "type": "",
+                "id": "SckqcyR4DqSL",
+                "direction": "horizontal"
+              },
+              "backgroundColor": {
+                "type": "",
+                "id": "crp5wAmiMVji",
+                "mappedEntityId": null,
+                "mappingContextId": null
+              },
+              "borderColor": {
+                "type": "",
+                "id": "GAMlYcHw1Y7A",
+                "mappedEntityId": null,
+                "mappingContextId": null
+              }
+            },
+            {
+              "type": 1,
+              "id": "fPdxgmtIxOmI",
+              "index": 2,
+              "mappedEntityId": null,
+              "mappingContextId": "Org.Account.Tasks",
+              "name": "Section_7BcM",
+              "visibility": {
+                "type": "",
+                "id": "j6SwNGaAOwKo",
+                "mappedEntityId": 1,
+                "mappingContextId": null
+              },
+              "elements": [
+                {
+                  "type": 7,
+                  "id": "iwT8Hd174Bqv",
+                  "index": 0,
+                  "mappedEntityId": "Org.Account.Tasks.DueDate",
+                  "mappingContextId": "Org.Account.Tasks",
+                  "name": "Datechooser_7Yuf",
+                  "visibility": {
+                    "type": "",
+                    "id": "Da9JW22Fl46G",
+                    "mappedEntityId": 1,
+                    "mappingContextId": null
+                  },
+                  "date": {
+                    "id": "u7PCYCQDPwMC",
+                    "default": "today",
+                    "specifiedDate": null,
+                    "adjustmentFactor": 0,
+                    "adjustmentUnit": "d",
+                    "operator": "add"
+                  },
+                  "displayValue": {
+                    "type": "",
+                    "id": "SEfLXQAqN3tV",
+                    "mappedEntityId": null,
+                    "mappingContextId": "Org.Account.Tasks"
+                  },
+                  "textColor": {
+                    "type": "",
+                    "id": "9xkpW8sRhBEz",
+                    "mappedEntityId": null,
+                    "mappingContextId": null
+                  },
+                  "backgroundColor": {
+                    "type": "",
+                    "id": "AbwfeublHtKS",
+                    "mappedEntityId": null,
+                    "mappingContextId": null
+                  }
+                },
+                {
+                  "type": 1,
+                  "id": "5xrI4Wdg80hH",
+                  "index": 1,
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Tasks",
+                  "name": "Section_x3G1",
+                  "visibility": {
+                    "type": "",
+                    "id": "o7zqjOAFdh57",
+                    "mappedEntityId": 1,
+                    "mappingContextId": null
+                  },
+                  "elements": [
+                    {
+                      "type": 6,
+                      "id": "ihRsm6BW2COe",
+                      "index": 0,
+                      "mappedEntityId": "Org.Account.Tasks.IsImportant",
+                      "mappingContextId": "Org.Account.Tasks",
+                      "name": "Checkbox_3GHT",
+                      "visibility": {
+                        "type": "",
+                        "id": "6d3HIiS8fuKX",
+                        "mappedEntityId": 1,
+                        "mappingContextId": null
+                      },
+                      "displayValue": {
+                        "type": "",
+                        "id": "LqkRWCWdkoPT",
+                        "mappedEntityId": null,
+                        "mappingContextId": "Org.Account.Tasks"
+                      },
+                      "textColor": {
+                        "type": "",
+                        "id": "VdqRHYzs68uz",
+                        "mappedEntityId": null,
+                        "mappingContextId": null
+                      },
+                      "backgroundColor": {
+                        "type": "",
+                        "id": "Rum9MhJr4YgC",
+                        "mappedEntityId": null,
+                        "mappingContextId": null
+                      }
+                    }
+                  ],
+                  "width": {
+                    "type": "",
+                    "id": "flVRm6JVMXJ6",
+                    "width": 0,
+                    "size": "full"
+                  },
+                  "layoutDirection": {
+                    "type": "",
+                    "id": "AQDEs9Wl0yna",
+                    "direction": "horizontal"
+                  },
+                  "backgroundColor": {
+                    "type": "",
+                    "id": "UJIFfhEP02pv",
+                    "mappedEntityId": null,
+                    "mappingContextId": null
+                  },
+                  "borderColor": {
+                    "type": "",
+                    "id": "5qAsaTp54sw6",
+                    "mappedEntityId": null,
+                    "mappingContextId": null
+                  }
+                },
+                {
+                  "type": 1,
+                  "id": "wfJpEIaXsTrP",
+                  "index": 2,
+                  "mappedEntityId": null,
+                  "mappingContextId": "Org.Account.Tasks",
+                  "name": "Section_BPmL",
+                  "visibility": {
+                    "type": "",
+                    "id": "qvsbIAHTNJfo",
+                    "mappedEntityId": 1,
+                    "mappingContextId": null
+                  },
+                  "elements": [
+                    {
+                      "type": 6,
+                      "id": "U4x9TVOdVeCT",
+                      "index": 0,
+                      "mappedEntityId": "Org.Account.Tasks.IsDone",
+                      "mappingContextId": "Org.Account.Tasks",
+                      "name": "Checkbox_f7WF",
+                      "visibility": {
+                        "type": "",
+                        "id": "ppSJXYA1N5AQ",
+                        "mappedEntityId": 1,
+                        "mappingContextId": null
+                      },
+                      "displayValue": {
+                        "type": "",
+                        "id": "cEUHfboyd1bA",
+                        "mappedEntityId": null,
+                        "mappingContextId": "Org.Account.Tasks"
+                      },
+                      "textColor": {
+                        "type": "",
+                        "id": "WbVwhe5YUOv7",
+                        "mappedEntityId": null,
+                        "mappingContextId": null
+                      },
+                      "backgroundColor": {
+                        "type": "",
+                        "id": "Fm9sodwAKr9T",
+                        "mappedEntityId": null,
+                        "mappingContextId": null
+                      }
+                    }
+                  ],
+                  "width": {
+                    "type": "",
+                    "id": "6twl78W15a6H",
+                    "width": 0,
+                    "size": "full"
+                  },
+                  "layoutDirection": {
+                    "type": "",
+                    "id": "1rQOSl6f2FjQ",
+                    "direction": "horizontal"
+                  },
+                  "backgroundColor": {
+                    "type": "",
+                    "id": "nmwLDXoib6CF",
+                    "mappedEntityId": null,
+                    "mappingContextId": null
+                  },
+                  "borderColor": {
+                    "type": "",
+                    "id": "yb3nAhzynj47",
+                    "mappedEntityId": null,
+                    "mappingContextId": null
+                  }
+                }
+              ],
+              "width": {
+                "type": "",
+                "id": "MKb4L72eSHSH",
+                "width": 0,
+                "size": "full"
+              },
+              "layoutDirection": {
+                "type": "",
+                "id": "pYP32gh6AtWG",
+                "direction": "horizontal"
+              },
+              "backgroundColor": {
+                "type": "",
+                "id": "urHfCjRld2Hk",
+                "mappedEntityId": null,
+                "mappingContextId": null
+              },
+              "borderColor": {
+                "type": "",
+                "id": "3gnbruguwjzT",
+                "mappedEntityId": null,
+                "mappingContextId": null
+              }
+            }
+          ],
+          "backgroundColor": {
+            "type": "",
+            "id": "Rw6L0oUp5GxF",
+            "mappedEntityId": null,
+            "mappingContextId": null
+          },
+          "borderColor": {
+            "type": "",
+            "id": "OhHcATkVuwea",
+            "mappedEntityId": null,
+            "mappingContextId": null
+          }
+        },
+        "dialog": {
+          "type": 25,
+          "id": "5sERTOEcM5Nb",
+          "mappedEntityId": "Org.Account.Tasks",
+          "mappingContextId": "Org.Account.Tasks",
+          "name": "Undefined_7RRD",
+          "visibility": {
+            "type": "",
+            "id": "fKyNOYQjpyAK",
+            "mappedEntityId": 1,
+            "mappingContextId": null
+          },
+          "elements": [],
+          "backgroundColor": {
+            "type": "",
+            "id": "0vz4yDPO3P5k",
+            "mappedEntityId": null,
+            "mappingContextId": null
+          },
+          "borderColor": {
+            "type": "",
+            "id": "IIpBlnU2BUu5",
+            "mappedEntityId": null,
+            "mappingContextId": null
+          },
+          "showMethod": "doubleclick"
+        },
+        "lookupData": {
+          "mappedEntityId": "Org.Account.Tasks",
+          "mappingContextId": "Org.Account",
+          "dialogFieldIds": [],
+          "lookUpPath": "/Tasks/",
+          "associatedFieldId": null
+        },
+        "connections": [],
+        "mapDataMappingOptions": {
+          "type": "",
+          "id": "T2udnz5hcFfE",
+          "mappedEntityId": "Org.Account.CustomField2833",
+          "mappingContextId": null
+        }
+      }
+    ]
+  },
+  "userFields": {
+    "values": [
+      {
+        "id": "xNpe",
+        "name": "Account Custom Checkbox",
+        "fieldType": 1,
+        "objectType": 2,
+        "removeable": true,
+        "valueType": 2,
+        "value": "Account Custom Checkbox"
+      },
+      {
+        "id": "XHNa",
+        "name": "Account Owner",
+        "fieldType": 1,
+        "objectType": 2,
+        "removeable": true,
+        "valueType": 2,
+        "value": "Account Owner"
+      },
+      {
+        "id": "tWpR",
+        "name": "Custom Objects Organisation Card",
+        "fieldType": 1,
+        "objectType": 2,
+        "removeable": true,
+        "valueType": 2,
+        "value": "Custom Objects Organisation Card"
+      },
+      {
+        "id": "VphS",
+        "name": "Account Tasks",
+        "fieldType": 1,
+        "objectType": 2,
+        "removeable": true,
+        "valueType": 2,
+        "value": "Account Tasks"
+      },
+      {
+        "id": "85Lm",
+        "name": "Account Deals",
+        "fieldType": 1,
+        "objectType": 2,
+        "removeable": true,
+        "valueType": 2,
+        "value": "Account Deals"
+      },
+      {
+        "id": "yqdF",
+        "name": "Account Contacts",
+        "fieldType": 1,
+        "objectType": 2,
+        "removeable": true,
+        "valueType": 2,
+        "value": "Account Contacts"
+      },
+      {
+        "id": "da5Y",
+        "name": "Account Custom Datetime",
+        "fieldType": 1,
+        "objectType": 2,
+        "removeable": true,
+        "valueType": 2,
+        "value": "Account Custom Datetime"
+      },
+      {
+        "id": "qmRu",
+        "name": "Account Custom Picklist",
+        "fieldType": 1,
+        "objectType": 2,
+        "removeable": true,
+        "valueType": 2,
+        "value": "Account Custom Picklist"
+      },
+      {
+        "id": "2jHV",
+        "name": "Account Custom Integer",
+        "fieldType": 1,
+        "objectType": 2,
+        "removeable": true,
+        "valueType": 2,
+        "value": "Account Custom Integer"
+      },
+      {
+        "id": "dlKX",
+        "name": "Account Text Field",
+        "fieldType": 1,
+        "objectType": 2,
+        "removeable": true,
+        "valueType": 2,
+        "value": "Account Text Field"
+      },
+      {
+        "id": "zvDf",
+        "name": "Account Name",
+        "fieldType": 1,
+        "objectType": 2,
+        "removeable": true,
+        "valueType": 2,
+        "value": "Account Name"
+      },
+      {
+        "id": "cbt8",
+        "name": "https://uat-vr-app-pb.azurewebsites.net/#/Table/Page_Builder_Applet/338",
+        "fieldType": 1,
+        "objectType": 2,
+        "removeable": true,
+        "valueType": 2,
+        "value": "https://uat-vr-app-pb.azurewebsites.net/#/Table/Page_Builder_Applet/338"
+      },
+      {
+        "id": 1,
+        "name": "YES",
+        "fieldType": 1,
+        "objectType": 4,
+        "removeable": false,
+        "valueType": 256,
+        "value": "true"
+      },
+      {
+        "id": 2,
+        "name": "NO",
+        "fieldType": 1,
+        "objectType": 4,
+        "removeable": false,
+        "valueType": 256,
+        "value": "false"
+      },
+      {
+        "id": 3,
+        "name": "TODAY",
+        "fieldType": 1,
+        "objectType": 16,
+        "removeable": false,
+        "valueType": 8,
+        "value": 1024
+      },
+      {
+        "id": 10,
+        "name": "YEAR START",
+        "fieldType": 1,
+        "objectType": 2,
+        "removeable": false,
+        "valueType": 2048,
+        "value": 2048
+      },
+      {
+        "id": 11,
+        "name": "YEAR END",
+        "fieldType": 1,
+        "objectType": 2,
+        "removeable": false,
+        "valueType": 4096,
+        "value": 4096
+      },
+      {
+        "id": 4,
+        "name": "SPACE_SYMBOL",
+        "fieldType": 1,
+        "objectType": 2,
+        "removeable": false,
+        "valueType": 2,
+        "value": " "
+      },
+      {
+        "id": 5,
+        "name": "COMMA",
+        "fieldType": 1,
+        "objectType": 2,
+        "removeable": false,
+        "valueType": 2,
+        "value": ","
+      },
+      {
+        "id": 6,
+        "name": "PI",
+        "fieldType": 1,
+        "objectType": 8,
+        "removeable": false,
+        "valueType": 1,
+        "value": 3.141592653589793
+      },
+      {
+        "id": 7,
+        "name": "RED",
+        "fieldType": 1,
+        "objectType": 8,
+        "removeable": false,
+        "valueType": 512,
+        "value": "#FF0000"
+      },
+      {
+        "id": 8,
+        "name": "AMBER",
+        "fieldType": 1,
+        "objectType": 8,
+        "removeable": false,
+        "valueType": 512,
+        "value": "#FF7f00"
+      },
+      {
+        "id": 9,
+        "name": "GREEN",
+        "fieldType": 1,
+        "objectType": 8,
+        "removeable": false,
+        "valueType": 512,
+        "value": "#00FF00"
+      }
+    ],
+    "derived": [],
+    "conditional": []
+  }
+}

@@ -1,0 +1,21 @@
+.text_limit_container
+{
+    position: absolute;
+    width: 30px;
+    height: 16px;
+    line-height: 16px;
+    margin: -16px 0 0 -30px;
+    font-weight: normal;
+    font-size: 10px;
+    font-family: sans-serif;
+    color: #000000;
+    text-align: center;
+    background-color: #DEF161;
+    z-index: 999;
+}
+
+.text_limit_container.exceeded
+{
+    background-color: #F16161;
+    color: #FFFFFF;
+}

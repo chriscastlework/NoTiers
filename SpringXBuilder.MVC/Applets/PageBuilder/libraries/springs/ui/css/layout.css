@@ -1,0 +1,36 @@
+.sp_ui_layout
+{
+
+}
+
+.sp_ui_layout.bordered_layout
+{
+
+}
+.sp_ui_layout.bordered_layout>.label
+{
+    background:#000000;
+    color:#CCCCCC;
+    padding:4px;
+    float:left;
+    position:relative;
+    top:10px;
+    margin-left:10px;
+}
+
+.sp_ui_layout.bordered_layout>.border
+{
+    margin-top:10px;
+    border-radius:4px;
+    -moz-border-radius: 4px;
+    overflow:hidden;
+    border:solid 1px #333333;
+    /*height:100%;*/
+    clear:left;
+}
+
+.sp_ui_layout.bordered_layout>.border>.content
+{
+    margin-top: 10px;
+}
+

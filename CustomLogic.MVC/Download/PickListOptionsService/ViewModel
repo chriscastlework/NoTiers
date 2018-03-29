@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.PickListOptionService
+{
+    public class PickListOptionsViewModel
+    {
+
+        public int Id {get;set;}
+        public int PickListId {get;set;}
+        public string OptionName {get;set;}
+        public string OptionValue {get;set;}
+
+    }
+}

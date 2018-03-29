@@ -1,0 +1,16 @@
+using System;
+
+namespace CustomLogic.Services.AvailableSlotService
+{
+    public class AvailableSlotsViewModel
+    {
+
+        public int Id {get;set;}
+        public int OrganisationId {get;set;}
+        public string UserId {get;set;}
+        public string Title {get;set;}
+        public DateTime StartDate {get;set;}
+        public DateTime EndDate {get;set;}
+
+    }
+}

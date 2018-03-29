@@ -1,0 +1,16 @@
+using System;
+
+namespace CustomLogic.Services.EditionCostService
+{
+    public class EditionCostsViewModel
+    {
+
+        public DateTime? LastUpdated {get;set;}
+        public string Currency {get;set;}
+        public decimal Cost {get;set;}
+        public int? Edition_Id {get;set;}
+        public string BraintreePlanId {get;set;}
+        public int EditionCostId {get;set;}
+
+    }
+}

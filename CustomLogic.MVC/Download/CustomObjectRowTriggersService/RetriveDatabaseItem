@@ -1,0 +1,33 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.CustomObjectRowTriggersService
+{
+    public class View : IViewEvent<CustomObjectRowTriggersViewModel,CustomObjectRowTrigger>
+    {
+        public int CreatedId = 0;
+
+        public Response<CustomObjectRowTriggersViewModel> Run(CustomObjectRowTriggersViewModel model,ref IQueryable<CustomObjectRowTrigger> repository, IUnitOfWork unitOfWork, Response<CustomObjectRowTriggersViewModel> result, ICoreUser user)
+        {
+            var itemToUpdate = repository.SingleOrDefault(c => c.Id == model.Id);
+
+            if (itemToUpdate != null)
+            {
+                var newCustomResult = CustomObjectRowTriggers
+                Mapper.MapDbModelToViewModel(itemToUpdate);
+                result.Data = newCustomResult;
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.LogError("Error viewing CustomObjectRowTriggers");
+            }
+
+            return result;
+        }
+
+    }
+}

@@ -1,0 +1,10 @@
+using System;
+
+namespace CustomLogic.Services.UserFolderService
+{
+    public class UserFoldersViewModel
+    {
+
+
+    }
+}

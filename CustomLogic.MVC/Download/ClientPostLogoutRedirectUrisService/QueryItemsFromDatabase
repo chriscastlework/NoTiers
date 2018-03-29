@@ -1,0 +1,24 @@
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.ClientPostLogoutRedirectUrisService
+{
+    public class QueryLogic : IViewListEvent<ClientPostLogoutRedirectUrisViewModel, ClientPostLogoutRedirectUri>
+    {
+
+            public bool Run(NgTableParams model, ref IQueryable<ClientPostLogoutRedirectUri> repository, NgTable<ClientPostLogoutRedirectUrisViewModel> result, ICoreUser user, IUnitOfWork db
+            {
+            var ngTransformer = new QueryToNgTable<ClientPostLogoutRedirectUrisViewModel>();
+
+            var query = ClientPostLogoutRedirectUris
+            Mapper.MapDbModelQueryToViewModelQuery(repository);
+
+            ngTransformer.ToNgTableDataSet(model, query, result);
+            return true;
+        }
+    }
+}
+

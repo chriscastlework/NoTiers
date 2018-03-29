@@ -1,0 +1,51 @@
+using System.Linq;
+
+namespace CustomLogic.Services.CustomObjectRowFieldsService
+{
+public static class CustomObjectRowFieldsMapper
+{
+
+public static CustomObjectRowField MapInsertModelToDbModel(CustomObjectRowFieldsViewModel model, CustomObjectRowField newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new CustomObjectRowField();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Value = model.Value;
+            newDomainModel.Field_Id = model.Field_Id;
+            newDomainModel.CustomObjectRow_Id = model.CustomObjectRow_Id;
+    return newDomainModel;
+    }
+
+
+
+public static CustomObjectRowFieldsViewModel MapDbModelToViewModel(CustomObjectRowField dbModel)
+{
+var viewModel = new  CustomObjectRowFieldsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Value = dbModel.Value;
+            viewModel.Field_Id = dbModel.Field_Id;
+            viewModel.CustomObjectRow_Id = dbModel.CustomObjectRow_Id;
+
+return viewModel;
+}
+
+
+public static IQueryable<CustomObjectRowFieldsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<CustomObjectRowField> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new CustomObjectRowFieldsViewModel()
+        {
+Id = c.Id,
+Value = c.Value,
+Field_Id = c.Field_Id,
+CustomObjectRow_Id = c.CustomObjectRow_Id,
+        });
+        }
+    }
+}
+
+

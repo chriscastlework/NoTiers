@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using CustomLogic;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+
+namespace CustomLogic.Services.SearchesService
+{
+    public class Save : IInsertEvent<SearchesViewModel>
+    {
+    public Guid CreatedId; // Might be a composite key!
+
+    public bool Run(SearchesViewModel model, IUnitOfWork unitOfWork, Response<SearchesViewModel> result, ICoreUser user)
+        {
+
+            var newCustom = Searches();
+            Mapper.MapInsertModelToDbModel(model);
+            unitOfWork.With<Search>().Add(newCustom);
+            unitOfWork.SaveChanges();
+            CreatedId = newCustom.Id;
+            model.Id = CreatedId; // Might be a composit key
+            var newCustomResult = Searches
+            Mapper.MapDbModelToViewModel(newCustom);
+            result.Data = newCustomResult;
+            return true;
+        }
+
+        public bool Rollback(SearchesViewModel model, IUnitOfWork unitOfWork)
+        {
+            var removeItem = unitOfWork.With<Search>().FirstOrDefault(c=>c.Id) == CreatedId);
+            unitOfWork.With<Search>().Remove(removeItem);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public int priority()
+        {
+            return 1;
+        }
+    }
+}

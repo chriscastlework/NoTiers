@@ -1,0 +1,60 @@
+using System.Linq;
+
+namespace CustomLogic.Services.OrganisationSalesObjectViewsService
+{
+public static class OrganisationSalesObjectViewsMapper
+{
+
+public static OrganisationSalesObjectView MapInsertModelToDbModel(OrganisationSalesObjectViewsViewModel model, OrganisationSalesObjectView newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new OrganisationSalesObjectView();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.SalesObjectViewId = model.SalesObjectViewId;
+            newDomainModel.OrgId = model.OrgId;
+            newDomainModel.Organisation_Id = model.Organisation_Id;
+            newDomainModel.IsDefault = model.IsDefault;
+            newDomainModel.Allowed = model.Allowed;
+            newDomainModel.IsEnabled = model.IsEnabled;
+    return newDomainModel;
+    }
+
+
+
+public static OrganisationSalesObjectViewsViewModel MapDbModelToViewModel(OrganisationSalesObjectView dbModel)
+{
+var viewModel = new  OrganisationSalesObjectViewsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.SalesObjectViewId = dbModel.SalesObjectViewId;
+            viewModel.OrgId = dbModel.OrgId;
+            viewModel.Organisation_Id = dbModel.Organisation_Id;
+            viewModel.IsDefault = dbModel.IsDefault;
+            viewModel.Allowed = dbModel.Allowed;
+            viewModel.IsEnabled = dbModel.IsEnabled;
+
+return viewModel;
+}
+
+
+public static IQueryable<OrganisationSalesObjectViewsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<OrganisationSalesObjectView> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new OrganisationSalesObjectViewsViewModel()
+        {
+Id = c.Id,
+SalesObjectViewId = c.SalesObjectViewId,
+OrgId = c.OrgId,
+Organisation_Id = c.Organisation_Id,
+IsDefault = c.IsDefault,
+Allowed = c.Allowed,
+IsEnabled = c.IsEnabled,
+        });
+        }
+    }
+}
+
+

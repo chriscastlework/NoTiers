@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.ColumnPreferenceService
+{
+    public class ColumnPreferencesViewModel
+    {
+
+        public int Id {get;set;}
+        public string Name {get;set;}
+        public bool Visible {get;set;}
+        public int? TablePreference_Id {get;set;}
+
+    }
+}

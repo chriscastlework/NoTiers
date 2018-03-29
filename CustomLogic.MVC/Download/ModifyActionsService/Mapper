@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.ModifyActionsService
+{
+public static class ModifyActionsMapper
+{
+
+public static ModifyAction MapInsertModelToDbModel(ModifyActionsViewModel model, ModifyAction newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new ModifyAction();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static ModifyActionsViewModel MapDbModelToViewModel(ModifyAction dbModel)
+{
+var viewModel = new  ModifyActionsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<ModifyActionsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<ModifyAction> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new ModifyActionsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

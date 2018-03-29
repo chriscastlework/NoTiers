@@ -1,0 +1,20 @@
+using System.Linq;
+using CustomLogic.Core.Interfaces;
+using CustomLogic.Core.Interfaces.DL;
+using CustomLogic.Core.Models;
+
+namespace CustomLogic.Services.AddOnClaimValuesService
+{
+    public class Delete : IDeleteEvent<AddOnClaimValuesViewModel,AddOnClaimValue>
+    {
+
+        public bool Run(AddOnClaimValues ViewModel model, ref IQueryable<AddOnClaimValue>repository, IUnitOfWork unitOfWork, Response<AddOnClaimValuesViewModel> result, ICoreUser user)
+        {
+            // Todo change id for the tables PK
+            var customToRemove = unitOfWork.With<AddOnClaimValue>().Find(model.Id);unitOfWork.With<AddOnClaimValue>().Remove(customToRemove);
+            unitOfWork.SaveChanges();
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,20 @@
+﻿@model CustomLogic.SchemaBuilder.MicrosoftSQL.SchemaModels.ModelInfo
+
+using CustomLogic;
+using CustomLogic.Core.BaseClasses;
+using CustomLogic.Core.Interfaces;
+
+namespace CustomLogic.Services.@Html.Raw(Model.TT_ViewModelName())Service
+{
+    /// <summary>
+    /// This is the wrapper for the IService Please add your custom services here insert/update/get/list are already handled should be enough for rest api
+    ///
+    ///</summary>
+    public class @Html.Raw(Model.TT_TableName())Service : ServiceBase<@Html.Raw(Model.TT_ViewModelName())ViewModel, @Html.Raw(Model.TT_TableName())>
+    {
+        public @Html.Raw(Model.TT_TableName())Service(IUnitOfWork unitOfWork) : base(unitOfWork)
+        {
+        }
+    }
+}
+

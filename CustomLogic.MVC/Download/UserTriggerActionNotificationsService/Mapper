@@ -1,0 +1,39 @@
+using System.Linq;
+
+namespace CustomLogic.Services.UserTriggerActionNotificationsService
+{
+public static class UserTriggerActionNotificationsMapper
+{
+
+public static UserTriggerActionNotification MapInsertModelToDbModel(UserTriggerActionNotificationsViewModel model, UserTriggerActionNotification newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new UserTriggerActionNotification();
+    }
+
+    return newDomainModel;
+    }
+
+
+
+public static UserTriggerActionNotificationsViewModel MapDbModelToViewModel(UserTriggerActionNotification dbModel)
+{
+var viewModel = new  UserTriggerActionNotificationsViewModel();
+
+
+return viewModel;
+}
+
+
+public static IQueryable<UserTriggerActionNotificationsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<UserTriggerActionNotification> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new UserTriggerActionNotificationsViewModel()
+        {
+        });
+        }
+    }
+}
+
+

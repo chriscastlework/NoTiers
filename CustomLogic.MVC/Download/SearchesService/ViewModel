@@ -1,0 +1,14 @@
+using System;
+
+namespace CustomLogic.Services.SearchService
+{
+    public class SearchesViewModel
+    {
+
+        public int Id {get;set;}
+        public int SerachType {get;set;}
+        public string SearchValue {get;set;}
+        public int RuleId {get;set;}
+
+    }
+}

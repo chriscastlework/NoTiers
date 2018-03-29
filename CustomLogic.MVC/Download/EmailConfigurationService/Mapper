@@ -1,0 +1,57 @@
+using System.Linq;
+
+namespace CustomLogic.Services.EmailConfigurationService
+{
+public static class EmailConfigurationMapper
+{
+
+public static EmailConfiguration MapInsertModelToDbModel(EmailConfigurationViewModel model, EmailConfiguration newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new EmailConfiguration();
+    }
+
+            newDomainModel.Id = model.ID;
+            newDomainModel.Description = model.Description;
+            newDomainModel.ApiUserName = model.ApiUserName;
+            newDomainModel.APIPassword = model.APIPassword;
+            newDomainModel.DomainAddressID = model.DomainAddressID;
+            newDomainModel.EmailConnectorURL = model.EmailConnectorURL;
+    return newDomainModel;
+    }
+
+
+
+public static EmailConfigurationViewModel MapDbModelToViewModel(EmailConfiguration dbModel)
+{
+var viewModel = new  EmailConfigurationViewModel();
+
+            viewModel.ID = dbModel.Id;
+            viewModel.Description = dbModel.Description;
+            viewModel.ApiUserName = dbModel.ApiUserName;
+            viewModel.APIPassword = dbModel.APIPassword;
+            viewModel.DomainAddressID = dbModel.DomainAddressID;
+            viewModel.EmailConnectorURL = dbModel.EmailConnectorURL;
+
+return viewModel;
+}
+
+
+public static IQueryable<EmailConfigurationViewModel> MapDbModelQueryToViewModelQuery(IQueryable<EmailConfiguration> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new EmailConfigurationViewModel()
+        {
+ID = c.Id,
+Description = c.Description,
+ApiUserName = c.ApiUserName,
+APIPassword = c.APIPassword,
+DomainAddressID = c.DomainAddressID,
+EmailConnectorURL = c.EmailConnectorURL,
+        });
+        }
+    }
+}
+
+

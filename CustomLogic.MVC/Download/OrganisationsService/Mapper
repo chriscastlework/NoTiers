@@ -1,0 +1,120 @@
+using System.Linq;
+
+namespace CustomLogic.Services.OrganisationsService
+{
+public static class OrganisationsMapper
+{
+
+public static Organisation MapInsertModelToDbModel(OrganisationsViewModel model, Organisation newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new Organisation();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.Name = model.Name;
+            newDomainModel.BillingCurrency = model.BillingCurrency;
+            newDomainModel.Subscription_Id = model.Subscription_Id;
+            newDomainModel.BraintreeCustomerId = model.BraintreeCustomerId;
+            newDomainModel.IsGlobalPermissions = model.IsGlobalPermissions;
+            newDomainModel.DateCreated = model.DateCreated;
+            newDomainModel.DateLastModeified = model.DateLastModeified;
+            newDomainModel.CreatedById = model.CreatedById;
+            newDomainModel.LastModifiedById = model.LastModifiedById;
+            newDomainModel.AllowMultipleDealContactRoles = model.AllowMultipleDealContactRoles;
+            newDomainModel.DefaultOrgCurrency = model.DefaultOrgCurrency;
+            newDomainModel.FinacialYearEndDateTime = model.FinacialYearEndDateTime;
+            newDomainModel.NewTrialNotificationEmailSent = model.NewTrialNotificationEmailSent;
+            newDomainModel.GlobalEmailPreferences = model.GlobalEmailPreferences;
+            newDomainModel.DefaultStc_Id = model.DefaultStc_Id;
+            newDomainModel.OrganisationTheme_Id = model.OrganisationTheme_Id;
+            newDomainModel.HasOrganisationTheme = model.HasOrganisationTheme;
+            newDomainModel.IsStc_Id = model.IsStc_Id;
+            newDomainModel.DealsLimit = model.DealsLimit;
+            newDomainModel.LeadsLimit = model.LeadsLimit;
+            newDomainModel.ContactsLimit = model.ContactsLimit;
+            newDomainModel.PartnersLimit = model.PartnersLimit;
+            newDomainModel.AccountsLimit = model.AccountsLimit;
+            newDomainModel.TasksLimit = model.TasksLimit;
+            newDomainModel.CustomObjectsLimit = model.CustomObjectsLimit;
+            newDomainModel.EnableImpersonate = model.EnableImpersonate;
+    return newDomainModel;
+    }
+
+
+
+public static OrganisationsViewModel MapDbModelToViewModel(Organisation dbModel)
+{
+var viewModel = new  OrganisationsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.Name = dbModel.Name;
+            viewModel.BillingCurrency = dbModel.BillingCurrency;
+            viewModel.Subscription_Id = dbModel.Subscription_Id;
+            viewModel.BraintreeCustomerId = dbModel.BraintreeCustomerId;
+            viewModel.IsGlobalPermissions = dbModel.IsGlobalPermissions;
+            viewModel.DateCreated = dbModel.DateCreated;
+            viewModel.DateLastModeified = dbModel.DateLastModeified;
+            viewModel.CreatedById = dbModel.CreatedById;
+            viewModel.LastModifiedById = dbModel.LastModifiedById;
+            viewModel.AllowMultipleDealContactRoles = dbModel.AllowMultipleDealContactRoles;
+            viewModel.DefaultOrgCurrency = dbModel.DefaultOrgCurrency;
+            viewModel.FinacialYearEndDateTime = dbModel.FinacialYearEndDateTime;
+            viewModel.NewTrialNotificationEmailSent = dbModel.NewTrialNotificationEmailSent;
+            viewModel.GlobalEmailPreferences = dbModel.GlobalEmailPreferences;
+            viewModel.DefaultStc_Id = dbModel.DefaultStc_Id;
+            viewModel.OrganisationTheme_Id = dbModel.OrganisationTheme_Id;
+            viewModel.HasOrganisationTheme = dbModel.HasOrganisationTheme;
+            viewModel.IsStc_Id = dbModel.IsStc_Id;
+            viewModel.DealsLimit = dbModel.DealsLimit;
+            viewModel.LeadsLimit = dbModel.LeadsLimit;
+            viewModel.ContactsLimit = dbModel.ContactsLimit;
+            viewModel.PartnersLimit = dbModel.PartnersLimit;
+            viewModel.AccountsLimit = dbModel.AccountsLimit;
+            viewModel.TasksLimit = dbModel.TasksLimit;
+            viewModel.CustomObjectsLimit = dbModel.CustomObjectsLimit;
+            viewModel.EnableImpersonate = dbModel.EnableImpersonate;
+
+return viewModel;
+}
+
+
+public static IQueryable<OrganisationsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<Organisation> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new OrganisationsViewModel()
+        {
+Id = c.Id,
+Name = c.Name,
+BillingCurrency = c.BillingCurrency,
+Subscription_Id = c.Subscription_Id,
+BraintreeCustomerId = c.BraintreeCustomerId,
+IsGlobalPermissions = c.IsGlobalPermissions,
+DateCreated = c.DateCreated,
+DateLastModeified = c.DateLastModeified,
+CreatedById = c.CreatedById,
+LastModifiedById = c.LastModifiedById,
+AllowMultipleDealContactRoles = c.AllowMultipleDealContactRoles,
+DefaultOrgCurrency = c.DefaultOrgCurrency,
+FinacialYearEndDateTime = c.FinacialYearEndDateTime,
+NewTrialNotificationEmailSent = c.NewTrialNotificationEmailSent,
+GlobalEmailPreferences = c.GlobalEmailPreferences,
+DefaultStc_Id = c.DefaultStc_Id,
+OrganisationTheme_Id = c.OrganisationTheme_Id,
+HasOrganisationTheme = c.HasOrganisationTheme,
+IsStc_Id = c.IsStc_Id,
+DealsLimit = c.DealsLimit,
+LeadsLimit = c.LeadsLimit,
+ContactsLimit = c.ContactsLimit,
+PartnersLimit = c.PartnersLimit,
+AccountsLimit = c.AccountsLimit,
+TasksLimit = c.TasksLimit,
+CustomObjectsLimit = c.CustomObjectsLimit,
+EnableImpersonate = c.EnableImpersonate,
+        });
+        }
+    }
+}
+
+

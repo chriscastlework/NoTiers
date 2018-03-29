@@ -1,0 +1,57 @@
+using System.Linq;
+
+namespace CustomLogic.Services.AddOnCostsService
+{
+public static class AddOnCostsMapper
+{
+
+public static AddOnCost MapInsertModelToDbModel(AddOnCostsViewModel model, AddOnCost newDomainModel = null)
+{
+    if (newDomainModel == null)
+    {
+    newDomainModel = new AddOnCost();
+    }
+
+            newDomainModel.Id = model.Id;
+            newDomainModel.AddOnId = model.AddOnId;
+            newDomainModel.LastUpdated = model.LastUpdated;
+            newDomainModel.Currency = model.Currency;
+            newDomainModel.Cost = model.Cost;
+            newDomainModel.BraintreePlanId = model.BraintreePlanId;
+    return newDomainModel;
+    }
+
+
+
+public static AddOnCostsViewModel MapDbModelToViewModel(AddOnCost dbModel)
+{
+var viewModel = new  AddOnCostsViewModel();
+
+            viewModel.Id = dbModel.Id;
+            viewModel.AddOnId = dbModel.AddOnId;
+            viewModel.LastUpdated = dbModel.LastUpdated;
+            viewModel.Currency = dbModel.Currency;
+            viewModel.Cost = dbModel.Cost;
+            viewModel.BraintreePlanId = dbModel.BraintreePlanId;
+
+return viewModel;
+}
+
+
+public static IQueryable<AddOnCostsViewModel> MapDbModelQueryToViewModelQuery(IQueryable<AddOnCost> databaseQuery)
+{ 
+
+        return databaseQuery.OrderByDescending(c=>c.Id).Select(c => new AddOnCostsViewModel()
+        {
+Id = c.Id,
+AddOnId = c.AddOnId,
+LastUpdated = c.LastUpdated,
+Currency = c.Currency,
+Cost = c.Cost,
+BraintreePlanId = c.BraintreePlanId,
+        });
+        }
+    }
+}
+
+
